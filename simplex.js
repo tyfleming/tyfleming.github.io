@@ -11,6 +11,8 @@
   const chooser = document.getElementById('example-select');
   const status = document.getElementById('simplex-status');
   const explanation = document.getElementById('example-explanation');
+  const predictedStage = document.getElementById('predicted-stage');
+  const predictedConfidence = document.getElementById('predicted-confidence');
   const cells = ['prob-wake','prob-n1','prob-n2','prob-n3'].map(id => document.getElementById(id));
   let yaw = -0.45, pitch = 0.18, selected = null, drag = null, plotted = [];
   let cloud = [], examples = [], customSelected = null;
@@ -105,6 +107,9 @@
     const missing = 1000-tenths.reduce((a,b) => a+b,0);
     for (let i=0;i<missing;i++) tenths[order[i]]++;
     tenths.forEach((v,i) => {cells[i].textContent = (v/10).toFixed(1) + '%';});
+    predictedStage.textContent = stages[item.stage];
+    predictedStage.parentElement.style.setProperty('--predicted-color', colors[item.stage]);
+    predictedConfidence.textContent = (tenths[item.stage]/10).toFixed(1) + '% probability';
     explanation.textContent = description + ' The displayed values sum to 100%.';
     draw();
   }
@@ -156,7 +161,7 @@
     examples.forEach((entry,i) => {
       const option = document.createElement('option');
       option.value = String(i);
-      option.textContent = entry.name;
+      option.textContent = entry.name + ' · predicts ' + stages[entry.item.stage];
       chooser.appendChild(option);
     });
   }
@@ -181,7 +186,7 @@
       });
       makeExamples();
       status.textContent = cloud.length.toLocaleString() +
-        ' anonymized, subject-held-out window predictions. Color and filter show each window’s highest-probability stage.';
+        ' anonymized, subject-held-out window predictions. Color and filter show each model-predicted stage.';
       show(examples[0].item,examples[0].description);
       resize();
     } catch (error) {
@@ -208,8 +213,8 @@
     if (!selected || selected.stage !== stage) {
       const item = best(candidate => candidate.stage === stage, candidate => candidate.p[stage]);
       if (item) {
-        showCustom(item,'A held-out window with ' + stages[stage] + ' as its highest-probability stage.',
-          'Selected ' + stages[stage] + ' window');
+        showCustom(item,'A held-out window predicted as ' + stages[stage] + '.',
+          'Selected window · predicts ' + stages[stage]);
       } else draw();
     } else draw();
   });
