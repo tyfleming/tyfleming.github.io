@@ -6,7 +6,7 @@
 
   const stages = ['Wake', 'N1', 'N2', 'N3'];
   const colors = ['#b16b2e', '#9a5773', '#207a83', '#565b97'];
-  const vertices = [[1, 1, 1], [-1, -1, 1], [-1, 1, -1], [1, -1, -1]];
+  const vertices = [[1, 1, 1], [1, -1, -1], [-1, 1, -1], [-1, -1, 1]];
   const filter = document.getElementById('stage-filter');
   const chooser = document.getElementById('example-select');
   const status = document.getElementById('simplex-status');
