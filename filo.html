@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How Ty Fleming studies spatial patterns linking infant cortical development and adult degeneration.">
+  <title>Last in, first out — Ty Fleming</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="index.html">Ty Fleming<span class="visually-hidden"> — home</span></a>
+    <nav class="site-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="research.html" aria-current="page">Research</a><a href="publications.html">Publications</a><a href="about.html">About</a></nav>
+  </header>
+  <main id="main">
+<section class="page-hero" aria-labelledby="filo-title">
+  <span class="eyebrow">Research / 01</span>
+  <div><h1 id="filo-title">Last in, first out.</h1><p class="lead">Could the parts of the cortex that develop later be especially vulnerable to change later in life? With Muriah Wheelock, I study this question by comparing patterns across the cortical surface.</p><div class="hero-actions"><a class="text-link" href="research.html">Research overview</a><a class="text-link" href="https://medicine.washu.edu/news/5-million-for-brain-development-and-alzheimer-degeneration-study/">WashU project context</a></div></div>
+</section>
+<section class="content-section" aria-labelledby="question-title">
+  <span class="section-label">01 / Question</span>
+  <div class="section-body wide-copy"><h2 id="question-title">A proposed mirror across the lifespan.</h2><p class="intro">The “last in, first out” idea asks whether late-developing brain regions are among the first to show vulnerability in aging and neurodegeneration.</p><p>The challenge is spatial: neighboring cortical regions tend to resemble each other. A convincing comparison must account for that structure instead of treating every location as independent.</p></div>
+</section>
+<section class="content-section" aria-labelledby="filo-method-title">
+  <span class="section-label">02 / Method</span>
+  <div class="section-body"><h2 id="filo-method-title">From brain maps to a spatial test.</h2><div class="method-grid" aria-label="Four-step FILO method diagram"><article class="method-step"><span class="step-index">01</span><svg viewBox="0 0 180 98" role="img" aria-label="Two stylized infant cortical maps"><path d="M17 56 C19 25 51 13 76 25 C90 6 129 16 139 43 C160 47 164 74 143 79 C119 89 35 84 17 56Z" fill="#eff3f2" stroke="#235969" stroke-width="2"/><path d="M36 44c18-16 33-9 41-1m10-12c18-5 36 3 43 18M40 67c20-12 48-8 63 8m6-25c14-8 24-4 36 7" fill="none" stroke="#aab9b8" stroke-width="2"/></svg><h3>Infant development</h3><p>Build cortical maps of surface-area expansion during early life.</p></article><article class="method-step"><span class="step-index">02</span><svg viewBox="0 0 180 98" role="img" aria-label="Two stylized adult cortical maps"><path d="M17 56 C19 25 51 13 76 25 C90 6 129 16 139 43 C160 47 164 74 143 79 C119 89 35 84 17 56Z" fill="#eff3f2" stroke="#235969" stroke-width="2"/><path d="M42 34l18 14 22-11 18 20 25-17m-75 34 17-18 22 14 29-11" fill="none" stroke="#aab9b8" stroke-width="2"/></svg><h3>Adult change</h3><p>Bring adult aging and disease maps into the same cortical space.</p></article><article class="method-step"><span class="step-index">03</span><svg viewBox="0 0 180 98" role="img" aria-label="Paired values across cortical parcels"><path d="M18 78h145M18 78V14" stroke="#9aa9a8" stroke-width="1.5"/><path d="M31 66l24-12 19 3 22-20 24 2 28-18" fill="none" stroke="#235969" stroke-width="2"/><g fill="#235969"><circle cx="31" cy="66" r="3"/><circle cx="55" cy="54" r="3"/><circle cx="74" cy="57" r="3"/><circle cx="96" cy="37" r="3"/><circle cx="120" cy="39" r="3"/><circle cx="148" cy="21" r="3"/></g></svg><h3>Spatial comparison</h3><p>Compare matched cortical parcels after transforming each map by rank.</p></article><article class="method-step"><span class="step-index">04</span><svg viewBox="0 0 180 98" role="img" aria-label="Observed association compared with a spatial null distribution"><path d="M15 78h150" stroke="#9aa9a8" stroke-width="1.5"/><path d="M23 78 C45 77 55 65 67 43 C77 24 93 18 105 42 C119 68 130 77 147 78" fill="none" stroke="#aab9b8" stroke-width="2"/><path d="M143 16v63" stroke="#235969" stroke-width="2"/><circle cx="143" cy="16" r="4" fill="#235969"/></svg><h3>Spatial nulls</h3><p>Ask whether an association is unusual given the smoothness and geography of cortex.</p></article></div><p class="small">Conceptual diagrams only. No unpublished cortical maps or results are shown.</p>
+    <details class="technical"><summary>How the spatial analysis works</summary><div class="technical-content">
+      <h3>Comparable cortical maps</h3><p>Infant surface-area expansion and adult change maps are placed on a common cortical representation and summarized across matched parcels. Analyses inspect both all Gordon-333 parcels and the named-network subset when unassigned parcels are excluded.</p>
+      <h3>Rank-based association</h3><p>Map values are rank transformed before comparing their spatial patterns. This focuses the analysis on relative cortical ordering and limits the influence of extreme values.</p>
+      <h3>Spatially informed inference</h3><p>Spatial null maps preserve important features of cortical autocorrelation. Observed associations are compared against those null distributions, with multiple comparisons accounted for across related tests.</p>
+      <h3>Biological context</h3><p>Complementary analyses examine how spatial patterns in biomarker maps relate to developmental and adult maps. The current workflow includes spatial basis methods, multivariate summaries, and comparisons among interpretable cortical profiles; these are exploratory tools, not a claim of mechanism.</p>
+    </div></details>
+  </div>
+</section>
+<section class="content-section" aria-labelledby="filo-status"><span class="section-label">03 / Status</span><div class="section-body wide-copy"><h2 id="filo-status">Manuscript in preparation.</h2><p>This page presents the research question and analytic approach while the study is ongoing. I’ll add a paper and results here when they are ready to share.</p><p><a class="text-link" href="publications.html">Publications and ongoing work</a></p></div></section>
+</main>
+  <footer class="site-footer"><span>© 2026 Ty Fleming · Imaging Science, WashU</span><span><a href="https://github.com/tyfleming">GitHub</a> · <a href="about.html#contact">Contact</a></span></footer>
+</body>
+</html>
