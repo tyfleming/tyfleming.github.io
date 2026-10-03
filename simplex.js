@@ -11,11 +11,31 @@
   const chooser = document.getElementById('example-select');
   const status = document.getElementById('simplex-status');
   const explanation = document.getElementById('example-explanation');
+  const labelView = document.getElementById('label-view');
+  const filterLabel = document.getElementById('stage-filter-label');
+  const stageKey = document.getElementById('stage-key');
+  const instructions = document.getElementById('simplex-instructions');
   const predictedStage = document.getElementById('predicted-stage');
   const predictedConfidence = document.getElementById('predicted-confidence');
+  const observedSummary = document.getElementById('observed-summary');
+  const observedStage = document.getElementById('observed-stage');
   const cells = ['prob-wake','prob-n1','prob-n2','prob-n3'].map(id => document.getElementById(id));
   let yaw = -0.45, pitch = 0.18, selected = null, drag = null, plotted = [];
   let cloud = [], examples = [], customSelected = null;
+  let view = 'predicted', hasObserved = false, currentDescription = '';
+
+  function visibleStage(item) {
+    return view === 'observed' ? item.observed : item.stage;
+  }
+  function updateViewText() {
+    const observed = view === 'observed';
+    const label = observed ? 'observed stage' : 'model-predicted stage';
+    filterLabel.textContent = observed ? 'Observed stage' : 'Model-predicted stage';
+    stageKey.setAttribute('aria-label', observed ? 'Observed stage colors' : 'Predicted stage colors');
+    status.textContent = cloud.length.toLocaleString() +
+      ' subject-held-out windows. Color and filter show each ' + label + '.';
+    instructions.textContent = 'Drag to rotate. Each point is a held-out window probability vector; proximity to a vertex means higher model probability for that stage. Color and filtering encode the ' + label + '. Switching views never moves a point.';
+  }
 
   function point3(p) {
     return [0,1,2].map(axis => p.reduce((sum, probability, i) => sum + probability * vertices[i][axis], 0));
@@ -76,13 +96,13 @@
       context.stroke();
     });
     const stageFilter = filter.value;
-    plotted = cloud.filter(item => stageFilter === 'all' || item.stage === Number(stageFilter))
+    plotted = cloud.filter(item => stageFilter === 'all' || visibleStage(item) === Number(stageFilter))
       .map(item => ({item, ...projected(item.xyz,width,height)}))
       .sort((a,b) => a.depth-b.depth);
-    plotted.forEach(({item,x,y}) => drawMark(x,y,item.stage,1.8,false));
+    plotted.forEach(({item,x,y}) => drawMark(x,y,visibleStage(item),1.8,false));
     if (selected) {
       const chosen = projected(selected.xyz,width,height);
-      drawMark(chosen.x,chosen.y,selected.stage,6,true);
+      drawMark(chosen.x,chosen.y,visibleStage(selected),6,true);
     }
     context.font = '600 13px -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif';
     context.textBaseline = 'middle';
@@ -101,6 +121,7 @@
   }
   function show(item, description) {
     selected = item;
+    currentDescription = description;
     const scaled = item.p.map(v => v*1000);
     const tenths = scaled.map(Math.floor);
     const order = [0,1,2,3].sort((a,b) => (scaled[b]-tenths[b]) - (scaled[a]-tenths[a]));
@@ -110,6 +131,10 @@
     predictedStage.textContent = stages[item.stage];
     predictedStage.parentElement.style.setProperty('--predicted-color', colors[item.stage]);
     predictedConfidence.textContent = (tenths[item.stage]/10).toFixed(1) + '% probability';
+    if (hasObserved) {
+      observedStage.textContent = stages[item.observed];
+      observedSummary.style.setProperty('--observed-color', colors[item.observed]);
+    }
     explanation.textContent = description + ' The displayed values sum to 100%.';
     draw();
   }
@@ -165,11 +190,35 @@
       chooser.appendChild(option);
     });
   }
+  async function loadObservedLabels(probabilityText) {
+    const response = await fetch('assets/sleep-ground-truth.json');
+    if (response.status === 404) return;
+    if (!response.ok) throw new Error('Observed-label export HTTP ' + response.status);
+    const data = await response.json();
+    if (data.schema_version !== 1 ||
+        JSON.stringify(data.stages) !== JSON.stringify(stages) ||
+        !Array.isArray(data.labels) || data.labels.length !== cloud.length ||
+        data.labels.some(label => !Number.isInteger(label) || label < 0 || label > 3)) {
+      throw new Error('Invalid observed-label export');
+    }
+    if (!crypto.subtle) throw new Error('Cannot verify probability export checksum');
+    const bytes = new TextEncoder().encode(probabilityText);
+    const hash = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', bytes)),
+      byte => byte.toString(16).padStart(2, '0')).join('');
+    if (data.probabilities_sha256 !== hash) {
+      throw new Error('Observed labels do not match the probability export');
+    }
+    cloud.forEach((item, index) => {item.observed = data.labels[index];});
+    hasObserved = true;
+    labelView.hidden = false;
+    observedSummary.hidden = false;
+  }
   async function load() {
     try {
       const response = await fetch('assets/sleep-probabilities.json');
       if (!response.ok) throw new Error('HTTP ' + response.status);
-      const data = await response.json();
+      const probabilityText = await response.text();
+      const data = JSON.parse(probabilityText);
       if (JSON.stringify(data.stages) !== JSON.stringify(stages) ||
           !Array.isArray(data.probabilities) || !data.probabilities.length) {
         throw new Error('Unexpected probability data format');
@@ -184,9 +233,12 @@
         const p = row.map(v => v/sum);
         return {p,stage:argmax(p),xyz:point3(p)};
       });
+      let labelIssue = false;
+      try {await loadObservedLabels(probabilityText);}
+      catch (error) {labelIssue = true; console.warn('Sleep observed labels:', error);}
       makeExamples();
-      status.textContent = cloud.length.toLocaleString() +
-        ' anonymized, subject-held-out window predictions. Color and filter show each model-predicted stage.';
+      updateViewText();
+      if (labelIssue) status.textContent += ' The observed-stage view is unavailable because its data could not be verified.';
       show(examples[0].item,examples[0].description);
       resize();
     } catch (error) {
@@ -210,13 +262,22 @@
   filter.addEventListener('change', () => {
     if (filter.value === 'all') {draw(); return;}
     const stage = Number(filter.value);
-    if (!selected || selected.stage !== stage) {
-      const item = best(candidate => candidate.stage === stage, candidate => candidate.p[stage]);
+    if (!selected || visibleStage(selected) !== stage) {
+      const item = best(candidate => visibleStage(candidate) === stage, candidate => candidate.p[stage]);
       if (item) {
-        showCustom(item,'A held-out window predicted as ' + stages[stage] + '.',
-          'Selected window · predicts ' + stages[stage]);
+        const description = view === 'observed' ?
+          'A held-out window observed as ' + stages[stage] + '.' :
+          'A held-out window predicted as ' + stages[stage] + '.';
+        showCustom(item, description, 'Selected ' + stages[stage] + ' window');
       } else draw();
     } else draw();
+  });
+  labelView.addEventListener('change', event => {
+    if (event.target.name !== 'label-view' || !hasObserved) return;
+    view = event.target.value;
+    filter.value = 'all';
+    updateViewText();
+    show(selected, currentDescription);
   });
   [['rotate-left',-.18,0],['rotate-right',.18,0],['rotate-up',0,.14],['rotate-down',0,-.14]].forEach(([id,dy,dp]) => {
     document.getElementById(id).addEventListener('click', () => {
