@@ -171,14 +171,25 @@ def visual_02() -> None:
     s.header("02 / cortical signals", "333 parcels → 39 features")
     m = DATA["step_1_window"]["cortical_features"]
     transposed = [list(row[j] for row in m) for j in range(39)]
-    heatmap(s, transposed, 170, 54, 490, 134, 3)
-    y_div = 54 + 134 * 13 / 39
-    s.line(170, y_div, 660, y_div, INK, 1)
-    s.text(155, 80, "13 means", 12, INK, 600, "end")
-    s.text(155, 145, "26 residual", 12, INK, 600, "end")
-    s.text(170, 207, "first frame", 11)
-    s.text(660, 207, "endpoint", 11, MUTED, 400, "end")
-    s.text(414, 224, "color: feature value, clipped to ±3", 10, MUTED, 400, "middle")
+    x, y, w, h = 170, 51, 156, 156
+    heatmap(s, transposed, x, y, w, h, 3)
+    y_div = y + h * 13 / 39
+    s.line(x, y_div, x + w, y_div, INK, 1)
+    s.text(x - 14, 82, "13 means", 12, INK, 600, "end")
+    s.text(x - 14, 157, "26 residual", 12, INK, 600, "end")
+    s.text(x, 224, "first frame", 10)
+    s.text(x + w, 224, "endpoint", 10, MUTED, 400, "end")
+    s.line(385, 51, 385, 207)
+    s.text(410, 74, "30 frames across", 13, INK, 600)
+    s.text(410, 100, "39 features down", 13, INK, 600)
+    s.text(410, 130, "Network means: 13", 11)
+    s.text(410, 151, "Residual modes: 26", 11)
+    for i in range(49):
+        s.rect(410 + i * 4.5, 178, 4.6, 8, diverge(-3 + i / 8, 3))
+    s.text(410, 202, "−3", 10)
+    s.text(520, 202, "0", 10, MUTED, 400, "middle")
+    s.text(630, 202, "+3", 10, MUTED, 400, "end")
+    s.text(410, 222, "standardized feature value", 10)
     s.save(2)
 
 
@@ -234,41 +245,60 @@ def visual_05() -> None:
 
 
 def visual_06() -> None:
-    s = SVG("Directed-flow and cycle features", "Strongest reconstructed directed atlas edges at left and the saved 23-feature cycle summary at right.")
-    s.header("06 / directed-cycle branch", "24 strongest edges · 23 features")
-    edges = DATA["step_7_cycle_ridge"]["strongest_pooled_flow_edges"]
-    endpoints = [edge[key] for edge in edges for key in ("source_xyz", "target_xyz")]
-    xs = [p[0] for p in endpoints]
-    zs = [p[2] for p in endpoints]
-    def pos(p):
-        return (35 + (p[0] - min(xs)) / (max(xs) - min(xs)) * 268,
-                63 + (max(zs) - p[2]) / (max(zs) - min(zs)) * 126)
-    s.rect(24, 52, 299, 150, "none", LINE)
-    for edge in edges:
-        source, target = pos(edge["source_xyz"]), pos(edge["target_xyz"])
-        if edge["pooled_flow"] < 0:
-            source, target = target, source
-        arrow(s, *source, *target, POS if edge["pooled_flow"] >= 0 else NEG, 1.1)
-        s.circle(*source, 1.8, INK)
-    s.text(28, 218, "atlas x/z projection · direction from lagged flow", 10)
+    s = SVG("Directed-cycle branch", "Schematic gradient, curl, and harmonic graph-flow patterns at left; saved 23-feature cycle summary for one held-out window at right. H, G, and C mean harmonic, gradient, and curl energy shares. The sketches are not atlas locations.")
+    s.header("06 / directed-cycle branch", "graph-flow components · 23 features")
+    s.text(28, 58, "GRAPH-FLOW PATTERNS · SCHEMATIC", 10, ACCENT, 700)
+    s.text(79, 81, "gradient", 11, INK, 600, "middle")
+    s.text(177, 81, "curl", 11, INK, 600, "middle")
+    s.text(288, 81, "harmonic", 11, INK, 600, "middle")
+
+    for x in (47, 79, 111):
+        s.circle(x, 132, 4, PAPER, INK, 1.5)
+    arrow(s, 53, 132, 71, 132, ACCENT, 2)
+    arrow(s, 85, 132, 103, 132, ACCENT, 2)
+    s.text(79, 183, "source → sink", 10, MUTED, 400, "middle")
+
+    triangle = [(177, 98), (145, 156), (209, 156)]
+    s.raw('<polygon points="177,98 145,156 209,156" fill="#eff3f2" stroke="#d5dcda"/>')
+    arrow(s, 181, 108, 203, 148, POS, 2)
+    arrow(s, 201, 156, 153, 156, POS, 2)
+    arrow(s, 151, 148, 173, 108, POS, 2)
+    for p in triangle:
+        s.circle(*p, 4, PAPER, INK, 1.5)
+    s.text(177, 183, "filled triangle", 10, MUTED, 400, "middle")
+
+    square = [(258, 104), (318, 104), (318, 164), (258, 164)]
+    s.raw('<polygon points="258,104 318,104 318,164 258,164" fill="none" stroke="#d5dcda"/>')
+    s.rect(277, 123, 22, 22, PAPER, LINE)
+    arrow(s, 266, 104, 310, 104, NEG, 2)
+    arrow(s, 318, 112, 318, 156, NEG, 2)
+    arrow(s, 310, 164, 266, 164, NEG, 2)
+    arrow(s, 258, 156, 258, 112, NEG, 2)
+    for p in square:
+        s.circle(*p, 4, PAPER, INK, 1.5)
+    s.text(288, 183, "unfilled loop", 10, MUTED, 400, "middle")
+    s.text(28, 214, "Topology examples, not atlas coordinates.", 10)
+    s.line(351, 50, 351, 216)
+
     values = DATA["step_7_cycle_ridge"]["feature_values"]
-    names = ["flow", "harmonic", "harmonic %", "gradient %", "curl %"]
+    s.text(369, 59, "SAVED FEATURE PROFILE", 10, ACCENT, 700)
+    names = ["flow", "harmonic", "H share", "G share", "C share"]
     for col, name in enumerate(names):
-        x = 370 + col * 67
-        s.text(x, 59, name, 10, INK, 600)
+        x = 400 + col * 62
+        s.text(x, 81, name, 10, INK, 600)
         col_values = [values[row * 5 + col] for row in range(4)]
         max_value = max(col_values)
         for row, val in enumerate(col_values):
-            y = 73 + row * 24
-            s.rect(x, y, 53, 8, "#eff3f2")
-            s.rect(x, y, 53 * val / max_value, 8, ACCENT)
+            y = 95 + row * 22
+            s.rect(x, y, 49, 8, "#eff3f2")
+            s.rect(x, y, 49 * val / max_value, 8, ACCENT)
     for row, name in enumerate(["lag 1", "lag 2", "lag 3", "pooled"]):
-        s.text(350, 81 + row * 24, name, 10, MUTED, 400, "end")
-    s.line(345, 177, 716, 177)
-    s.text(368, 195, f"cycle step norm {values[20]:.2f}", 10, INK)
-    s.text(505, 195, f"cosine {values[21]:.2f}", 10, INK)
-    s.text(619, 195, f"angle {values[22]:.2f} rad", 10, INK)
-    s.text(370, 219, "bars scaled separately by feature type", 10)
+        s.text(389, 102 + row * 22, name, 10, MUTED, 400, "end")
+    s.line(368, 190, 715, 190)
+    s.text(369, 209, f"ΔH norm {values[20]:.2f}", 10, INK)
+    s.text(485, 209, f"cosine {values[21]:.2f}", 10, INK)
+    s.text(586, 209, f"angle {values[22]:.2f} rad", 10, INK)
+    s.text(369, 226, "Bars share a scale within each feature column.", 10)
     s.save(6)
 
 
