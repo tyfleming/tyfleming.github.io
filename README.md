@@ -11,7 +11,7 @@ A small static research website for Ty Fleming, Imaging Science PhD student at W
 - `publications.html` — prior publications and ongoing work
 - `about.html` — background and contact
 
-The site uses plain HTML, CSS, and one local JavaScript file. The simplex currently uses synthetic examples generated in `simplex.js`. The FILO page includes an adult cortical map from the ongoing analysis, credited in its caption.
+The site uses plain HTML, CSS, and one local JavaScript file. The simplex currently uses synthetic examples generated in `simplex.js`. The FILO page includes paired cortical input maps from the ongoing analysis, credited in its caption.
 
 ## Local preview
 
