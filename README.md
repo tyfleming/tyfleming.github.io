@@ -7,11 +7,11 @@ A small static research website for Ty Fleming, Imaging Science PhD student at W
 - `index.html` — introduction
 - `research.html` — project overview
 - `filo.html` — spatial neuroimaging methods
-- `sleep.html` — sleep decoding workflow and illustrative probability simplex
+- `sleep.html` — sleep decoding workflow and probability simplex
 - `publications.html` — prior publications and ongoing work
 - `about.html` — background and contact
 
-The site uses plain HTML, CSS, and one local JavaScript file. The simplex points are synthetic examples, generated in `simplex.js`; no participant data or unpublished result maps are included.
+The site uses plain HTML, CSS, and one local JavaScript file. The simplex currently uses synthetic examples generated in `simplex.js`. The FILO page includes an adult cortical map from the ongoing analysis, credited in its caption.
 
 ## Local preview
 
