@@ -133,6 +133,10 @@
     return winner;
   }
   function makeExamples() {
+    const methodProbability = [0.700008, 0.270644, 0.020683, 0.008665];
+    const method = best(() => true, item =>
+      -item.p.reduce((distance, value, i) =>
+        distance + (value - methodProbability[i]) ** 2, 0));
     const wake = best(() => true, item => item.p[0]);
     const balance = best(item => {
       const top = item.p.map((_,i) => i).sort((a,b) => item.p[b]-item.p[a]);
@@ -141,6 +145,7 @@
     const n2 = best(() => true, item => item.p[2]);
     const uncertain = best(() => true, item => -Math.max(...item.p));
     examples = [
+      {item:method, name:'Methods example', description:'The held-out window illustrated in the eight method panels.'},
       {item:wake, name:'Wake-weighted window', description:'A held-out window with relatively high Wake probability.'},
       {item:balance, name:'Wake / N1 balance', description:'A held-out window with similar Wake and N1 probabilities.'},
       {item:n2, name:'N2-weighted window', description:'A held-out window with relatively high N2 probability.'},

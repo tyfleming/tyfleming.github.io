@@ -119,13 +119,25 @@ def arrow(svg: SVG, x1, y1, x2, y2, color=ACCENT, width=1.5) -> None:
 
 
 def probability_bars(svg: SVG, values, x=155, y=58, width=445, gap=36, show_values=True) -> None:
+    displayed = percentages(values)
     for i, (stage, p) in enumerate(zip(STAGES, values)):
         yy = y + i * gap
         svg.text(x - 30, yy + 10, stage, 14, INK, 600, "end")
         svg.rect(x, yy, width, 13, "#eff3f2")
         svg.rect(x, yy, max(1, width * p), 13, STAGE_COLORS[i])
         if show_values:
-            svg.text(x + width + 18, yy + 11, f"{p:.1%}", 13, INK, 600)
+            svg.text(x + width + 18, yy + 11, f"{displayed[i]:.1f}%", 13, INK, 600)
+
+
+def percentages(values) -> list[float]:
+    """Round four probabilities to tenths while keeping their sum at 100.0%."""
+    scaled = [value / sum(values) * 1000 for value in values]
+    tenths = [math.floor(value) for value in scaled]
+    missing = 1000 - sum(tenths)
+    order = sorted(range(len(values)), key=lambda i: scaled[i] - tenths[i], reverse=True)
+    for i in order[:missing]:
+        tenths[i] += 1
+    return [value / 10 for value in tenths]
 
 
 def visual_01() -> None:
@@ -274,11 +286,12 @@ def visual_07() -> None:
     for row, (name, probabilities) in enumerate(rows):
         y = 77 + row * 45
         s.text(116, y + 16, name, 13, INK, 600, "end")
+        displayed = percentages(probabilities)
         for col, p in enumerate(probabilities):
             x = 163 + col * 122
             s.rect(x, y, 98, 12, "#eff3f2")
             s.rect(x, y, max(1, 98 * p), 12, STAGE_COLORS[col])
-            s.text(x + 98, y + 30, f"{p:.1%}", 11, INK, 400, "end")
+            s.text(x + 98, y + 30, f"{displayed[col]:.1f}%", 11, INK, 400, "end")
     s.line(148, 160, 650, 160, LINE)
     s.text(163, 213, "The final row includes calibration after the two branches are blended.", 11)
     s.save(7)
@@ -310,11 +323,12 @@ def visual_08() -> None:
     s.circle(*pxy, 8, PAPER, INK, 2)
     s.circle(*pxy, 3.5, ACCENT)
     s.line(445, 49, 445, 201)
+    displayed = percentages(probabilities)
     for i, (name, p) in enumerate(zip(STAGES, probabilities)):
         y = 65 + i * 38
         s.rect(466, y - 9, 9, 9, STAGE_COLORS[i])
         s.text(487, y, name, 12, INK, 500)
-        s.text(680, y, f"{p:.1%}", 13, INK, 600, "end")
+        s.text(680, y, f"{displayed[i]:.1f}%", 13, INK, 600, "end")
     s.text(466, 216, "position = probability-weighted vertices", 10)
     s.save(8)
 
