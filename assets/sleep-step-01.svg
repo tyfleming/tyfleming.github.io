@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="230" viewBox="0 0 740 230" role="img" aria-labelledby="title desc">
+<title id="title">Causal fMRI window</title>
+<desc id="desc">Three reconstructed network-mean signals over the 30-volume window. All 30 frames are motion-valid and the prediction is made at the right endpoint.</desc>
+<rect width="740" height="230" fill="#ffffff"/>
+<text x="24.00" y="27.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">01 / CAUSAL WINDOW</text>
+<text x="716.00" y="27.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">30 volumes · 62.4 seconds</text>
+<line x1="24.00" y1="39.00" x2="716.00" y2="39.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
+<line x1="95.00" y1="77.00" x2="660.00" y2="77.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
+<text x="82.00" y="81.00" fill="#5a6669" font-size="11" font-weight="500" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">mean 01</text>
+<polyline points="95.00,81.13 114.48,81.24 133.97,81.86 153.45,81.39 172.93,77.89 192.41,72.56 211.90,67.81 231.38,63.78 250.86,61.96 270.34,63.72 289.83,67.00 309.31,72.07 328.79,77.60 348.28,79.23 367.76,80.13 387.24,81.80 406.72,80.86 426.21,77.91 445.69,73.54 465.17,69.23 484.66,69.03 504.14,73.62 523.62,79.54 543.10,81.56 562.59,77.73 582.07,72.86 601.55,70.25 621.03,68.25 640.52,67.19 660.00,70.73" fill="none" stroke="#235969" stroke-width="1.8"/>
+<line x1="95.00" y1="125.00" x2="660.00" y2="125.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
+<text x="82.00" y="129.00" fill="#5a6669" font-size="11" font-weight="500" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">mean 07</text>
+<polyline points="95.00,125.01 114.48,129.80 133.97,132.45 153.45,133.15 172.93,133.42 192.41,133.53 211.90,133.59 231.38,134.12 250.86,134.31 270.34,133.78 289.83,132.18 309.31,127.97 328.79,123.14 348.28,119.51 367.76,118.36 387.24,119.91 406.72,119.26 426.21,114.31 445.69,110.54 465.17,110.21 484.66,110.07 504.14,108.67 523.62,109.51 543.10,115.84 562.59,124.95 582.07,132.43 601.55,135.97 621.03,136.91 640.52,135.88 660.00,132.13" fill="none" stroke="#ad673d" stroke-width="1.8"/>
+<line x1="95.00" y1="173.00" x2="660.00" y2="173.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
+<text x="82.00" y="177.00" fill="#5a6669" font-size="11" font-weight="500" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">mean 13</text>
+<polyline points="95.00,161.69 114.48,165.93 133.97,172.76 153.45,180.53 172.93,183.60 192.41,181.87 211.90,181.48 231.38,183.07 250.86,183.41 270.34,184.21 289.83,185.67 309.31,180.66 328.79,171.91 348.28,168.89 367.76,168.36 387.24,165.29 406.72,163.76 426.21,165.50 445.69,166.67 465.17,167.82 484.66,171.46 504.14,175.79 523.62,177.52 543.10,174.93 562.59,170.81 582.07,169.82 601.55,171.26 621.03,172.28 640.52,174.05 660.00,176.42" fill="none" stroke="#315f82" stroke-width="1.8"/>
+<line x1="660.00" y1="51.00" x2="660.00" y2="195.00" stroke="#235969" stroke-width="1" opacity="1"/>
+<text x="668.00" y="52.00" fill="#235969" font-size="11" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">endpoint t</text>
+<rect x="95.00" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="113.83" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="132.67" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="151.50" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="170.33" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="189.17" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="208.00" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="226.83" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="245.67" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="264.50" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="283.33" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="302.17" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="321.00" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="339.83" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="358.67" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="377.50" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="396.33" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="415.17" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="434.00" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="452.83" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="471.67" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="490.50" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="509.33" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="528.17" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="547.00" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="565.83" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="584.67" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="603.50" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="622.33" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<rect x="641.17" y="202.00" width="17.83" height="5.00" fill="#235969"/>
+<text x="95.00" y="224.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">t−29</text>
+<text x="660.00" y="224.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">t</text>
+<text x="714.00" y="205.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">motion-valid</text>
+</svg>

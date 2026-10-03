@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="230" viewBox="0 0 740 230" role="img" aria-labelledby="title desc">
+<title id="title">Directed-flow and cycle features</title>
+<desc id="desc">Strongest reconstructed directed atlas edges at left and the saved 23-feature cycle summary at right.</desc>
+<rect width="740" height="230" fill="#ffffff"/>
+<text x="24.00" y="27.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">06 / DIRECTED-CYCLE BRANCH</text>
+<text x="716.00" y="27.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">24 strongest edges · 23 features</text>
+<line x1="24.00" y1="39.00" x2="716.00" y2="39.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
+<rect x="24.00" y="52.00" width="299.00" height="150.00" fill="none" stroke="#d5dcda" stroke-width="1"/>
+<line x1="139.88" y1="63.00" x2="136.50" y2="75.80" stroke="#315f82" stroke-width="1.1" opacity="1"/>
+<polygon points="136.50,75.80 134.63,71.17 140.41,72.70" fill="#315f82"/>
+<circle cx="139.88" cy="63.00" r="1.80" fill="#172126"/>
+<line x1="106.29" y1="173.93" x2="102.66" y2="166.79" stroke="#ad673d" stroke-width="1.1" opacity="1"/>
+<polygon points="102.66,166.79 107.15,169.01 101.81,171.72" fill="#ad673d"/>
+<circle cx="106.29" cy="173.93" r="1.80" fill="#172126"/>
+<line x1="172.02" y1="83.74" x2="146.65" y2="73.88" stroke="#ad673d" stroke-width="1.1" opacity="1"/>
+<polygon points="146.65,73.88 151.46,72.54 149.30,78.12" fill="#ad673d"/>
+<circle cx="172.02" cy="83.74" r="1.80" fill="#172126"/>
+<line x1="288.02" y1="177.56" x2="287.53" y2="189.00" stroke="#ad673d" stroke-width="1.1" opacity="1"/>
+<polygon points="287.53,189.00 284.71,184.87 290.69,185.12" fill="#ad673d"/>
+<circle cx="288.02" cy="177.56" r="1.80" fill="#172126"/>
+<line x1="71.97" y1="108.55" x2="55.30" y2="121.92" stroke="#ad673d" stroke-width="1.1" opacity="1"/>
+<polygon points="55.30,121.92 56.55,117.08 60.30,121.75" fill="#ad673d"/>
+<circle cx="71.97" cy="108.55" r="1.80" fill="#172126"/>
+<line x1="129.49" y1="98.47" x2="138.67" y2="84.87" stroke="#ad673d" stroke-width="1.1" opacity="1"/>
+<polygon points="138.67,84.87 138.91,89.86 133.95,86.51" fill="#ad673d"/>
+<circle cx="129.49" cy="98.47" r="1.80" fill="#172126"/>
+<line x1="58.68" y1="120.67" x2="64.97" y2="127.59" stroke="#315f82" stroke-width="1.1" opacity="1"/>
+<polygon points="64.97,127.59 60.06,126.64 64.49,122.61" fill="#315f82"/>
+<circle cx="58.68" cy="120.67" r="1.80" fill="#172126"/>
+<line x1="77.29" y1="155.91" x2="48.77" y2="155.23" stroke="#ad673d" stroke-width="1.1" opacity="1"/>
+<polygon points="48.77,155.23 52.85,152.34 52.71,158.32" fill="#ad673d"/>
+<circle cx="77.29" cy="155.91" r="1.80" fill="#172126"/>
+<line x1="293.82" y1="150.02" x2="300.83" y2="135.52" stroke="#315f82" stroke-width="1.1" opacity="1"/>
+<polygon points="300.83,135.52 301.78,140.43 296.39,137.82" fill="#315f82"/>
+<circle cx="293.82" cy="150.02" r="1.80" fill="#172126"/>
+<line x1="85.02" y1="89.63" x2="92.51" y2="103.11" stroke="#315f82" stroke-width="1.1" opacity="1"/>
+<polygon points="92.51,103.11 87.95,101.06 93.19,98.16" fill="#315f82"/>
+<circle cx="85.02" cy="89.63" r="1.80" fill="#172126"/>
+<line x1="139.40" y1="157.73" x2="173.23" y2="158.52" stroke="#ad673d" stroke-width="1.1" opacity="1"/>
+<polygon points="173.23,158.52 169.15,161.42 169.29,155.43" fill="#ad673d"/>
+<circle cx="139.40" cy="157.73" r="1.80" fill="#172126"/>
+<line x1="247.90" y1="138.35" x2="240.65" y2="156.59" stroke="#ad673d" stroke-width="1.1" opacity="1"/>
+<polygon points="240.65,156.59 239.35,151.77 244.91,153.98" fill="#ad673d"/>
+<circle cx="247.90" cy="138.35" r="1.80" fill="#172126"/>
+<line x1="134.32" y1="170.64" x2="149.79" y2="176.76" stroke="#ad673d" stroke-width="1.1" opacity="1"/>
+<polygon points="149.79,176.76 144.96,178.07 147.16,172.51" fill="#ad673d"/>
+<circle cx="134.32" cy="170.64" r="1.80" fill="#172126"/>
+<line x1="142.78" y1="91.78" x2="172.26" y2="89.40" stroke="#ad673d" stroke-width="1.1" opacity="1"/>
+<polygon points="172.26,89.40 168.51,92.71 168.03,86.74" fill="#ad673d"/>
+<circle cx="142.78" cy="91.78" r="1.80" fill="#172126"/>
+<line x1="176.13" y1="121.47" x2="142.30" y2="107.30" stroke="#315f82" stroke-width="1.1" opacity="1"/>
+<polygon points="142.30,107.30 147.15,106.09 144.84,111.61" fill="#315f82"/>
+<circle cx="176.13" cy="121.47" r="1.80" fill="#172126"/>
+<line x1="194.98" y1="98.13" x2="163.08" y2="104.13" stroke="#ad673d" stroke-width="1.1" opacity="1"/>
+<polygon points="163.08,104.13 166.46,100.45 167.57,106.33" fill="#ad673d"/>
+<circle cx="194.98" cy="98.13" r="1.80" fill="#172126"/>
+<line x1="177.10" y1="95.07" x2="135.53" y2="108.78" stroke="#315f82" stroke-width="1.1" opacity="1"/>
+<polygon points="135.53,108.78 138.40,104.68 140.27,110.36" fill="#315f82"/>
+<circle cx="177.10" cy="95.07" r="1.80" fill="#172126"/>
+<line x1="207.06" y1="164.30" x2="208.03" y2="163.05" stroke="#ad673d" stroke-width="1.1" opacity="1"/>
+<polygon points="208.03,163.05 207.94,168.05 203.21,164.38" fill="#ad673d"/>
+<circle cx="207.06" cy="164.30" r="1.80" fill="#172126"/>
+<line x1="240.17" y1="169.74" x2="209.72" y2="158.29" stroke="#315f82" stroke-width="1.1" opacity="1"/>
+<polygon points="209.72,158.29 214.52,156.90 212.42,162.50" fill="#315f82"/>
+<circle cx="240.17" cy="169.74" r="1.80" fill="#172126"/>
+<line x1="162.84" y1="173.36" x2="184.59" y2="175.18" stroke="#ad673d" stroke-width="1.1" opacity="1"/>
+<polygon points="184.59,175.18 180.35,177.83 180.84,171.86" fill="#ad673d"/>
+<circle cx="162.84" cy="173.36" r="1.80" fill="#172126"/>
+<line x1="35.00" y1="135.06" x2="50.47" y2="137.44" stroke="#315f82" stroke-width="1.1" opacity="1"/>
+<polygon points="50.47,137.44 46.05,139.79 46.96,133.88" fill="#315f82"/>
+<circle cx="35.00" cy="135.06" r="1.80" fill="#172126"/>
+<line x1="282.70" y1="135.40" x2="272.07" y2="144.36" stroke="#315f82" stroke-width="1.1" opacity="1"/>
+<polygon points="272.07,144.36 273.20,139.49 277.06,144.07" fill="#315f82"/>
+<circle cx="282.70" cy="135.40" r="1.80" fill="#172126"/>
+<line x1="205.13" y1="154.55" x2="220.84" y2="154.55" stroke="#315f82" stroke-width="1.1" opacity="1"/>
+<polygon points="220.84,154.55 216.83,157.55 216.83,151.56" fill="#315f82"/>
+<circle cx="205.13" cy="154.55" r="1.80" fill="#172126"/>
+<line x1="265.78" y1="143.22" x2="303.00" y2="145.15" stroke="#315f82" stroke-width="1.1" opacity="1"/>
+<polygon points="303.00,145.15 298.84,147.93 299.15,141.95" fill="#315f82"/>
+<circle cx="265.78" cy="143.22" r="1.80" fill="#172126"/>
+<text x="28.00" y="218.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">atlas x/z projection · direction from lagged flow</text>
+<text x="370.00" y="59.00" fill="#172126" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">flow</text>
+<rect x="370.00" y="73.00" width="53.00" height="8.00" fill="#eff3f2"/>
+<rect x="370.00" y="73.00" width="27.32" height="8.00" fill="#235969"/>
+<rect x="370.00" y="97.00" width="53.00" height="8.00" fill="#eff3f2"/>
+<rect x="370.00" y="97.00" width="45.39" height="8.00" fill="#235969"/>
+<rect x="370.00" y="121.00" width="53.00" height="8.00" fill="#eff3f2"/>
+<rect x="370.00" y="121.00" width="53.00" height="8.00" fill="#235969"/>
+<rect x="370.00" y="145.00" width="53.00" height="8.00" fill="#eff3f2"/>
+<rect x="370.00" y="145.00" width="35.49" height="8.00" fill="#235969"/>
+<text x="437.00" y="59.00" fill="#172126" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">harmonic</text>
+<rect x="437.00" y="73.00" width="53.00" height="8.00" fill="#eff3f2"/>
+<rect x="437.00" y="73.00" width="27.10" height="8.00" fill="#235969"/>
+<rect x="437.00" y="97.00" width="53.00" height="8.00" fill="#eff3f2"/>
+<rect x="437.00" y="97.00" width="45.27" height="8.00" fill="#235969"/>
+<rect x="437.00" y="121.00" width="53.00" height="8.00" fill="#eff3f2"/>
+<rect x="437.00" y="121.00" width="53.00" height="8.00" fill="#235969"/>
+<rect x="437.00" y="145.00" width="53.00" height="8.00" fill="#eff3f2"/>
+<rect x="437.00" y="145.00" width="35.43" height="8.00" fill="#235969"/>
+<text x="504.00" y="59.00" fill="#172126" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">harmonic %</text>
+<rect x="504.00" y="73.00" width="53.00" height="8.00" fill="#eff3f2"/>
+<rect x="504.00" y="73.00" width="52.15" height="8.00" fill="#235969"/>
+<rect x="504.00" y="97.00" width="53.00" height="8.00" fill="#eff3f2"/>
+<rect x="504.00" y="97.00" width="52.73" height="8.00" fill="#235969"/>
+<rect x="504.00" y="121.00" width="53.00" height="8.00" fill="#eff3f2"/>
+<rect x="504.00" y="121.00" width="53.00" height="8.00" fill="#235969"/>
+<rect x="504.00" y="145.00" width="53.00" height="8.00" fill="#eff3f2"/>
+<rect x="504.00" y="145.00" width="52.84" height="8.00" fill="#235969"/>
+<text x="571.00" y="59.00" fill="#172126" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">gradient %</text>
+<rect x="571.00" y="73.00" width="53.00" height="8.00" fill="#eff3f2"/>
+<rect x="571.00" y="73.00" width="49.43" height="8.00" fill="#235969"/>
+<rect x="571.00" y="97.00" width="53.00" height="8.00" fill="#eff3f2"/>
+<rect x="571.00" y="97.00" width="51.21" height="8.00" fill="#235969"/>
+<rect x="571.00" y="121.00" width="53.00" height="8.00" fill="#eff3f2"/>
+<rect x="571.00" y="121.00" width="53.00" height="8.00" fill="#235969"/>
+<rect x="571.00" y="145.00" width="53.00" height="8.00" fill="#eff3f2"/>
+<rect x="571.00" y="145.00" width="50.86" height="8.00" fill="#235969"/>
+<text x="638.00" y="59.00" fill="#172126" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">curl %</text>
+<rect x="638.00" y="73.00" width="53.00" height="8.00" fill="#eff3f2"/>
+<rect x="638.00" y="73.00" width="53.00" height="8.00" fill="#235969"/>
+<rect x="638.00" y="97.00" width="53.00" height="8.00" fill="#eff3f2"/>
+<rect x="638.00" y="97.00" width="51.77" height="8.00" fill="#235969"/>
+<rect x="638.00" y="121.00" width="53.00" height="8.00" fill="#eff3f2"/>
+<rect x="638.00" y="121.00" width="50.59" height="8.00" fill="#235969"/>
+<rect x="638.00" y="145.00" width="53.00" height="8.00" fill="#eff3f2"/>
+<rect x="638.00" y="145.00" width="51.98" height="8.00" fill="#235969"/>
+<text x="350.00" y="81.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">lag 1</text>
+<text x="350.00" y="105.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">lag 2</text>
+<text x="350.00" y="129.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">lag 3</text>
+<text x="350.00" y="153.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">pooled</text>
+<line x1="345.00" y1="177.00" x2="716.00" y2="177.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
+<text x="368.00" y="195.00" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">cycle step norm 1.55</text>
+<text x="505.00" y="195.00" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">cosine 0.90</text>
+<text x="619.00" y="195.00" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">angle 0.46 rad</text>
+<text x="370.00" y="219.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">bars scaled separately by feature type</text>
+</svg>
