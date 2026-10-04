@@ -232,6 +232,48 @@ def visual_02() -> None:
     s.save("02-04")
 
 
+def visual_network_inventory() -> None:
+    """Show every atlas community and its contribution to the 39 channels."""
+    basis = SUPPLEMENT["network_basis"]
+    names = basis["network_order"]
+    counts = basis["parcel_counts"]
+    assert len(names) == len(counts) == 13 and sum(counts) == 333
+    display = {
+        "CinguloOperc": "Cingulo-opercular",
+        "ParietalMemoryNetwork": "Parietal memory",
+        "DorsalAttn": "Dorsal attention",
+        "FrontoParietal": "Frontoparietal",
+        "None": "None (atlas label)",
+        "RetrosplenialTemporal": "Retrosplenial temporal",
+        "SMhand": "Somatomotor hand",
+        "SMmouth": "Somatomotor mouth",
+        "VentralAttn": "Ventral attention",
+    }
+    s = SVG(
+        "Gordon atlas network inventory and 39 signal channels",
+        "All 13 Gordon atlas communities and their actual parcel counts, totaling 333. "
+        "Each community contributes one parcel-mean signal and two residual PCA scores "
+        "per fMRI volume, for 13 mean signals plus 26 residual signals. "
+        "The atlas community called None is a real category, not missing data.",
+    )
+    s.header("Figure 02.5 / network inventory", "333 parcels → 39 signals per volume")
+    s.text(27, 60, "ATLAS COMMUNITY", 10, ACCENT, 700)
+    s.text(240, 60, "PARCELS", 10, ACCENT, 700)
+    for x, label, color in ((533, "MEAN", ACCENT), (598, "PC 1", NEG), (663, "PC 2", POS)):
+        s.rect(x, 51, 9, 9, color)
+        s.text(x + 13, 60, label, 10, ACCENT, 700)
+    for i, (name, count) in enumerate(zip(names, counts)):
+        y = 76 + i * 13.4
+        s.text(27, y + 8, display.get(name, name), 10, INK, 600 if name == "Default" else 400)
+        s.rect(240, y, 213, 8, "#edf2f1")
+        s.rect(240, y, 213 * count / max(counts), 8, ACCENT)
+        s.text(475, y + 8, count, 10, INK, 600, "end")
+        for x, color in ((533, ACCENT), (598, NEG), (663, POS)):
+            s.rect(x, y, 9, 9, color)
+    s.footer("Each row contributes 1 network mean + 2 residual PC scores; “None” is an atlas label.")
+    s.save("02-05")
+
+
 def toy_pca():
     """Four illustrative training volumes with an exactly checkable PCA fit."""
     x = [[8, 6, 3, 3], [4, 2, 7, 7], [8, 4, 7, 5], [6, 6, 5, 7]]
@@ -717,11 +759,11 @@ def validate() -> None:
 
 if __name__ == "__main__":
     validate()
-    for fn in (visual_01, visual_02, visual_03, visual_04,
+    for fn in (visual_01, visual_02, visual_network_inventory, visual_03, visual_04,
                visual_05, visual_06, visual_07):
         fn()
     for fn in (visual_parcel_projection, visual_toy_pca_fit, visual_toy_pca_scores,
                visual_shrinkage_spectrum, visual_atlas_graph,
                visual_cycle_feature_map, visual_cycle_calibration):
         fn()
-    print("Built fourteen sleep-method SVGs from the validated representative export and atlas topology.")
+    print("Built fifteen sleep-method SVGs from the validated representative export and atlas topology.")

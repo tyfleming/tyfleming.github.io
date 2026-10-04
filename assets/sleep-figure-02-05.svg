@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="300" viewBox="0 0 740 300" role="img" aria-labelledby="title desc">
+<title id="title">Gordon atlas network inventory and 39 signal channels</title>
+<desc id="desc">All 13 Gordon atlas communities and their actual parcel counts, totaling 333. Each community contributes one parcel-mean signal and two residual PCA scores per fMRI volume, for 13 mean signals plus 26 residual signals. The atlas community called None is a real category, not missing data.</desc>
+<rect width="740" height="300" fill="#ffffff"/>
+<text x="24.00" y="27.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">FIGURE 02.5 / NETWORK INVENTORY</text>
+<text x="716.00" y="27.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">333 parcels → 39 signals per volume</text>
+<line x1="24.00" y1="39.00" x2="716.00" y2="39.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
+<text x="27.00" y="60.00" fill="#235969" font-size="10" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">ATLAS COMMUNITY</text>
+<text x="240.00" y="60.00" fill="#235969" font-size="10" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">PARCELS</text>
+<rect x="533.00" y="51.00" width="9.00" height="9.00" fill="#235969"/>
+<text x="546.00" y="60.00" fill="#235969" font-size="10" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">MEAN</text>
+<rect x="598.00" y="51.00" width="9.00" height="9.00" fill="#315f82"/>
+<text x="611.00" y="60.00" fill="#235969" font-size="10" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">PC 1</text>
+<rect x="663.00" y="51.00" width="9.00" height="9.00" fill="#ad673d"/>
+<text x="676.00" y="60.00" fill="#235969" font-size="10" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">PC 2</text>
+<text x="27.00" y="84.00" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Auditory</text>
+<rect x="240.00" y="76.00" width="213.00" height="8.00" fill="#edf2f1"/>
+<rect x="240.00" y="76.00" width="108.77" height="8.00" fill="#235969"/>
+<text x="475.00" y="84.00" fill="#172126" font-size="10" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">24</text>
+<rect x="533.00" y="76.00" width="9.00" height="9.00" fill="#235969"/>
+<rect x="598.00" y="76.00" width="9.00" height="9.00" fill="#315f82"/>
+<rect x="663.00" y="76.00" width="9.00" height="9.00" fill="#ad673d"/>
+<text x="27.00" y="97.40" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Cingulo-opercular</text>
+<rect x="240.00" y="89.40" width="213.00" height="8.00" fill="#edf2f1"/>
+<rect x="240.00" y="89.40" width="181.28" height="8.00" fill="#235969"/>
+<text x="475.00" y="97.40" fill="#172126" font-size="10" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">40</text>
+<rect x="533.00" y="89.40" width="9.00" height="9.00" fill="#235969"/>
+<rect x="598.00" y="89.40" width="9.00" height="9.00" fill="#315f82"/>
+<rect x="663.00" y="89.40" width="9.00" height="9.00" fill="#ad673d"/>
+<text x="27.00" y="110.80" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Parietal memory</text>
+<rect x="240.00" y="102.80" width="213.00" height="8.00" fill="#edf2f1"/>
+<rect x="240.00" y="102.80" width="22.66" height="8.00" fill="#235969"/>
+<text x="475.00" y="110.80" fill="#172126" font-size="10" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">5</text>
+<rect x="533.00" y="102.80" width="9.00" height="9.00" fill="#235969"/>
+<rect x="598.00" y="102.80" width="9.00" height="9.00" fill="#315f82"/>
+<rect x="663.00" y="102.80" width="9.00" height="9.00" fill="#ad673d"/>
+<text x="27.00" y="124.20" fill="#172126" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Default</text>
+<rect x="240.00" y="116.20" width="213.00" height="8.00" fill="#edf2f1"/>
+<rect x="240.00" y="116.20" width="185.81" height="8.00" fill="#235969"/>
+<text x="475.00" y="124.20" fill="#172126" font-size="10" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">41</text>
+<rect x="533.00" y="116.20" width="9.00" height="9.00" fill="#235969"/>
+<rect x="598.00" y="116.20" width="9.00" height="9.00" fill="#315f82"/>
+<rect x="663.00" y="116.20" width="9.00" height="9.00" fill="#ad673d"/>
+<text x="27.00" y="137.60" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Dorsal attention</text>
+<rect x="240.00" y="129.60" width="213.00" height="8.00" fill="#edf2f1"/>
+<rect x="240.00" y="129.60" width="145.02" height="8.00" fill="#235969"/>
+<text x="475.00" y="137.60" fill="#172126" font-size="10" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">32</text>
+<rect x="533.00" y="129.60" width="9.00" height="9.00" fill="#235969"/>
+<rect x="598.00" y="129.60" width="9.00" height="9.00" fill="#315f82"/>
+<rect x="663.00" y="129.60" width="9.00" height="9.00" fill="#ad673d"/>
+<text x="27.00" y="151.00" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Frontoparietal</text>
+<rect x="240.00" y="143.00" width="213.00" height="8.00" fill="#edf2f1"/>
+<rect x="240.00" y="143.00" width="108.77" height="8.00" fill="#235969"/>
+<text x="475.00" y="151.00" fill="#172126" font-size="10" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">24</text>
+<rect x="533.00" y="143.00" width="9.00" height="9.00" fill="#235969"/>
+<rect x="598.00" y="143.00" width="9.00" height="9.00" fill="#315f82"/>
+<rect x="663.00" y="143.00" width="9.00" height="9.00" fill="#ad673d"/>
+<text x="27.00" y="164.40" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">None (atlas label)</text>
+<rect x="240.00" y="156.40" width="213.00" height="8.00" fill="#edf2f1"/>
+<rect x="240.00" y="156.40" width="213.00" height="8.00" fill="#235969"/>
+<text x="475.00" y="164.40" fill="#172126" font-size="10" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">47</text>
+<rect x="533.00" y="156.40" width="9.00" height="9.00" fill="#235969"/>
+<rect x="598.00" y="156.40" width="9.00" height="9.00" fill="#315f82"/>
+<rect x="663.00" y="156.40" width="9.00" height="9.00" fill="#ad673d"/>
+<text x="27.00" y="177.80" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Retrosplenial temporal</text>
+<rect x="240.00" y="169.80" width="213.00" height="8.00" fill="#edf2f1"/>
+<rect x="240.00" y="169.80" width="36.26" height="8.00" fill="#235969"/>
+<text x="475.00" y="177.80" fill="#172126" font-size="10" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">8</text>
+<rect x="533.00" y="169.80" width="9.00" height="9.00" fill="#235969"/>
+<rect x="598.00" y="169.80" width="9.00" height="9.00" fill="#315f82"/>
+<rect x="663.00" y="169.80" width="9.00" height="9.00" fill="#ad673d"/>
+<text x="27.00" y="191.20" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Somatomotor hand</text>
+<rect x="240.00" y="183.20" width="213.00" height="8.00" fill="#edf2f1"/>
+<rect x="240.00" y="183.20" width="172.21" height="8.00" fill="#235969"/>
+<text x="475.00" y="191.20" fill="#172126" font-size="10" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">38</text>
+<rect x="533.00" y="183.20" width="9.00" height="9.00" fill="#235969"/>
+<rect x="598.00" y="183.20" width="9.00" height="9.00" fill="#315f82"/>
+<rect x="663.00" y="183.20" width="9.00" height="9.00" fill="#ad673d"/>
+<text x="27.00" y="204.60" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Somatomotor mouth</text>
+<rect x="240.00" y="196.60" width="213.00" height="8.00" fill="#edf2f1"/>
+<rect x="240.00" y="196.60" width="36.26" height="8.00" fill="#235969"/>
+<text x="475.00" y="204.60" fill="#172126" font-size="10" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">8</text>
+<rect x="533.00" y="196.60" width="9.00" height="9.00" fill="#235969"/>
+<rect x="598.00" y="196.60" width="9.00" height="9.00" fill="#315f82"/>
+<rect x="663.00" y="196.60" width="9.00" height="9.00" fill="#ad673d"/>
+<text x="27.00" y="218.00" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Salience</text>
+<rect x="240.00" y="210.00" width="213.00" height="8.00" fill="#edf2f1"/>
+<rect x="240.00" y="210.00" width="18.13" height="8.00" fill="#235969"/>
+<text x="475.00" y="218.00" fill="#172126" font-size="10" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">4</text>
+<rect x="533.00" y="210.00" width="9.00" height="9.00" fill="#235969"/>
+<rect x="598.00" y="210.00" width="9.00" height="9.00" fill="#315f82"/>
+<rect x="663.00" y="210.00" width="9.00" height="9.00" fill="#ad673d"/>
+<text x="27.00" y="231.40" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Ventral attention</text>
+<rect x="240.00" y="223.40" width="213.00" height="8.00" fill="#edf2f1"/>
+<rect x="240.00" y="223.40" width="104.23" height="8.00" fill="#235969"/>
+<text x="475.00" y="231.40" fill="#172126" font-size="10" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">23</text>
+<rect x="533.00" y="223.40" width="9.00" height="9.00" fill="#235969"/>
+<rect x="598.00" y="223.40" width="9.00" height="9.00" fill="#315f82"/>
+<rect x="663.00" y="223.40" width="9.00" height="9.00" fill="#ad673d"/>
+<text x="27.00" y="244.80" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Visual</text>
+<rect x="240.00" y="236.80" width="213.00" height="8.00" fill="#edf2f1"/>
+<rect x="240.00" y="236.80" width="176.74" height="8.00" fill="#235969"/>
+<text x="475.00" y="244.80" fill="#172126" font-size="10" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">39</text>
+<rect x="533.00" y="236.80" width="9.00" height="9.00" fill="#235969"/>
+<rect x="598.00" y="236.80" width="9.00" height="9.00" fill="#315f82"/>
+<rect x="663.00" y="236.80" width="9.00" height="9.00" fill="#ad673d"/>
+<line x1="24.00" y1="260.00" x2="716.00" y2="260.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
+<text x="24.00" y="283.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Each row contributes 1 network mean + 2 residual PC scores; “None” is an atlas label.</text>
+</svg>
