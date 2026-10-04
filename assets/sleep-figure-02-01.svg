@@ -1,107 +1,91 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="740" height="300" viewBox="0 0 740 300" role="img" aria-labelledby="title desc">
-<title id="title">Worked example of parcel mean removal and residual projection</title>
-<desc id="desc">Illustrative arithmetic with three volumes and four parcels. The rows of X are parcel values, m is each row mean, E contains X minus its row mean, U is a two-column zero-sum orthonormal basis, and A equals E times U. The example sets the training residual mean to zero. The actual Default network uses 41 parcels and a fold-fitted basis shown in Figure 02.2.</desc>
+<title id="title">Same-volume parcel mean subtraction</title>
+<desc id="desc">Illustrative four-volume, four-parcel matrix. Each row's four parcel values are averaged. Subtracting that row's own mean from all four values produces residuals that sum to zero. In the first row, 8, 6, 3, 3 have mean 5 and residuals 3, 1, minus 2, minus 2.</desc>
 <rect width="740" height="300" fill="#ffffff"/>
-<text x="24.00" y="27.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">FIGURE 02.1 / MEAN TO RESIDUAL SCORES</text>
-<text x="716.00" y="27.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">illustrative arithmetic · 3 volumes × 4 parcels</text>
+<text x="24.00" y="27.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">FIGURE 02.1 / WHERE RESIDUALS COME FROM</text>
+<text x="716.00" y="27.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">illustrative · 4 volumes × 4 parcels</text>
 <line x1="24.00" y1="39.00" x2="716.00" y2="39.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
-<text x="27.00" y="76.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">X · parcel values</text>
-<rect x="27.00" y="91.00" width="29.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="41.50" y="108.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">2</text>
-<rect x="59.00" y="91.00" width="29.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="73.50" y="108.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">4</text>
-<rect x="91.00" y="91.00" width="29.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="105.50" y="108.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">6</text>
-<rect x="123.00" y="91.00" width="29.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="137.50" y="108.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">8</text>
-<rect x="27.00" y="119.00" width="29.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="41.50" y="136.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">1</text>
-<rect x="59.00" y="119.00" width="29.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="73.50" y="136.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">5</text>
-<rect x="91.00" y="119.00" width="29.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="105.50" y="136.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">5</text>
-<rect x="123.00" y="119.00" width="29.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="137.50" y="136.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">9</text>
-<rect x="27.00" y="147.00" width="29.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="41.50" y="164.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">4</text>
-<rect x="59.00" y="147.00" width="29.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="73.50" y="164.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">3</text>
-<rect x="91.00" y="147.00" width="29.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="105.50" y="164.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">8</text>
-<rect x="123.00" y="147.00" width="29.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="137.50" y="164.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">9</text>
-<text x="89.00" y="194.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">3 × 4</text>
-<text x="165.00" y="138.00" fill="#235969" font-size="19" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">→</text>
-<text x="197.00" y="76.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">m · row mean</text>
-<rect x="197.00" y="91.00" width="34.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="214.00" y="108.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">5</text>
-<rect x="197.00" y="119.00" width="34.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="214.00" y="136.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">5</text>
-<rect x="197.00" y="147.00" width="34.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="214.00" y="164.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">6</text>
-<text x="213.50" y="194.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">3 × 1</text>
-<text x="253.00" y="138.00" fill="#235969" font-size="19" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">→</text>
-<text x="286.00" y="76.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">E · residuals</text>
-<rect x="286.00" y="91.00" width="30.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="301.00" y="108.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-3</text>
-<rect x="319.00" y="91.00" width="30.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="334.00" y="108.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-1</text>
-<rect x="352.00" y="91.00" width="30.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="367.00" y="108.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+1</text>
-<rect x="385.00" y="91.00" width="30.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="400.00" y="108.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+3</text>
-<rect x="286.00" y="119.00" width="30.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="301.00" y="136.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-4</text>
-<rect x="319.00" y="119.00" width="30.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="334.00" y="136.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">0</text>
-<rect x="352.00" y="119.00" width="30.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="367.00" y="136.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">0</text>
-<rect x="385.00" y="119.00" width="30.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="400.00" y="136.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+4</text>
-<rect x="286.00" y="147.00" width="30.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="301.00" y="164.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-2</text>
-<rect x="319.00" y="147.00" width="30.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="334.00" y="164.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-3</text>
-<rect x="352.00" y="147.00" width="30.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="367.00" y="164.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+2</text>
-<rect x="385.00" y="147.00" width="30.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="400.00" y="164.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+3</text>
-<text x="350.00" y="194.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">3 × 4</text>
-<text x="429.00" y="138.00" fill="#235969" font-size="19" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">×</text>
-<text x="462.00" y="76.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">U · two modes</text>
-<rect x="462.00" y="84.00" width="33.00" height="22.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="478.50" y="101.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-0.5</text>
-<rect x="498.00" y="84.00" width="33.00" height="22.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="514.50" y="101.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-0.5</text>
-<rect x="462.00" y="109.00" width="33.00" height="22.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="478.50" y="126.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-0.5</text>
-<rect x="498.00" y="109.00" width="33.00" height="22.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="514.50" y="126.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+0.5</text>
-<rect x="462.00" y="134.00" width="33.00" height="22.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="478.50" y="151.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+0.5</text>
-<rect x="498.00" y="134.00" width="33.00" height="22.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="514.50" y="151.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-0.5</text>
-<rect x="462.00" y="159.00" width="33.00" height="22.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="478.50" y="176.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+0.5</text>
-<rect x="498.00" y="159.00" width="33.00" height="22.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="514.50" y="176.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+0.5</text>
-<text x="496.00" y="203.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">4 × 2</text>
-<text x="544.00" y="138.00" fill="#235969" font-size="19" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">→</text>
-<text x="579.00" y="76.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">A = E U</text>
-<rect x="579.00" y="91.00" width="35.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="596.50" y="108.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">4</text>
-<rect x="617.00" y="91.00" width="35.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="634.50" y="108.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">2</text>
-<rect x="579.00" y="119.00" width="35.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="596.50" y="136.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">4</text>
-<rect x="617.00" y="119.00" width="35.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="634.50" y="136.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">4</text>
-<rect x="579.00" y="147.00" width="35.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="596.50" y="164.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">5</text>
-<rect x="617.00" y="147.00" width="35.00" height="25.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="634.50" y="164.00" fill="#172126" font-size="12" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">0</text>
-<text x="615.00" y="194.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">3 × 2</text>
-<text x="29.00" y="230.00" fill="#172126" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Volume 1: (2, 4, 6, 8) − (5, 5, 5, 5) = (−3, −1, 1, 3).</text>
+<text x="28.00" y="86.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">X · measured parcel values</text>
+<rect x="28.00" y="99.00" width="37.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="46.50" y="118.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">8</text>
+<rect x="68.00" y="99.00" width="37.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="86.50" y="118.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">6</text>
+<rect x="108.00" y="99.00" width="37.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="126.50" y="118.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">3</text>
+<rect x="148.00" y="99.00" width="37.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="166.50" y="118.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">3</text>
+<rect x="28.00" y="129.00" width="37.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="46.50" y="148.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">4</text>
+<rect x="68.00" y="129.00" width="37.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="86.50" y="148.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">2</text>
+<rect x="108.00" y="129.00" width="37.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="126.50" y="148.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">7</text>
+<rect x="148.00" y="129.00" width="37.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="166.50" y="148.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">7</text>
+<rect x="28.00" y="159.00" width="37.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="46.50" y="178.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">8</text>
+<rect x="68.00" y="159.00" width="37.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="86.50" y="178.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">4</text>
+<rect x="108.00" y="159.00" width="37.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="126.50" y="178.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">7</text>
+<rect x="148.00" y="159.00" width="37.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="166.50" y="178.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">5</text>
+<rect x="28.00" y="189.00" width="37.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="46.50" y="208.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">6</text>
+<rect x="68.00" y="189.00" width="37.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="86.50" y="208.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">6</text>
+<rect x="108.00" y="189.00" width="37.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="126.50" y="208.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">5</text>
+<rect x="148.00" y="189.00" width="37.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="166.50" y="208.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">7</text>
+<line x1="174.00" y1="173.00" x2="224.00" y2="173.00" stroke="#235969" stroke-width="1.5" opacity="1"/>
+<polygon points="224.00,173.00 219.99,175.99 219.99,170.01" fill="#235969"/>
+<text x="251.00" y="86.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">m · same-volume mean</text>
+<rect x="251.00" y="99.00" width="39.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="270.50" y="118.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">5</text>
+<rect x="251.00" y="129.00" width="39.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="270.50" y="148.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">5</text>
+<rect x="251.00" y="159.00" width="39.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="270.50" y="178.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">6</text>
+<rect x="251.00" y="189.00" width="39.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="270.50" y="208.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">6</text>
+<line x1="297.00" y1="173.00" x2="362.00" y2="173.00" stroke="#235969" stroke-width="1.5" opacity="1"/>
+<polygon points="362.00,173.00 357.99,175.99 357.99,170.01" fill="#235969"/>
+<text x="392.00" y="86.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">E · parcel residuals</text>
+<rect x="392.00" y="99.00" width="41.00" height="27.00" fill="#ad673d" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="412.50" y="118.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+3</text>
+<rect x="436.00" y="99.00" width="41.00" height="27.00" fill="#e4ccbe" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="456.50" y="118.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+1</text>
+<rect x="480.00" y="99.00" width="41.00" height="27.00" fill="#7694ac" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="500.50" y="118.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-2</text>
+<rect x="524.00" y="99.00" width="41.00" height="27.00" fill="#7694ac" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="544.50" y="118.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-2</text>
+<rect x="392.00" y="129.00" width="41.00" height="27.00" fill="#bacad5" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="412.50" y="148.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-1</text>
+<rect x="436.00" y="129.00" width="41.00" height="27.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="456.50" y="148.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-3</text>
+<rect x="480.00" y="129.00" width="41.00" height="27.00" fill="#c89a7e" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="500.50" y="148.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+2</text>
+<rect x="524.00" y="129.00" width="41.00" height="27.00" fill="#c89a7e" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="544.50" y="148.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+2</text>
+<rect x="392.00" y="159.00" width="41.00" height="27.00" fill="#c89a7e" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="412.50" y="178.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+2</text>
+<rect x="436.00" y="159.00" width="41.00" height="27.00" fill="#7694ac" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="456.50" y="178.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-2</text>
+<rect x="480.00" y="159.00" width="41.00" height="27.00" fill="#e4ccbe" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="500.50" y="178.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+1</text>
+<rect x="524.00" y="159.00" width="41.00" height="27.00" fill="#bacad5" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="544.50" y="178.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-1</text>
+<rect x="392.00" y="189.00" width="41.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="412.50" y="208.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">0</text>
+<rect x="436.00" y="189.00" width="41.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="456.50" y="208.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">0</text>
+<rect x="480.00" y="189.00" width="41.00" height="27.00" fill="#bacad5" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="500.50" y="208.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-1</text>
+<rect x="524.00" y="189.00" width="41.00" height="27.00" fill="#e4ccbe" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="544.50" y="208.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+1</text>
+<text x="28.00" y="246.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">First volume</text>
+<text x="109.00" y="246.00" fill="#172126" font-size="12" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">(8, 6, 3, 3) − (5, 5, 5, 5) = (3, 1, −2, −2)</text>
 <line x1="24.00" y1="260.00" x2="716.00" y2="260.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
-<text x="24.00" y="283.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Subtract each row mean from every parcel in that row; here the toy training reference is zero.</text>
+<text x="24.00" y="283.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">The network mean is recalculated at each volume; every residual row sums to zero.</text>
 </svg>

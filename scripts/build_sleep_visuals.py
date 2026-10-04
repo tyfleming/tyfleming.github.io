@@ -176,7 +176,7 @@ def visual_01() -> None:
 
 def visual_02() -> None:
     s = SVG("Default-network residual modes", "The Default community contains 41 of the Gordon atlas's 333 cortical parcels. Each of its 41 parcel rows has a loading on each of two fold-trained residual principal components, so the basis is 41 by 2. Six numeric rows and all 41 heatmap rows are shown. Three reconstructed standardized held-out traces show its network mean and two residual scores across 30 frames.")
-    s.header("Figure 02.2 / Default network", "41 of 333 atlas parcels → 2 residual modes")
+    s.header("Figure 02.4 / Default network", "41 of 333 atlas parcels → 2 residual modes")
     basis = SUPPLEMENT["network_basis"]
     assert basis["chosen_network"] == "Default" and basis["chosen_network_parcels"] == 41
     loadings = basis["top_two_loadings_in_atlas_parcel_order"]
@@ -207,49 +207,124 @@ def visual_02() -> None:
     s.text(420, 248, "frame 1", 10)
     s.text(689, 248, "frame 30", 10, MUTED, 400, "end")
     s.footer("Basis rows are Default parcels; columns are two residual modes. Traces show held-out outputs.")
-    s.save("02-02")
+    s.save("02-04")
+
+
+def toy_pca():
+    """Four illustrative training volumes with an exactly checkable PCA fit."""
+    x = [[8, 6, 3, 3], [4, 2, 7, 7], [8, 4, 7, 5], [6, 6, 5, 7]]
+    means = [sum(row) / 4 for row in x]
+    residuals = [[v - means[i] for v in row] for i, row in enumerate(x)]
+    reference = [sum(row[j] for row in residuals) / 4 for j in range(4)]
+    centered = [[v - reference[j] for j, v in enumerate(row)] for row in residuals]
+    covariance = [[sum(row[i] * row[j] for row in centered) / 4
+                   for j in range(4)] for i in range(4)]
+    components = [[.5, .5], [.5, -.5], [-.5, .5], [-.5, -.5]]
+    scores = [[sum(row[j] * components[j][k] for j in range(4))
+               for k in range(2)] for row in centered]
+    assert means == [5, 5, 6, 6]
+    assert reference == [1, -1, 0, 0]
+    assert scores == [[4, 0], [-4, 0], [0, 2], [0, -2]]
+    assert all(sum(row) == 0 for row in residuals)
+    assert all(sum(components[j][k] * components[j][l] for j in range(4)) == (k == l)
+               for k in range(2) for l in range(2))
+    assert all(abs(sum(covariance[i][j] * components[j][k] for j in range(4))
+                   - (8 if k == 0 else 2) * components[i][k]) < 1e-9
+               for i in range(4) for k in range(2))
+    return x, means, residuals, reference, centered, covariance, components, scores
+
+
+def toy_matrix(s, label, values, x0, y0, cell_w=36, cell_h=30, fmt=str,
+               tint=False, show_shape=True):
+    s.text(x0, y0 - 13, label, 11, ACCENT, 700)
+    rows, cols = len(values), len(values[0])
+    for i, row in enumerate(values):
+        for j, value in enumerate(row):
+            left, top = x0 + j * cell_w, y0 + i * cell_h
+            fill = diverge(value, max(abs(v) for r in values for v in r)) if tint else PAPER
+            s.rect(left, top, cell_w - 3, cell_h - 3, fill, LINE, .8)
+            s.text(left + (cell_w - 3) / 2, top + cell_h / 2 + 4,
+                   fmt(value), 11, INK, 600, "middle")
+    if show_shape:
+        s.text(x0 + cols * cell_w / 2 - 2, y0 + rows * cell_h + 17,
+               f"{rows} × {cols}", 10, MUTED, 400, "middle")
 
 
 def visual_parcel_projection() -> None:
-    """Small exact example of per-volume mean removal and residual PCA projection."""
-    x = [[2, 4, 6, 8], [1, 5, 5, 9], [4, 3, 8, 9]]
-    means = [sum(row) / len(row) for row in x]
-    residuals = [[value - means[i] for value in row] for i, row in enumerate(x)]
-    basis = [[-.5, -.5], [-.5, .5], [.5, -.5], [.5, .5]]
-    scores = [[sum(row[j] * basis[j][k] for j in range(4)) for k in range(2)]
-              for row in residuals]
-    assert means == [5, 5, 6]
-    assert scores == [[4, 2], [4, 4], [5, 0]]
-    assert all(abs(sum(row)) < 1e-9 for row in residuals)
-    assert all(abs(sum(basis[j][k] * basis[j][l] for j in range(4)) - (k == l)) < 1e-9
-               for k in range(2) for l in range(2))
-    s = SVG("Worked example of parcel mean removal and residual projection",
-            "Illustrative arithmetic with three volumes and four parcels. The rows of X are parcel values, m is each row mean, E contains X minus its row mean, U is a two-column zero-sum orthonormal basis, and A equals E times U. The example sets the training residual mean to zero. The actual Default network uses 41 parcels and a fold-fitted basis shown in Figure 02.2.")
-    s.header("Figure 02.1 / mean to residual scores", "illustrative arithmetic · 3 volumes × 4 parcels")
-
-    def matrix(label, values, x0, y0, cell_w, cell_h=28, fmt=lambda v: str(v)):
-        s.text(x0, 76, label, 11, ACCENT, 700)
-        rows, cols = len(values), len(values[0])
-        for i, row in enumerate(values):
-            for j, value in enumerate(row):
-                left, top = x0 + j * cell_w, y0 + i * cell_h
-                s.rect(left, top, cell_w - 3, cell_h - 3, PAPER, LINE, .8)
-                s.text(left + (cell_w - 3) / 2, top + 17, fmt(value), 12, INK, 600, "middle")
-        s.text(x0 + cols * cell_w / 2 - 2, y0 + rows * cell_h + 19,
-               f"{rows} × {cols}", 10, MUTED, 400, "middle")
-
-    matrix("X · parcel values", x, 27, 91, 32)
-    s.text(165, 138, "→", 19, ACCENT, 400)
-    matrix("m · row mean", [[v] for v in means], 197, 91, 37, fmt=lambda v: f"{v:g}")
-    s.text(253, 138, "→", 19, ACCENT, 400)
-    matrix("E · residuals", residuals, 286, 91, 33, fmt=lambda v: f"{v:+g}" if v else "0")
-    s.text(429, 138, "×", 19, ACCENT, 400)
-    matrix("U · two modes", basis, 462, 84, 36, 25, fmt=lambda v: f"{v:+.1f}")
-    s.text(544, 138, "→", 19, ACCENT, 400)
-    matrix("A = E U", scores, 579, 91, 38, fmt=lambda v: f"{v:g}")
-    s.text(29, 230, "Volume 1: (2, 4, 6, 8) − (5, 5, 5, 5) = (−3, −1, 1, 3).", 11, INK)
-    s.footer("Subtract each row mean from every parcel in that row; here the toy training reference is zero.")
+    x, means, residuals, _, _, _, _, _ = toy_pca()
+    s = SVG("Same-volume parcel mean subtraction",
+            "Illustrative four-volume, four-parcel matrix. Each row's four parcel values are averaged. Subtracting that row's own mean from all four values produces residuals that sum to zero. In the first row, 8, 6, 3, 3 have mean 5 and residuals 3, 1, minus 2, minus 2.")
+    s.header("Figure 02.1 / where residuals come from", "illustrative · 4 volumes × 4 parcels")
+    toy_matrix(s, "X · measured parcel values", x, 28, 99, 40, show_shape=False)
+    arrow(s, 174, 173, 224, 173)
+    toy_matrix(s, "m · same-volume mean", [[v] for v in means], 251, 99, 42,
+               fmt=lambda v: f"{v:g}", show_shape=False)
+    arrow(s, 297, 173, 362, 173)
+    toy_matrix(s, "E · parcel residuals", residuals, 392, 99, 44,
+               fmt=lambda v: f"{v:+g}" if v else "0", tint=True, show_shape=False)
+    s.text(28, 246, "First volume", 11, ACCENT, 700)
+    s.text(109, 246, "(8, 6, 3, 3) − (5, 5, 5, 5) = (3, 1, −2, −2)", 12, INK)
+    s.footer("The network mean is recalculated at each volume; every residual row sums to zero.")
     s.save("02-01")
+
+
+def visual_toy_pca_fit() -> None:
+    _, _, residuals, reference, centered, covariance, components, _ = toy_pca()
+    s = SVG("How training residuals determine PCA components",
+            "Illustrative training calculation for four volumes and four parcels. The training residual mean is [1, minus 1, 0, 0]. Subtracting this reference from each residual row gives centered patterns [2, 2, minus 2, minus 2], [minus 2, minus 2, 2, 2], [1, minus 1, 1, minus 1], and [minus 1, 1, minus 1, 1]. Their covariance is C transpose C divided by four. Its two leading eigenvectors form a four-by-two component matrix, with eigenvalues 8 and 2.")
+    s.header("Figure 02.2 / fit the residual modes", "illustrative training calculation")
+    s.text(28, 64, "TRAINING REFERENCE", 10, ACCENT, 700)
+    s.text(28, 83, "μ = mean of residual rows = (1, −1, 0, 0)", 12, INK)
+    toy_matrix(s, "E − μ · centered training patterns", centered, 28, 116, 36,
+               fmt=lambda v: f"{v:+g}" if v else "0", tint=True)
+    s.text(192, 179, "CᵀC / 4", 11, MUTED, 600, "middle")
+    arrow(s, 176, 185, 215, 185)
+    toy_matrix(s, "K · parcel covariance", covariance, 239, 116, 38,
+               fmt=lambda v: f"{v:g}", tint=True)
+    s.text(424, 179, "top 2", 11, MUTED, 600, "middle")
+    arrow(s, 403, 185, 453, 185)
+    toy_matrix(s, "U · learned components", components, 480, 116, 45,
+               fmt=lambda v: f"{v:+.1f}", tint=True)
+    s.text(598, 133, "PC 1", 11, NEG, 700)
+    s.text(598, 153, "(+,+,−,−)", 11, INK)
+    s.text(598, 181, "PC 2", 11, POS, 700)
+    s.text(598, 201, "(+,−,+,−)", 11, INK)
+    s.text(598, 230, "λ₁ = 8 · λ₂ = 2", 11, MUTED)
+    s.footer("PCA directions are fitted to training residuals after subtracting their parcel-wise reference.")
+    s.save("02-02")
+
+
+def visual_toy_pca_scores() -> None:
+    _, _, _, reference, centered, _, components, scores = toy_pca()
+    s = SVG("Projecting a residual pattern onto learned PCA components",
+            "Illustrative PCA projection. The first volume's residual vector [3, 1, minus 2, minus 2] minus training reference [1, minus 1, 0, 0] is [2, 2, minus 2, minus 2]. Its dot product with principal component one [0.5, 0.5, minus 0.5, minus 0.5] is 4, and with principal component two [0.5, minus 0.5, 0.5, minus 0.5] is zero. The score plot shows four training volumes at [4, 0], [minus 4, 0], [0, 2], and [0, minus 2].")
+    s.header("Figure 02.3 / project one volume", "illustrative · the fitted basis is now fixed")
+    s.text(28, 68, "ONE RESIDUAL PATTERN", 10, ACCENT, 700)
+    s.text(28, 97, "e = (3, 1, −2, −2)", 12, INK)
+    s.text(28, 125, "μ = (1, −1, 0, 0)", 12, INK)
+    s.line(28, 137, 302, 137)
+    s.text(28, 161, "e − μ = (2, 2, −2, −2)", 12, INK, 600)
+    s.text(28, 193, "PC 1 · centered pattern", 11, NEG, 600)
+    s.text(28, 212, "½(2 + 2 + 2 + 2) = +4", 12, INK)
+    s.text(28, 239, "PC 2:  ½(2 − 2 − 2 + 2) = 0", 12, POS, 600)
+    s.line(337, 56, 337, 249)
+    s.text(364, 68, "TWO SCORES PER VOLUME", 10, ACCENT, 700)
+    ox, oy, sx, sy = 537, 164, 37, 36
+    s.line(374, oy, 695, oy, LINE, 1.3)
+    s.line(ox, 79, ox, 245, LINE, 1.3)
+    s.text(696, oy - 9, "PC 1", 11, NEG, 600, "end")
+    s.text(460, 89, "PC 2", 11, POS, 600)
+    for i, (a, b) in enumerate(scores):
+        px, py = ox + a * sx, oy - b * sy
+        s.circle(px, py, 6, ACCENT if i == 0 else PAPER, ACCENT, 1.6)
+        label_positions = ((px - 8, py + 19, "end"),
+                           (px + 10, py + 19, "start"),
+                           (px + 12, py + 17, "start"),
+                           (px + 12, py + 4, "start"))
+        label_x, label_y, anchor = label_positions[i]
+        s.text(label_x, label_y, f"v{i+1} ({a:+g}, {b:+g})", 10, INK, 600, anchor)
+    s.footer("A score is a dot product with one fitted component; each volume yields two coordinates.")
+    s.save("02-03")
 
 
 def visual_03() -> None:
@@ -617,7 +692,8 @@ if __name__ == "__main__":
     for fn in (visual_01, visual_02, visual_03, visual_04,
                visual_05, visual_06, visual_07):
         fn()
-    for fn in (visual_parcel_projection, visual_shrinkage_spectrum, visual_atlas_graph,
+    for fn in (visual_parcel_projection, visual_toy_pca_fit, visual_toy_pca_scores,
+               visual_shrinkage_spectrum, visual_atlas_graph,
                visual_cycle_feature_map, visual_cycle_calibration):
         fn()
-    print("Built twelve sleep-method SVGs from the validated representative export and atlas topology.")
+    print("Built fourteen sleep-method SVGs from the validated representative export and atlas topology.")
