@@ -98,9 +98,9 @@ class SVG:
         self.line(24, 260, 716, 260)
         self.text(24, 283, value, 11, MUTED)
 
-    def save(self, number: int | str) -> None:
+    def save(self, figure_id: str) -> None:
         self.raw("</svg>")
-        name = f"sleep-step-{number:02d}.svg" if isinstance(number, int) else f"sleep-{number}.svg"
+        name = f"sleep-figure-{figure_id}.svg"
         (OUT / name).write_text("\n".join(self.parts) + "\n")
 
 
@@ -138,7 +138,7 @@ def percentages(values) -> list[float]:
 
 def visual_01() -> None:
     s = SVG("Overlapping causal fMRI windows", "A schematic 35-volume timeline shows two 30-volume windows at endpoints five volumes apart. Below it, three reconstructed standardized network means and a motion-validity strip show the current representative window. The endpoint sleep label is not an input.")
-    s.header("01 / causal window", "30 frames · 62.4 s · stride 5")
+    s.header("Figure 01.1 / causal window", "30 frames · 62.4 s · stride 5")
     s.text(28, 61, "WINDOW SELECTION · SCHEMATIC", 10, ACCENT, 700)
     x0, x1 = 182, 636
     dx = (x1 - x0) / 35
@@ -171,27 +171,27 @@ def visual_01() -> None:
         s.rect(xx0 + frame * (xx1 - xx0) / 30, 248, (xx1 - xx0) / 30 - 1, 6,
                ACCENT if passed else POS)
     s.footer("The endpoint label scores the prediction; it is never a model input.")
-    s.save(1)
+    s.save("01-01")
 
 
 def visual_02() -> None:
-    s = SVG("Fold-fitted residual modes", "For the Default network, 41 parcels are mean-centered at each volume, projected onto two reconstructed fold-trained PCA loading vectors, and shown as three reconstructed standardized traces: network mean and two residual scores.")
-    s.header("02 / cortical signals", "333 parcels → 13 means + 26 residual scores")
+    s = SVG("Actual fold-fitted residual modes", "For the Default network, six numeric rows and a heatmap show the full 41 by 2 reconstructed fold-trained PCA loading matrix. Three reconstructed standardized held-out traces show the network mean and two residual scores across 30 frames.")
+    s.header("Figure 02.2 / fitted residual modes", "333 parcels → 13 means + 26 residual scores")
     basis = SUPPLEMENT["network_basis"]
     assert basis["chosen_network"] == "Default" and basis["chosen_network_parcels"] == 41
-    s.text(28, 61, "DEFAULT NETWORK · 41 PARCELS", 10, ACCENT, 700)
-    s.text(28, 86, "per-volume", 11, INK, 600)
-    s.text(28, 107, "parcel mean", 11, INK)
-    s.text(28, 135, "subtract mean", 11, INK)
-    s.text(28, 163, "project residuals", 11, INK)
-    for y in (114, 142):
-        arrow(s, 91, y, 91, y + 10)
-    s.text(28, 204, "Output per volume", 11, MUTED)
-    s.text(28, 224, "1 mean + 2 PC scores", 12, INK, 600)
-    s.line(183, 53, 183, 247)
-    s.text(205, 61, "FOLD PCA BASIS", 10, ACCENT, 700)
     loadings = basis["top_two_loadings_in_atlas_parcel_order"]
     assert len(loadings) == 41 and all(len(row) == 2 for row in loadings)
+    s.text(28, 61, "DEFAULT · 6 OF 41 ROWS", 10, ACCENT, 700)
+    s.text(109, 82, "PC 1", 10, INK, 600, "end")
+    s.text(166, 82, "PC 2", 10, INK, 600, "end")
+    for i, row in enumerate(loadings[:6]):
+        y = 103 + i * 22
+        s.text(28, y, f"parcel {i+1:02d}", 10, MUTED)
+        s.text(109, y, f"{row[0]:+.2f}", 11, INK, 600, "end")
+        s.text(166, y, f"{row[1]:+.2f}", 11, INK, 600, "end")
+        s.line(28, y + 5, 168, y + 5, LINE, 0.6)
+    s.line(183, 53, 183, 247)
+    s.text(205, 61, "FULL 41 × 2 BASIS", 10, ACCENT, 700)
     heatmap(s, loadings, 234, 75, 74, 159, max(abs(v) for row in loadings for v in row))
     s.text(271, 247, "PC 1   PC 2", 10, MUTED, 400, "middle")
     s.text(224, 86, "01", 10, MUTED, 400, "end")
@@ -206,40 +206,55 @@ def visual_02() -> None:
                     for u, row in enumerate(features)], color, 1.8)
     s.text(420, 248, "frame 1", 10)
     s.text(689, 248, "frame 30", 10, MUTED, 400, "end")
-    s.footer("The loading colors encode sign and magnitude; the three traces are standardized held-out outputs.")
-    s.save(2)
+    s.footer("Numeric rows and color map show the fitted basis; traces show standardized held-out outputs.")
+    s.save("02-02")
 
 
-def visual_network_inventory() -> None:
-    s = SVG("Thirteen atlas networks become 39 signal channels", "The actual Gordon atlas community parcel counts sum to 333. Every network contributes its parcel mean and two fold-trained residual PCA scores, yielding 13 mean channels and 26 residual channels per volume.")
-    s.header("02b / network inventory", "333 parcels → 39 signals per volume")
-    names = SUPPLEMENT["network_basis"]["network_order"]
-    counts = SUPPLEMENT["network_basis"]["parcel_counts"]
-    assert len(names) == len(counts) == 13 and sum(counts) == 333
-    labels = {"CinguloOperc": "Cingulo-opercular", "ParietalMemoryNetwork": "Parietal memory",
-              "FrontoParietal": "Frontoparietal", "RetrosplenialTemporal": "Retrosplenial temporal",
-              "SMhand": "Somatomotor hand", "SMmouth": "Somatomotor mouth",
-              "DorsalAttn": "Dorsal attention", "VentralAttn": "Ventral attention"}
-    s.text(27, 61, "GORDON COMMUNITY", 10, ACCENT, 700)
-    s.text(197, 61, "PARCEL COUNT", 10, ACCENT, 700)
-    for x, label, color in ((497, "MEAN", ACCENT), (564, "PC 1", NEG), (631, "PC 2", POS)):
-        s.rect(x, 53, 9, 9, color)
-        s.text(x + 13, 61, label, 10, ACCENT, 700)
-    for i, (name, count) in enumerate(zip(names, counts)):
-        y = 76 + i * 13.2
-        s.text(27, y + 8, labels.get(name, name), 10, INK)
-        s.rect(197, y, 227, 8, "#edf2f1")
-        s.rect(197, y, 227 * count / 47, 8, ACCENT)
-        s.text(444, y + 8, str(count), 10, INK, 600, "end")
-        for x, color in ((497, ACCENT), (564, NEG), (631, POS)):
-            s.rect(x, y, 26, 8, color)
-    s.footer("Every row adds one mean and two residual scores; the bars show actual atlas parcel counts.")
-    s.save("network-inventory")
+def visual_parcel_projection() -> None:
+    """Small exact example of per-volume mean removal and residual PCA projection."""
+    x = [[2, 4, 6, 8], [1, 5, 5, 9], [4, 3, 8, 9]]
+    means = [sum(row) / len(row) for row in x]
+    residuals = [[value - means[i] for value in row] for i, row in enumerate(x)]
+    basis = [[-.5, -.5], [-.5, .5], [.5, -.5], [.5, .5]]
+    scores = [[sum(row[j] * basis[j][k] for j in range(4)) for k in range(2)]
+              for row in residuals]
+    assert means == [5, 5, 6]
+    assert scores == [[4, 2], [4, 4], [5, 0]]
+    assert all(abs(sum(row)) < 1e-9 for row in residuals)
+    assert all(abs(sum(basis[j][k] * basis[j][l] for j in range(4)) - (k == l)) < 1e-9
+               for k in range(2) for l in range(2))
+    s = SVG("Worked example of parcel mean removal and residual projection",
+            "Illustrative arithmetic with three volumes and four parcels. The rows of X are parcel values, m is each row mean, E contains X minus its row mean, U is a two-column zero-sum orthonormal basis, and A equals E times U. The example sets the training residual mean to zero. The actual Default network uses 41 parcels and a fold-fitted basis shown in Figure 02.2.")
+    s.header("Figure 02.1 / mean to residual scores", "illustrative arithmetic · 3 volumes × 4 parcels")
+
+    def matrix(label, values, x0, y0, cell_w, cell_h=28, fmt=lambda v: str(v)):
+        s.text(x0, 76, label, 11, ACCENT, 700)
+        rows, cols = len(values), len(values[0])
+        for i, row in enumerate(values):
+            for j, value in enumerate(row):
+                left, top = x0 + j * cell_w, y0 + i * cell_h
+                s.rect(left, top, cell_w - 3, cell_h - 3, PAPER, LINE, .8)
+                s.text(left + (cell_w - 3) / 2, top + 17, fmt(value), 12, INK, 600, "middle")
+        s.text(x0 + cols * cell_w / 2 - 2, y0 + rows * cell_h + 19,
+               f"{rows} × {cols}", 10, MUTED, 400, "middle")
+
+    matrix("X · parcel values", x, 27, 91, 32)
+    s.text(165, 138, "→", 19, ACCENT, 400)
+    matrix("m · row mean", [[v] for v in means], 197, 91, 37, fmt=lambda v: f"{v:g}")
+    s.text(253, 138, "→", 19, ACCENT, 400)
+    matrix("E = X − m", residuals, 286, 91, 33, fmt=lambda v: f"{v:+g}" if v else "0")
+    s.text(429, 138, "×", 19, ACCENT, 400)
+    matrix("U · two modes", basis, 462, 84, 36, 25, fmt=lambda v: f"{v:+.1f}")
+    s.text(544, 138, "→", 19, ACCENT, 400)
+    matrix("A = E U", scores, 579, 91, 38, fmt=lambda v: f"{v:g}")
+    s.text(29, 230, "Each row is one volume. The mean is subtracted from all four parcels before projection.", 11, INK)
+    s.footer("Toy training residual mean μ = 0; the fitted model projects Uᵀ(e − μ) instead.")
+    s.save("02-01")
 
 
 def visual_03() -> None:
     s = SVG("Shrinkage connectivity from a short window", "Six selected features from the full 39-feature operation show sample covariance, reconstructed Ledoit-Wolf shrinkage covariance, and final correlation. The saved shrinkage fraction for this window is 0.1511; eigenvalue flooring made no change.")
-    s.header("03 / connectivity", "24–30 valid rows · 39 features")
+    s.header("Figure 03.2 / connectivity matrices", "24–30 valid rows · 39 features")
     features = DATA["step_1_window"]["cortical_features"]
     valid = DATA["step_1_window"]["motion_valid"]
     selected = [row for row, ok in zip(features, valid) if ok]
@@ -265,7 +280,7 @@ def visual_03() -> None:
     s.text(239, 133, f"λ={w['ledoit_wolf_shrinkage']:.3f}", 10, ACCENT, 600, "middle")
     s.text(483, 133, "normalize", 10, ACCENT, 600, "middle")
     s.footer("6 selected channels from full 39 × 39 matrices; eigenvalue flooring did not alter this window.")
-    s.save(3)
+    s.save("03-02")
 
 
 def symmetric_eigenvalues(matrix: list[list[float]]) -> list[float]:
@@ -299,7 +314,7 @@ def symmetric_eigenvalues(matrix: list[list[float]]) -> list[float]:
 
 def visual_shrinkage_spectrum() -> None:
     s = SVG("Shrinkage lifts the zero eigenvalues of a short-window covariance", "An eigenvalue spectrum reconstructed from this 30-valid-frame, 39-signal window compares sample covariance with its actual Ledoit-Wolf shrinkage covariance. The ordinary sample matrix has ten near-zero eigenvalues; shrinkage makes every eigenvalue positive.")
-    s.header("03b / why shrinkage", "30 valid frames · 39 channels")
+    s.header("Figure 03.1 / why shrinkage", "30 valid frames · 39 channels")
     rows = [row for row, valid in zip(DATA["step_1_window"]["cortical_features"],
                                     DATA["step_1_window"]["motion_valid"]) if valid]
     n, d = len(rows), len(rows[0])
@@ -338,12 +353,12 @@ def visual_shrinkage_spectrum() -> None:
     s.rect(533, 53, 11, 4, POS)
     s.text(549, 61, f"shrinkage: λ = {lam:.3f}", 10, INK)
     s.footer("A 30-row sample has at most 29 independent directions; shrinkage lifts the null directions.")
-    s.save("shrinkage-spectrum")
+    s.save("03-01")
 
 
 def visual_04() -> None:
     s = SVG("Lag-specific tangent references", "At each of the current, 25-volume, and 50-volume lags, a reconstructed correlation is compared with its reconstructed fold-trained reference to produce a tangent matrix. Six-by-six excerpts are shown from the full 39-by-39 matrices. All three tangents become 2340 coordinates, clipped and reduced to 64 whitened PCA scores.")
-    s.header("04 / tangent representation", "3 × 780 → 2,340 → 64")
+    s.header("Figure 04.1 / tangent representation", "3 × 780 → 2,340 → 64")
     records = SUPPLEMENT["lag_geometry"]["lag_records"]
     indices = SUPPLEMENT["lag_geometry"]["subset_feature_indices"]
     matrices = DATA["step_3_causal_lags"]["correlations"]
@@ -368,12 +383,12 @@ def visual_04() -> None:
     s.rect(592, 84, 8 * 14, 8 * 15, "none", LINE)
     s.text(648, 226, "64 whitened scores", 10, MUTED, 400, "middle")
     s.footer("Each C, G, T image shows the same 6 channels from a full 39 × 39 matrix; T uses all 39.")
-    s.save(4)
+    s.save("04-01")
 
 
 def visual_05() -> None:
     s = SVG("Tangent decoder and temperature calibration", "The reconstructed 64 whitened tangent scores enter shrinkage LDA. Saved uncalibrated and calibrated stage probabilities are compared directly. The fitted tangent temperature is 2.114, softening this representative prediction.")
-    s.header("05 / tangent decoder", "64 features → four probabilities")
+    s.header("Figure 05.1 / tangent decoder", "64 features → four probabilities")
     p = SUPPLEMENT["probability_calibration"]
     scores = DATA["step_5_pca"]["whitened_score"]
     s.text(93, 62, "64 PCA SCORES", 10, ACCENT, 700, "middle")
@@ -404,12 +419,12 @@ def visual_05() -> None:
         s.rect(521, y + 2, max(1, 129 * calibrated), 13, STAGE_COLORS[i])
         s.text(697, y + 14, f"{calibrated * 100:.1f}%", 11, INK, 600, "end")
     s.footer("Temperature softens this window's LDA output; both probability columns are saved model outputs.")
-    s.save(5)
+    s.save("05-01")
 
 
 def visual_06() -> None:
     s = SVG("Lagged edge flow and Hodge energy", "At left, schematic forward and reverse cross-lag parcel interactions define one antisymmetric edge flow. At right, saved harmonic, gradient, and curl energy fractions from the representative window are shown for three lags and their pooled flow, followed by the three saved temporal change features.")
-    s.header("06 / directed-cycle branch", "333 parcel signals · 23 energy-family features")
+    s.header("Figure 06.2 / directed-cycle branch", "333 parcel signals · 23 energy-family features")
     s.text(28, 62, "ONE EDGE · SCHEMATIC CROSS-LAG PAIRS", 10, ACCENT, 700)
     for y, left, right, color, label in (
         (101, "i at u", "j at u + τ", POS, "forward"),
@@ -448,12 +463,12 @@ def visual_06() -> None:
     s.line(362, 231, 716, 231)
     s.text(362, 249, f"Δ norm {values[20]:.2f}   ·   cosine {values[21]:.2f}   ·   angle {values[22]:.2f} rad", 10, INK)
     s.footer("Five flow summaries at each lag + five pooled + three temporal summaries = 23.")
-    s.save(6)
+    s.save("06-02")
 
 
 def visual_atlas_graph() -> None:
     s = SVG("Actual cortical atlas graph used for signed edge flows", "All 333 Gordon cortical parcels and all 1152 actual undirected six-nearest-neighbor graph edges are shown in a two-dimensional projection of public MNI atlas coordinates. Default-network nodes are highlighted. Neighbor selection was performed in original three-dimensional coordinate space; directionality enters only when lagged signal flow is assigned to edges.")
-    s.header("06a / atlas graph", "actual public atlas topology · 2D display")
+    s.header("Figure 06.1 / atlas graph", "actual topology · equal-axis 2D display")
     assert TOPOLOGY["topology"]["nodes"] == 333
     assert TOPOLOGY["topology"]["edges"] == 1152
     assert TOPOLOGY["topology"]["triangles"] == 986
@@ -464,7 +479,7 @@ def visual_atlas_graph() -> None:
     default_index = TOPOLOGY["network_names"].index("Default")
     def xy(i: int) -> tuple[float, float]:
         px, py = points[i]
-        return 48 + (px + 1) * 196, 154 - py * 105
+        return 250 + px * 125, 150 - py * 125
     for i, j in edges:
         s.line(*xy(i), *xy(j), LINE, 0.48, 0.78)
     for i in range(333):
@@ -482,12 +497,12 @@ def visual_atlas_graph() -> None:
     s.rect(491, 231, 9, 9, POS)
     s.text(507, 239, "Default network highlighted", 10, INK)
     s.footer("Graph edges are undirected; the later cross-lag calculation assigns signed flow to them.")
-    s.save("atlas-graph")
+    s.save("06-01")
 
 
 def visual_cycle_feature_map() -> None:
     s = SVG("The 23 saved cycle features", "A compact numerical map of all 23 saved directed-cycle features for the representative window: five flow summaries at each of three lags, five for their weighted pooled flow, and three temporal change summaries.")
-    s.header("06b / cycle feature vector", "15 lag + 5 pooled + 3 temporal = 23")
+    s.header("Figure 06.3 / cycle feature vector", "15 lag + 5 pooled + 3 temporal = 23")
     values = DATA["step_7_cycle_ridge"]["feature_values"]
     columns = (("total norm", ACCENT), ("harmonic norm", NEG),
                ("H share", NEG), ("G share", ACCENT), ("C share", POS))
@@ -507,7 +522,7 @@ def visual_cycle_feature_map() -> None:
     s.line(28, 235, 716, 235)
     s.text(28, 252, f"change in pooled harmonic state: norm {values[20]:.2f}   ·   cosine {values[21]:.2f}   ·   angle {values[22]:.2f} rad", 10, INK)
     s.footer("Numbers are saved outputs for one held-out window; shares are fractions of total flow energy.")
-    s.save("cycle-features")
+    s.save("06-03")
 
 
 def visual_cycle_calibration() -> None:
@@ -515,7 +530,7 @@ def visual_cycle_calibration() -> None:
     p = SUPPLEMENT["probability_calibration"]
     raw, calibrated = p["cycle_raw_probability"], p["cycle_calibrated_probability"]
     temperature = p["cycle_temperature"]
-    s.header("06c / cycle calibration", "23 features → four probabilities")
+    s.header("Figure 06.4 / cycle calibration", "23 features → four probabilities")
     s.text(28, 64, "CLASS-BALANCED LOGISTIC OUTPUT", 10, ACCENT, 700)
     s.text(198, 93, "RAW · SAVED", 10, ACCENT, 700, "middle")
     s.text(535, 93, f"CALIBRATED · T = {temperature:.3f}", 10, ACCENT, 700, "middle")
@@ -532,7 +547,7 @@ def visual_cycle_calibration() -> None:
     arrow(s, 287, 172, 366, 172, ACCENT, 2)
     s.text(326, 151, "temperature", 10, MUTED, 400, "middle")
     s.footer("This branch uses parcel-level directed flow; calibration precedes the final blend.")
-    s.save("cycle-calibration")
+    s.save("06-04")
 
 
 def visual_07() -> None:
@@ -542,7 +557,7 @@ def visual_07() -> None:
     cycle = DATA["step_7_cycle_ridge"]["probability"]
     mix = [(1 - alpha) * a + alpha * b for a, b in zip(tangent, cycle)]
     final = DATA["step_8_blend_simplex"]["final_probability"]
-    s.header("07 / probability blend", f"cycle weight α = {alpha:.2f}")
+    s.header("Figure 07.1 / probability blend", f"cycle weight α = {alpha:.2f}")
     for i, name in enumerate(STAGES):
         s.text(219 + i * 124, 60, name, 11, INK, 600, "middle")
     rows = [
@@ -562,7 +577,7 @@ def visual_07() -> None:
             s.rect(x, y, max(1, 97 * value), 12, STAGE_COLORS[col])
             s.text(x + 97, y + 29, f"{displayed[col]:.1f}%", 10, INK, 400, "end")
     s.footer(f"The mix is derived at α = 0.30; the saved final row uses T = {SUPPLEMENT['probability_calibration']['final_blend_temperature']:.3f}.")
-    s.save(7)
+    s.save("07-01")
 
 
 def validate() -> None:
@@ -602,7 +617,7 @@ if __name__ == "__main__":
     for fn in (visual_01, visual_02, visual_03, visual_04,
                visual_05, visual_06, visual_07):
         fn()
-    for fn in (visual_network_inventory, visual_shrinkage_spectrum, visual_atlas_graph,
+    for fn in (visual_parcel_projection, visual_shrinkage_spectrum, visual_atlas_graph,
                visual_cycle_feature_map, visual_cycle_calibration):
         fn()
     print("Built twelve sleep-method SVGs from the validated representative export and atlas topology.")

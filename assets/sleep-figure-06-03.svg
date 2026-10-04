@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="300" viewBox="0 0 740 300" role="img" aria-labelledby="title desc">
+<title id="title">The 23 saved cycle features</title>
+<desc id="desc">A compact numerical map of all 23 saved directed-cycle features for the representative window: five flow summaries at each of three lags, five for their weighted pooled flow, and three temporal change summaries.</desc>
+<rect width="740" height="300" fill="#ffffff"/>
+<text x="24.00" y="27.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">FIGURE 06.3 / CYCLE FEATURE VECTOR</text>
+<text x="716.00" y="27.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">15 lag + 5 pooled + 3 temporal = 23</text>
+<line x1="24.00" y1="39.00" x2="716.00" y2="39.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
+<rect x="145.00" y="57.00" width="10.00" height="3.00" fill="#235969"/>
+<text x="145.00" y="76.00" fill="#172126" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">total norm</text>
+<rect x="256.00" y="57.00" width="10.00" height="3.00" fill="#315f82"/>
+<text x="256.00" y="76.00" fill="#172126" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">harmonic norm</text>
+<rect x="367.00" y="57.00" width="10.00" height="3.00" fill="#315f82"/>
+<text x="367.00" y="76.00" fill="#172126" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">H share</text>
+<rect x="478.00" y="57.00" width="10.00" height="3.00" fill="#235969"/>
+<text x="478.00" y="76.00" fill="#172126" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">G share</text>
+<rect x="589.00" y="57.00" width="10.00" height="3.00" fill="#ad673d"/>
+<text x="589.00" y="76.00" fill="#172126" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">C share</text>
+<text x="28.00" y="108.00" fill="#172126" font-size="11" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">lag 1</text>
+<rect x="145.00" y="90.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<text x="193.00" y="109.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">9.19</text>
+<rect x="256.00" y="90.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<text x="304.00" y="109.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">2.67</text>
+<rect x="367.00" y="90.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<text x="415.00" y="109.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">8.4%</text>
+<rect x="478.00" y="90.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<text x="526.00" y="109.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">34.2%</text>
+<rect x="589.00" y="90.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<text x="637.00" y="109.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">57.4%</text>
+<text x="28.00" y="143.00" fill="#172126" font-size="11" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">lag 2</text>
+<rect x="145.00" y="125.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<text x="193.00" y="144.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">15.27</text>
+<rect x="256.00" y="125.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<text x="304.00" y="144.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">4.46</text>
+<rect x="367.00" y="125.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<text x="415.00" y="144.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">8.5%</text>
+<rect x="478.00" y="125.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<text x="526.00" y="144.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">35.4%</text>
+<rect x="589.00" y="125.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<text x="637.00" y="144.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">56.1%</text>
+<text x="28.00" y="178.00" fill="#172126" font-size="11" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">lag 3</text>
+<rect x="145.00" y="160.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<text x="193.00" y="179.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">17.83</text>
+<rect x="256.00" y="160.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<text x="304.00" y="179.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">5.22</text>
+<rect x="367.00" y="160.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<text x="415.00" y="179.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">8.6%</text>
+<rect x="478.00" y="160.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<text x="526.00" y="179.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">36.6%</text>
+<rect x="589.00" y="160.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<text x="637.00" y="179.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">54.8%</text>
+<text x="28.00" y="213.00" fill="#172126" font-size="11" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">pooled</text>
+<rect x="145.00" y="195.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<text x="193.00" y="214.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">11.94</text>
+<rect x="256.00" y="195.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<text x="304.00" y="214.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">3.49</text>
+<rect x="367.00" y="195.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<text x="415.00" y="214.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">8.6%</text>
+<rect x="478.00" y="195.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<text x="526.00" y="214.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">35.2%</text>
+<rect x="589.00" y="195.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<text x="637.00" y="214.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">56.3%</text>
+<line x1="28.00" y1="235.00" x2="716.00" y2="235.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
+<text x="28.00" y="252.00" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">change in pooled harmonic state: norm 1.55   ·   cosine 0.90   ·   angle 0.46 rad</text>
+<line x1="24.00" y1="260.00" x2="716.00" y2="260.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
+<text x="24.00" y="283.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Numbers are saved outputs for one held-out window; shares are fractions of total flow energy.</text>
+</svg>
