@@ -175,7 +175,7 @@
     const n2 = best(() => true, item => item.p[2]);
     const uncertain = best(() => true, item => -Math.max(...item.p));
     examples = [
-      {item:method, name:'Methods example', description:'The held-out window illustrated in the eight method panels.'},
+      {item:method, name:'Methods example', description:'The held-out window used in the data-based method figures.'},
       {item:wake, name:'Wake-weighted window', description:'A held-out window with relatively high Wake probability.'},
       {item:balance, name:'Wake / N1 balance', description:'A held-out window with similar Wake and N1 probabilities.'},
       {item:n2, name:'N2-weighted window', description:'A held-out window with relatively high N2 probability.'},

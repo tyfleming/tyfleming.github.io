@@ -242,13 +242,13 @@ def visual_parcel_projection() -> None:
     s.text(165, 138, "→", 19, ACCENT, 400)
     matrix("m · row mean", [[v] for v in means], 197, 91, 37, fmt=lambda v: f"{v:g}")
     s.text(253, 138, "→", 19, ACCENT, 400)
-    matrix("E = X − m", residuals, 286, 91, 33, fmt=lambda v: f"{v:+g}" if v else "0")
+    matrix("E · residuals", residuals, 286, 91, 33, fmt=lambda v: f"{v:+g}" if v else "0")
     s.text(429, 138, "×", 19, ACCENT, 400)
     matrix("U · two modes", basis, 462, 84, 36, 25, fmt=lambda v: f"{v:+.1f}")
     s.text(544, 138, "→", 19, ACCENT, 400)
     matrix("A = E U", scores, 579, 91, 38, fmt=lambda v: f"{v:g}")
-    s.text(29, 230, "Each row is one volume. The mean is subtracted from all four parcels before projection.", 11, INK)
-    s.footer("Toy training residual mean μ = 0; the fitted model projects Uᵀ(e − μ) instead.")
+    s.text(29, 230, "Volume 1: (2, 4, 6, 8) − (5, 5, 5, 5) = (−3, −1, 1, 3).", 11, INK)
+    s.footer("Subtract each row mean from every parcel in that row; here the toy training reference is zero.")
     s.save("02-01")
 
 
