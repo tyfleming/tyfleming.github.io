@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="300" viewBox="0 0 740 300" role="img" aria-labelledby="title desc">
+<title id="title">Shrinkage lifts the zero eigenvalues of a short-window covariance</title>
+<desc id="desc">An eigenvalue spectrum reconstructed from this 30-valid-frame, 39-signal window compares sample covariance with its actual Ledoit-Wolf shrinkage covariance. The ordinary sample matrix has ten near-zero eigenvalues; shrinkage makes every eigenvalue positive.</desc>
+<rect width="740" height="300" fill="#ffffff"/>
+<text x="24.00" y="27.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">03B / WHY SHRINKAGE</text>
+<text x="716.00" y="27.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">30 valid frames · 39 channels</text>
+<line x1="24.00" y1="39.00" x2="716.00" y2="39.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
+<text x="28.00" y="62.00" fill="#235969" font-size="10" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">COVARIANCE EIGENVALUE · LOG SCALE</text>
+<rect x="549.53" y="81.00" width="135.47" height="137.00" fill="#f3f5f4"/>
+<line x1="113.00" y1="218.00" x2="685.00" y2="218.00" stroke="#d5dcda" stroke-width="0.8" opacity="1"/>
+<text x="100.00" y="222.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">1e-08</text>
+<line x1="113.00" y1="190.60" x2="685.00" y2="190.60" stroke="#d5dcda" stroke-width="0.8" opacity="1"/>
+<text x="100.00" y="194.60" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">1e-06</text>
+<line x1="113.00" y1="163.20" x2="685.00" y2="163.20" stroke="#d5dcda" stroke-width="0.8" opacity="1"/>
+<text x="100.00" y="167.20" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">0.0001</text>
+<line x1="113.00" y1="135.80" x2="685.00" y2="135.80" stroke="#d5dcda" stroke-width="0.8" opacity="1"/>
+<text x="100.00" y="139.80" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">0.01</text>
+<line x1="113.00" y1="108.40" x2="685.00" y2="108.40" stroke="#d5dcda" stroke-width="0.8" opacity="1"/>
+<text x="100.00" y="112.40" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">1</text>
+<line x1="113.00" y1="94.70" x2="685.00" y2="94.70" stroke="#d5dcda" stroke-width="0.8" opacity="1"/>
+<text x="100.00" y="98.70" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">10</text>
+<line x1="113.00" y1="81.00" x2="113.00" y2="218.00" stroke="#172126" stroke-width="1" opacity="1"/>
+<line x1="113.00" y1="218.00" x2="685.00" y2="218.00" stroke="#172126" stroke-width="1" opacity="1"/>
+<text x="113.00" y="234.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">1</text>
+<text x="248.47" y="234.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">10</text>
+<text x="399.00" y="234.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">20</text>
+<text x="549.53" y="234.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">30</text>
+<text x="685.00" y="234.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">39</text>
+<text x="685.00" y="249.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">eigenvalue rank</text>
+<text x="604.00" y="99.00" fill="#5a6669" font-size="10" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">10 null directions</text>
+<polyline points="113.00,91.78 128.05,96.04 143.11,102.25 158.16,103.89 173.21,104.15 188.26,105.14 203.32,108.57 218.37,110.53 233.42,115.69 248.47,116.66 263.53,117.64 278.58,120.12 293.63,122.24 308.68,125.87 323.74,127.83 338.79,129.38 353.84,134.94 368.89,135.31 383.95,137.91 399.00,142.01 414.05,144.47 429.11,149.48 444.16,153.91 459.21,157.67 474.26,161.28 489.32,166.85 504.37,175.46 519.42,182.10 534.47,192.20 549.53,218.00 564.58,218.00 579.63,218.00 594.68,218.00 609.74,218.00 624.79,218.00 639.84,218.00 654.89,218.00 669.95,218.00 685.00,218.00" fill="none" stroke="#315f82" stroke-width="2.2"/>
+<polyline points="113.00,92.70 128.05,96.89 143.11,102.89 158.16,104.43 173.21,104.67 188.26,105.58 203.32,108.62 218.37,110.25 233.42,114.03 248.47,114.63 263.53,115.21 278.58,116.48 293.63,117.36 308.68,118.48 323.74,118.90 338.79,119.16 353.84,119.74 368.89,119.76 383.95,119.90 399.00,120.02 414.05,120.06 429.11,120.11 444.16,120.13 459.21,120.14 474.26,120.14 489.32,120.14 504.37,120.15 519.42,120.15 534.47,120.15 549.53,120.15 564.58,120.15 579.63,120.15 594.68,120.15 609.74,120.15 624.79,120.15 639.84,120.15 654.89,120.15 669.95,120.15 685.00,120.15" fill="none" stroke="#ad673d" stroke-width="2.2"/>
+<rect x="366.00" y="53.00" width="11.00" height="4.00" fill="#315f82"/>
+<text x="382.00" y="61.00" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">sample: 10 near zero</text>
+<rect x="533.00" y="53.00" width="11.00" height="4.00" fill="#ad673d"/>
+<text x="549.00" y="61.00" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">shrinkage: λ = 0.151</text>
+<line x1="24.00" y1="260.00" x2="716.00" y2="260.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
+<text x="24.00" y="283.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">A 30-row sample has at most 29 independent directions; shrinkage lifts the null directions.</text>
+</svg>

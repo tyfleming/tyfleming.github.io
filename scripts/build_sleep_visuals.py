@@ -1,4 +1,4 @@
-"""Build the eight static, accessible SVG companions to sleep.html.
+"""Build the static, accessible SVG companions to sleep.html.
 
 The representative JSON contains no subject or scan identifiers. Saved model
 outputs and reconstructed intermediate tensors are identified on the page.
@@ -20,6 +20,7 @@ if not SOURCE.exists():
     )
 DATA = json.loads(SOURCE.read_text())
 SUPPLEMENT = json.loads((ROOT / "assets/sleep-decoding-method-supplement.json").read_text())
+TOPOLOGY = json.loads((ROOT / "assets/sleep-cycle-atlas-topology.json").read_text())
 OUT = ROOT / "assets"
 
 INK = "#172126"
@@ -97,9 +98,10 @@ class SVG:
         self.line(24, 260, 716, 260)
         self.text(24, 283, value, 11, MUTED)
 
-    def save(self, number: int) -> None:
+    def save(self, number: int | str) -> None:
         self.raw("</svg>")
-        (OUT / f"sleep-step-{number:02d}.svg").write_text("\n".join(self.parts) + "\n")
+        name = f"sleep-step-{number:02d}.svg" if isinstance(number, int) else f"sleep-{number}.svg"
+        (OUT / name).write_text("\n".join(self.parts) + "\n")
 
 
 def heatmap(svg: SVG, values, x, y, w, h, limit=1.0) -> None:
@@ -208,6 +210,33 @@ def visual_02() -> None:
     s.save(2)
 
 
+def visual_network_inventory() -> None:
+    s = SVG("Thirteen atlas networks become 39 signal channels", "The actual Gordon atlas community parcel counts sum to 333. Every network contributes its parcel mean and two fold-trained residual PCA scores, yielding 13 mean channels and 26 residual channels per volume.")
+    s.header("02b / network inventory", "333 parcels → 39 signals per volume")
+    names = SUPPLEMENT["network_basis"]["network_order"]
+    counts = SUPPLEMENT["network_basis"]["parcel_counts"]
+    assert len(names) == len(counts) == 13 and sum(counts) == 333
+    labels = {"CinguloOperc": "Cingulo-opercular", "ParietalMemoryNetwork": "Parietal memory",
+              "FrontoParietal": "Frontoparietal", "RetrosplenialTemporal": "Retrosplenial temporal",
+              "SMhand": "Somatomotor hand", "SMmouth": "Somatomotor mouth",
+              "DorsalAttn": "Dorsal attention", "VentralAttn": "Ventral attention"}
+    s.text(27, 61, "GORDON COMMUNITY", 10, ACCENT, 700)
+    s.text(197, 61, "PARCEL COUNT", 10, ACCENT, 700)
+    for x, label, color in ((497, "MEAN", ACCENT), (564, "PC 1", NEG), (631, "PC 2", POS)):
+        s.rect(x, 53, 9, 9, color)
+        s.text(x + 13, 61, label, 10, ACCENT, 700)
+    for i, (name, count) in enumerate(zip(names, counts)):
+        y = 76 + i * 13.2
+        s.text(27, y + 8, labels.get(name, name), 10, INK)
+        s.rect(197, y, 227, 8, "#edf2f1")
+        s.rect(197, y, 227 * count / 47, 8, ACCENT)
+        s.text(444, y + 8, str(count), 10, INK, 600, "end")
+        for x, color in ((497, ACCENT), (564, NEG), (631, POS)):
+            s.rect(x, y, 26, 8, color)
+    s.footer("Every row adds one mean and two residual scores; the bars show actual atlas parcel counts.")
+    s.save("network-inventory")
+
+
 def visual_03() -> None:
     s = SVG("Shrinkage connectivity from a short window", "Six selected features from the full 39-feature operation show sample covariance, reconstructed Ledoit-Wolf shrinkage covariance, and final correlation. The saved shrinkage fraction for this window is 0.1511; eigenvalue flooring made no change.")
     s.header("03 / connectivity", "24–30 valid rows · 39 features")
@@ -237,6 +266,79 @@ def visual_03() -> None:
     s.text(483, 133, "normalize", 10, ACCENT, 600, "middle")
     s.footer("6 selected channels from full 39 × 39 matrices; eigenvalue flooring did not alter this window.")
     s.save(3)
+
+
+def symmetric_eigenvalues(matrix: list[list[float]]) -> list[float]:
+    """Jacobi eigenvalues for a small real symmetric matrix; no third-party runtime."""
+    a = [row[:] for row in matrix]
+    n = len(a)
+    for _ in range(50):
+        largest = 0.0
+        for p in range(n - 1):
+            for q in range(p + 1, n):
+                v = a[p][q]
+                largest = max(largest, abs(v))
+                if abs(v) < 1e-12:
+                    continue
+                tau = (a[q][q] - a[p][p]) / (2 * v)
+                t = (1 if tau >= 0 else -1) / (abs(tau) + math.sqrt(1 + tau * tau))
+                c = 1 / math.sqrt(1 + t * t)
+                sn = t * c
+                app, aqq = a[p][p], a[q][q]
+                a[p][p], a[q][q] = app - t * v, aqq + t * v
+                a[p][q] = a[q][p] = 0.0
+                for k in range(n):
+                    if k != p and k != q:
+                        akp, akq = a[k][p], a[k][q]
+                        a[k][p] = a[p][k] = c * akp - sn * akq
+                        a[k][q] = a[q][k] = sn * akp + c * akq
+        if largest < 1e-10:
+            break
+    return sorted((a[i][i] for i in range(n)), reverse=True)
+
+
+def visual_shrinkage_spectrum() -> None:
+    s = SVG("Shrinkage lifts the zero eigenvalues of a short-window covariance", "An eigenvalue spectrum reconstructed from this 30-valid-frame, 39-signal window compares sample covariance with its actual Ledoit-Wolf shrinkage covariance. The ordinary sample matrix has ten near-zero eigenvalues; shrinkage makes every eigenvalue positive.")
+    s.header("03b / why shrinkage", "30 valid frames · 39 channels")
+    rows = [row for row, valid in zip(DATA["step_1_window"]["cortical_features"],
+                                    DATA["step_1_window"]["motion_valid"]) if valid]
+    n, d = len(rows), len(rows[0])
+    means = [sum(row[j] for row in rows) / n for j in range(d)]
+    covariance = [[sum((row[i] - means[i]) * (row[j] - means[j]) for row in rows) / n
+                   for j in range(d)] for i in range(d)]
+    sample = symmetric_eigenvalues(covariance)
+    assert sum(abs(value) < 1e-7 for value in sample) == 10
+    lam = SUPPLEMENT["window_shrinkage_connectivity"]["ledoit_wolf_shrinkage"]
+    mu = sum(covariance[i][i] for i in range(d)) / d
+    shrunk = [(1 - lam) * value + lam * mu for value in sample]
+    assert min(shrunk) > 0
+    s.text(28, 62, "COVARIANCE EIGENVALUE · LOG SCALE", 10, ACCENT, 700)
+    x0, x1, y0, y1 = 113, 685, 81, 218
+    ceiling = 10 ** math.ceil(math.log10(max(sample[0], shrunk[0])))
+    floor = 1e-8
+    def yy(value: float) -> float:
+        return y1 - (math.log10(max(floor, value)) - math.log10(floor)) / (math.log10(ceiling) - math.log10(floor)) * (y1 - y0)
+    s.rect(x0 + 29 * (x1 - x0) / 38, y0, x1 - (x0 + 29 * (x1 - x0) / 38), y1 - y0, "#f3f5f4")
+    for tick in (1e-8, 1e-6, 1e-4, 0.01, 1, 10):
+        if tick <= ceiling:
+            y = yy(tick)
+            s.line(x0, y, x1, y, LINE, 0.8)
+            s.text(100, y + 4, f"{tick:g}", 10, MUTED, 400, "end")
+    s.line(x0, y0, x0, y1, INK)
+    s.line(x0, y1, x1, y1, INK)
+    for rank in (1, 10, 20, 30, 39):
+        x = x0 + (rank - 1) * (x1 - x0) / 38
+        s.text(x, 234, str(rank), 10, MUTED, 400, "middle")
+    s.text(685, 249, "eigenvalue rank", 10, MUTED, 400, "end")
+    s.text(604, 99, "10 null directions", 10, MUTED, 600, "middle")
+    for values, color in ((sample, NEG), (shrunk, POS)):
+        s.polyline([(x0 + i * (x1 - x0) / 38, yy(value)) for i, value in enumerate(values)], color, 2.2)
+    s.rect(366, 53, 11, 4, NEG)
+    s.text(382, 61, "sample: 10 near zero", 10, INK)
+    s.rect(533, 53, 11, 4, POS)
+    s.text(549, 61, f"shrinkage: λ = {lam:.3f}", 10, INK)
+    s.footer("A 30-row sample has at most 29 independent directions; shrinkage lifts the null directions.")
+    s.save("shrinkage-spectrum")
 
 
 def visual_04() -> None:
@@ -349,6 +451,90 @@ def visual_06() -> None:
     s.save(6)
 
 
+def visual_atlas_graph() -> None:
+    s = SVG("Actual cortical atlas graph used for signed edge flows", "All 333 Gordon cortical parcels and all 1152 actual undirected six-nearest-neighbor graph edges are shown in a two-dimensional projection of public MNI atlas coordinates. Default-network nodes are highlighted. Neighbor selection was performed in original three-dimensional coordinate space; directionality enters only when lagged signal flow is assigned to edges.")
+    s.header("06a / atlas graph", "actual public atlas topology · 2D display")
+    assert TOPOLOGY["topology"]["nodes"] == 333
+    assert TOPOLOGY["topology"]["edges"] == 1152
+    assert TOPOLOGY["topology"]["triangles"] == 986
+    points = TOPOLOGY["node_xy"]
+    networks = TOPOLOGY["node_network"]
+    edges = TOPOLOGY["edges"]
+    assert len(points) == len(networks) == 333 and len(edges) == 1152
+    default_index = TOPOLOGY["network_names"].index("Default")
+    def xy(i: int) -> tuple[float, float]:
+        px, py = points[i]
+        return 48 + (px + 1) * 196, 154 - py * 105
+    for i, j in edges:
+        s.line(*xy(i), *xy(j), LINE, 0.48, 0.78)
+    for i in range(333):
+        x, y = xy(i)
+        s.circle(x, y, 2.0 if networks[i] == default_index else 1.15,
+                 POS if networks[i] == default_index else ACCENT)
+    s.line(469, 53, 469, 248)
+    s.text(491, 64, "FIXED GRAPH CONSTRUCTION", 10, ACCENT, 700)
+    for y, quantity, label in ((95, "333", "cortical parcels"),
+                               (134, "6", "nearest neighbors in 3D"),
+                               (173, "1,152", "undirected edges"),
+                               (212, "986", "filled triangles")):
+        s.text(491, y, quantity, 20, INK, 600)
+        s.text(568, y, label, 11, MUTED)
+    s.rect(491, 231, 9, 9, POS)
+    s.text(507, 239, "Default network highlighted", 10, INK)
+    s.footer("Graph edges are undirected; the later cross-lag calculation assigns signed flow to them.")
+    s.save("atlas-graph")
+
+
+def visual_cycle_feature_map() -> None:
+    s = SVG("The 23 saved cycle features", "A compact numerical map of all 23 saved directed-cycle features for the representative window: five flow summaries at each of three lags, five for their weighted pooled flow, and three temporal change summaries.")
+    s.header("06b / cycle feature vector", "15 lag + 5 pooled + 3 temporal = 23")
+    values = DATA["step_7_cycle_ridge"]["feature_values"]
+    columns = (("total norm", ACCENT), ("harmonic norm", NEG),
+               ("H share", NEG), ("G share", ACCENT), ("C share", POS))
+    for j, (label, color) in enumerate(columns):
+        x = 145 + j * 111
+        s.rect(x, 57, 10, 3, color)
+        s.text(x, 76, label, 10, INK, 600)
+    for i, label in enumerate(("lag 1", "lag 2", "lag 3", "pooled")):
+        y = 90 + i * 35
+        s.text(28, y + 18, label, 11, INK, 600)
+        for j in range(5):
+            x = 145 + j * 111
+            s.rect(x, y, 96, 29, PAPER, LINE)
+            value = values[i * 5 + j]
+            displayed = f"{value * 100:.1f}%" if j >= 2 else f"{value:.2f}"
+            s.text(x + 48, y + 19, displayed, 13, INK, 600, "middle")
+    s.line(28, 235, 716, 235)
+    s.text(28, 252, f"change in pooled harmonic state: norm {values[20]:.2f}   ·   cosine {values[21]:.2f}   ·   angle {values[22]:.2f} rad", 10, INK)
+    s.footer("Numbers are saved outputs for one held-out window; shares are fractions of total flow energy.")
+    s.save("cycle-features")
+
+
+def visual_cycle_calibration() -> None:
+    s = SVG("Cycle branch before and after calibration", "The same representative held-out window has saved raw and calibrated Wake, N1, N2, and N3 cycle-branch probabilities. The fitted cycle temperature is 0.888, which modestly sharpens these probabilities.")
+    p = SUPPLEMENT["probability_calibration"]
+    raw, calibrated = p["cycle_raw_probability"], p["cycle_calibrated_probability"]
+    temperature = p["cycle_temperature"]
+    s.header("06c / cycle calibration", "23 features → four probabilities")
+    s.text(28, 64, "CLASS-BALANCED LOGISTIC OUTPUT", 10, ACCENT, 700)
+    s.text(198, 93, "RAW · SAVED", 10, ACCENT, 700, "middle")
+    s.text(535, 93, f"CALIBRATED · T = {temperature:.3f}", 10, ACCENT, 700, "middle")
+    for i, (stage, before, after) in enumerate(zip(STAGES, raw, calibrated)):
+        y = 109 + i * 34
+        s.text(72, y + 12, stage, 11, INK, 600, "end")
+        s.rect(88, y, 164, 14, "#eff3f2")
+        s.rect(88, y, max(1, 164 * before), 14, STAGE_COLORS[i])
+        s.text(267, y + 12, f"{before * 100:.1f}%", 11, INK, 600, "end")
+        s.text(401, y + 12, stage, 11, INK, 600, "end")
+        s.rect(419, y, 164, 14, "#eff3f2")
+        s.rect(419, y, max(1, 164 * after), 14, STAGE_COLORS[i])
+        s.text(618, y + 12, f"{after * 100:.1f}%", 11, INK, 600, "end")
+    arrow(s, 287, 172, 366, 172, ACCENT, 2)
+    s.text(326, 151, "temperature", 10, MUTED, 400, "middle")
+    s.footer("This branch uses parcel-level directed flow; calibration precedes the final blend.")
+    s.save("cycle-calibration")
+
+
 def visual_07() -> None:
     s = SVG("Weighted blend then final calibration", "Saved tangent, cycle, and final four-stage probability vectors, with a derived pre-temperature weighted mixture for the same window. The cycle weight is 0.30.")
     alpha = DATA["step_8_blend_simplex"]["cycle_weight"]
@@ -379,48 +565,6 @@ def visual_07() -> None:
     s.save(7)
 
 
-def visual_08() -> None:
-    s = SVG("Four probabilities locate one simplex point", "Four saved final stage probabilities combine with the tetrahedron vertices to locate one held-out point. The probability bars and position represent the same vector.")
-    s.header("08 / simplex projection", "four probabilities → one 3D point")
-    probabilities = DATA["step_8_blend_simplex"]["final_probability"]
-    displayed = percentages(probabilities)
-    s.text(28, 61, "SAVED FINAL PROBABILITIES", 10, ACCENT, 700)
-    for i, (name, value) in enumerate(zip(STAGES, probabilities)):
-        y = 77 + i * 39
-        s.rect(29, y - 10, 10, 10, STAGE_COLORS[i])
-        s.text(48, y, name, 11, INK, 600)
-        s.rect(103, y - 8, 140, 13, "#eff3f2")
-        s.rect(103, y - 8, max(1, 140 * value), 13, STAGE_COLORS[i])
-        s.text(299, y + 2, f"{displayed[i]:.1f}%", 11, INK, 600, "end")
-    arrow(s, 319, 142, 363, 142, ACCENT, 2)
-    s.text(341, 119, "weighted", 10, MUTED, 400, "middle")
-    s.text(341, 173, "sum", 10, MUTED, 400, "middle")
-    vertices = DATA["step_8_blend_simplex"]["tetrahedron_vertices"]
-    point = DATA["step_8_blend_simplex"]["simplex_xyz"]
-    yaw, pitch = -0.45, 0.18
-    def projected(q):
-        x, y, z = q
-        x1 = x * math.cos(yaw) + z * math.sin(yaw)
-        z1 = -x * math.sin(yaw) + z * math.cos(yaw)
-        y1 = y * math.cos(pitch) - z1 * math.sin(pitch)
-        return (520 + x1 * 100, 143 - y1 * 90)
-    corners = [projected(v) for v in vertices]
-    for a in range(4):
-        for b in range(a + 1, 4):
-            s.line(*corners[a], *corners[b], LINE, 1.5)
-    for i, (corner, name) in enumerate(zip(corners, STAGES)):
-        s.circle(*corner, 5, STAGE_COLORS[i])
-        dx = 12 if corner[0] < 520 else -12
-        anchor = "start" if dx > 0 else "end"
-        s.text(corner[0] + dx, corner[1] + 4, name, 11, INK, 600, anchor)
-    pxy = projected(point)
-    s.circle(*pxy, 8, PAPER, INK, 2)
-    s.circle(*pxy, 3.5, ACCENT)
-    s.text(520, 242, "one held-out window", 11, MUTED, 400, "middle")
-    s.footer("Position represents all four probabilities; rotating the view changes no probability.")
-    s.save(8)
-
-
 def validate() -> None:
     assert DATA["stages"] == STAGES
     features = DATA["step_1_window"]["cortical_features"]
@@ -444,6 +588,8 @@ def validate() -> None:
                            (DATA["step_8_blend_simplex"]["final_probability"], p["final_probability"])):
         assert max(abs(a - b) for a, b in zip(source, target)) < 1e-5
     assert p["stage_order"] == STAGES
+    assert TOPOLOGY["privacy"]["participant_or_scan_data_included"] is False
+    assert TOPOLOGY["privacy"]["sleep_labels_or_probabilities_included"] is False
     assert SUPPLEMENT["privacy"] == {
         "participant_scan_time_or_label_fields_included": False,
         "raw_333_parcel_series_included": False,
@@ -454,6 +600,9 @@ def validate() -> None:
 if __name__ == "__main__":
     validate()
     for fn in (visual_01, visual_02, visual_03, visual_04,
-               visual_05, visual_06, visual_07, visual_08):
+               visual_05, visual_06, visual_07):
         fn()
-    print("Built eight sleep-method SVGs from the validated representative export.")
+    for fn in (visual_network_inventory, visual_shrinkage_spectrum, visual_atlas_graph,
+               visual_cycle_feature_map, visual_cycle_calibration):
+        fn()
+    print("Built twelve sleep-method SVGs from the validated representative export and atlas topology.")
