@@ -175,13 +175,13 @@ def visual_01() -> None:
 
 
 def visual_02() -> None:
-    s = SVG("Actual fold-fitted residual modes", "For the Default network, six numeric rows and a heatmap show the full 41 by 2 reconstructed fold-trained PCA loading matrix. Three reconstructed standardized held-out traces show the network mean and two residual scores across 30 frames.")
-    s.header("Figure 02.2 / fitted residual modes", "333 parcels → 13 means + 26 residual scores")
+    s = SVG("Default-network residual modes", "The Default community contains 41 of the Gordon atlas's 333 cortical parcels. Each of its 41 parcel rows has a loading on each of two fold-trained residual principal components, so the basis is 41 by 2. Six numeric rows and all 41 heatmap rows are shown. Three reconstructed standardized held-out traces show its network mean and two residual scores across 30 frames.")
+    s.header("Figure 02.2 / Default network", "41 of 333 atlas parcels → 2 residual modes")
     basis = SUPPLEMENT["network_basis"]
     assert basis["chosen_network"] == "Default" and basis["chosen_network_parcels"] == 41
     loadings = basis["top_two_loadings_in_atlas_parcel_order"]
     assert len(loadings) == 41 and all(len(row) == 2 for row in loadings)
-    s.text(28, 61, "DEFAULT · 6 OF 41 ROWS", 10, ACCENT, 700)
+    s.text(28, 61, "FIRST 6 OF 41 PARCELS", 10, ACCENT, 700)
     s.text(109, 82, "PC 1", 10, INK, 600, "end")
     s.text(166, 82, "PC 2", 10, INK, 600, "end")
     for i, row in enumerate(loadings[:6]):
@@ -191,7 +191,7 @@ def visual_02() -> None:
         s.text(166, y, f"{row[1]:+.2f}", 11, INK, 600, "end")
         s.line(28, y + 5, 168, y + 5, LINE, 0.6)
     s.line(183, 53, 183, 247)
-    s.text(205, 61, "FULL 41 × 2 BASIS", 10, ACCENT, 700)
+    s.text(205, 61, "41 PARCELS × 2 PCS", 10, ACCENT, 700)
     heatmap(s, loadings, 234, 75, 74, 159, max(abs(v) for row in loadings for v in row))
     s.text(271, 247, "PC 1   PC 2", 10, MUTED, 400, "middle")
     s.text(224, 86, "01", 10, MUTED, 400, "end")
@@ -206,7 +206,7 @@ def visual_02() -> None:
                     for u, row in enumerate(features)], color, 1.8)
     s.text(420, 248, "frame 1", 10)
     s.text(689, 248, "frame 30", 10, MUTED, 400, "end")
-    s.footer("Numeric rows and color map show the fitted basis; traces show standardized held-out outputs.")
+    s.footer("Basis rows are Default parcels; columns are two residual modes. Traces show held-out outputs.")
     s.save("02-02")
 
 
