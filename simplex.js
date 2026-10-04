@@ -24,6 +24,12 @@
   let cloud = [], examples = [], customSelected = null;
   let view = 'predicted', hasObserved = false, currentDescription = '';
 
+  function syncViewFromControls() {
+    const checked = labelView.querySelector('input[name="label-view"]:checked');
+    view = hasObserved && checked?.value === 'observed' ? 'observed' : 'predicted';
+    if (!hasObserved) labelView.querySelector('input[value="predicted"]').checked = true;
+  }
+
   function visibleStage(item) {
     return view === 'observed' ? item.observed : item.stage;
   }
@@ -237,6 +243,7 @@
       try {await loadObservedLabels(probabilityText);}
       catch (error) {labelIssue = true; console.warn('Sleep observed labels:', error);}
       makeExamples();
+      syncViewFromControls();
       updateViewText();
       if (labelIssue) status.textContent += ' The observed-stage view is unavailable because its data could not be verified.';
       show(examples[0].item,examples[0].description);
@@ -274,10 +281,16 @@
   });
   labelView.addEventListener('change', event => {
     if (event.target.name !== 'label-view' || !hasObserved) return;
-    view = event.target.value;
+    syncViewFromControls();
     filter.value = 'all';
     updateViewText();
     show(selected, currentDescription);
+  });
+  window.addEventListener('pageshow', () => {
+    if (!cloud.length) return;
+    syncViewFromControls();
+    updateViewText();
+    draw();
   });
   [['rotate-left',-.18,0],['rotate-right',.18,0],['rotate-up',0,.14],['rotate-down',0,-.14]].forEach(([id,dy,dp]) => {
     document.getElementById(id).addEventListener('click', () => {
