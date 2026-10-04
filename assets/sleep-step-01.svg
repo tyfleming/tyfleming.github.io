@@ -1,56 +1,129 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="740" height="300" viewBox="0 0 740 300" role="img" aria-labelledby="title desc">
-<title id="title">Causal fMRI window</title>
-<desc id="desc">Three reconstructed standardized network-mean traces from a 30-volume window. A motion mask shows all frames valid; the window ends at the prediction endpoint. Stage labels are not model inputs.</desc>
+<title id="title">Overlapping causal fMRI windows</title>
+<desc id="desc">A schematic 35-volume timeline shows two 30-volume windows at endpoints five volumes apart. Below it, three reconstructed standardized network means and a motion-validity strip show the current representative window. The endpoint sleep label is not an input.</desc>
 <rect width="740" height="300" fill="#ffffff"/>
 <text x="24.00" y="27.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">01 / CAUSAL WINDOW</text>
-<text x="716.00" y="27.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">30 volumes · 62.4 seconds</text>
+<text x="716.00" y="27.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">30 frames · 62.4 s · stride 5</text>
 <line x1="24.00" y1="39.00" x2="716.00" y2="39.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
-<text x="119.00" y="59.00" fill="#235969" font-size="10" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">PAST DATA ENTER THE MODEL</text>
-<line x1="119.00" y1="94.00" x2="628.00" y2="94.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
-<text x="105.00" y="98.00" fill="#5a6669" font-size="11" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">mean 01</text>
-<polyline points="119.00,98.65 136.55,98.77 154.10,99.47 171.66,98.94 189.21,95.00 206.76,89.00 224.31,83.66 241.86,79.12 259.41,77.08 276.97,79.06 294.52,82.75 312.07,88.46 329.62,94.67 347.17,96.50 364.72,97.52 382.28,99.40 399.83,98.35 417.38,95.03 434.93,90.11 452.48,85.26 470.03,85.03 487.59,90.20 505.14,96.86 522.69,99.13 540.24,94.82 557.79,89.34 575.34,86.41 592.90,84.15 610.45,82.97 628.00,86.95" fill="none" stroke="#235969" stroke-width="2"/>
-<line x1="119.00" y1="146.00" x2="628.00" y2="146.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
-<text x="105.00" y="150.00" fill="#5a6669" font-size="11" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">mean 07</text>
-<polyline points="119.00,146.01 136.55,151.40 154.10,154.39 171.66,155.17 189.21,155.47 206.76,155.60 224.31,155.67 241.86,156.26 259.41,156.47 276.97,155.88 294.52,154.07 312.07,149.34 329.62,143.90 347.17,139.82 364.72,138.53 382.28,140.27 399.83,139.54 417.38,133.98 434.93,129.73 452.48,129.37 470.03,129.20 487.59,127.63 505.14,128.58 522.69,135.70 540.24,145.94 557.79,154.36 575.34,158.34 592.90,159.40 610.45,158.24 628.00,154.02" fill="none" stroke="#ad673d" stroke-width="2"/>
-<line x1="119.00" y1="198.00" x2="628.00" y2="198.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
-<text x="105.00" y="202.00" fill="#5a6669" font-size="11" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">mean 13</text>
-<polyline points="119.00,185.27 136.55,190.04 154.10,197.73 171.66,206.47 189.21,209.92 206.76,207.98 224.31,207.54 241.86,209.33 259.41,209.71 276.97,210.61 294.52,212.25 312.07,206.61 329.62,196.78 347.17,193.37 364.72,192.78 382.28,189.33 399.83,187.60 417.38,189.56 434.93,190.88 452.48,192.17 470.03,196.26 487.59,201.14 505.14,203.09 522.69,200.17 540.24,195.54 557.79,194.42 575.34,196.04 592.90,197.19 610.45,199.18 628.00,201.85" fill="none" stroke="#315f82" stroke-width="2"/>
-<line x1="628.00" y1="66.00" x2="628.00" y2="226.00" stroke="#235969" stroke-width="1.4" opacity="1"/>
-<text x="641.00" y="84.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">endpoint t</text>
-<text x="641.00" y="104.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">predict here</text>
-<text x="105.00" y="245.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">FD &lt; 0.2</text>
-<rect x="119.00" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="135.97" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="152.93" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="169.90" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="186.87" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="203.83" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="220.80" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="237.77" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="254.73" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="271.70" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="288.67" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="305.63" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="322.60" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="339.57" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="356.53" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="373.50" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="390.47" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="407.43" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="424.40" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="441.37" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="458.33" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="475.30" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="492.27" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="509.23" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="526.20" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="543.17" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="560.13" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="577.10" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="594.07" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<rect x="611.03" y="230.00" width="15.97" height="8.00" fill="#235969"/>
-<text x="119.00" y="255.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">t−29</text>
-<text x="628.00" y="255.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">t</text>
+<text x="28.00" y="61.00" fill="#235969" font-size="10" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">WINDOW SELECTION · SCHEMATIC</text>
+<text x="163.00" y="91.00" fill="#172126" font-size="10" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">prior t−5</text>
+<text x="163.00" y="112.00" fill="#172126" font-size="10" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">current t</text>
+<rect x="182.00" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="182.00" y="99.00" width="11.47" height="9.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<rect x="194.97" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="194.97" y="99.00" width="11.47" height="9.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<rect x="207.94" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="207.94" y="99.00" width="11.47" height="9.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<rect x="220.91" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="220.91" y="99.00" width="11.47" height="9.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<rect x="233.89" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="233.89" y="99.00" width="11.47" height="9.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<rect x="246.86" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="246.86" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="259.83" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="259.83" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="272.80" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="272.80" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="285.77" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="285.77" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="298.74" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="298.74" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="311.71" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="311.71" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="324.69" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="324.69" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="337.66" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="337.66" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="350.63" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="350.63" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="363.60" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="363.60" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="376.57" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="376.57" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="389.54" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="389.54" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="402.51" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="402.51" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="415.49" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="415.49" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="428.46" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="428.46" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="441.43" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="441.43" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="454.40" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="454.40" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="467.37" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="467.37" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="480.34" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="480.34" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="493.31" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="493.31" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="506.29" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="506.29" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="519.26" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="519.26" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="532.23" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="532.23" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="545.20" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="545.20" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="558.17" y="78.00" width="11.47" height="9.00" fill="#e5eae8" stroke="#d5dcda" stroke-width="1"/>
+<rect x="558.17" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="571.14" y="78.00" width="11.47" height="9.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<rect x="571.14" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="584.11" y="78.00" width="11.47" height="9.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<rect x="584.11" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="597.09" y="78.00" width="11.47" height="9.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<rect x="597.09" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="610.06" y="78.00" width="11.47" height="9.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<rect x="610.06" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<rect x="623.03" y="78.00" width="11.47" height="9.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
+<rect x="623.03" y="99.00" width="11.47" height="9.00" fill="#235969" stroke="#d5dcda" stroke-width="1"/>
+<text x="246.86" y="128.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">25 overlapping frames</text>
+<text x="656.00" y="109.00" fill="#235969" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">endpoint</text>
+<line x1="28.00" y1="137.00" x2="716.00" y2="137.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
+<text x="28.00" y="153.00" fill="#235969" font-size="10" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">CURRENT WINDOW · RECONSTRUCTED SIGNALS</text>
+<line x1="137.00" y1="175.00" x2="636.00" y2="175.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
+<text x="125.00" y="179.00" fill="#5a6669" font-size="11" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">mean 01</text>
+<polyline points="137.00,178.36 154.21,178.45 171.41,178.95 188.62,178.57 205.83,175.72 223.03,171.39 240.24,167.53 257.45,164.26 274.66,162.78 291.86,164.21 309.07,166.88 326.28,171.00 343.48,175.49 360.69,176.81 377.90,177.54 395.10,178.90 412.31,178.14 429.52,175.74 446.72,172.19 463.93,168.69 481.14,168.52 498.34,172.25 515.55,177.06 532.76,178.71 549.97,175.59 567.17,171.64 584.38,169.52 601.59,167.89 618.79,167.03 636.00,169.91" fill="none" stroke="#235969" stroke-width="1.8"/>
+<line x1="137.00" y1="207.00" x2="636.00" y2="207.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
+<text x="125.00" y="211.00" fill="#5a6669" font-size="11" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">mean 07</text>
+<polyline points="137.00,207.01 154.21,210.90 171.41,213.06 188.62,213.62 205.83,213.84 223.03,213.93 240.24,213.98 257.45,214.41 274.66,214.56 291.86,214.14 309.07,212.83 326.28,209.41 343.48,205.49 360.69,202.54 377.90,201.61 395.10,202.86 412.31,202.34 429.52,198.32 446.72,195.25 463.93,194.99 481.14,194.87 498.34,193.73 515.55,194.42 532.76,199.56 549.97,206.96 567.17,213.04 584.38,215.91 601.59,216.67 618.79,215.84 636.00,212.79" fill="none" stroke="#ad673d" stroke-width="1.8"/>
+<line x1="137.00" y1="239.00" x2="636.00" y2="239.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
+<text x="125.00" y="243.00" fill="#5a6669" font-size="11" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">mean 13</text>
+<polyline points="137.00,229.81 154.21,233.25 171.41,238.80 188.62,245.12 205.83,247.61 223.03,246.21 240.24,245.89 257.45,247.18 274.66,247.46 291.86,248.11 309.07,249.29 326.28,245.22 343.48,238.12 360.69,235.66 377.90,235.23 395.10,232.74 412.31,231.49 429.52,232.91 446.72,233.86 463.93,234.79 481.14,237.75 498.34,241.27 515.55,242.67 532.76,240.56 549.97,237.22 567.17,236.42 584.38,237.59 601.59,238.42 618.79,239.86 636.00,241.78" fill="none" stroke="#315f82" stroke-width="1.8"/>
+<line x1="636.00" y1="158.00" x2="636.00" y2="247.00" stroke="#235969" stroke-width="1.2" opacity="1"/>
+<text x="651.00" y="181.00" fill="#235969" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">predict</text>
+<text x="125.00" y="254.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">FD valid</text>
+<rect x="137.00" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="153.63" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="170.27" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="186.90" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="203.53" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="220.17" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="236.80" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="253.43" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="270.07" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="286.70" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="303.33" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="319.97" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="336.60" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="353.23" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="369.87" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="386.50" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="403.13" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="419.77" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="436.40" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="453.03" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="469.67" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="486.30" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="502.93" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="519.57" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="536.20" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="552.83" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="569.47" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="586.10" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="602.73" y="248.00" width="15.63" height="6.00" fill="#235969"/>
+<rect x="619.37" y="248.00" width="15.63" height="6.00" fill="#235969"/>
 <line x1="24.00" y1="260.00" x2="716.00" y2="260.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
-<text x="24.00" y="283.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Thirty frames form one causal window; the endpoint stage is a training/evaluation label.</text>
+<text x="24.00" y="283.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">The endpoint label scores the prediction; it is never a model input.</text>
 </svg>

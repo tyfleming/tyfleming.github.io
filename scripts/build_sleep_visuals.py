@@ -19,6 +19,7 @@ if not SOURCE.exists():
         "is intentionally excluded from the public repository."
     )
 DATA = json.loads(SOURCE.read_text())
+SUPPLEMENT = json.loads((ROOT / "assets/sleep-decoding-method-supplement.json").read_text())
 OUT = ROOT / "assets"
 
 INK = "#172126"
@@ -133,233 +134,218 @@ def percentages(values) -> list[float]:
     return [value / 10 for value in tenths]
 
 
-def sample_correlation(rows, valid):
-    """Descriptive sample correlation before shrinkage, from reconstructed features."""
-    selected = [row for row, keep in zip(rows, valid) if keep]
-    n, d = len(selected), len(selected[0])
-    means = [sum(row[j] for row in selected) / n for j in range(d)]
-    centered = [[row[j] - means[j] for j in range(d)] for row in selected]
-    variance = [sum(row[j] ** 2 for row in centered) for j in range(d)]
-    return [
-        [
-            sum(row[i] * row[j] for row in centered) /
-            math.sqrt(variance[i] * variance[j]) if variance[i] * variance[j] > 0 else 0
-            for j in range(d)
-        ]
-        for i in range(d)
-    ]
-
-
 def visual_01() -> None:
-    s = SVG("Causal fMRI window", "Three reconstructed standardized network-mean traces from a 30-volume window. A motion mask shows all frames valid; the window ends at the prediction endpoint. Stage labels are not model inputs.")
-    s.header("01 / causal window", "30 volumes · 62.4 seconds")
+    s = SVG("Overlapping causal fMRI windows", "A schematic 35-volume timeline shows two 30-volume windows at endpoints five volumes apart. Below it, three reconstructed standardized network means and a motion-validity strip show the current representative window. The endpoint sleep label is not an input.")
+    s.header("01 / causal window", "30 frames · 62.4 s · stride 5")
+    s.text(28, 61, "WINDOW SELECTION · SCHEMATIC", 10, ACCENT, 700)
+    x0, x1 = 182, 636
+    dx = (x1 - x0) / 35
+    s.text(163, 91, "prior t−5", 10, INK, 600, "end")
+    s.text(163, 112, "current t", 10, INK, 600, "end")
+    for i in range(35):
+        s.rect(x0 + i * dx, 78, dx - 1.5, 9, "#e5eae8" if i < 30 else PAPER, LINE)
+        s.rect(x0 + i * dx, 99, dx - 1.5, 9, ACCENT if i >= 5 else PAPER, LINE)
+    s.text(x0 + 5 * dx, 128, "25 overlapping frames", 10, MUTED)
+    s.text(656, 109, "endpoint", 10, ACCENT, 600)
+    s.line(28, 137, 716, 137)
+
     features = DATA["step_1_window"]["cortical_features"]
     valid = DATA["step_1_window"]["motion_valid"]
-    x0, x1 = 119, 628
-    s.text(x0, 59, "PAST DATA ENTER THE MODEL", 10, ACCENT, 700)
-    for center, index, color in [(94, 0, ACCENT), (146, 6, POS), (198, 12, NEG)]:
-        s.line(x0, center, x1, center, LINE)
-        s.text(105, center + 4, f"mean {index + 1:02d}", 11, MUTED, 600, "end")
+    s.text(28, 153, "CURRENT WINDOW · RECONSTRUCTED SIGNALS", 10, ACCENT, 700)
+    xx0, xx1 = 137, 636
+    for center, index, color in ((175, 0, ACCENT), (207, 6, POS), (239, 12, NEG)):
+        s.line(xx0, center, xx1, center, LINE)
+        s.text(125, center + 4, f"mean {index + 1:02d}", 11, MUTED, 600, "end")
         pts = []
-        for t, row in enumerate(features):
-            x = x0 + t * (x1 - x0) / 29
-            y = center - max(-3, min(3, row[index])) * 9
+        for frame, row in enumerate(features):
+            x = xx0 + frame * (xx1 - xx0) / 29
+            y = center - max(-3, min(3, row[index])) * 6.5
             pts.append((x, y))
-        s.polyline(pts, color, 2)
-    s.line(x1, 66, x1, 226, ACCENT, 1.4)
-    s.text(641, 84, "endpoint t", 11, ACCENT, 700)
-    s.text(641, 104, "predict here", 10, MUTED)
-    s.text(105, 245, "FD < 0.2", 10, MUTED, 400, "end")
-    for t, passed in enumerate(valid):
-        s.rect(x0 + t * (x1 - x0) / 30, 230, (x1 - x0) / 30 - 1, 8,
+        s.polyline(pts, color, 1.8)
+    s.line(xx1, 158, xx1, 247, ACCENT, 1.2)
+    s.text(651, 181, "predict", 10, ACCENT, 600)
+    s.text(125, 254, "FD valid", 10, MUTED, 400, "end")
+    for frame, passed in enumerate(valid):
+        s.rect(xx0 + frame * (xx1 - xx0) / 30, 248, (xx1 - xx0) / 30 - 1, 6,
                ACCENT if passed else POS)
-    s.text(x0, 255, "t−29", 10)
-    s.text(x1, 255, "t", 10, MUTED, 400, "end")
-    s.footer("Thirty frames form one causal window; the endpoint stage is a training/evaluation label.")
+    s.footer("The endpoint label scores the prediction; it is never a model input.")
     s.save(1)
 
 
 def visual_02() -> None:
-    s = SVG("From parcels to network signals", "A schematic of parcel averaging, within-network mean removal, and two fold-fitted PCA residual scores per network, beside the actual reconstructed 39-by-30 standardized feature heatmap.")
+    s = SVG("Fold-fitted residual modes", "For the Default network, 41 parcels are mean-centered at each volume, projected onto two reconstructed fold-trained PCA loading vectors, and shown as three reconstructed standardized traces: network mean and two residual scores.")
     s.header("02 / cortical signals", "333 parcels → 13 means + 26 residual scores")
-    s.text(28, 62, "ONE NETWORK · SCHEMATIC", 10, ACCENT, 700)
-    for x, color in zip([42, 64, 86, 108, 130, 152], [NEG, ACCENT, POS, NEG, POS, ACCENT]):
-        s.circle(x, 87, 7, color)
-    s.text(185, 91, "parcel values", 11, MUTED)
-    s.line(106, 99, 106, 116, ACCENT, 1.5)
-    arrow(s, 106, 116, 106, 128, ACCENT)
-    s.text(28, 146, "network mean", 12, INK, 600)
-    s.text(157, 146, "subtract mean → residuals", 11, INK)
-    s.rect(28, 159, 104, 11, "#edf2f1")
-    s.rect(28, 159, 65, 11, ACCENT)
-    s.rect(157, 159, 104, 11, "#edf2f1")
-    s.rect(157, 159, 37, 11, NEG)
-    s.rect(215, 159, 46, 11, POS)
-    s.text(28, 194, "fold-fitted residual PCA", 11, MUTED)
-    arrow(s, 118, 201, 118, 220, ACCENT)
-    s.text(28, 244, "1 mean + 2 scores / volume", 12, INK, 600)
-    s.line(314, 53, 314, 249)
-    s.text(337, 62, "STANDARDIZED WINDOW · RECONSTRUCTED", 10, ACCENT, 700)
-    m = DATA["step_1_window"]["cortical_features"]
-    transposed = [[row[j] for row in m] for j in range(39)]
-    x, y, w, h = 458, 72, 174, 174
-    heatmap(s, transposed, x, y, w, h, 3)
-    s.line(x, y + h * 13 / 39, x + w, y + h * 13 / 39, INK, 1.3)
-    s.text(446, 101, "13 means", 11, INK, 600, "end")
-    s.text(446, 174, "26 PCA", 11, INK, 600, "end")
-    s.text(x, 256, "frame 1", 10)
-    s.text(x + w, 256, "frame 30", 10, MUTED, 400, "end")
-    s.footer("Repeat this operation across 13 networks, then standardize all 39 signals on training data.")
+    basis = SUPPLEMENT["network_basis"]
+    assert basis["chosen_network"] == "Default" and basis["chosen_network_parcels"] == 41
+    s.text(28, 61, "DEFAULT NETWORK · 41 PARCELS", 10, ACCENT, 700)
+    s.text(28, 86, "per-volume", 11, INK, 600)
+    s.text(28, 107, "parcel mean", 11, INK)
+    s.text(28, 135, "subtract mean", 11, INK)
+    s.text(28, 163, "project residuals", 11, INK)
+    for y in (114, 142):
+        arrow(s, 91, y, 91, y + 10)
+    s.text(28, 204, "Output per volume", 11, MUTED)
+    s.text(28, 224, "1 mean + 2 PC scores", 12, INK, 600)
+    s.line(183, 53, 183, 247)
+    s.text(205, 61, "FOLD PCA BASIS", 10, ACCENT, 700)
+    loadings = basis["top_two_loadings_in_atlas_parcel_order"]
+    assert len(loadings) == 41 and all(len(row) == 2 for row in loadings)
+    heatmap(s, loadings, 234, 75, 74, 159, max(abs(v) for row in loadings for v in row))
+    s.text(271, 247, "PC 1   PC 2", 10, MUTED, 400, "middle")
+    s.text(224, 86, "01", 10, MUTED, 400, "end")
+    s.text(224, 233, "41", 10, MUTED, 400, "end")
+    s.line(338, 53, 338, 247)
+    s.text(359, 61, "HELD-OUT OUTPUT · RECONSTRUCTED", 10, ACCENT, 700)
+    features = DATA["step_1_window"]["cortical_features"]
+    for center, index, name, color in ((97, 3, "mean", ACCENT), (158, 19, "PC 1", NEG), (219, 20, "PC 2", POS)):
+        s.text(405, center + 4, name, 11, INK, 600, "end")
+        s.line(420, center, 689, center, LINE)
+        s.polyline([(420 + 269 * u / 29, center - max(-3, min(3, row[index])) * 10)
+                    for u, row in enumerate(features)], color, 1.8)
+    s.text(420, 248, "frame 1", 10)
+    s.text(689, 248, "frame 30", 10, MUTED, 400, "end")
+    s.footer("The loading colors encode sign and magnitude; the three traces are standardized held-out outputs.")
     s.save(2)
 
 
 def visual_03() -> None:
-    s = SVG("From sample correlation to stable connectivity", "Side-by-side sample correlation calculated from valid rows of the reconstructed window and the reconstructed shrinkage positive-definite correlation matrix.")
+    s = SVG("Shrinkage connectivity from a short window", "Six selected features from the full 39-feature operation show sample covariance, reconstructed Ledoit-Wolf shrinkage covariance, and final correlation. The saved shrinkage fraction for this window is 0.1511; eigenvalue flooring made no change.")
     s.header("03 / connectivity", "24–30 valid rows · 39 features")
     features = DATA["step_1_window"]["cortical_features"]
     valid = DATA["step_1_window"]["motion_valid"]
-    naive = sample_correlation(features, valid)
-    stable = DATA["step_2_spd"]["current_correlation"]
-    heatmap(s, naive, 67, 73, 170, 170, 1)
-    heatmap(s, stable, 372, 73, 170, 170, 1)
-    s.text(152, 61, "sample correlation", 12, INK, 600, "middle")
-    s.text(457, 61, "stabilized correlation", 12, INK, 600, "middle")
-    arrow(s, 256, 150, 350, 150, ACCENT, 2)
-    s.text(303, 129, "shrink +", 11, ACCENT, 600, "middle")
-    s.text(303, 181, "normalize", 11, ACCENT, 600, "middle")
-    s.text(562, 88, "symmetric", 11, INK, 600)
-    s.text(562, 114, "diagonal = 1", 11, INK)
-    s.text(562, 140, "positive definite", 11, INK)
-    for i in range(36):
-        s.rect(562 + i * 4, 185, 4.1, 9, diverge(-1 + i * 2 / 35, 1))
-    s.text(562, 210, "−1", 10)
-    s.text(634, 210, "0", 10, MUTED, 400, "middle")
-    s.text(706, 210, "+1", 10, MUTED, 400, "end")
-    s.footer("The left matrix is descriptive; the right is the positive-definite state used by the decoder.")
+    selected = [row for row, ok in zip(features, valid) if ok]
+    assert len(selected) == SUPPLEMENT["window_shrinkage_connectivity"]["valid_feature_rows"]
+    indices = SUPPLEMENT["window_shrinkage_connectivity"]["subset_feature_indices"]
+    means = [sum(row[j] for row in selected) / len(selected) for j in indices]
+    sample = [[sum((row[i] - means[a]) * (row[j] - means[b]) for row in selected) / len(selected)
+               for b, j in enumerate(indices)] for a, i in enumerate(indices)]
+    w = SUPPLEMENT["window_shrinkage_connectivity"]
+    shrink = w["ledoit_wolf_covariance_subset"]
+    corr = w["stabilized_correlation_subset"]
+    limit = max(abs(v) for matrix in (sample, shrink) for row in matrix for v in row)
+    for x, matrix, label, sublabel, scale in (
+        (38, sample, "sample covariance", "S · 30 valid frames", limit),
+        (282, shrink, "shrinkage covariance", "(1−λ)S + λμI", limit),
+        (526, corr, "correlation state", "D⁻¹/² Σ D⁻¹/²", 1),
+    ):
+        s.text(x + 86, 67, label, 12, INK, 600, "middle")
+        heatmap(s, matrix, x + 18, 82, 136, 136, scale)
+        s.text(x + 86, 239, sublabel, 11, MUTED, 400, "middle")
+    arrow(s, 208, 151, 270, 151)
+    arrow(s, 452, 151, 514, 151)
+    s.text(239, 133, f"λ={w['ledoit_wolf_shrinkage']:.3f}", 10, ACCENT, 600, "middle")
+    s.text(483, 133, "normalize", 10, ACCENT, 600, "middle")
+    s.footer("6 selected channels from full 39 × 39 matrices; eigenvalue flooring did not alter this window.")
     s.save(3)
 
 
 def visual_04() -> None:
-    s = SVG("Three causal states to 64 tangent features", "Three reconstructed causal-lag correlation matrices flow through a training-fitted tangent reference, robust clipping, and PCA. The reconstructed current tangent matrix and 64 whitened scores are shown.")
+    s = SVG("Lag-specific tangent references", "At each of the current, 25-volume, and 50-volume lags, a reconstructed correlation is compared with its reconstructed fold-trained reference to produce a tangent matrix. Six-by-six excerpts are shown from the full 39-by-39 matrices. All three tangents become 2340 coordinates, clipped and reduced to 64 whitened PCA scores.")
     s.header("04 / tangent representation", "3 × 780 → 2,340 → 64")
+    records = SUPPLEMENT["lag_geometry"]["lag_records"]
+    indices = SUPPLEMENT["lag_geometry"]["subset_feature_indices"]
     matrices = DATA["step_3_causal_lags"]["correlations"]
-    tangent = DATA["step_4_tangent"]["current_tangent"]
-    for x, matrix, label in zip((28, 144, 260), matrices, ("now", "−52 s", "−104 s")):
-        heatmap(s, matrix, x, 79, 90, 90, 0.9)
-        s.text(x + 45, 66, label, 11, INK, 600, "middle")
-        s.text(x + 45, 185, "39 × 39", 10, MUTED, 400, "middle")
-    arrow(s, 359, 124, 390, 124)
-    heatmap(s, tangent, 402, 79, 90, 90, 0.7)
-    s.text(447, 66, "tangent example", 11, INK, 600, "middle")
-    s.text(447, 185, "current state", 10, MUTED, 400, "middle")
-    arrow(s, 505, 124, 538, 124)
+    xs = (94, 263, 432)
+    for col, (x, rec, matrix) in enumerate(zip(xs, records, matrices)):
+        s.text(x + 47, 61, ("now", "−25 volumes", "−50 volumes")[col], 11, INK, 600, "middle")
+        snippets = ([[matrix[i][j] for j in indices] for i in indices],
+                    rec["reference_subset"], rec["tangent_subset"])
+        for y, subset, limit in zip((78, 134, 190), snippets, (1, 1, 1)):
+            heatmap(s, subset, x + 11, y, 47, 47, limit)
+        s.text(x + 69, 105, "state", 10, MUTED)
+        s.text(x + 69, 161, "training", 10, MUTED)
+        s.text(x + 69, 217, "log map", 10, MUTED)
+    for y, label in ((106, "C state"), (162, "G reference"), (218, "T tangent")):
+        s.text(24, y, label, 10, ACCENT, 600)
+    s.line(580, 53, 580, 248)
+    s.text(648, 61, "PCA OUTPUT", 10, ACCENT, 700, "middle")
     scores = DATA["step_5_pca"]["whitened_score"]
     for i, value in enumerate(scores):
         col, row = i % 8, i // 8
-        s.rect(552 + col * 17, 75 + row * 12, 15, 10, diverge(value, 2.5))
-    s.rect(552, 75, 8 * 17, 8 * 12, "none", LINE)
-    s.text(620, 66, "PCA scores", 11, INK, 600, "middle")
-    s.text(620, 185, "64 whitened", 10, MUTED, 400, "middle")
-    s.line(28, 207, 716, 207)
-    s.text(28, 232, "each lag: log relative to training reference", 10, ACCENT, 600)
-    s.text(310, 232, "weighted svec + clipping", 10, ACCENT, 600)
-    s.text(544, 232, "training PCA", 10, ACCENT, 600)
-    s.footer("All three states enter the feature vector; the tangent heatmap depicts the current state only.")
+        s.rect(592 + col * 14, 84 + row * 15, 12, 13, diverge(value, 2.5))
+    s.rect(592, 84, 8 * 14, 8 * 15, "none", LINE)
+    s.text(648, 226, "64 whitened scores", 10, MUTED, 400, "middle")
+    s.footer("Each C, G, T image shows the same 6 channels from a full 39 × 39 matrix; T uses all 39.")
     s.save(4)
 
 
 def visual_05() -> None:
-    s = SVG("Tangent scores to calibrated stage probabilities", "The reconstructed 64-component whitened PCA vector enters a schematic shrinkage-LDA score stage and temperature calibration. Four bars show saved held-out tangent-branch probabilities.")
+    s = SVG("Tangent decoder and temperature calibration", "The reconstructed 64 whitened tangent scores enter shrinkage LDA. Saved uncalibrated and calibrated stage probabilities are compared directly. The fitted tangent temperature is 2.114, softening this representative prediction.")
     s.header("05 / tangent decoder", "64 features → four probabilities")
+    p = SUPPLEMENT["probability_calibration"]
     scores = DATA["step_5_pca"]["whitened_score"]
-    s.text(94, 65, "64 WHITENED SCORES", 10, ACCENT, 700, "middle")
+    s.text(93, 62, "64 PCA SCORES", 10, ACCENT, 700, "middle")
     for i, value in enumerate(scores):
         col, row = i % 8, i // 8
-        s.rect(37 + col * 14, 82 + row * 13, 12, 11, diverge(value, 2.5))
-    s.rect(37, 82, 8 * 14, 8 * 13, "none", LINE)
-    arrow(s, 173, 136, 213, 136)
-    s.text(278, 88, "SHRINKAGE LDA", 10, ACCENT, 700, "middle")
+        s.rect(37 + col * 14, 89 + row * 13, 12, 11, diverge(value, 2.5))
+    s.rect(37, 89, 8 * 14, 8 * 13, "none", LINE)
+    s.text(93, 222, "reconstructed", 10, MUTED, 400, "middle")
+    arrow(s, 162, 143, 197, 143)
+    s.text(244, 121, "SHRINKAGE", 10, ACCENT, 700, "middle")
+    s.text(244, 143, "LDA", 17, INK, 600, "middle")
+    s.text(244, 165, "equal priors", 10, MUTED, 400, "middle")
+    arrow(s, 288, 143, 323, 143)
+    s.line(458, 54, 458, 246)
+    s.text(351, 62, "RAW · SAVED", 10, ACCENT, 700)
+    s.text(478, 62, f"CALIBRATED · T = {p['tangent_temperature']:.3f}", 10, ACCENT, 700)
     for i, name in enumerate(STAGES):
-        s.rect(218, 101 + i * 30, 119, 22, PAPER, LINE)
-        s.text(278, 116 + i * 30, "score " + name, 11, INK, 600, "middle")
-    arrow(s, 351, 136, 392, 136)
-    s.text(366, 113, "softmax", 10, MUTED, 400, "middle")
-    s.text(366, 169, "temperature", 10, MUTED, 400, "middle")
-    values = DATA["step_6_tangent_lda"]["probability"]
-    displayed = percentages(values)
-    s.text(535, 65, "SAVED BRANCH OUTPUT", 10, ACCENT, 700, "middle")
-    for i, (name, value) in enumerate(zip(STAGES, values)):
-        y = 83 + i * 38
-        s.text(424, y + 11, name, 11, INK, 600)
-        s.rect(472, y, 173, 14, "#eff3f2")
-        s.rect(472, y, max(1, 173 * value), 14, STAGE_COLORS[i])
-        s.text(690, y + 12, f"{displayed[i]:.1f}%", 11, INK, 600, "end")
-    s.footer("The four probabilities sum to one; their maximum gives the tangent branch's stage.")
+        y = 83 + i * 40
+        raw = p["tangent_raw_probability"][i]
+        calibrated = p["tangent_calibrated_probability"][i]
+        s.text(339, y + 13, name, 11, INK, 600)
+        s.rect(375, y + 2, 57, 13, "#eff3f2")
+        s.rect(375, y + 2, max(1, 57 * raw), 13, STAGE_COLORS[i])
+        raw_label = "<0.1%" if 0 < raw < 0.0005 else f"{raw * 100:.1f}%"
+        s.text(438, y + 30, raw_label, 10, MUTED, 400, "end")
+        s.text(485, y + 13, name, 11, INK, 600)
+        s.rect(521, y + 2, 129, 13, "#eff3f2")
+        s.rect(521, y + 2, max(1, 129 * calibrated), 13, STAGE_COLORS[i])
+        s.text(697, y + 14, f"{calibrated * 100:.1f}%", 11, INK, 600, "end")
+    s.footer("Temperature softens this window's LDA output; both probability columns are saved model outputs.")
     s.save(5)
 
 
-def graph_pattern(s: SVG, kind: str, x: int) -> None:
-    """Small labeled topology examples; no atlas coordinates are implied."""
-    if kind == "gradient":
-        for xx in (x, x + 28, x + 56):
-            s.circle(xx, 170, 3.5, PAPER, INK, 1)
-        arrow(s, x + 5, 170, x + 22, 170, ACCENT, 1.7)
-        arrow(s, x + 34, 170, x + 51, 170, ACCENT, 1.7)
-    elif kind == "curl":
-        s.raw(f'<polygon points="{x+28},146 {x},190 {x+56},190" fill="#eff3f2" stroke="{LINE}"/>')
-        arrow(s, x + 31, 152, x + 50, 183, POS, 1.7)
-        arrow(s, x + 48, 190, x + 8, 190, POS, 1.7)
-        arrow(s, x + 6, 183, x + 25, 152, POS, 1.7)
-        for xx, yy in ((x + 28, 146), (x, 190), (x + 56, 190)):
-            s.circle(xx, yy, 3.5, PAPER, INK, 1)
-    else:
-        s.raw(f'<polygon points="{x},148 {x+55},148 {x+55},195 {x},195" fill="none" stroke="{LINE}"/>')
-        for a, b, c, d in ((x+6,148,x+48,148),(x+55,154,x+55,189),
-                           (x+48,195,x+6,195),(x,189,x,154)):
-            arrow(s, a, b, c, d, NEG, 1.7)
-        for xx, yy in ((x,148),(x+55,148),(x+55,195),(x,195)):
-            s.circle(xx, yy, 3.5, PAPER, INK, 1)
-
-
 def visual_06() -> None:
-    s = SVG("Lagged parcel flows and cycle features", "At left, schematic lagged parcel pairing and graph Hodge flow patterns. At right, saved 23-feature energy profile for one held-out window. The graph sketches do not show atlas locations.")
-    s.header("06 / directed-cycle branch", "original 333 parcels · 23 features")
-    s.text(28, 61, "LAGGED PARCEL PAIR · SCHEMATIC", 10, ACCENT, 700)
-    s.text(36, 89, "parcel i", 11, INK, 600)
-    s.text(36, 113, "parcel j", 11, INK, 600)
-    for y, color in ((85, NEG), (109, POS)):
-        s.line(119, y, 270, y, LINE)
-        pts = [(119 + i * 19, y - (7 if i % 3 == 0 else -5 if i % 3 == 1 else 1))
-               for i in range(9)]
-        s.polyline(pts, color, 1.6)
-    arrow(s, 145, 83, 177, 105, ACCENT)
-    s.text(211, 131, "i→j − j→i · τ = 1, 2, 3", 10, MUTED, 400, "middle")
-    s.line(28, 139, 324, 139)
-    for kind, x, name in (("gradient", 39, "gradient"), ("curl", 142, "curl"), ("harmonic", 245, "harmonic")):
-        graph_pattern(s, kind, x)
-        s.text(x + 28, 221, name, 11, INK, 600, "middle")
-    s.text(28, 247, "source → sink    ·    filled face    ·    unfilled loop", 10, MUTED)
-    s.line(341, 52, 341, 248)
+    s = SVG("Lagged edge flow and Hodge energy", "At left, schematic forward and reverse cross-lag parcel interactions define one antisymmetric edge flow. At right, saved harmonic, gradient, and curl energy fractions from the representative window are shown for three lags and their pooled flow, followed by the three saved temporal change features.")
+    s.header("06 / directed-cycle branch", "333 parcel signals · 23 energy-family features")
+    s.text(28, 62, "ONE EDGE · SCHEMATIC CROSS-LAG PAIRS", 10, ACCENT, 700)
+    for y, left, right, color, label in (
+        (101, "i at u", "j at u + τ", POS, "forward"),
+        (151, "j at u", "i at u + τ", NEG, "reverse"),
+    ):
+        s.circle(47, y - 4, 5, PAPER, color, 2)
+        s.text(60, y, left, 11, INK, 600)
+        arrow(s, 116, y - 4, 213, y - 4, color, 2)
+        s.circle(224, y - 4, 5, PAPER, color, 2)
+        s.text(237, y, right, 11, INK, 600)
+        s.text(169, y - 15, label, 10, MUTED, 400, "middle")
+    s.line(28, 173, 324, 173)
+    s.text(28, 198, "edge flow = forward − reverse", 12, INK, 600)
+    s.text(28, 221, "τ = 1, 2, 3 volumes; valid pairs only", 10, MUTED)
+    s.text(28, 244, "Then project flow onto H, G, and C spaces.", 10, MUTED)
+    s.line(341, 52, 341, 250)
+
     values = DATA["step_7_cycle_ridge"]["feature_values"]
-    s.text(362, 61, "SAVED ENERGY FEATURE PROFILE", 10, ACCENT, 700)
-    names = ["flow", "harmonic", "H share", "G share", "C share"]
-    for col, name in enumerate(names):
-        x = 395 + col * 62
-        s.text(x, 83, name, 10, INK, 600)
-        col_values = [values[row * 5 + col] for row in range(4)]
-        max_value = max(col_values)
-        for row, val in enumerate(col_values):
-            y = 102 + row * 27
-            s.rect(x, y, 49, 8, "#eff3f2")
-            s.rect(x, y, 49 * val / max_value, 8, ACCENT)
+    s.text(362, 62, "HODGE ENERGY SHARES · SAVED", 10, ACCENT, 700)
+    components = (("H harmonic", NEG), ("G gradient", ACCENT), ("C curl", POS))
+    for i, (name, color) in enumerate(components):
+        x = 362 + i * 117
+        s.rect(x, 76, 9, 9, color)
+        s.text(x + 15, 84, name, 10, INK, 500)
     for row, name in enumerate(("lag 1", "lag 2", "lag 3", "pooled")):
-        s.text(386, 109 + row * 27, name, 10, MUTED, 400, "end")
-    s.line(362, 205, 715, 205)
-    s.text(362, 224, f"ΔH norm {values[20]:.2f}", 10, INK)
-    s.text(479, 224, f"cosine {values[21]:.2f}", 10, INK)
-    s.text(586, 224, f"angle {values[22]:.2f} rad", 10, INK)
-    s.text(362, 247, "Bars scaled within each feature column.", 10)
-    s.footer("Five summaries at each lag + five pooled + three changes = 23 model inputs.")
+        y = 107 + row * 31
+        s.text(406, y + 11, name, 11, INK, 600, "end")
+        fractions = values[row * 5 + 2:row * 5 + 5]
+        total = sum(fractions)
+        cursor = 422
+        for fraction, (_, color) in zip(fractions, components):
+            width = 258 * fraction / total
+            s.rect(cursor, y, width, 15, color)
+            cursor += width
+        s.text(702, y + 11, "100%", 10, MUTED)
+    s.line(362, 231, 716, 231)
+    s.text(362, 249, f"Δ norm {values[20]:.2f}   ·   cosine {values[21]:.2f}   ·   angle {values[22]:.2f} rad", 10, INK)
+    s.footer("Five flow summaries at each lag + five pooled + three temporal summaries = 23.")
     s.save(6)
 
 
@@ -389,8 +375,7 @@ def visual_07() -> None:
             s.rect(x, y, 97, 12, "#eff3f2")
             s.rect(x, y, max(1, 97 * value), 12, STAGE_COLORS[col])
             s.text(x + 97, y + 29, f"{displayed[col]:.1f}%", 10, INK, 400, "end")
-    s.text(701, 178, "↓ T", 11, ACCENT, 700, "end")
-    s.footer("The weighted mixture is derived; the final row is the saved, temperature-calibrated output.")
+    s.footer(f"The mix is derived at α = 0.30; the saved final row uses T = {SUPPLEMENT['probability_calibration']['final_blend_temperature']:.3f}.")
     s.save(7)
 
 
@@ -449,6 +434,21 @@ def validate() -> None:
         DATA["step_8_blend_simplex"]["final_probability"],
     ]:
         assert len(probabilities) == 4 and abs(sum(probabilities) - 1) < 1e-4
+    p = SUPPLEMENT["probability_calibration"]
+    for name in ("tangent_raw_probability", "tangent_calibrated_probability",
+                 "cycle_raw_probability", "cycle_calibrated_probability",
+                 "pre_final_temperature_blend", "final_probability"):
+        assert len(p[name]) == 4 and abs(sum(p[name]) - 1) < 1e-4
+    for source, target in ((DATA["step_6_tangent_lda"]["probability"], p["tangent_calibrated_probability"]),
+                           (DATA["step_7_cycle_ridge"]["probability"], p["cycle_calibrated_probability"]),
+                           (DATA["step_8_blend_simplex"]["final_probability"], p["final_probability"])):
+        assert max(abs(a - b) for a, b in zip(source, target)) < 1e-5
+    assert p["stage_order"] == STAGES
+    assert SUPPLEMENT["privacy"] == {
+        "participant_scan_time_or_label_fields_included": False,
+        "raw_333_parcel_series_included": False,
+        "performance_metrics_included": False,
+    }
 
 
 if __name__ == "__main__":

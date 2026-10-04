@@ -1,111 +1,59 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="740" height="300" viewBox="0 0 740 300" role="img" aria-labelledby="title desc">
-<title id="title">Lagged parcel flows and cycle features</title>
-<desc id="desc">At left, schematic lagged parcel pairing and graph Hodge flow patterns. At right, saved 23-feature energy profile for one held-out window. The graph sketches do not show atlas locations.</desc>
+<title id="title">Lagged edge flow and Hodge energy</title>
+<desc id="desc">At left, schematic forward and reverse cross-lag parcel interactions define one antisymmetric edge flow. At right, saved harmonic, gradient, and curl energy fractions from the representative window are shown for three lags and their pooled flow, followed by the three saved temporal change features.</desc>
 <rect width="740" height="300" fill="#ffffff"/>
 <text x="24.00" y="27.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">06 / DIRECTED-CYCLE BRANCH</text>
-<text x="716.00" y="27.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">original 333 parcels · 23 features</text>
+<text x="716.00" y="27.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">333 parcel signals · 23 energy-family features</text>
 <line x1="24.00" y1="39.00" x2="716.00" y2="39.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
-<text x="28.00" y="61.00" fill="#235969" font-size="10" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">LAGGED PARCEL PAIR · SCHEMATIC</text>
-<text x="36.00" y="89.00" fill="#172126" font-size="11" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">parcel i</text>
-<text x="36.00" y="113.00" fill="#172126" font-size="11" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">parcel j</text>
-<line x1="119.00" y1="85.00" x2="270.00" y2="85.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
-<polyline points="119.00,78.00 138.00,90.00 157.00,84.00 176.00,78.00 195.00,90.00 214.00,84.00 233.00,78.00 252.00,90.00 271.00,84.00" fill="none" stroke="#315f82" stroke-width="1.6"/>
-<line x1="119.00" y1="109.00" x2="270.00" y2="109.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
-<polyline points="119.00,102.00 138.00,114.00 157.00,108.00 176.00,102.00 195.00,114.00 214.00,108.00 233.00,102.00 252.00,114.00 271.00,108.00" fill="none" stroke="#ad673d" stroke-width="1.6"/>
-<line x1="145.00" y1="83.00" x2="177.00" y2="105.00" stroke="#235969" stroke-width="1.5" opacity="1"/>
-<polygon points="177.00,105.00 172.00,105.20 175.39,100.26" fill="#235969"/>
-<text x="211.00" y="131.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">i→j − j→i · τ = 1, 2, 3</text>
-<line x1="28.00" y1="139.00" x2="324.00" y2="139.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
-<circle cx="39.00" cy="170.00" r="3.50" fill="#ffffff" stroke="#172126" stroke-width="1"/>
-<circle cx="67.00" cy="170.00" r="3.50" fill="#ffffff" stroke="#172126" stroke-width="1"/>
-<circle cx="95.00" cy="170.00" r="3.50" fill="#ffffff" stroke="#172126" stroke-width="1"/>
-<line x1="44.00" y1="170.00" x2="61.00" y2="170.00" stroke="#235969" stroke-width="1.7" opacity="1"/>
-<polygon points="61.00,170.00 56.99,172.99 56.99,167.01" fill="#235969"/>
-<line x1="73.00" y1="170.00" x2="90.00" y2="170.00" stroke="#235969" stroke-width="1.7" opacity="1"/>
-<polygon points="90.00,170.00 85.99,172.99 85.99,167.01" fill="#235969"/>
-<text x="67.00" y="221.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">gradient</text>
-<polygon points="170,146 142,190 198,190" fill="#eff3f2" stroke="#d5dcda"/>
-<line x1="173.00" y1="152.00" x2="192.00" y2="183.00" stroke="#ad673d" stroke-width="1.7" opacity="1"/>
-<polygon points="192.00,183.00 187.36,181.15 192.46,178.02" fill="#ad673d"/>
-<line x1="190.00" y1="190.00" x2="150.00" y2="190.00" stroke="#ad673d" stroke-width="1.7" opacity="1"/>
-<polygon points="150.00,190.00 154.01,187.01 154.01,192.99" fill="#ad673d"/>
-<line x1="148.00" y1="183.00" x2="167.00" y2="152.00" stroke="#ad673d" stroke-width="1.7" opacity="1"/>
-<polygon points="167.00,152.00 167.46,156.98 162.36,153.85" fill="#ad673d"/>
-<circle cx="170.00" cy="146.00" r="3.50" fill="#ffffff" stroke="#172126" stroke-width="1"/>
-<circle cx="142.00" cy="190.00" r="3.50" fill="#ffffff" stroke="#172126" stroke-width="1"/>
-<circle cx="198.00" cy="190.00" r="3.50" fill="#ffffff" stroke="#172126" stroke-width="1"/>
-<text x="170.00" y="221.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">curl</text>
-<polygon points="245,148 300,148 300,195 245,195" fill="none" stroke="#d5dcda"/>
-<line x1="251.00" y1="148.00" x2="293.00" y2="148.00" stroke="#315f82" stroke-width="1.7" opacity="1"/>
-<polygon points="293.00,148.00 288.99,150.99 288.99,145.01" fill="#315f82"/>
-<line x1="300.00" y1="154.00" x2="300.00" y2="189.00" stroke="#315f82" stroke-width="1.7" opacity="1"/>
-<polygon points="300.00,189.00 297.01,184.99 302.99,184.99" fill="#315f82"/>
-<line x1="293.00" y1="195.00" x2="251.00" y2="195.00" stroke="#315f82" stroke-width="1.7" opacity="1"/>
-<polygon points="251.00,195.00 255.01,192.01 255.01,197.99" fill="#315f82"/>
-<line x1="245.00" y1="189.00" x2="245.00" y2="154.00" stroke="#315f82" stroke-width="1.7" opacity="1"/>
-<polygon points="245.00,154.00 247.99,158.01 242.01,158.01" fill="#315f82"/>
-<circle cx="245.00" cy="148.00" r="3.50" fill="#ffffff" stroke="#172126" stroke-width="1"/>
-<circle cx="300.00" cy="148.00" r="3.50" fill="#ffffff" stroke="#172126" stroke-width="1"/>
-<circle cx="300.00" cy="195.00" r="3.50" fill="#ffffff" stroke="#172126" stroke-width="1"/>
-<circle cx="245.00" cy="195.00" r="3.50" fill="#ffffff" stroke="#172126" stroke-width="1"/>
-<text x="273.00" y="221.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">harmonic</text>
-<text x="28.00" y="247.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">source → sink    ·    filled face    ·    unfilled loop</text>
-<line x1="341.00" y1="52.00" x2="341.00" y2="248.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
-<text x="362.00" y="61.00" fill="#235969" font-size="10" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">SAVED ENERGY FEATURE PROFILE</text>
-<text x="395.00" y="83.00" fill="#172126" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">flow</text>
-<rect x="395.00" y="102.00" width="49.00" height="8.00" fill="#eff3f2"/>
-<rect x="395.00" y="102.00" width="25.25" height="8.00" fill="#235969"/>
-<rect x="395.00" y="129.00" width="49.00" height="8.00" fill="#eff3f2"/>
-<rect x="395.00" y="129.00" width="41.96" height="8.00" fill="#235969"/>
-<rect x="395.00" y="156.00" width="49.00" height="8.00" fill="#eff3f2"/>
-<rect x="395.00" y="156.00" width="49.00" height="8.00" fill="#235969"/>
-<rect x="395.00" y="183.00" width="49.00" height="8.00" fill="#eff3f2"/>
-<rect x="395.00" y="183.00" width="32.81" height="8.00" fill="#235969"/>
-<text x="457.00" y="83.00" fill="#172126" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">harmonic</text>
-<rect x="457.00" y="102.00" width="49.00" height="8.00" fill="#eff3f2"/>
-<rect x="457.00" y="102.00" width="25.05" height="8.00" fill="#235969"/>
-<rect x="457.00" y="129.00" width="49.00" height="8.00" fill="#eff3f2"/>
-<rect x="457.00" y="129.00" width="41.85" height="8.00" fill="#235969"/>
-<rect x="457.00" y="156.00" width="49.00" height="8.00" fill="#eff3f2"/>
-<rect x="457.00" y="156.00" width="49.00" height="8.00" fill="#235969"/>
-<rect x="457.00" y="183.00" width="49.00" height="8.00" fill="#eff3f2"/>
-<rect x="457.00" y="183.00" width="32.76" height="8.00" fill="#235969"/>
-<text x="519.00" y="83.00" fill="#172126" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">H share</text>
-<rect x="519.00" y="102.00" width="49.00" height="8.00" fill="#eff3f2"/>
-<rect x="519.00" y="102.00" width="48.22" height="8.00" fill="#235969"/>
-<rect x="519.00" y="129.00" width="49.00" height="8.00" fill="#eff3f2"/>
-<rect x="519.00" y="129.00" width="48.75" height="8.00" fill="#235969"/>
-<rect x="519.00" y="156.00" width="49.00" height="8.00" fill="#eff3f2"/>
-<rect x="519.00" y="156.00" width="49.00" height="8.00" fill="#235969"/>
-<rect x="519.00" y="183.00" width="49.00" height="8.00" fill="#eff3f2"/>
-<rect x="519.00" y="183.00" width="48.85" height="8.00" fill="#235969"/>
-<text x="581.00" y="83.00" fill="#172126" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">G share</text>
-<rect x="581.00" y="102.00" width="49.00" height="8.00" fill="#eff3f2"/>
-<rect x="581.00" y="102.00" width="45.70" height="8.00" fill="#235969"/>
-<rect x="581.00" y="129.00" width="49.00" height="8.00" fill="#eff3f2"/>
-<rect x="581.00" y="129.00" width="47.35" height="8.00" fill="#235969"/>
-<rect x="581.00" y="156.00" width="49.00" height="8.00" fill="#eff3f2"/>
-<rect x="581.00" y="156.00" width="49.00" height="8.00" fill="#235969"/>
-<rect x="581.00" y="183.00" width="49.00" height="8.00" fill="#eff3f2"/>
-<rect x="581.00" y="183.00" width="47.03" height="8.00" fill="#235969"/>
-<text x="643.00" y="83.00" fill="#172126" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">C share</text>
-<rect x="643.00" y="102.00" width="49.00" height="8.00" fill="#eff3f2"/>
-<rect x="643.00" y="102.00" width="49.00" height="8.00" fill="#235969"/>
-<rect x="643.00" y="129.00" width="49.00" height="8.00" fill="#eff3f2"/>
-<rect x="643.00" y="129.00" width="47.87" height="8.00" fill="#235969"/>
-<rect x="643.00" y="156.00" width="49.00" height="8.00" fill="#eff3f2"/>
-<rect x="643.00" y="156.00" width="46.77" height="8.00" fill="#235969"/>
-<rect x="643.00" y="183.00" width="49.00" height="8.00" fill="#eff3f2"/>
-<rect x="643.00" y="183.00" width="48.06" height="8.00" fill="#235969"/>
-<text x="386.00" y="109.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">lag 1</text>
-<text x="386.00" y="136.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">lag 2</text>
-<text x="386.00" y="163.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">lag 3</text>
-<text x="386.00" y="190.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">pooled</text>
-<line x1="362.00" y1="205.00" x2="715.00" y2="205.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
-<text x="362.00" y="224.00" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">ΔH norm 1.55</text>
-<text x="479.00" y="224.00" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">cosine 0.90</text>
-<text x="586.00" y="224.00" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">angle 0.46 rad</text>
-<text x="362.00" y="247.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Bars scaled within each feature column.</text>
+<text x="28.00" y="62.00" fill="#235969" font-size="10" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">ONE EDGE · SCHEMATIC CROSS-LAG PAIRS</text>
+<circle cx="47.00" cy="97.00" r="5.00" fill="#ffffff" stroke="#ad673d" stroke-width="2"/>
+<text x="60.00" y="101.00" fill="#172126" font-size="11" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">i at u</text>
+<line x1="116.00" y1="97.00" x2="213.00" y2="97.00" stroke="#ad673d" stroke-width="2" opacity="1"/>
+<polygon points="213.00,97.00 208.99,99.99 208.99,94.01" fill="#ad673d"/>
+<circle cx="224.00" cy="97.00" r="5.00" fill="#ffffff" stroke="#ad673d" stroke-width="2"/>
+<text x="237.00" y="101.00" fill="#172126" font-size="11" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">j at u + τ</text>
+<text x="169.00" y="86.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">forward</text>
+<circle cx="47.00" cy="147.00" r="5.00" fill="#ffffff" stroke="#315f82" stroke-width="2"/>
+<text x="60.00" y="151.00" fill="#172126" font-size="11" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">j at u</text>
+<line x1="116.00" y1="147.00" x2="213.00" y2="147.00" stroke="#315f82" stroke-width="2" opacity="1"/>
+<polygon points="213.00,147.00 208.99,149.99 208.99,144.01" fill="#315f82"/>
+<circle cx="224.00" cy="147.00" r="5.00" fill="#ffffff" stroke="#315f82" stroke-width="2"/>
+<text x="237.00" y="151.00" fill="#172126" font-size="11" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">i at u + τ</text>
+<text x="169.00" y="136.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">reverse</text>
+<line x1="28.00" y1="173.00" x2="324.00" y2="173.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
+<text x="28.00" y="198.00" fill="#172126" font-size="12" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">edge flow = forward − reverse</text>
+<text x="28.00" y="221.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">τ = 1, 2, 3 volumes; valid pairs only</text>
+<text x="28.00" y="244.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Then project flow onto H, G, and C spaces.</text>
+<line x1="341.00" y1="52.00" x2="341.00" y2="250.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
+<text x="362.00" y="62.00" fill="#235969" font-size="10" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">HODGE ENERGY SHARES · SAVED</text>
+<rect x="362.00" y="76.00" width="9.00" height="9.00" fill="#315f82"/>
+<text x="377.00" y="84.00" fill="#172126" font-size="10" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">H harmonic</text>
+<rect x="479.00" y="76.00" width="9.00" height="9.00" fill="#235969"/>
+<text x="494.00" y="84.00" fill="#172126" font-size="10" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">G gradient</text>
+<rect x="596.00" y="76.00" width="9.00" height="9.00" fill="#ad673d"/>
+<text x="611.00" y="84.00" fill="#172126" font-size="10" font-weight="500" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">C curl</text>
+<text x="406.00" y="118.00" fill="#172126" font-size="11" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">lag 1</text>
+<rect x="422.00" y="107.00" width="21.78" height="15.00" fill="#315f82"/>
+<rect x="443.78" y="107.00" width="88.17" height="15.00" fill="#235969"/>
+<rect x="531.95" y="107.00" width="148.05" height="15.00" fill="#ad673d"/>
+<text x="702.00" y="118.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">100%</text>
+<text x="406.00" y="149.00" fill="#172126" font-size="11" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">lag 2</text>
+<rect x="422.00" y="138.00" width="22.02" height="15.00" fill="#315f82"/>
+<rect x="444.02" y="138.00" width="91.36" height="15.00" fill="#235969"/>
+<rect x="535.38" y="138.00" width="144.62" height="15.00" fill="#ad673d"/>
+<text x="702.00" y="149.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">100%</text>
+<text x="406.00" y="180.00" fill="#172126" font-size="11" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">lag 3</text>
+<rect x="422.00" y="169.00" width="22.13" height="15.00" fill="#315f82"/>
+<rect x="444.13" y="169.00" width="94.55" height="15.00" fill="#235969"/>
+<rect x="538.68" y="169.00" width="141.32" height="15.00" fill="#ad673d"/>
+<text x="702.00" y="180.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">100%</text>
+<text x="406.00" y="211.00" fill="#172126" font-size="11" font-weight="600" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">pooled</text>
+<rect x="422.00" y="200.00" width="22.06" height="15.00" fill="#315f82"/>
+<rect x="444.06" y="200.00" width="90.74" height="15.00" fill="#235969"/>
+<rect x="534.80" y="200.00" width="145.20" height="15.00" fill="#ad673d"/>
+<text x="702.00" y="211.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">100%</text>
+<line x1="362.00" y1="231.00" x2="716.00" y2="231.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
+<text x="362.00" y="249.00" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Δ norm 1.55   ·   cosine 0.90   ·   angle 0.46 rad</text>
 <line x1="24.00" y1="260.00" x2="716.00" y2="260.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
-<text x="24.00" y="283.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Five summaries at each lag + five pooled + three changes = 23 model inputs.</text>
+<text x="24.00" y="283.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Five flow summaries at each lag + five pooled + three temporal summaries = 23.</text>
 </svg>
