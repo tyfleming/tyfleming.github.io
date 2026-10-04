@@ -7,34 +7,34 @@
 <line x1="24.00" y1="39.00" x2="716.00" y2="39.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
 <text x="28.00" y="67.00" fill="#235969" font-size="10" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">VOLUME 1 · CENTERED RESIDUAL</text>
 <text x="28.00" y="99.00" fill="#172126" font-size="11" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">e − μ</text>
-<rect x="124.00" y="79.00" width="47.00" height="27.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="147.50" y="97.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+2</text>
-<rect x="175.00" y="79.00" width="47.00" height="27.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="198.50" y="97.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+2</text>
-<rect x="226.00" y="79.00" width="47.00" height="27.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="249.50" y="97.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-2</text>
-<rect x="277.00" y="79.00" width="47.00" height="27.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="300.50" y="97.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-2</text>
+<rect x="124.00" y="79.00" width="34.00" height="34.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="141.00" y="101.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+2</text>
+<rect x="162.00" y="79.00" width="34.00" height="34.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="179.00" y="101.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+2</text>
+<rect x="200.00" y="79.00" width="34.00" height="34.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="217.00" y="101.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-2</text>
+<rect x="238.00" y="79.00" width="34.00" height="34.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="255.00" y="101.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-2</text>
 <text x="28.00" y="133.00" fill="#235969" font-size="10" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">FITTED PARCEL WEIGHTS</text>
 <text x="28.00" y="162.00" fill="#315f82" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">PC 1</text>
-<rect x="124.00" y="143.00" width="47.00" height="27.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="147.50" y="161.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+0.5</text>
-<rect x="175.00" y="143.00" width="47.00" height="27.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="198.50" y="161.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+0.5</text>
-<rect x="226.00" y="143.00" width="47.00" height="27.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="249.50" y="161.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-0.5</text>
-<rect x="277.00" y="143.00" width="47.00" height="27.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="300.50" y="161.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-0.5</text>
+<rect x="124.00" y="143.00" width="34.00" height="34.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="141.00" y="165.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+0.5</text>
+<rect x="162.00" y="143.00" width="34.00" height="34.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="179.00" y="165.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+0.5</text>
+<rect x="200.00" y="143.00" width="34.00" height="34.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="217.00" y="165.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-0.5</text>
+<rect x="238.00" y="143.00" width="34.00" height="34.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="255.00" y="165.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-0.5</text>
 <text x="340.00" y="162.00" fill="#172126" font-size="12" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">dot = 4</text>
 <text x="28.00" y="215.00" fill="#ad673d" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">PC 2</text>
-<rect x="124.00" y="196.00" width="47.00" height="27.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="147.50" y="214.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+0.5</text>
-<rect x="175.00" y="196.00" width="47.00" height="27.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="198.50" y="214.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-0.5</text>
-<rect x="226.00" y="196.00" width="47.00" height="27.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="249.50" y="214.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+0.5</text>
-<rect x="277.00" y="196.00" width="47.00" height="27.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="300.50" y="214.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-0.5</text>
+<rect x="124.00" y="196.00" width="34.00" height="34.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="141.00" y="218.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+0.5</text>
+<rect x="162.00" y="196.00" width="34.00" height="34.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="179.00" y="218.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-0.5</text>
+<rect x="200.00" y="196.00" width="34.00" height="34.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="217.00" y="218.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+0.5</text>
+<rect x="238.00" y="196.00" width="34.00" height="34.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="255.00" y="218.00" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-0.5</text>
 <text x="340.00" y="215.00" fill="#172126" font-size="12" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">dot = 0</text>
 <line x1="430.00" y1="56.00" x2="430.00" y2="249.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
 <text x="456.00" y="67.00" fill="#235969" font-size="10" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">ONE VOLUME · ONE POINT</text>

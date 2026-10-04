@@ -122,6 +122,7 @@ class SVG:
 def heatmap(svg: SVG, values, x, y, w, h, limit=1.0) -> None:
     rows, cols = len(values), len(values[0])
     dx, dy = w / cols, h / rows
+    assert math.isclose(dx, dy, rel_tol=1e-9), "matrix cells must be square"
     for row, values_row in enumerate(values):
         for col, value in enumerate(values_row):
             svg.rect(x + col * dx, y + row * dy, dx + 0.1, dy + 0.1, diverge(value, limit))
@@ -190,7 +191,7 @@ def visual_01() -> None:
 
 
 def visual_02() -> None:
-    s = SVG("Default-network residual modes", "The Default community contains 41 of the Gordon atlas's 333 cortical parcels. Each of its 41 parcel rows has a loading on each of two fold-trained residual principal components, so the basis is 41 by 2. Six numeric rows and all 41 heatmap rows are shown. Three reconstructed standardized held-out traces show its network mean and two residual scores across 30 frames.")
+    s = SVG("Default-network residual modes", "The Default community contains 41 of the Gordon atlas's 333 cortical parcels. Each of its 41 parcel rows has a loading on each of two fold-trained residual principal components, so the basis is 41 by 2. Six numeric rows are shown; all 41 loadings of each component are separately tiled in atlas order into square-cell grids. Three reconstructed standardized held-out traces show its network mean and two residual scores across 30 frames.")
     s.header("Figure 02.4 / Default network", "41 of 333 atlas parcels → 2 residual modes")
     basis = SUPPLEMENT["network_basis"]
     assert basis["chosen_network"] == "Default" and basis["chosen_network_parcels"] == 41
@@ -206,11 +207,17 @@ def visual_02() -> None:
         s.text(166, y, f"{row[1]:+.2f}", 11, INK, 600, "end")
         s.line(28, y + 5, 168, y + 5, LINE, 0.6)
     s.line(183, 53, 183, 247)
-    s.text(205, 61, "41 PARCELS × 2 PCS", 10, ACCENT, 700)
-    heatmap(s, loadings, 234, 75, 74, 159, max(abs(v) for row in loadings for v in row))
-    s.text(271, 247, "PC 1   PC 2", 10, MUTED, 400, "middle")
-    s.text(224, 86, "01", 10, MUTED, 400, "end")
-    s.text(224, 233, "41", 10, MUTED, 400, "end")
+    s.text(205, 61, "41 LOADINGS PER PC", 10, ACCENT, 700)
+    limit = max(abs(v) for row in loadings for v in row)
+    for k, x0 in ((0, 203), (1, 271)):
+        s.text(x0 + 25, 89, f"PC {k+1}", 10, INK, 600, "middle")
+        for parcel, row in enumerate(loadings):
+            col, grid_row = parcel % 6, parcel // 6
+            s.rect(x0 + col * 8.5, 101 + grid_row * 8.5, 8, 8,
+                   diverge(row[k], limit))
+        s.text(x0 + 25, 178, "01 → 41", 9, MUTED, 400, "middle")
+    s.text(205, 217, "tiled in atlas parcel order", 10, MUTED)
+    s.text(205, 235, "each tile = one loading", 10, MUTED)
     s.line(338, 53, 338, 247)
     s.text(359, 61, "HELD-OUT OUTPUT · RECONSTRUCTED", 10, ACCENT, 700)
     features = DATA["step_1_window"]["cortical_features"]
@@ -249,19 +256,19 @@ def toy_pca():
     return x, means, residuals, reference, centered, covariance, components, scores
 
 
-def toy_matrix(s, label, values, x0, y0, cell_w=36, cell_h=30, fmt=str,
+def toy_matrix(s, label, values, x0, y0, cell_size=30, fmt=str,
                tint=False, show_shape=True):
     s.text(x0, y0 - 13, label, 11, ACCENT, 700)
     rows, cols = len(values), len(values[0])
     for i, row in enumerate(values):
         for j, value in enumerate(row):
-            left, top = x0 + j * cell_w, y0 + i * cell_h
+            left, top = x0 + j * cell_size, y0 + i * cell_size
             fill = toy_fill(value, max(abs(v) for r in values for v in r)) if tint else PAPER
-            s.rect(left, top, cell_w - 3, cell_h - 3, fill, LINE, .8)
-            s.text(left + (cell_w - 3) / 2, top + cell_h / 2 + 4,
+            s.rect(left, top, cell_size - 3, cell_size - 3, fill, LINE, .8)
+            s.text(left + (cell_size - 3) / 2, top + cell_size / 2 + 4,
                    fmt(value), 11, cell_text_color(fill) if tint else INK, 600, "middle")
     if show_shape:
-        s.text(x0 + cols * cell_w / 2 - 2, y0 + rows * cell_h + 17,
+        s.text(x0 + cols * cell_size / 2 - 2, y0 + rows * cell_size + 17,
                f"{rows} × {cols}", 10, MUTED, 400, "middle")
 
 
@@ -270,12 +277,12 @@ def visual_parcel_projection() -> None:
     s = SVG("Same-volume parcel mean subtraction",
             "Illustrative four-volume, four-parcel matrix. Each row's four parcel values are averaged. Subtracting that row's own mean from all four values produces residuals that sum to zero. In the first row, 8, 6, 3, 3 have mean 5 and residuals 3, 1, minus 2, minus 2.")
     s.header("Figure 02.1 / where residuals come from", "illustrative · 4 volumes × 4 parcels")
-    toy_matrix(s, "X · measured parcel values", x, 28, 99, 40, show_shape=False)
-    arrow(s, 174, 173, 224, 173)
-    toy_matrix(s, "m · same-volume mean", [[v] for v in means], 251, 99, 42,
+    toy_matrix(s, "X · measured parcel values", x, 28, 91, 34, show_shape=False)
+    arrow(s, 182, 159, 229, 159)
+    toy_matrix(s, "m · same-volume mean", [[v] for v in means], 253, 91, 34,
                fmt=lambda v: f"{v:g}", show_shape=False)
-    arrow(s, 297, 173, 362, 173)
-    toy_matrix(s, "E · parcel residuals", residuals, 392, 99, 44,
+    arrow(s, 306, 159, 365, 159)
+    toy_matrix(s, "E · parcel residuals", residuals, 391, 91, 34,
                fmt=lambda v: f"{v:+g}" if v else "0", tint=True, show_shape=False)
     s.text(28, 246, "First volume", 11, ACCENT, 700)
     s.text(109, 246, "(8, 6, 3, 3) − (5, 5, 5, 5) = (3, 1, −2, −2)", 12, INK)
@@ -290,15 +297,15 @@ def visual_toy_pca_fit() -> None:
     s.header("Figure 02.2 / fit the residual modes", "illustrative training calculation")
     s.text(28, 64, "TRAINING REFERENCE", 10, ACCENT, 700)
     s.text(28, 83, "μ = mean of residual rows = (1, −1, 0, 0)", 12, INK)
-    toy_matrix(s, "E − μ · centered training patterns", centered, 28, 116, 36,
+    toy_matrix(s, "E − μ · centered training patterns", centered, 28, 112, 29,
                fmt=lambda v: f"{v:+g}" if v else "0", tint=True)
-    s.text(192, 179, "CᵀC / 4", 11, MUTED, 600, "middle")
-    arrow(s, 176, 185, 215, 185)
-    toy_matrix(s, "K · parcel covariance", covariance, 239, 116, 38,
+    s.text(192, 166, "CᵀC / 4", 11, MUTED, 600, "middle")
+    arrow(s, 176, 173, 215, 173)
+    toy_matrix(s, "K · parcel covariance", covariance, 239, 112, 29,
                fmt=lambda v: f"{v:g}", tint=True)
-    s.text(424, 179, "top 2", 11, MUTED, 600, "middle")
-    arrow(s, 403, 185, 453, 185)
-    toy_matrix(s, "U · learned components", components, 480, 116, 45,
+    s.text(424, 166, "top 2", 11, MUTED, 600, "middle")
+    arrow(s, 403, 173, 453, 173)
+    toy_matrix(s, "U · learned components", components, 480, 112, 29,
                fmt=lambda v: f"{v:+.1f}", tint=True)
     s.text(598, 133, "PC 1", 11, NEG, 700)
     s.text(598, 153, "(+,+,−,−)", 11, INK)
@@ -318,18 +325,18 @@ def visual_toy_pca_scores() -> None:
     s.text(28, 99, "e − μ", 11, INK, 600)
     for j, value in enumerate(centered[0]):
         fill = toy_fill(value, 2)
-        x = 124 + 51 * j
-        s.rect(x, 79, 47, 27, fill, LINE, .8)
-        s.text(x + 23.5, 97, f"{value:+g}", 11, cell_text_color(fill), 700, "middle")
+        x = 124 + 38 * j
+        s.rect(x, 79, 34, 34, fill, LINE, .8)
+        s.text(x + 17, 101, f"{value:+g}", 11, cell_text_color(fill), 700, "middle")
     s.text(28, 133, "FITTED PARCEL WEIGHTS", 10, ACCENT, 700)
     for k, y in ((0, 143), (1, 196)):
         s.text(28, y + 19, f"PC {k+1}", 11, NEG if k == 0 else POS, 700)
         for j in range(4):
             value = components[j][k]
             fill = toy_fill(value, .5)
-            x = 124 + 51 * j
-            s.rect(x, y, 47, 27, fill, LINE, .8)
-            s.text(x + 23.5, y + 18, f"{value:+.1f}", 11, cell_text_color(fill), 700, "middle")
+            x = 124 + 38 * j
+            s.rect(x, y, 34, 34, fill, LINE, .8)
+            s.text(x + 17, y + 22, f"{value:+.1f}", 11, cell_text_color(fill), 700, "middle")
         s.text(340, y + 19, f"dot = {scores[0][k]:g}", 12, INK, 700)
     s.line(430, 56, 430, 249)
     s.text(456, 67, "ONE VOLUME · ONE POINT", 10, ACCENT, 700)
@@ -475,8 +482,8 @@ def visual_04() -> None:
     scores = DATA["step_5_pca"]["whitened_score"]
     for i, value in enumerate(scores):
         col, row = i % 8, i // 8
-        s.rect(592 + col * 14, 84 + row * 15, 12, 13, diverge(value, 2.5))
-    s.rect(592, 84, 8 * 14, 8 * 15, "none", LINE)
+        s.rect(592 + col * 14, 84 + row * 14, 12, 12, diverge(value, 2.5))
+    s.rect(592, 84, 8 * 14, 8 * 14, "none", LINE)
     s.text(648, 226, "64 whitened scores", 10, MUTED, 400, "middle")
     s.footer("Each C, G, T image shows the same 6 channels from a full 39 × 39 matrix; T uses all 39.")
     s.save("04-01")
@@ -490,8 +497,8 @@ def visual_05() -> None:
     s.text(93, 62, "64 PCA SCORES", 10, ACCENT, 700, "middle")
     for i, value in enumerate(scores):
         col, row = i % 8, i // 8
-        s.rect(37 + col * 14, 89 + row * 13, 12, 11, diverge(value, 2.5))
-    s.rect(37, 89, 8 * 14, 8 * 13, "none", LINE)
+        s.rect(37 + col * 14, 89 + row * 14, 12, 12, diverge(value, 2.5))
+    s.rect(37, 89, 8 * 14, 8 * 14, "none", LINE)
     s.text(93, 222, "reconstructed", 10, MUTED, 400, "middle")
     arrow(s, 162, 143, 197, 143)
     s.text(244, 121, "SHRINKAGE", 10, ACCENT, 700, "middle")
