@@ -52,38 +52,38 @@
 <line x1="297.00" y1="173.00" x2="362.00" y2="173.00" stroke="#235969" stroke-width="1.5" opacity="1"/>
 <polygon points="362.00,173.00 357.99,175.99 357.99,170.01" fill="#235969"/>
 <text x="392.00" y="86.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">E · parcel residuals</text>
-<rect x="392.00" y="99.00" width="41.00" height="27.00" fill="#ad673d" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="412.50" y="118.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+3</text>
-<rect x="436.00" y="99.00" width="41.00" height="27.00" fill="#e4ccbe" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="456.50" y="118.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+1</text>
+<rect x="392.00" y="99.00" width="41.00" height="27.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="412.50" y="118.00" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+3</text>
+<rect x="436.00" y="99.00" width="41.00" height="27.00" fill="#dcc5b9" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="456.50" y="118.00" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+1</text>
 <rect x="480.00" y="99.00" width="41.00" height="27.00" fill="#7694ac" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="500.50" y="118.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-2</text>
+<text x="500.50" y="118.00" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-2</text>
 <rect x="524.00" y="99.00" width="41.00" height="27.00" fill="#7694ac" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="544.50" y="118.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-2</text>
+<text x="544.50" y="118.00" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-2</text>
 <rect x="392.00" y="129.00" width="41.00" height="27.00" fill="#bacad5" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="412.50" y="148.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-1</text>
+<text x="412.50" y="148.00" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-1</text>
 <rect x="436.00" y="129.00" width="41.00" height="27.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="456.50" y="148.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-3</text>
-<rect x="480.00" y="129.00" width="41.00" height="27.00" fill="#c89a7e" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="500.50" y="148.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+2</text>
-<rect x="524.00" y="129.00" width="41.00" height="27.00" fill="#c89a7e" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="544.50" y="148.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+2</text>
-<rect x="392.00" y="159.00" width="41.00" height="27.00" fill="#c89a7e" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="412.50" y="178.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+2</text>
+<text x="456.50" y="148.00" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-3</text>
+<rect x="480.00" y="129.00" width="41.00" height="27.00" fill="#b98b73" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="500.50" y="148.00" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+2</text>
+<rect x="524.00" y="129.00" width="41.00" height="27.00" fill="#b98b73" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="544.50" y="148.00" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+2</text>
+<rect x="392.00" y="159.00" width="41.00" height="27.00" fill="#b98b73" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="412.50" y="178.00" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+2</text>
 <rect x="436.00" y="159.00" width="41.00" height="27.00" fill="#7694ac" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="456.50" y="178.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-2</text>
-<rect x="480.00" y="159.00" width="41.00" height="27.00" fill="#e4ccbe" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="500.50" y="178.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+1</text>
+<text x="456.50" y="178.00" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-2</text>
+<rect x="480.00" y="159.00" width="41.00" height="27.00" fill="#dcc5b9" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="500.50" y="178.00" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+1</text>
 <rect x="524.00" y="159.00" width="41.00" height="27.00" fill="#bacad5" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="544.50" y="178.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-1</text>
+<text x="544.50" y="178.00" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-1</text>
 <rect x="392.00" y="189.00" width="41.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="412.50" y="208.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">0</text>
+<text x="412.50" y="208.00" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">0</text>
 <rect x="436.00" y="189.00" width="41.00" height="27.00" fill="#ffffff" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="456.50" y="208.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">0</text>
+<text x="456.50" y="208.00" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">0</text>
 <rect x="480.00" y="189.00" width="41.00" height="27.00" fill="#bacad5" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="500.50" y="208.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-1</text>
-<rect x="524.00" y="189.00" width="41.00" height="27.00" fill="#e4ccbe" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="544.50" y="208.00" fill="#172126" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+1</text>
+<text x="500.50" y="208.00" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-1</text>
+<rect x="524.00" y="189.00" width="41.00" height="27.00" fill="#dcc5b9" stroke="#d5dcda" stroke-width="0.8"/>
+<text x="544.50" y="208.00" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+1</text>
 <text x="28.00" y="246.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">First volume</text>
 <text x="109.00" y="246.00" fill="#172126" font-size="12" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">(8, 6, 3, 3) − (5, 5, 5, 5) = (3, 1, −2, −2)</text>
 <line x1="24.00" y1="260.00" x2="716.00" y2="260.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>

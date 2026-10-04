@@ -46,6 +46,21 @@ def diverge(value: float, limit: float) -> str:
     return interp(PAPER, POS if ratio >= 0 else NEG, abs(ratio))
 
 
+def cell_text_color(fill: str) -> str:
+    """Choose a legible label color for a tinted matrix cell."""
+    rgb = [int(fill[i:i + 2], 16) / 255 for i in (1, 3, 5)]
+    linear = [v / 12.92 if v <= .04045 else ((v + .055) / 1.055) ** 2.4 for v in rgb]
+    luminance = sum(a * b for a, b in zip(linear, (.2126, .7152, .0722)))
+    white_contrast = 1.05 / (luminance + .05)
+    return PAPER if white_contrast >= 4.5 else "#000000"
+
+
+def toy_fill(value: float, limit: float) -> str:
+    """Use stronger data hues so saturated toy-matrix cells support white labels."""
+    ratio = max(-1, min(1, value / limit))
+    return interp(PAPER, "#96512d" if ratio >= 0 else NEG, abs(ratio))
+
+
 class SVG:
     def __init__(self, title: str, description: str):
         self.parts = [
@@ -241,10 +256,10 @@ def toy_matrix(s, label, values, x0, y0, cell_w=36, cell_h=30, fmt=str,
     for i, row in enumerate(values):
         for j, value in enumerate(row):
             left, top = x0 + j * cell_w, y0 + i * cell_h
-            fill = diverge(value, max(abs(v) for r in values for v in r)) if tint else PAPER
+            fill = toy_fill(value, max(abs(v) for r in values for v in r)) if tint else PAPER
             s.rect(left, top, cell_w - 3, cell_h - 3, fill, LINE, .8)
             s.text(left + (cell_w - 3) / 2, top + cell_h / 2 + 4,
-                   fmt(value), 11, INK, 600, "middle")
+                   fmt(value), 11, cell_text_color(fill) if tint else INK, 600, "middle")
     if show_shape:
         s.text(x0 + cols * cell_w / 2 - 2, y0 + rows * cell_h + 17,
                f"{rows} × {cols}", 10, MUTED, 400, "middle")
@@ -295,35 +310,41 @@ def visual_toy_pca_fit() -> None:
 
 
 def visual_toy_pca_scores() -> None:
-    _, _, _, reference, centered, _, components, scores = toy_pca()
-    s = SVG("Projecting a residual pattern onto learned PCA components",
-            "Illustrative PCA projection. The first volume's residual vector [3, 1, minus 2, minus 2] minus training reference [1, minus 1, 0, 0] is [2, 2, minus 2, minus 2]. Its dot product with principal component one [0.5, 0.5, minus 0.5, minus 0.5] is 4, and with principal component two [0.5, minus 0.5, 0.5, minus 0.5] is zero. The score plot shows four training volumes at [4, 0], [minus 4, 0], [0, 2], and [0, minus 2].")
-    s.header("Figure 02.3 / project one volume", "illustrative · the fitted basis is now fixed")
-    s.text(28, 68, "ONE RESIDUAL PATTERN", 10, ACCENT, 700)
-    s.text(28, 97, "e = (3, 1, −2, −2)", 12, INK)
-    s.text(28, 125, "μ = (1, −1, 0, 0)", 12, INK)
-    s.line(28, 137, 302, 137)
-    s.text(28, 161, "e − μ = (2, 2, −2, −2)", 12, INK, 600)
-    s.text(28, 193, "PC 1 · centered pattern", 11, NEG, 600)
-    s.text(28, 212, "½(2 + 2 + 2 + 2) = +4", 12, INK)
-    s.text(28, 239, "PC 2:  ½(2 − 2 − 2 + 2) = 0", 12, POS, 600)
-    s.line(337, 56, 337, 249)
-    s.text(364, 68, "TWO SCORES PER VOLUME", 10, ACCENT, 700)
-    ox, oy, sx, sy = 537, 164, 37, 36
-    s.line(374, oy, 695, oy, LINE, 1.3)
-    s.line(ox, 79, ox, 245, LINE, 1.3)
-    s.text(696, oy - 9, "PC 1", 11, NEG, 600, "end")
-    s.text(460, 89, "PC 2", 11, POS, 600)
-    for i, (a, b) in enumerate(scores):
-        px, py = ox + a * sx, oy - b * sy
-        s.circle(px, py, 6, ACCENT if i == 0 else PAPER, ACCENT, 1.6)
-        label_positions = ((px - 8, py + 19, "end"),
-                           (px + 10, py + 19, "start"),
-                           (px + 12, py + 17, "start"),
-                           (px + 12, py + 4, "start"))
-        label_x, label_y, anchor = label_positions[i]
-        s.text(label_x, label_y, f"v{i+1} ({a:+g}, {b:+g})", 10, INK, 600, anchor)
-    s.footer("A score is a dot product with one fitted component; each volume yields two coordinates.")
+    _, _, _, _, centered, _, components, scores = toy_pca()
+    s = SVG("One volume becomes one PCA point",
+            "Illustrative PCA projection for volume one only. Its centered parcel residuals are [2, 2, minus 2, minus 2]. The fitted PC1 weights are [0.5, 0.5, minus 0.5, minus 0.5], giving score 4. The fitted PC2 weights are [0.5, minus 0.5, 0.5, minus 0.5], giving score zero. One point at horizontal PC1 coordinate 4 and vertical PC2 coordinate zero represents this one volume; the other three training volumes are intentionally omitted.")
+    s.header("Figure 02.3 / one volume → one point", "illustrative · fitted weights stay fixed")
+    s.text(28, 67, "VOLUME 1 · CENTERED RESIDUAL", 10, ACCENT, 700)
+    s.text(28, 99, "e − μ", 11, INK, 600)
+    for j, value in enumerate(centered[0]):
+        fill = toy_fill(value, 2)
+        x = 124 + 51 * j
+        s.rect(x, 79, 47, 27, fill, LINE, .8)
+        s.text(x + 23.5, 97, f"{value:+g}", 11, cell_text_color(fill), 700, "middle")
+    s.text(28, 133, "FITTED PARCEL WEIGHTS", 10, ACCENT, 700)
+    for k, y in ((0, 143), (1, 196)):
+        s.text(28, y + 19, f"PC {k+1}", 11, NEG if k == 0 else POS, 700)
+        for j in range(4):
+            value = components[j][k]
+            fill = toy_fill(value, .5)
+            x = 124 + 51 * j
+            s.rect(x, y, 47, 27, fill, LINE, .8)
+            s.text(x + 23.5, y + 18, f"{value:+.1f}", 11, cell_text_color(fill), 700, "middle")
+        s.text(340, y + 19, f"dot = {scores[0][k]:g}", 12, INK, 700)
+    s.line(430, 56, 430, 249)
+    s.text(456, 67, "ONE VOLUME · ONE POINT", 10, ACCENT, 700)
+    ox, oy = 548, 170
+    arrow(s, 458, oy, 700, oy, MUTED, 1.2)
+    arrow(s, ox, 222, ox, 87, MUTED, 1.2)
+    s.text(704, oy - 9, "PC 1", 11, NEG, 700, "end")
+    s.text(ox + 10, 91, "PC 2", 11, POS, 700)
+    s.text(ox - 8, oy + 18, "0", 10, MUTED, 400, "end")
+    s.line(671, oy - 6, 671, oy + 6, ACCENT, 1.2)
+    s.circle(671, oy, 7, ACCENT, PAPER, 1)
+    s.text(671, 145, "(+4, 0)", 12, INK, 700, "middle")
+    s.text(671, 204, "volume 1", 11, MUTED, 600, "middle")
+    s.text(456, 232, "PC 2 = 0: no vertical displacement", 10, MUTED)
+    s.footer("Each new volume uses these same fitted weights and receives its own two-score point.")
     s.save("02-03")
 
 
