@@ -36,6 +36,16 @@
       [65.76,258.08],[61.64,262.84],[59.54,276.44],[60.94,279.84],
       [69.74,288]
     ];
+    // Two interpreted landmarks from the same source photograph. The hairline
+    // ends at the temple; the crown above it is the outer edge of the hair.
+    const hairline = [
+      [102.2,109.84],[112.7,104.4],[124.6,101.68],[135.8,105.76],
+      [147.7,115.96],[154,129.56],[163.1,143.16],[173.6,157.44]
+    ];
+    const jaw = [
+      [82.6,290.72],[103.6,292.76],[122.5,288],[140.7,276.44],
+      [156.1,262.84],[170.1,245.16]
+    ];
     const smoothPath = points => {
       let d = `M ${points[0][0]} ${points[0][1]}`;
       for (let i = 0; i < points.length - 1; i++) {
@@ -49,8 +59,8 @@
       }
       return d;
     };
-    const bustPath = smoothPath(tracedFront) +
-      ' C 97 297 132 287 158 266 C 155 289 164 313 163 330 C 131 352 78 372 27 390 L 27 407 L 294 407 L 290 389 C 267 377 247 359 241 333 C 238 317 239 301 245 284 C 268 264 282 232 287 196 C 293 148 274 101 235 72 C 208 52 167 43 132.04 56.8 Z';
+    const bustPath = smoothPath([...tracedFront, ...jaw]) +
+      ' C 166 272 164 308 163 330 C 131 352 78 372 27 390 L 27 407 L 294 407 L 290 389 C 267 377 247 359 241 333 C 238 317 239 301 245 284 C 268 264 282 232 287 196 C 293 148 274 101 235 72 C 208 52 167 43 132.04 56.8 Z';
     const ink = '#304744';
     const stone = '#c8d4c7';
     const shadow = '#6f8d83';
@@ -70,8 +80,11 @@
     const clip=add(add(svg,'defs'),'clipPath',{id:'night-profile-clip'});
     path(clip,bustPath);
     const planes=add(bust,'g',{'clip-path':'url(#night-profile-clip)'});
-    path(planes,'M 142 49 C 207 39 276 88 291 150 C 303 215 268 263 242 288 C 211 278 199 246 207 206 C 215 150 186 95 142 49 Z',{fill:shadow,opacity:'.54'});
-    path(planes,'M 107 101 C 135 86 161 105 166 139 C 164 174 141 206 111 222 C 91 209 72 191 69 158 C 79 126 92 110 107 101 Z',{fill:light,opacity:'.55'});
+    const hairCap = 'M 102.2 109.84 C 112 78 125 57 132.04 56.8 C 167 43 208 52 235 72 C 274 101 293 148 287 196 C 282 232 268 264 245 284 C 218 260 213 223 208 202 C 201 181 187 166 173.6 157.44 ' +
+      smoothPath([...hairline].reverse()).replace(/^M [^C]+/, '') + ' Z';
+    path(planes,hairCap,{fill:shadow,opacity:'.57'});
+    path(planes,'M 98 119 C 119 105 139 115 151 137 C 160 162 153 187 127 207 C 101 209 75 191 69 158 C 79 137 88 124 98 119 Z',{fill:light,opacity:'.55'});
+    path(planes,'M 219 121 C 258 147 272 192 260 234 C 254 250 247 261 237 270 C 221 247 212 215 207 189 C 202 163 208 141 219 121 Z',{fill:'#53776f',opacity:'.18'});
     path(planes,'M 57 213 C 83 203 121 217 143 247 L 158 267 C 134 292 106 302 72 289 C 59 269 53 239 57 213 Z',{fill:'#a4b7a8',opacity:'.44'});
     path(planes,'M 71 280 C 103 294 132 280 160 264 C 139 296 106 306 75 298 Z',{fill:light,opacity:'.56'});
     path(planes,'M 155 279 C 180 305 178 345 157 388 C 110 402 70 407 24 413 L 25 372 C 91 350 128 329 155 279 Z',{fill:'#66847a',opacity:'.58'});
@@ -79,12 +92,13 @@
     const dots=add(planes,'g',{fill:'#365b53',opacity:'.23'});
     for(let y=71;y<389;y+=8) for(let x=188;x<287;x+=8) if(Math.sin(x*.083+y*.039)>.26) add(dots,'circle',{cx:x,cy:y,r:'.75'});
 
-    // The ear and hair remain absent. These sparse marks convey a closed eye and jaw plane.
+    // The ear and hair detail remain absent; the hairline stops at the temple.
+    path(bust,smoothPath(hairline),{fill:'none',stroke:ink,'stroke-width':'1.15','stroke-linecap':'round',opacity:'.55'});
     path(bust,'M 76 157 C 90 152 105 155 115 161',{fill:'none',stroke:ink,'stroke-width':'2','stroke-linecap':'round',opacity:'.78'});
     path(bust,'M 80 176 Q 96 183 111 175',{fill:'none',stroke:ink,'stroke-width':'2.25','stroke-linecap':'round'});
     path(bust,'M 63 240 Q 73 243 85 239',{fill:'none',stroke:ink,'stroke-width':'1.1','stroke-linecap':'round'});
-    path(bust,'M 87 267 C 104 284 132 284 158 264',{fill:'none',stroke:ink,'stroke-width':'1.2',opacity:'.42'});
-    path(bust,'M 155 282 C 175 305 174 352 161 380 M 242 287 C 226 313 224 345 239 372',{fill:'none',stroke:ink,'stroke-width':'1.2',opacity:'.48'});
+    path(bust,'M 106 229 C 128 240 146 247 168 245',{fill:'none',stroke:ink,'stroke-width':'1.15',opacity:'.38'});
+    path(bust,'M 167 273 C 175 307 174 352 161 380 M 242 287 C 226 313 224 345 239 372',{fill:'none',stroke:ink,'stroke-width':'1.2',opacity:'.48'});
     path(bust,'M 30 400 C 83 373 127 378 157 389 C 183 403 246 383 288 400',{fill:'none',stroke:ink,'stroke-width':'1.45',opacity:'.56'});
   }
 

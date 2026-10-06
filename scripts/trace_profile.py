@@ -16,6 +16,18 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 
+# Interpreted anatomical landmarks in the supplied 500 x 603 photograph.
+# The hairline is the skin/hair boundary, not the crown. The jaw follows the
+# lower face from the chin toward the mandibular angle; the ear is excluded.
+HAIRLINE = [(166, 108), (181, 100), (198, 96), (214, 102),
+            (231, 117), (240, 137), (253, 157), (268, 178)]
+JAW = [(119, 369), (138, 374), (168, 377), (195, 370),
+       (221, 353), (243, 333), (263, 307)]
+
+
+def card_points(points):
+    return [[round(35 + (x - 70) * 0.70, 2), round(50 + (y - 20) * 0.68, 2)] for x, y in points]
+
 
 def distance(point, start, end):
     vx, vy = end[0] - start[0], end[1] - start[1]
@@ -68,10 +80,16 @@ def main():
         draw.line(full, fill="#e02130", width=2)
         for x, y in points:
             draw.ellipse((x - 2, y - 2, x + 2, y + 2), fill="#00ddff")
+        draw.line(HAIRLINE, fill="#f5c400", width=2)
+        draw.line(JAW, fill="#28e0a7", width=2)
+        for x, y in HAIRLINE + JAW:
+            draw.ellipse((x - 2, y - 2, x + 2, y + 2), fill="#ffffff")
         overlay.save(args.overlay)
     # Fixed map gives the source photo a stable coordinate system in the card.
-    mapped = [[round(35 + (x - 70) * 0.70, 2), round(50 + (y - 20) * 0.68, 2)] for x, y in points]
-    print(json.dumps({"source_size": list(image.size), "source_points": points, "card_points": mapped}, indent=2))
+    print(json.dumps({"source_size": list(image.size), "source_points": points,
+                      "card_points": card_points(points),
+                      "hairline_card_points": card_points(HAIRLINE),
+                      "jaw_card_points": card_points(JAW)}, indent=2))
 
 
 if __name__ == "__main__":
