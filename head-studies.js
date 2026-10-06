@@ -25,47 +25,67 @@
   ];
 
   function drawNightOracle(svg, c) {
-    // Side-profile landmarks follow the supplied reference: broad posterior skull,
-    // prominent brow and nose, compact face, square chin, and a clear jaw angle.
-    const bustPath = 'M 182 71 C 144 66 117 82 108 117 C 101 135 99 153 82 167 C 76 173 75 180 84 184 C 88 189 85 197 76 208 L 56 220 C 49 225 50 232 59 234 C 63 236 67 234 70 237 L 68 249 C 74 252 78 251 78 256 C 79 261 73 264 70 270 C 66 280 69 292 77 298 C 87 303 101 303 112 301 C 130 297 145 285 153 276 C 151 309 160 333 178 348 C 209 366 255 371 287 389 L 290 407 L 28 407 L 30 391 C 66 370 103 362 131 346 C 147 333 150 315 146 305 C 184 297 207 289 230 275 C 249 261 263 236 268 207 C 277 165 268 117 237 88 C 220 75 201 70 182 71 Z';
+    // Measured from the supplied photo by scripts/trace_profile.py.
+    // The front contour is extracted from pixels; only the rear skull and bust are drawn by hand.
+    const tracedFront = [
+      [132.04,56.8],[125.52,62.92],[101.28,104.4],[87.72,120.04],
+      [81.38,137.04],[75.86,141.8],[73.98,147.24],[69.82,152],
+      [69.34,157.44],[75.38,167.64],[74.68,171.04],[59.59,184.64],
+      [45.02,201.64],[44.1,209.12],[45.54,212.52],[57.09,217.28],
+      [59.98,220.68],[58.84,237],[61.51,242.44],[59.54,249.24],
+      [65.76,258.08],[61.64,262.84],[59.54,276.44],[60.94,279.84],
+      [69.74,288]
+    ];
+    const smoothPath = points => {
+      let d = `M ${points[0][0]} ${points[0][1]}`;
+      for (let i = 0; i < points.length - 1; i++) {
+        const before = points[Math.max(0, i - 1)];
+        const start = points[i];
+        const end = points[i + 1];
+        const after = points[Math.min(points.length - 1, i + 2)];
+        const c1 = [start[0] + (end[0] - before[0]) / 6, start[1] + (end[1] - before[1]) / 6];
+        const c2 = [end[0] - (after[0] - start[0]) / 6, end[1] - (after[1] - start[1]) / 6];
+        d += ` C ${c1[0].toFixed(2)} ${c1[1].toFixed(2)} ${c2[0].toFixed(2)} ${c2[1].toFixed(2)} ${end[0]} ${end[1]}`;
+      }
+      return d;
+    };
+    const bustPath = smoothPath(tracedFront) +
+      ' C 97 297 132 287 158 266 C 155 289 164 313 163 330 C 131 352 78 372 27 390 L 27 407 L 294 407 L 290 389 C 267 377 247 359 241 333 C 238 317 239 301 245 284 C 268 264 282 232 287 196 C 293 148 274 101 235 72 C 208 52 167 43 132.04 56.8 Z';
     const ink = '#304744';
     const stone = '#c8d4c7';
     const shadow = '#6f8d83';
     const light = '#e5e9df';
 
     const field = add(svg,'g',{fill:'#a9bfad',opacity:'.43'});
-    for(let y=46;y<358;y+=9) for(let x=30;x<295;x+=9) {
-      const radius=Math.hypot((x-168)*.91,y-188);
-      if(radius>119 && radius<148) add(field,'circle',{cx:x,cy:y,r:'.82'});
+    for(let y=44;y<357;y+=9) for(let x=28;x<295;x+=9) {
+      const radius=Math.hypot((x-166)*.94,y-183);
+      if(radius>116 && radius<147) add(field,'circle',{cx:x,cy:y,r:'.82'});
     }
-    add(svg,'circle',{cx:60,cy:86,r:27,fill:c.accent});
-    add(svg,'circle',{cx:71,cy:75,r:26,fill:c.bg});
-    for(const [x,y] of [[271,61],[291,107],[47,319],[277,324]]) add(svg,'circle',{cx:x,cy:y,r:'1.1',fill:'#dbe5d8'});
+    add(svg,'circle',{cx:55,cy:89,r:27,fill:c.accent});
+    add(svg,'circle',{cx:67,cy:77,r:26,fill:c.bg});
+    for(const [x,y] of [[271,61],[291,107],[39,322],[277,324]]) add(svg,'circle',{cx:x,cy:y,r:'1.1',fill:'#dbe5d8'});
 
-    const bust = add(svg,'g',{transform:'translate(18 40) scale(.9 .9)'});
-    path(bust,bustPath,{fill:stone,stroke:ink,'stroke-width':'1.55','stroke-linejoin':'round'});
+    const bust = add(svg,'g');
+    path(bust,bustPath,{fill:stone,stroke:ink,'stroke-width':'1.5','stroke-linejoin':'round'});
     const clip=add(add(svg,'defs'),'clipPath',{id:'night-profile-clip'});
     path(clip,bustPath);
     const planes=add(bust,'g',{'clip-path':'url(#night-profile-clip)'});
+    path(planes,'M 142 49 C 207 39 276 88 291 150 C 303 215 268 263 242 288 C 211 278 199 246 207 206 C 215 150 186 95 142 49 Z',{fill:shadow,opacity:'.54'});
+    path(planes,'M 107 101 C 135 86 161 105 166 139 C 164 174 141 206 111 222 C 91 209 72 191 69 158 C 79 126 92 110 107 101 Z',{fill:light,opacity:'.55'});
+    path(planes,'M 57 213 C 83 203 121 217 143 247 L 158 267 C 134 292 106 302 72 289 C 59 269 53 239 57 213 Z',{fill:'#a4b7a8',opacity:'.44'});
+    path(planes,'M 71 280 C 103 294 132 280 160 264 C 139 296 106 306 75 298 Z',{fill:light,opacity:'.56'});
+    path(planes,'M 155 279 C 180 305 178 345 157 388 C 110 402 70 407 24 413 L 25 372 C 91 350 128 329 155 279 Z',{fill:'#66847a',opacity:'.58'});
+    path(planes,'M 243 283 C 232 318 244 355 281 380 L 303 413 L 174 413 C 190 365 207 311 243 283 Z',{fill:light,opacity:'.67'});
+    const dots=add(planes,'g',{fill:'#365b53',opacity:'.23'});
+    for(let y=71;y<389;y+=8) for(let x=188;x<287;x+=8) if(Math.sin(x*.083+y*.039)>.26) add(dots,'circle',{cx:x,cy:y,r:'.75'});
 
-    // Broad rear cranial mass and planar cheekbone borrow the reference's proportions.
-    path(planes,'M 168 65 C 226 53 293 101 305 155 C 316 218 274 273 230 293 C 205 273 196 240 211 202 C 222 157 210 107 168 65 Z',{fill:shadow,opacity:'.54'});
-    path(planes,'M 107 115 C 130 94 158 99 180 114 C 183 145 167 177 148 189 C 135 205 131 226 136 248 C 114 263 93 254 76 240 C 107 204 95 158 107 115 Z',{fill:light,opacity:'.75'});
-    path(planes,'M 99 182 C 116 178 129 185 135 195 C 137 208 126 218 115 224 C 102 218 98 200 99 182 Z',{fill:'#a8bcae',opacity:'.31'});
-    path(planes,'M 86 231 C 112 230 139 241 157 259 L 165 279 C 149 294 131 302 112 300 L 72 280 Z',{fill:'#9cafa2',opacity:'.42'});
-    path(planes,'M 87 290 C 113 299 134 292 155 280 C 141 301 120 307 99 303 C 92 299 89 295 87 290 Z',{fill:light,opacity:'.53'});
-    path(planes,'M 145 300 C 168 320 164 354 150 382 C 112 395 71 403 27 411 L 25 378 C 86 353 125 339 145 300 Z',{fill:'#66847a',opacity:'.58'});
-    path(planes,'M 246 276 C 239 315 244 352 281 380 L 303 411 L 179 411 C 186 365 208 310 246 276 Z',{fill:light,opacity:'.7'});
-    const dots=add(planes,'g',{fill:'#365b53',opacity:'.27'});
-    for(let y=89;y<389;y+=8) for(let x=181;x<287;x+=8) if(Math.sin(x*.083+y*.039)>.26) add(dots,'circle',{cx:x,cy:y,r:'.75'});
-
-    // Ear intentionally omitted. Facial details stay aligned to the traced profile.
-    path(bust,'M 99 180 C 112 174 126 176 139 184',{fill:'none',stroke:ink,'stroke-width':'2.2','stroke-linecap':'round',opacity:'.8'});
-    path(bust,'M 102 198 Q 116 204 130 197',{fill:'none',stroke:ink,'stroke-width':'2.4','stroke-linecap':'round'});
-    path(bust,'M 69 252 Q 76 253 82 251 M 69 267 Q 77 268 82 265',{fill:'none',stroke:ink,'stroke-width':'1.1','stroke-linecap':'round'});
-    path(bust,'M 93 273 C 107 290 129 295 147 281 M 148 280 C 163 275 176 266 186 255',{fill:'none',stroke:ink,'stroke-width':'1.2',opacity:'.4'});
-    path(bust,'M 149 307 C 170 324 170 353 160 378 M 245 283 C 230 309 227 342 242 370',{fill:'none',stroke:ink,'stroke-width':'1.25',opacity:'.53'});
-    path(bust,'M 33 399 C 83 374 123 376 153 389 C 183 403 240 384 286 400',{fill:'none',stroke:ink,'stroke-width':'1.5',opacity:'.58'});
+    // The ear and hair remain absent. These sparse marks convey a closed eye and jaw plane.
+    path(bust,'M 76 157 C 90 152 105 155 115 161',{fill:'none',stroke:ink,'stroke-width':'2','stroke-linecap':'round',opacity:'.78'});
+    path(bust,'M 80 176 Q 96 183 111 175',{fill:'none',stroke:ink,'stroke-width':'2.25','stroke-linecap':'round'});
+    path(bust,'M 63 240 Q 73 243 85 239',{fill:'none',stroke:ink,'stroke-width':'1.1','stroke-linecap':'round'});
+    path(bust,'M 87 267 C 104 284 132 284 158 264',{fill:'none',stroke:ink,'stroke-width':'1.2',opacity:'.42'});
+    path(bust,'M 155 282 C 175 305 174 352 161 380 M 242 287 C 226 313 224 345 239 372',{fill:'none',stroke:ink,'stroke-width':'1.2',opacity:'.48'});
+    path(bust,'M 30 400 C 83 373 127 378 157 389 C 183 403 246 383 288 400',{fill:'none',stroke:ink,'stroke-width':'1.45',opacity:'.56'});
   }
 
   document.querySelectorAll('[data-head-study]').forEach(host => {
