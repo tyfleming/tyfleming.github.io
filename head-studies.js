@@ -26,7 +26,7 @@
 
   function drawNightOracle(svg, c) {
     // A side-view classical bust. The brow, nose, lips, chin, and jaw are one continuous silhouette.
-    const bustPath = 'M 150 85 C 110 87 83 116 76 158 C 70 197 78 238 98 266 C 110 284 124 296 139 307 L 136 329 C 132 352 91 363 36 386 L 29 407 L 289 407 L 283 387 C 251 375 224 363 209 347 C 202 338 202 328 206 322 C 217 320 224 323 233 323 L 244 318 C 253 313 255 304 254 295 L 254 285 C 258 279 257 276 251 272 L 245 269 C 254 264 257 260 252 255 L 249 252 C 270 250 279 244 275 237 C 272 230 263 226 257 219 C 244 205 238 187 237 172 C 234 126 194 87 150 85 Z';
+    const bustPath = 'M 150 85 C 110 87 83 116 76 158 C 70 197 78 238 98 266 C 110 284 124 296 139 307 L 136 329 C 132 352 91 363 36 386 L 29 407 L 289 407 L 283 387 C 251 375 224 363 209 347 C 202 338 202 328 206 322 C 217 320 224 323 233 323 L 244 318 C 253 313 255 304 252 293 L 250 286 C 251 282 249 279 245 277 L 241 274 C 248 270 250 265 245 260 L 242 256 C 263 253 275 247 275 239 C 272 230 263 226 257 219 C 244 205 238 187 237 172 C 234 126 194 87 150 85 Z';
     const ink = '#2e4543';
     const stone = '#c6d2c5';
     const shadow = '#6d8980';
@@ -41,7 +41,7 @@
     add(svg,'circle',{cx:74,cy:81,r:27,fill:c.bg});
     for(const [x,y] of [[262,70],[284,169],[44,267],[267,317]]) add(svg,'circle',{cx:x,cy:y,r:'1.1',fill:'#dbe5d8'});
 
-    const bust = add(svg,'g',{transform:'translate(7 9) scale(.96)'});
+    const bust = add(svg,'g',{transform:'translate(7 65) scale(.96 .82)'});
     path(bust,bustPath,{fill:stone,stroke:ink,'stroke-width':'1.55','stroke-linejoin':'round'});
     const clip=add(add(svg,'defs'),'clipPath',{id:'night-profile-clip'});
     path(clip,bustPath);
@@ -64,7 +64,7 @@
     path(bust,'M 198 188 Q 215 180 231 188',{fill:'none',stroke:ink,'stroke-width':'1.6','stroke-linecap':'round',opacity:'.7'});
     path(bust,'M 202 202 Q 217 211 231 202',{fill:'none',stroke:ink,'stroke-width':'2.7','stroke-linecap':'round'});
     path(bust,'M 231 185 C 239 207 249 222 268 237',{fill:'none',stroke:ink,'stroke-width':'1.05',opacity:'.45'});
-    path(bust,'M 237 257 Q 245 260 251 255 M 234 276 Q 245 276 251 274',{fill:'none',stroke:ink,'stroke-width':'1.25','stroke-linecap':'round'});
+    path(bust,'M 234 257 Q 240 259 245 256 M 232 276 Q 240 278 246 275',{fill:'none',stroke:ink,'stroke-width':'1.15','stroke-linecap':'round'});
     path(bust,'M 158 282 C 177 305 199 313 219 308',{fill:'none',stroke:ink,'stroke-width':'1.3',opacity:'.46'});
     path(bust,'M 142 314 C 162 339 159 368 150 389 M 204 325 C 182 346 180 375 183 397',{fill:'none',stroke:ink,'stroke-width':'1.25',opacity:'.55'});
     path(bust,'M 38 399 C 93 373 134 375 159 389 C 184 403 244 385 284 400',{fill:'none',stroke:ink,'stroke-width':'1.5',opacity:'.6'});
