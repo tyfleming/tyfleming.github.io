@@ -189,6 +189,57 @@
     }
   }
 
+  function drawLunarCat(svg, c) {
+    const gold='#d1ad77';
+    const ivory='#e8dfc9';
+    const fur='#c9975b';
+    const ink='#5d493b';
+    const stars=[
+      [45,70,3.6],[80,98,2.5],[113,67,2.4],[236,72,4.2],[272,103,3],
+      [282,151,2.6],[255,182,3.2],[288,223,2.4],[268,267,2.8],
+      [47,257,2.6],[54,320,3.4],[88,362,2.6],[160,365,3.1],
+      [229,352,2.7],[276,337,3.7]
+    ];
+    stars.forEach(([x,y,r],i) => path(svg,
+      `M ${x} ${y-r} L ${x+r*.18} ${y-r*.18} L ${x+r} ${y} L ${x+r*.18} ${y+r*.18} L ${x} ${y+r} L ${x-r*.18} ${y+r*.18} L ${x-r} ${y} L ${x-r*.18} ${y-r*.18} Z`,
+      {fill:i%3===0?gold:'#dce5d8',opacity:'.9'}));
+    for(const [x,y] of [[62,118],[104,106],[217,102],[284,76],[266,124],[257,225],
+      [46,190],[68,235],[47,285],[78,339],[118,349],[202,365],[251,329],[286,291]])
+      add(svg,'circle',{cx:x,cy:y,r:'.95',fill:'#dce5d8',opacity:'.75'});
+
+    // The moon is one open crescent, with its lower horn supporting the cat.
+    path(svg,'M 191 73 C 135 78 92 119 77 173 C 57 242 94 307 157 327 C 207 343 252 321 273 281 C 246 297 215 299 190 282 C 147 254 134 204 145 160 C 152 123 169 92 191 73 Z',
+      {fill:ivory,stroke:gold,'stroke-width':'1.2','stroke-linejoin':'round'});
+    path(svg,'M 86 182 C 73 243 104 296 159 315 C 198 329 231 317 254 300',
+      {fill:'none',stroke:'#bfad8c','stroke-width':'.85',opacity:'.64'});
+
+    // Curled body, tucked paws and closed eyes form an original sleeping pose.
+    path(svg,'M 166 246 C 168 219 187 199 214 198 C 241 198 258 216 259 238 C 260 261 244 275 222 275 C 200 275 182 268 166 246 Z',
+      {fill:fur,stroke:ink,'stroke-width':'1.25','stroke-linejoin':'round'});
+    path(svg,'M 227 214 C 244 215 252 229 248 244 C 244 256 231 263 216 261 C 200 259 191 247 196 234',
+      {fill:'none',stroke:'#815a39','stroke-width':'2.3','stroke-linecap':'round'});
+    path(svg,'M 158 238 C 172 236 183 243 193 252 C 201 258 209 261 218 260 C 210 269 198 270 188 265 C 176 270 163 264 157 253 Z',
+      {fill:fur,stroke:ink,'stroke-width':'1.05','stroke-linejoin':'round'});
+    path(svg,'M 134 209 L 130 191 L 148 202 Q 152 194 160 187 L 171 205 C 181 213 184 228 176 241 C 170 252 152 254 139 247 C 127 240 126 223 134 209 Z',
+      {fill:fur,stroke:ink,'stroke-width':'1.35','stroke-linejoin':'round'});
+    path(svg,'M 135 200 L 141 204 M 158 194 L 162 204',{fill:'none',stroke:'#e8d0a7','stroke-width':'1.4','stroke-linecap':'round'});
+    path(svg,'M 138 222 Q 144 227 149 221 M 158 220 Q 164 225 169 219',
+      {fill:'none',stroke:ink,'stroke-width':'1.55','stroke-linecap':'round'});
+    path(svg,'M 151 231 L 155 231 L 153 234 Z',{fill:ink});
+    path(svg,'M 153 234 Q 148 239 144 235 M 153 234 Q 157 239 162 235',
+      {fill:'none',stroke:ink,'stroke-width':'.9','stroke-linecap':'round'});
+    for(const d of [
+      'M 139 234 L 123 231 M 139 237 L 124 240',
+      'M 164 234 L 179 230 M 164 237 L 180 239'
+    ]) path(svg,d,{fill:'none',stroke:ink,'stroke-width':'.85','stroke-linecap':'round'});
+    path(svg,'M 150 245 C 154 255 163 261 173 259 C 179 265 189 265 195 260',
+      {fill:'none',stroke:ink,'stroke-width':'1.2','stroke-linecap':'round'});
+    path(svg,'M 174 264 Q 178 267 182 264 M 185 264 Q 189 267 193 262',
+      {fill:'none',stroke:ink,'stroke-width':'.85','stroke-linecap':'round'});
+    path(svg,'M 143 272 C 178 279 223 291 265 281',
+      {fill:'none',stroke:'#f1e6ca','stroke-width':'1.05',opacity:'.66'});
+  }
+
   const makeCard = c => {
     const svg = el('svg', { viewBox:'0 0 320 420', 'aria-hidden':'true', focusable:'false' });
     add(svg, 'rect', { x:0, y:0, width:320, height:420, fill:c.bg });
@@ -269,7 +320,8 @@
 
   document.querySelectorAll('[data-celestial-study]').forEach(host => {
     const svg=makeCard(colors[1]);
-    drawNightOracle(svg,colors[1],host.dataset.celestialStudy);
+    if(host.dataset.celestialStudy==='cat') drawLunarCat(svg,colors[1]);
+    else drawNightOracle(svg,colors[1],host.dataset.celestialStudy);
     path(svg,'M 160 21 L 160.7 24.3 L 164 25 L 160.7 25.7 L 160 29 L 159.3 25.7 L 156 25 L 159.3 24.3 Z',{fill:colors[1].accent});
     host.replaceChildren(svg);
   });
