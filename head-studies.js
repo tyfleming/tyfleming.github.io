@@ -25,8 +25,8 @@
   ];
 
   function drawNightOracle(svg, c) {
-    // Measured from the supplied photo by scripts/trace_profile.py.
-    // The front contour is extracted from pixels; only the rear skull and bust are drawn by hand.
+    // Front contour extracted from the supplied photo by scripts/trace_profile.py.
+    // The hairline and jaw landmarks were interpreted against that reference.
     const tracedFront = [
       [132.04,56.8],[125.52,62.92],[101.28,104.4],[87.72,120.04],
       [81.38,137.04],[75.86,141.8],[73.98,147.24],[69.82,152],
@@ -59,47 +59,45 @@
       }
       return d;
     };
-    const bustPath = smoothPath([...tracedFront, ...jaw]) +
-      ' C 166 272 164 308 163 330 C 131 352 78 372 27 390 L 27 407 L 294 407 L 290 389 C 267 377 247 359 241 333 C 238 317 239 301 245 284 C 268 264 282 232 287 196 C 293 148 274 101 235 72 C 208 52 167 43 132.04 56.8 Z';
+    const maskPath = smoothPath([...tracedFront.slice(2), ...jaw]) +
+      ' C 181 222 182 184 173.6 157.44 ' +
+      smoothPath([...hairline].reverse()).replace(/^M [^C]+/, '') + ' Z';
     const ink = '#304744';
     const stone = '#c8d4c7';
-    const shadow = '#6f8d83';
     const light = '#e5e9df';
 
-    const field = add(svg,'g',{fill:'#a9bfad',opacity:'.43'});
-    for(let y=44;y<357;y+=9) for(let x=28;x<295;x+=9) {
-      const radius=Math.hypot((x-166)*.94,y-183);
-      if(radius>116 && radius<147) add(field,'circle',{cx:x,cy:y,r:'.82'});
-    }
-    add(svg,'circle',{cx:55,cy:89,r:27,fill:c.accent});
-    add(svg,'circle',{cx:67,cy:77,r:26,fill:c.bg});
-    for(const [x,y] of [[271,61],[291,107],[39,322],[277,324]]) add(svg,'circle',{cx:x,cy:y,r:'1.1',fill:'#dbe5d8'});
+    const star = (x,y,r,color,opacity=1) => path(svg,
+      `M ${x} ${y-r} L ${x+r*.18} ${y-r*.18} L ${x+r} ${y} L ${x+r*.18} ${y+r*.18} L ${x} ${y+r} L ${x-r*.18} ${y+r*.18} L ${x-r} ${y} L ${x-r*.18} ${y-r*.18} Z`,
+      {fill:color,opacity});
+    const brightStars = [
+      [43,62,4],[78,54,2.5],[119,73,3],[163,59,4.5],[216,57,2.5],[268,73,4],
+      [38,115,3],[53,149,4],[38,188,2.5],[47,225,3],[37,271,4],[52,318,2.5],
+      [282,112,3],[269,153,4],[282,197,2.5],[268,238,3.5],[282,280,2.5],[267,320,4],
+      [39,354,3],[84,363,2.5],[124,375,3],[170,358,2.5],[221,373,4],[266,360,3]
+    ];
+    brightStars.forEach(([x,y,r],i) => star(x,y,r,i%3===0?'#d1ad77':'#dfe8da',i%4===0?.95:.82));
+    const smallStars = [
+      [59,83],[99,47],[136,54],[190,79],[237,87],[284,48],[33,93],[67,121],
+      [39,162],[55,199],[31,243],[63,274],[42,300],[57,348],[90,345],[115,62],
+      [256,51],[282,89],[257,132],[287,169],[258,198],[282,222],[255,273],[290,309],
+      [248,345],[284,379],[201,359],[148,371],[103,382],[49,378]
+    ];
+    smallStars.forEach(([x,y],i) => add(svg,'circle',{cx:x,cy:y,r:i%5===0?'1.4':'.85',fill:i%4===0?c.accent:'#dbe5d8',opacity:'.77'}));
 
-    const bust = add(svg,'g');
-    path(bust,bustPath,{fill:stone,stroke:ink,'stroke-width':'1.5','stroke-linejoin':'round'});
-    const clip=add(add(svg,'defs'),'clipPath',{id:'night-profile-clip'});
-    path(clip,bustPath);
-    const planes=add(bust,'g',{'clip-path':'url(#night-profile-clip)'});
-    const hairCap = 'M 102.2 109.84 C 112 78 125 57 132.04 56.8 C 167 43 208 52 235 72 C 274 101 293 148 287 196 C 282 232 268 264 245 284 C 218 260 213 223 208 202 C 201 181 187 166 173.6 157.44 ' +
-      smoothPath([...hairline].reverse()).replace(/^M [^C]+/, '') + ' Z';
-    path(planes,hairCap,{fill:shadow,opacity:'.57'});
-    path(planes,'M 98 119 C 119 105 139 115 151 137 C 160 162 153 187 127 207 C 101 209 75 191 69 158 C 79 137 88 124 98 119 Z',{fill:light,opacity:'.55'});
-    path(planes,'M 219 121 C 258 147 272 192 260 234 C 254 250 247 261 237 270 C 221 247 212 215 207 189 C 202 163 208 141 219 121 Z',{fill:'#53776f',opacity:'.18'});
-    path(planes,'M 57 213 C 83 203 121 217 143 247 L 158 267 C 134 292 106 302 72 289 C 59 269 53 239 57 213 Z',{fill:'#a4b7a8',opacity:'.44'});
-    path(planes,'M 71 280 C 103 294 132 280 160 264 C 139 296 106 306 75 298 Z',{fill:light,opacity:'.56'});
-    path(planes,'M 155 279 C 180 305 178 345 157 388 C 110 402 70 407 24 413 L 25 372 C 91 350 128 329 155 279 Z',{fill:'#66847a',opacity:'.58'});
-    path(planes,'M 243 283 C 232 318 244 355 281 380 L 303 413 L 174 413 C 190 365 207 311 243 283 Z',{fill:light,opacity:'.67'});
-    const dots=add(planes,'g',{fill:'#365b53',opacity:'.23'});
-    for(let y=71;y<389;y+=8) for(let x=188;x<287;x+=8) if(Math.sin(x*.083+y*.039)>.26) add(dots,'circle',{cx:x,cy:y,r:'.75'});
-
-    // The ear and hair detail remain absent; the hairline stops at the temple.
-    path(bust,smoothPath(hairline),{fill:'none',stroke:ink,'stroke-width':'1.15','stroke-linecap':'round',opacity:'.55'});
-    path(bust,'M 76 157 C 90 152 105 155 115 161',{fill:'none',stroke:ink,'stroke-width':'2','stroke-linecap':'round',opacity:'.78'});
-    path(bust,'M 80 176 Q 96 183 111 175',{fill:'none',stroke:ink,'stroke-width':'2.25','stroke-linecap':'round'});
-    path(bust,'M 63 240 Q 73 243 85 239',{fill:'none',stroke:ink,'stroke-width':'1.1','stroke-linecap':'round'});
-    path(bust,'M 106 229 C 128 240 146 247 168 245',{fill:'none',stroke:ink,'stroke-width':'1.15',opacity:'.38'});
-    path(bust,'M 167 273 C 175 307 174 352 161 380 M 242 287 C 226 313 224 345 239 372',{fill:'none',stroke:ink,'stroke-width':'1.2',opacity:'.48'});
-    path(bust,'M 30 400 C 83 373 127 378 157 389 C 183 403 246 383 288 400',{fill:'none',stroke:ink,'stroke-width':'1.45',opacity:'.56'});
+    // The face alone floats in the center of the card. No skull, hair, or bust.
+    const face=add(svg,'g',{transform:'translate(16 -39) scale(1.28)'});
+    path(face,maskPath,{fill:stone,stroke:'#e5e9df','stroke-width':'2.1','stroke-linejoin':'round'});
+    const clip=add(add(face,'defs'),'clipPath',{id:'night-face-clip'});
+    path(clip,maskPath);
+    const planes=add(face,'g',{'clip-path':'url(#night-face-clip)'});
+    path(planes,'M 98 108 C 124 98 151 117 158 151 C 163 178 147 197 117 211 C 91 210 73 188 68 157 C 75 136 85 117 98 108 Z',{fill:light,opacity:'.65'});
+    path(planes,'M 56 207 C 85 198 122 214 147 241 L 175 247 C 153 279 115 300 72 289 C 54 269 49 234 56 207 Z',{fill:'#9db5a6',opacity:'.53'});
+    path(planes,'M 70 278 C 92 291 119 291 143 275 C 129 301 96 310 69 295 Z',{fill:light,opacity:'.58'});
+    path(planes,'M 156 148 C 175 170 185 206 169 245 C 154 253 140 250 132 239 C 151 210 159 179 156 148 Z',{fill:'#739487',opacity:'.25'});
+    path(face,'M 76 157 C 90 152 105 155 115 161',{fill:'none',stroke:ink,'stroke-width':'1.7','stroke-linecap':'round',opacity:'.74'});
+    path(face,'M 80 176 Q 96 183 111 175',{fill:'none',stroke:ink,'stroke-width':'2.35','stroke-linecap':'round'});
+    path(face,'M 63 240 Q 73 243 85 239',{fill:'none',stroke:ink,'stroke-width':'1.15','stroke-linecap':'round'});
+    path(face,'M 107 226 C 129 237 148 246 169 245',{fill:'none',stroke:ink,'stroke-width':'1.05',opacity:'.32'});
   }
 
   document.querySelectorAll('[data-head-study]').forEach(host => {
@@ -113,7 +111,7 @@
 
     if (variant === 2) {
       drawNightOracle(svg,c);
-      add(svg,'circle',{cx:160,cy:25,r:2.2,fill:c.accent});
+      path(svg,'M 160 21 L 160.7 24.3 L 164 25 L 160.7 25.7 L 160 29 L 159.3 25.7 L 156 25 L 159.3 24.3 Z',{fill:c.accent});
       host.replaceChildren(svg);
       return;
     }
