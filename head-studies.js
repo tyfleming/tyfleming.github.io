@@ -1,4 +1,4 @@
-// Four deterministic vector studies. No raster assets, external libraries, or animation.
+// Deterministic vector studies. No raster assets, external libraries, or animation.
 (() => {
   const NS = 'http://www.w3.org/2000/svg';
   const el = (tag, attrs = {}) => {
@@ -24,7 +24,7 @@
     { bg:'#f6eee3', border:'#b9947c', fill:'#e6cfba', shade:'#8f614e', ink:'#6d4c41', accent:'#bd7c58', mist:'#dfc6ad', dots:'#aa8873' }
   ];
 
-  function drawNightOracle(svg, c) {
+  function drawNightOracle(svg, c, mode = 'base') {
     // Front contour extracted from the supplied photo by scripts/trace_profile.py.
     // The hairline and jaw landmarks were interpreted against that reference.
     const tracedFront = [
@@ -84,30 +84,76 @@
     ];
     smallStars.forEach(([x,y],i) => add(svg,'circle',{cx:x,cy:y,r:i%5===0?'1.4':'.85',fill:i%4===0?c.accent:'#dbe5d8',opacity:'.77'}));
 
+    if (mode === 'eclipse') {
+      const disc = add(svg,'g');
+      add(disc,'circle',{cx:217,cy:167,r:77,fill:'#bda77e',opacity:'.25'});
+      const eclipseClip=add(add(svg,'defs'),'clipPath',{id:'night-eclipse-disc'});
+      add(eclipseClip,'circle',{cx:217,cy:167,r:77});
+      const contours=add(disc,'g',{'clip-path':'url(#night-eclipse-disc)',fill:'none',stroke:'#e4d5aa','stroke-width':'.75',opacity:'.5'});
+      for(const d of [
+        'M 149 141 C 177 106 224 103 252 128 C 273 147 275 176 258 198',
+        'M 151 154 C 182 123 219 120 244 142 C 263 160 260 183 244 201',
+        'M 156 172 C 185 143 218 144 237 159 C 251 172 247 190 235 204',
+        'M 164 189 C 192 166 215 167 228 179 C 239 189 231 205 218 215'
+      ]) path(contours,d,{fill:'none'});
+      add(disc,'circle',{cx:217,cy:167,r:77,fill:'none',stroke:'#dbc292','stroke-width':'1.1',opacity:'.9'});
+    }
+    if (mode === 'orbit') {
+      add(svg,'ellipse',{cx:160,cy:211,rx:106,ry:145,transform:'rotate(-25 160 211)',fill:'none',stroke:'#d9bd89','stroke-width':'1.15',opacity:'.82'});
+      add(svg,'ellipse',{cx:160,cy:211,rx:101,ry:140,transform:'rotate(-25 160 211)',fill:'none',stroke:'#809a91','stroke-width':'.6',opacity:'.65'});
+      star(258,101,4.5,'#e5d1aa');
+    }
+    if (mode === 'comet') {
+      path(svg,'M 257 151 C 270 123 280 103 291 81',{fill:'none',stroke:'#d1ad77','stroke-width':'1.45','stroke-linecap':'round',opacity:'.82'});
+      path(svg,'M 254 152 C 264 128 271 110 278 96 M 260 151 C 272 130 281 117 289 108',{fill:'none',stroke:'#dfe8da','stroke-width':'.55','stroke-linecap':'round',opacity:'.66'});
+      add(svg,'circle',{cx:257,cy:151,r:4.4,fill:'#e8d4a9'});
+      add(svg,'circle',{cx:257,cy:151,r:7.5,fill:'none',stroke:'#e8d4a9','stroke-width':'.7',opacity:'.75'});
+      star(278,96,2.6,'#e5d1aa',.87);
+      star(290,108,2.2,'#dfe8da',.81);
+    }
+
     // The face alone floats in the center of the card. No skull, hair, or bust.
     const face=add(svg,'g',{transform:'translate(16 -39) scale(1.28)'});
     path(face,maskPath,{fill:stone,stroke:'#e5e9df','stroke-width':'2.1','stroke-linejoin':'round'});
-    const clip=add(add(face,'defs'),'clipPath',{id:'night-face-clip'});
+    const faceClipId=`night-face-clip-${mode}`;
+    const clip=add(add(face,'defs'),'clipPath',{id:faceClipId});
     path(clip,maskPath);
-    const planes=add(face,'g',{'clip-path':'url(#night-face-clip)'});
+    const planes=add(face,'g',{'clip-path':`url(#${faceClipId})`});
     path(planes,'M 98 108 C 124 98 151 117 158 151 C 163 178 147 197 117 211 C 91 210 73 188 68 157 C 75 136 85 117 98 108 Z',{fill:light,opacity:'.65'});
     path(planes,'M 56 207 C 85 198 122 214 147 241 L 175 247 C 153 279 115 300 72 289 C 54 269 49 234 56 207 Z',{fill:'#9db5a6',opacity:'.53'});
     path(planes,'M 70 278 C 92 291 119 291 143 275 C 129 301 96 310 69 295 Z',{fill:light,opacity:'.58'});
     path(planes,'M 156 148 C 175 170 185 206 169 245 C 154 253 140 250 132 239 C 151 210 159 179 156 148 Z',{fill:'#739487',opacity:'.25'});
+    if (mode === 'constellation') {
+      const mapped = [[112,132],[141,143],[158,170],[120,188],[99,213],[137,219],[165,232]];
+      path(planes,'M 112 132 L 141 143 L 158 170 M 141 143 L 120 188 L 99 213 M 120 188 L 137 219 L 165 232',{fill:'none',stroke:'#8b7554','stroke-width':'.8',opacity:'.76'});
+      mapped.forEach(([x,y],i) => {
+        add(planes,'circle',{cx:x,cy:y,r:i===1||i===3?'2.3':'1.65',fill:'#e9c987',stroke:'#7b694d','stroke-width':'.35'});
+        if(i===1||i===3) path(planes,`M ${x} ${y-5} V ${y+5} M ${x-5} ${y} H ${x+5}`,{fill:'none',stroke:'#967d57','stroke-width':'.55',opacity:'.8'});
+      });
+    }
     path(face,'M 76 157 C 90 152 105 155 115 161',{fill:'none',stroke:ink,'stroke-width':'1.7','stroke-linecap':'round',opacity:'.74'});
     path(face,'M 80 176 Q 96 183 111 175',{fill:'none',stroke:ink,'stroke-width':'2.35','stroke-linecap':'round'});
     path(face,'M 63 240 Q 73 243 85 239',{fill:'none',stroke:ink,'stroke-width':'1.15','stroke-linecap':'round'});
     path(face,'M 107 226 C 129 237 148 246 169 245',{fill:'none',stroke:ink,'stroke-width':'1.05',opacity:'.32'});
+    if (mode === 'orbit') {
+      path(svg,'M 73 301 C 111 326 169 324 219 294 C 247 278 263 248 274 218',{fill:'none',stroke:'#e2c895','stroke-width':'1.4','stroke-linecap':'round',opacity:'.9'});
+      add(svg,'circle',{cx:219,cy:294,r:2.5,fill:'#e2c895'});
+    }
   }
+
+  const makeCard = c => {
+    const svg = el('svg', { viewBox:'0 0 320 420', 'aria-hidden':'true', focusable:'false' });
+    add(svg, 'rect', { x:0, y:0, width:320, height:420, fill:c.bg });
+    add(svg, 'rect', { x:13, y:13, width:294, height:394, fill:'none', stroke:c.border, 'stroke-width':'.8' });
+    add(svg, 'path', { d:'M 24 37 H 296 M 24 384 H 296', fill:'none', stroke:c.border, 'stroke-width':'.7', opacity:'.72' });
+    return svg;
+  };
 
   document.querySelectorAll('[data-head-study]').forEach(host => {
     const variant = Number(host.dataset.headStudy);
     const c = colors[variant - 1];
     const shape = portrait;
-    const svg = el('svg', { viewBox:'0 0 320 420', 'aria-hidden':'true', focusable:'false' });
-    add(svg, 'rect', { x:0, y:0, width:320, height:420, fill:c.bg });
-    add(svg, 'rect', { x:13, y:13, width:294, height:394, fill:'none', stroke:c.border, 'stroke-width':'.8' });
-    add(svg, 'path', { d:'M 24 37 H 296 M 24 384 H 296', fill:'none', stroke:c.border, 'stroke-width':'.7', opacity:'.72' });
+    const svg = makeCard(c);
 
     if (variant === 2) {
       drawNightOracle(svg,c);
@@ -170,6 +216,13 @@
       }
     }
     add(svg,'circle',{cx:160,cy:25,r:2.2,fill:c.accent});
+    host.replaceChildren(svg);
+  });
+
+  document.querySelectorAll('[data-celestial-study]').forEach(host => {
+    const svg=makeCard(colors[1]);
+    drawNightOracle(svg,colors[1],host.dataset.celestialStudy);
+    path(svg,'M 160 21 L 160.7 24.3 L 164 25 L 160.7 25.7 L 160 29 L 159.3 25.7 L 156 25 L 159.3 24.3 Z',{fill:colors[1].accent});
     host.replaceChildren(svg);
   });
 })();
