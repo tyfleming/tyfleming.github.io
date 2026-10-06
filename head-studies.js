@@ -25,49 +25,47 @@
   ];
 
   function drawNightOracle(svg, c) {
-    // A side-view classical bust. The brow, nose, lips, chin, and jaw are one continuous silhouette.
-    const bustPath = 'M 150 85 C 110 87 83 116 76 158 C 70 197 78 238 98 266 C 110 284 124 296 139 307 L 136 329 C 132 352 91 363 36 386 L 29 407 L 289 407 L 283 387 C 251 375 224 363 209 347 C 202 338 202 328 206 322 C 217 320 224 323 233 323 L 244 318 C 253 313 255 304 252 293 L 250 286 C 251 282 249 279 245 277 L 241 274 C 248 270 250 265 245 260 L 242 256 C 263 253 275 247 275 239 C 272 230 263 226 257 219 C 244 205 238 187 237 172 C 234 126 194 87 150 85 Z';
-    const ink = '#2e4543';
-    const stone = '#c6d2c5';
-    const shadow = '#6d8980';
-    const light = '#e1e8de';
+    // Side-profile landmarks follow the supplied reference: broad posterior skull,
+    // prominent brow and nose, compact face, square chin, and a clear jaw angle.
+    const bustPath = 'M 182 71 C 144 66 117 82 108 117 C 101 135 99 153 82 167 C 76 173 75 180 84 184 C 88 189 85 197 76 208 L 56 220 C 49 225 50 232 59 234 C 63 236 67 234 70 237 L 68 249 C 74 252 78 251 78 256 C 79 261 73 264 70 270 C 66 280 69 292 77 298 C 87 303 101 303 112 301 C 130 297 145 285 153 276 C 151 309 160 333 178 348 C 209 366 255 371 287 389 L 290 407 L 28 407 L 30 391 C 66 370 103 362 131 346 C 147 333 150 315 146 305 C 184 297 207 289 230 275 C 249 261 263 236 268 207 C 277 165 268 117 237 88 C 220 75 201 70 182 71 Z';
+    const ink = '#304744';
+    const stone = '#c8d4c7';
+    const shadow = '#6f8d83';
+    const light = '#e5e9df';
 
-    const field = add(svg,'g',{fill:'#acc0b0',opacity:'.44'});
-    for(let y=54;y<357;y+=9) for(let x=31;x<291;x+=9) {
-      const radius=Math.hypot((x-161)*.93,y-193);
-      if(radius>116 && radius<148) add(field,'circle',{cx:x,cy:y,r:'.85'});
+    const field = add(svg,'g',{fill:'#a9bfad',opacity:'.43'});
+    for(let y=46;y<358;y+=9) for(let x=30;x<295;x+=9) {
+      const radius=Math.hypot((x-168)*.91,y-188);
+      if(radius>119 && radius<148) add(field,'circle',{cx:x,cy:y,r:'.82'});
     }
-    add(svg,'circle',{cx:62,cy:93,r:28,fill:c.accent});
-    add(svg,'circle',{cx:74,cy:81,r:27,fill:c.bg});
-    for(const [x,y] of [[262,70],[284,169],[44,267],[267,317]]) add(svg,'circle',{cx:x,cy:y,r:'1.1',fill:'#dbe5d8'});
+    add(svg,'circle',{cx:60,cy:86,r:27,fill:c.accent});
+    add(svg,'circle',{cx:71,cy:75,r:26,fill:c.bg});
+    for(const [x,y] of [[271,61],[291,107],[47,319],[277,324]]) add(svg,'circle',{cx:x,cy:y,r:'1.1',fill:'#dbe5d8'});
 
-    const bust = add(svg,'g',{transform:'translate(7 65) scale(.96 .82)'});
+    const bust = add(svg,'g',{transform:'translate(18 40) scale(.9 .9)'});
     path(bust,bustPath,{fill:stone,stroke:ink,'stroke-width':'1.55','stroke-linejoin':'round'});
     const clip=add(add(svg,'defs'),'clipPath',{id:'night-profile-clip'});
     path(clip,bustPath);
     const planes=add(bust,'g',{'clip-path':'url(#night-profile-clip)'});
 
-    // Flat tonal planes give the marble form depth without a bitmap or gradient.
-    path(planes,'M 69 77 C 122 88 139 136 133 177 C 118 212 106 247 129 301 C 139 330 131 365 113 410 L 18 410 L 15 86 Z',{fill:shadow,opacity:'.78'});
-    path(planes,'M 174 95 C 205 105 229 132 237 171 L 238 215 C 227 224 219 235 207 248 C 192 259 173 259 157 252 C 155 213 166 178 171 142 Z',{fill:light,opacity:'.75'});
-    path(planes,'M 217 188 C 228 202 240 224 275 238 L 270 254 C 254 255 242 251 231 240 Z',{fill:'#eef0e9',opacity:'.7'});
-    path(planes,'M 151 246 C 174 242 190 255 207 273 C 222 293 236 293 256 284 C 249 310 226 325 199 326 C 171 324 148 307 139 280 Z',{fill:'#a5b7a9',opacity:'.8'});
-    path(planes,'M 186 296 C 206 302 226 301 250 292 C 237 318 219 328 197 328 C 183 319 179 310 186 296 Z',{fill:light,opacity:'.7'});
-    path(planes,'M 136 306 C 161 324 161 347 149 382 C 131 390 95 393 31 410 L 18 410 L 18 362 Z',{fill:'#536f69',opacity:'.5'});
-    path(planes,'M 206 322 C 198 352 222 370 257 384 L 297 410 L 168 410 C 173 377 187 345 206 322 Z',{fill:light,opacity:'.8'});
-    const dots=add(planes,'g',{fill:'#41635b',opacity:'.28'});
-    for(let y=120;y<383;y+=8) for(let x=78;x<147;x+=8) if(Math.sin(x*.079+y*.047)>.18) add(dots,'circle',{cx:x,cy:y,r:'.85'});
+    // Broad rear cranial mass and planar cheekbone borrow the reference's proportions.
+    path(planes,'M 168 65 C 226 53 293 101 305 155 C 316 218 274 273 230 293 C 205 273 196 240 211 202 C 222 157 210 107 168 65 Z',{fill:shadow,opacity:'.54'});
+    path(planes,'M 107 115 C 130 94 158 99 180 114 C 183 145 167 177 148 189 C 135 205 131 226 136 248 C 114 263 93 254 76 240 C 107 204 95 158 107 115 Z',{fill:light,opacity:'.75'});
+    path(planes,'M 99 182 C 116 178 129 185 135 195 C 137 208 126 218 115 224 C 102 218 98 200 99 182 Z',{fill:'#a8bcae',opacity:'.31'});
+    path(planes,'M 86 231 C 112 230 139 241 157 259 L 165 279 C 149 294 131 302 112 300 L 72 280 Z',{fill:'#9cafa2',opacity:'.42'});
+    path(planes,'M 87 290 C 113 299 134 292 155 280 C 141 301 120 307 99 303 C 92 299 89 295 87 290 Z',{fill:light,opacity:'.53'});
+    path(planes,'M 145 300 C 168 320 164 354 150 382 C 112 395 71 403 27 411 L 25 378 C 86 353 125 339 145 300 Z',{fill:'#66847a',opacity:'.58'});
+    path(planes,'M 246 276 C 239 315 244 352 281 380 L 303 411 L 179 411 C 186 365 208 310 246 276 Z',{fill:light,opacity:'.7'});
+    const dots=add(planes,'g',{fill:'#365b53',opacity:'.27'});
+    for(let y=89;y<389;y+=8) for(let x=181;x<287;x+=8) if(Math.sin(x*.083+y*.039)>.26) add(dots,'circle',{cx:x,cy:y,r:'.75'});
 
-    // Ear, closed eye, nose plane, mouth, and carved neck lines stay understated.
-    path(bust,'M 111 211 C 103 199 96 206 98 225 C 100 244 110 250 119 238 C 126 227 122 216 111 211 Z',{fill:'#9fb3a5',stroke:ink,'stroke-width':'1.25'});
-    path(bust,'M 106 218 C 115 215 118 229 111 236',{fill:'none',stroke:ink,'stroke-width':'1.05','stroke-linecap':'round'});
-    path(bust,'M 198 188 Q 215 180 231 188',{fill:'none',stroke:ink,'stroke-width':'1.6','stroke-linecap':'round',opacity:'.7'});
-    path(bust,'M 202 202 Q 217 211 231 202',{fill:'none',stroke:ink,'stroke-width':'2.7','stroke-linecap':'round'});
-    path(bust,'M 231 185 C 239 207 249 222 268 237',{fill:'none',stroke:ink,'stroke-width':'1.05',opacity:'.45'});
-    path(bust,'M 234 257 Q 240 259 245 256 M 232 276 Q 240 278 246 275',{fill:'none',stroke:ink,'stroke-width':'1.15','stroke-linecap':'round'});
-    path(bust,'M 158 282 C 177 305 199 313 219 308',{fill:'none',stroke:ink,'stroke-width':'1.3',opacity:'.46'});
-    path(bust,'M 142 314 C 162 339 159 368 150 389 M 204 325 C 182 346 180 375 183 397',{fill:'none',stroke:ink,'stroke-width':'1.25',opacity:'.55'});
-    path(bust,'M 38 399 C 93 373 134 375 159 389 C 184 403 244 385 284 400',{fill:'none',stroke:ink,'stroke-width':'1.5',opacity:'.6'});
+    // Ear intentionally omitted. Facial details stay aligned to the traced profile.
+    path(bust,'M 99 180 C 112 174 126 176 139 184',{fill:'none',stroke:ink,'stroke-width':'2.2','stroke-linecap':'round',opacity:'.8'});
+    path(bust,'M 102 198 Q 116 204 130 197',{fill:'none',stroke:ink,'stroke-width':'2.4','stroke-linecap':'round'});
+    path(bust,'M 69 252 Q 76 253 82 251 M 69 267 Q 77 268 82 265',{fill:'none',stroke:ink,'stroke-width':'1.1','stroke-linecap':'round'});
+    path(bust,'M 93 273 C 107 290 129 295 147 281 M 148 280 C 163 275 176 266 186 255',{fill:'none',stroke:ink,'stroke-width':'1.2',opacity:'.4'});
+    path(bust,'M 149 307 C 170 324 170 353 160 378 M 245 283 C 230 309 227 342 242 370',{fill:'none',stroke:ink,'stroke-width':'1.25',opacity:'.53'});
+    path(bust,'M 33 399 C 83 374 123 376 153 389 C 183 403 240 384 286 400',{fill:'none',stroke:ink,'stroke-width':'1.5',opacity:'.58'});
   }
 
   document.querySelectorAll('[data-head-study]').forEach(host => {
