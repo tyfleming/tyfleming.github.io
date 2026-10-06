@@ -75,14 +75,20 @@
       [282,112,3],[269,153,4],[282,197,2.5],[268,238,3.5],[282,280,2.5],[267,320,4],
       [39,354,3],[84,363,2.5],[124,375,3],[170,358,2.5],[221,373,4],[266,360,3]
     ];
-    brightStars.forEach(([x,y,r],i) => star(x,y,r,i%3===0?'#d1ad77':'#dfe8da',i%4===0?.95:.82));
+    brightStars.forEach(([x,y,r],i) => {
+      if(mode==='brain' && x>140 && y>88 && y<322) return;
+      star(x,y,r,i%3===0?'#d1ad77':'#dfe8da',i%4===0?.95:.82);
+    });
     const smallStars = [
       [59,83],[99,47],[136,54],[190,79],[237,87],[284,48],[33,93],[67,121],
       [39,162],[55,199],[31,243],[63,274],[42,300],[57,348],[90,345],[115,62],
       [256,51],[282,89],[257,132],[287,169],[258,198],[282,222],[255,273],[290,309],
       [248,345],[284,379],[201,359],[148,371],[103,382],[49,378]
     ];
-    smallStars.forEach(([x,y],i) => add(svg,'circle',{cx:x,cy:y,r:i%5===0?'1.4':'.85',fill:i%4===0?c.accent:'#dbe5d8',opacity:'.77'}));
+    smallStars.forEach(([x,y],i) => {
+      if(mode==='brain' && x>140 && y>88 && y<322) return;
+      add(svg,'circle',{cx:x,cy:y,r:i%5===0?'1.4':'.85',fill:i%4===0?c.accent:'#dbe5d8',opacity:'.77'});
+    });
 
     if (mode === 'eclipse') {
       const disc = add(svg,'g');
@@ -111,9 +117,51 @@
       star(278,96,2.6,'#e5d1aa',.87);
       star(290,108,2.2,'#dfe8da',.81);
     }
+    if (mode === 'brain') {
+      // An illustrative cerebral hemisphere and short stem: fixed constellation
+      // nodes follow an intentional outline, with sparse edges suggesting folds.
+      const outline = [
+        [147,166],[153,145],[166,127],[184,119],[201,110],[221,116],
+        [239,111],[256,129],[273,149],[279,169],[274,188],[282,209],
+        [270,226],[268,241],[247,252],[225,246],[206,255],[184,249],
+        [164,230],[150,202]
+      ];
+      const inner = [
+        [174,157],[190,140],[210,134],[232,146],[252,160],
+        [259,183],[242,199],[220,179],[201,166],[180,184],
+        [171,209],[190,222],[211,235],[232,223],[253,227],
+        [225,266],[217,280]
+      ];
+      const nodes=[...outline,...inner];
+      const network=add(svg,'g',{fill:'none',stroke:'#b9cabb','stroke-linecap':'round'});
+      const segment=(a,b,opacity,width='.68') => path(network,
+        `M ${nodes[a][0]} ${nodes[a][1]} L ${nodes[b][0]} ${nodes[b][1]}`,
+        {fill:'none','stroke-width':width,opacity});
+      outline.forEach((_,i) => segment(i,(i+1)%outline.length,'.62','.85'));
+      for(const [a,b] of [
+        [0,20],[1,20],[2,21],[3,21],[4,22],[5,22],[5,23],[6,23],
+        [7,24],[8,24],[8,25],[9,25],[10,26],[11,34],[12,34],
+        [13,33],[14,32],[15,32],[16,31],[17,30],[18,30],[19,29],
+        [20,21],[20,29],[21,22],[21,28],[22,23],[22,28],[23,24],
+        [23,27],[24,25],[24,27],[25,26],[26,27],[26,34],[27,28],
+        [27,31],[28,29],[28,31],[29,30],[30,31],[31,32],
+        [32,33],[33,34],[14,35],[15,35],[35,36]
+      ]) segment(a,b,'.37');
+      for(const d of [
+        'M 166 127 C 181 140 193 127 210 134 C 223 126 231 141 246 126',
+        'M 174 157 C 189 145 198 174 211 159 C 227 148 239 176 252 160',
+        'M 171 209 C 186 196 199 223 211 207 C 228 196 241 218 259 209'
+      ]) path(network,d,{fill:'none',stroke:'#d9c28f','stroke-width':'.66',opacity:'.45'});
+      nodes.forEach(([x,y],i) => {
+        const major=i%4===0 || i===35 || i===36;
+        add(svg,'circle',{cx:x,cy:y,r:major?'2.15':'1.35',fill:major?'#e6cb92':'#b9d0c1',opacity:major?'.96':'.82'});
+        if(major && i!==36) star(x,y,3.1,'#e6cb92',.76);
+      });
+      path(svg,'M 145 179 C 140 175 135 176 129 181',{fill:'none',stroke:'#d2b27d','stroke-width':'.85',opacity:'.7'});
+    }
 
     // The face alone floats in the center of the card. No skull, hair, or bust.
-    const face=add(svg,'g',{transform:'translate(16 -39) scale(1.28)'});
+    const face=add(svg,'g',{transform:mode==='brain'?'translate(-5 27) scale(.95)':'translate(16 -39) scale(1.28)'});
     path(face,maskPath,{fill:stone,stroke:'#e5e9df','stroke-width':'2.1','stroke-linejoin':'round'});
     const faceClipId=`night-face-clip-${mode}`;
     const clip=add(add(face,'defs'),'clipPath',{id:faceClipId});
