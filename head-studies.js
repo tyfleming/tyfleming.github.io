@@ -225,7 +225,7 @@
       return d;
     };
     const bustPath = smoothPath([...tracedFront, ...jaw]) +
-      ' C 166 272 164 308 163 330 C 131 352 78 372 27 390 L 27 407 L 294 407 L 290 389 C 267 377 247 359 241 333 C 238 317 239 301 245 284 C 268 264 282 232 287 196 C 293 148 274 101 235 72 C 208 52 167 43 132.04 56.8 Z';
+      ' C 155 268 149 304 141 329 C 112 353 70 374 27 390 L 27 407 L 294 407 L 290 389 C 267 377 247 359 241 333 C 238 317 239 301 245 284 C 268 264 282 232 287 196 C 293 148 274 101 235 72 C 214 58 198 53 180 51 C 161 48 145 51 132.04 56.8 Z';
     const ink = '#304744';
     const stone = '#c8d4c7';
     const shadow = '#6f8d83';
@@ -245,25 +245,30 @@
     const clip=add(add(svg,'defs'),'clipPath',{id:'night-profile-clip'});
     path(clip,bustPath);
     const planes=add(bust,'g',{'clip-path':'url(#night-profile-clip)'});
-    const hairCap = 'M 102.2 109.84 C 112 78 125 57 132.04 56.8 C 167 43 208 52 235 72 C 274 101 293 148 287 196 C 282 232 268 264 245 284 C 218 260 213 223 208 202 C 201 181 187 166 173.6 157.44 ' +
+    const hairCap = 'M 102.2 109.84 C 112 78 125 57 132.04 56.8 C 145 51 161 48 180 51 C 198 53 214 58 235 72 C 274 101 293 148 287 196 C 282 232 268 264 245 284 C 218 260 213 223 208 202 C 201 181 187 166 173.6 157.44 ' +
       smoothPath([...hairline].reverse()).replace(/^M [^C]+/, '') + ' Z';
     path(planes,hairCap,{fill:shadow,opacity:'.57'});
+    // Short, swept ridges give the crown a carved-hair reading without a helmet seam.
+    path(planes,'M 111 101 C 127 77 145 66 165 65 C 182 64 195 70 207 79 C 188 72 173 74 160 82 C 141 91 131 105 122 120 Z',{fill:light,opacity:'.15'});
+    path(planes,'M 136 68 C 154 65 170 69 185 78 C 196 86 205 96 211 108',{fill:'none',stroke:'#35574f','stroke-width':'1.6','stroke-linecap':'round',opacity:'.27'});
+    path(planes,'M 172 58 C 196 63 215 75 230 93 C 239 104 245 116 249 130',{fill:'none',stroke:'#dce6d8','stroke-width':'1.5','stroke-linecap':'round',opacity:'.25'});
+    path(planes,'M 214 76 C 236 89 252 107 259 129',{fill:'none',stroke:'#35574f','stroke-width':'1.4','stroke-linecap':'round',opacity:'.21'});
     path(planes,'M 98 119 C 119 105 139 115 151 137 C 160 162 153 187 127 207 C 101 209 75 191 69 158 C 79 137 88 124 98 119 Z',{fill:light,opacity:'.55'});
     path(planes,'M 219 121 C 258 147 272 192 260 234 C 254 250 247 261 237 270 C 221 247 212 215 207 189 C 202 163 208 141 219 121 Z',{fill:'#53776f',opacity:'.18'});
     path(planes,'M 57 213 C 83 203 121 217 143 247 L 158 267 C 134 292 106 302 72 289 C 59 269 53 239 57 213 Z',{fill:'#a4b7a8',opacity:'.44'});
     path(planes,'M 71 280 C 103 294 132 280 160 264 C 139 296 106 306 75 298 Z',{fill:light,opacity:'.56'});
-    path(planes,'M 155 279 C 180 305 178 345 157 388 C 110 402 70 407 24 413 L 25 372 C 91 350 128 329 155 279 Z',{fill:'#66847a',opacity:'.58'});
+    path(planes,'M 151 271 C 165 302 157 343 141 388 C 100 401 61 407 24 413 L 25 372 C 73 353 119 326 151 271 Z',{fill:'#66847a',opacity:'.58'});
     path(planes,'M 243 283 C 232 318 244 355 281 380 L 303 413 L 174 413 C 190 365 207 311 243 283 Z',{fill:light,opacity:'.67'});
     const dots=add(planes,'g',{fill:'#365b53',opacity:'.23'});
     for(let y=71;y<389;y+=8) for(let x=188;x<287;x+=8) if(Math.sin(x*.083+y*.039)>.26) add(dots,'circle',{cx:x,cy:y,r:'.75'});
 
-    // The ear and hair detail remain absent; the hairline stops at the temple.
+    // The hairline stops at the temple; the crown is the outer edge of the hair.
     path(bust,smoothPath(hairline),{fill:'none',stroke:ink,'stroke-width':'1.15','stroke-linecap':'round',opacity:'.55'});
     path(bust,'M 76 157 C 90 152 105 155 115 161',{fill:'none',stroke:ink,'stroke-width':'2','stroke-linecap':'round',opacity:'.78'});
     path(bust,'M 80 176 Q 96 183 111 175',{fill:'none',stroke:ink,'stroke-width':'2.25','stroke-linecap':'round'});
     path(bust,'M 60.5 238 C 64 240 69 240 73 238.5',{fill:'none',stroke:ink,'stroke-width':'1.05','stroke-linecap':'round'});
     path(bust,'M 106 229 C 128 240 146 247 168 245',{fill:'none',stroke:ink,'stroke-width':'1.15',opacity:'.38'});
-    path(bust,'M 167 273 C 175 307 174 352 161 380 M 242 287 C 226 313 224 345 239 372',{fill:'none',stroke:ink,'stroke-width':'1.2',opacity:'.48'});
+    path(bust,'M 152 272 C 155 304 153 350 139 380 M 242 287 C 226 313 224 345 239 372',{fill:'none',stroke:ink,'stroke-width':'1.2',opacity:'.48'});
     path(bust,'M 30 400 C 83 373 127 378 157 389 C 183 403 246 383 288 400',{fill:'none',stroke:ink,'stroke-width':'1.45',opacity:'.56'});
   }
 
