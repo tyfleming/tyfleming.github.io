@@ -189,56 +189,84 @@
     }
   }
 
-  function drawLunarCat(svg, c) {
-    const gold='#d1ad77';
-    const ivory='#e8dfc9';
-    const fur='#c9975b';
-    const ink='#5d493b';
-    const stars=[
-      [45,70,3.6],[80,98,2.5],[113,67,2.4],[236,72,4.2],[272,103,3],
-      [282,151,2.6],[255,182,3.2],[288,223,2.4],[268,267,2.8],
-      [47,257,2.6],[54,320,3.4],[88,362,2.6],[160,365,3.1],
-      [229,352,2.7],[276,337,3.7]
+  function drawSelectedNightOracle(svg, c) {
+    // Measured from the supplied photo by scripts/trace_profile.py.
+    // The front contour is extracted from pixels; only the rear skull and bust are drawn by hand.
+    const tracedFront = [
+      [132.04,56.8],[125.52,62.92],[101.28,104.4],[87.72,120.04],
+      [81.38,137.04],[75.86,141.8],[73.98,147.24],[69.82,152],
+      [69.34,157.44],[75.38,167.64],[74.68,171.04],[59.59,184.64],
+      [45.02,201.64],[44.1,209.12],[45.54,212.52],[57.09,217.28],
+      [59.98,220.68],[58.84,237],[61.51,242.44],[59.54,249.24],
+      [65.76,258.08],[61.64,262.84],[59.54,276.44],[60.94,279.84],
+      [69.74,288]
     ];
-    stars.forEach(([x,y,r],i) => path(svg,
-      `M ${x} ${y-r} L ${x+r*.18} ${y-r*.18} L ${x+r} ${y} L ${x+r*.18} ${y+r*.18} L ${x} ${y+r} L ${x-r*.18} ${y+r*.18} L ${x-r} ${y} L ${x-r*.18} ${y-r*.18} Z`,
-      {fill:i%3===0?gold:'#dce5d8',opacity:'.9'}));
-    for(const [x,y] of [[62,118],[104,106],[217,102],[284,76],[266,124],[257,225],
-      [46,190],[68,235],[47,285],[78,339],[118,349],[202,365],[251,329],[286,291]])
-      add(svg,'circle',{cx:x,cy:y,r:'.95',fill:'#dce5d8',opacity:'.75'});
+    // Two interpreted landmarks from the same source photograph. The hairline
+    // ends at the temple; the crown above it is the outer edge of the hair.
+    const hairline = [
+      [102.2,109.84],[112.7,104.4],[124.6,101.68],[135.8,105.76],
+      [147.7,115.96],[154,129.56],[163.1,143.16],[173.6,157.44]
+    ];
+    const jaw = [
+      [82.6,290.72],[103.6,292.76],[122.5,288],[140.7,276.44],
+      [156.1,262.84],[170.1,245.16]
+    ];
+    const smoothPath = points => {
+      let d = `M ${points[0][0]} ${points[0][1]}`;
+      for (let i = 0; i < points.length - 1; i++) {
+        const before = points[Math.max(0, i - 1)];
+        const start = points[i];
+        const end = points[i + 1];
+        const after = points[Math.min(points.length - 1, i + 2)];
+        const c1 = [start[0] + (end[0] - before[0]) / 6, start[1] + (end[1] - before[1]) / 6];
+        const c2 = [end[0] - (after[0] - start[0]) / 6, end[1] - (after[1] - start[1]) / 6];
+        d += ` C ${c1[0].toFixed(2)} ${c1[1].toFixed(2)} ${c2[0].toFixed(2)} ${c2[1].toFixed(2)} ${end[0]} ${end[1]}`;
+      }
+      return d;
+    };
+    const bustPath = smoothPath([...tracedFront, ...jaw]) +
+      ' C 166 272 164 308 163 330 C 131 352 78 372 27 390 L 27 407 L 294 407 L 290 389 C 267 377 247 359 241 333 C 238 317 239 301 245 284 C 268 264 282 232 287 196 C 293 148 274 101 235 72 C 208 52 167 43 132.04 56.8 Z';
+    const ink = '#304744';
+    const stone = '#c8d4c7';
+    const shadow = '#6f8d83';
+    const light = '#e5e9df';
 
-    // The moon is one open crescent, with its lower horn supporting the cat.
-    path(svg,'M 191 73 C 135 78 92 119 77 173 C 57 242 94 307 157 327 C 207 343 252 321 273 281 C 246 297 215 299 190 282 C 147 254 134 204 145 160 C 152 123 169 92 191 73 Z',
-      {fill:ivory,stroke:gold,'stroke-width':'1.2','stroke-linejoin':'round'});
-    path(svg,'M 86 182 C 73 243 104 296 159 315 C 198 329 231 317 254 300',
-      {fill:'none',stroke:'#bfad8c','stroke-width':'.85',opacity:'.64'});
+    const field = add(svg,'g',{fill:'#a9bfad',opacity:'.43'});
+    for(let y=44;y<357;y+=9) for(let x=28;x<295;x+=9) {
+      const radius=Math.hypot((x-166)*.94,y-183);
+      if(radius>116 && radius<147) add(field,'circle',{cx:x,cy:y,r:'.82'});
+    }
+    add(svg,'circle',{cx:55,cy:89,r:27,fill:c.accent});
+    add(svg,'circle',{cx:67,cy:77,r:26,fill:c.bg});
+    for(const [x,y] of [[271,61],[291,107],[39,322],[277,324]]) add(svg,'circle',{cx:x,cy:y,r:'1.1',fill:'#dbe5d8'});
 
-    // Curled body, tucked paws and closed eyes form an original sleeping pose.
-    path(svg,'M 166 246 C 168 219 187 199 214 198 C 241 198 258 216 259 238 C 260 261 244 275 222 275 C 200 275 182 268 166 246 Z',
-      {fill:fur,stroke:ink,'stroke-width':'1.25','stroke-linejoin':'round'});
-    path(svg,'M 227 214 C 244 215 252 229 248 244 C 244 256 231 263 216 261 C 200 259 191 247 196 234',
-      {fill:'none',stroke:'#815a39','stroke-width':'2.3','stroke-linecap':'round'});
-    path(svg,'M 158 238 C 172 236 183 243 193 252 C 201 258 209 261 218 260 C 210 269 198 270 188 265 C 176 270 163 264 157 253 Z',
-      {fill:fur,stroke:ink,'stroke-width':'1.05','stroke-linejoin':'round'});
-    path(svg,'M 134 209 L 130 191 L 148 202 Q 152 194 160 187 L 171 205 C 181 213 184 228 176 241 C 170 252 152 254 139 247 C 127 240 126 223 134 209 Z',
-      {fill:fur,stroke:ink,'stroke-width':'1.35','stroke-linejoin':'round'});
-    path(svg,'M 135 200 L 141 204 M 158 194 L 162 204',{fill:'none',stroke:'#e8d0a7','stroke-width':'1.4','stroke-linecap':'round'});
-    path(svg,'M 138 222 Q 144 227 149 221 M 158 220 Q 164 225 169 219',
-      {fill:'none',stroke:ink,'stroke-width':'1.55','stroke-linecap':'round'});
-    path(svg,'M 151 231 L 155 231 L 153 234 Z',{fill:ink});
-    path(svg,'M 153 234 Q 148 239 144 235 M 153 234 Q 157 239 162 235',
-      {fill:'none',stroke:ink,'stroke-width':'.9','stroke-linecap':'round'});
-    for(const d of [
-      'M 139 234 L 123 231 M 139 237 L 124 240',
-      'M 164 234 L 179 230 M 164 237 L 180 239'
-    ]) path(svg,d,{fill:'none',stroke:ink,'stroke-width':'.85','stroke-linecap':'round'});
-    path(svg,'M 150 245 C 154 255 163 261 173 259 C 179 265 189 265 195 260',
-      {fill:'none',stroke:ink,'stroke-width':'1.2','stroke-linecap':'round'});
-    path(svg,'M 174 264 Q 178 267 182 264 M 185 264 Q 189 267 193 262',
-      {fill:'none',stroke:ink,'stroke-width':'.85','stroke-linecap':'round'});
-    path(svg,'M 143 272 C 178 279 223 291 265 281',
-      {fill:'none',stroke:'#f1e6ca','stroke-width':'1.05',opacity:'.66'});
+    const bust = add(svg,'g');
+    path(bust,bustPath,{fill:stone,stroke:ink,'stroke-width':'1.5','stroke-linejoin':'round'});
+    const clip=add(add(svg,'defs'),'clipPath',{id:'night-profile-clip'});
+    path(clip,bustPath);
+    const planes=add(bust,'g',{'clip-path':'url(#night-profile-clip)'});
+    const hairCap = 'M 102.2 109.84 C 112 78 125 57 132.04 56.8 C 167 43 208 52 235 72 C 274 101 293 148 287 196 C 282 232 268 264 245 284 C 218 260 213 223 208 202 C 201 181 187 166 173.6 157.44 ' +
+      smoothPath([...hairline].reverse()).replace(/^M [^C]+/, '') + ' Z';
+    path(planes,hairCap,{fill:shadow,opacity:'.57'});
+    path(planes,'M 98 119 C 119 105 139 115 151 137 C 160 162 153 187 127 207 C 101 209 75 191 69 158 C 79 137 88 124 98 119 Z',{fill:light,opacity:'.55'});
+    path(planes,'M 219 121 C 258 147 272 192 260 234 C 254 250 247 261 237 270 C 221 247 212 215 207 189 C 202 163 208 141 219 121 Z',{fill:'#53776f',opacity:'.18'});
+    path(planes,'M 57 213 C 83 203 121 217 143 247 L 158 267 C 134 292 106 302 72 289 C 59 269 53 239 57 213 Z',{fill:'#a4b7a8',opacity:'.44'});
+    path(planes,'M 71 280 C 103 294 132 280 160 264 C 139 296 106 306 75 298 Z',{fill:light,opacity:'.56'});
+    path(planes,'M 155 279 C 180 305 178 345 157 388 C 110 402 70 407 24 413 L 25 372 C 91 350 128 329 155 279 Z',{fill:'#66847a',opacity:'.58'});
+    path(planes,'M 243 283 C 232 318 244 355 281 380 L 303 413 L 174 413 C 190 365 207 311 243 283 Z',{fill:light,opacity:'.67'});
+    const dots=add(planes,'g',{fill:'#365b53',opacity:'.23'});
+    for(let y=71;y<389;y+=8) for(let x=188;x<287;x+=8) if(Math.sin(x*.083+y*.039)>.26) add(dots,'circle',{cx:x,cy:y,r:'.75'});
+
+    // The ear and hair detail remain absent; the hairline stops at the temple.
+    path(bust,smoothPath(hairline),{fill:'none',stroke:ink,'stroke-width':'1.15','stroke-linecap':'round',opacity:'.55'});
+    path(bust,'M 76 157 C 90 152 105 155 115 161',{fill:'none',stroke:ink,'stroke-width':'2','stroke-linecap':'round',opacity:'.78'});
+    path(bust,'M 80 176 Q 96 183 111 175',{fill:'none',stroke:ink,'stroke-width':'2.25','stroke-linecap':'round'});
+    path(bust,'M 60.5 238 C 64 240 69 240 73 238.5',{fill:'none',stroke:ink,'stroke-width':'1.05','stroke-linecap':'round'});
+    path(bust,'M 106 229 C 128 240 146 247 168 245',{fill:'none',stroke:ink,'stroke-width':'1.15',opacity:'.38'});
+    path(bust,'M 167 273 C 175 307 174 352 161 380 M 242 287 C 226 313 224 345 239 372',{fill:'none',stroke:ink,'stroke-width':'1.2',opacity:'.48'});
+    path(bust,'M 30 400 C 83 373 127 378 157 389 C 183 403 246 383 288 400',{fill:'none',stroke:ink,'stroke-width':'1.45',opacity:'.56'});
   }
+
 
   const makeCard = c => {
     const svg = el('svg', { viewBox:'0 0 320 420', 'aria-hidden':'true', focusable:'false' });
@@ -255,8 +283,8 @@
     const svg = makeCard(c);
 
     if (variant === 2) {
-      drawNightOracle(svg,c);
-      path(svg,'M 160 21 L 160.7 24.3 L 164 25 L 160.7 25.7 L 160 29 L 159.3 25.7 L 156 25 L 159.3 24.3 Z',{fill:c.accent});
+      drawSelectedNightOracle(svg,c);
+      add(svg,'circle',{cx:160,cy:25,r:2.2,fill:c.accent});
       host.replaceChildren(svg);
       return;
     }
@@ -305,8 +333,6 @@
         'M 82 164 C 105 128 137 105 171 104 C 201 104 222 113 237 130'
       ]) path(figure,d,{fill:'none',stroke:c.accent,'stroke-width':'1.1',opacity:'.68'});
     }
-    add(figure,'circle',{cx:238,cy:201,r:1.2,fill:c.ink});
-
     if (variant === 3 || variant === 4) {
       const field = add(svg,'g',{ 'clip-path':`url(#${maskId})`, fill:c.accent, opacity:variant === 3 ? '.48' : '.34' });
       for(let y=48;y<350;y+=10) for(let x=36;x<300;x+=10) {
@@ -320,9 +346,15 @@
 
   document.querySelectorAll('[data-celestial-study]').forEach(host => {
     const svg=makeCard(colors[1]);
-    if(host.dataset.celestialStudy==='cat') drawLunarCat(svg,colors[1]);
-    else drawNightOracle(svg,colors[1],host.dataset.celestialStudy);
+    drawNightOracle(svg,colors[1],host.dataset.celestialStudy);
     path(svg,'M 160 21 L 160.7 24.3 L 164 25 L 160.7 25.7 L 160 29 L 159.3 25.7 L 156 25 L 159.3 24.3 Z',{fill:colors[1].accent});
+    host.replaceChildren(svg);
+  });
+
+  document.querySelectorAll('[data-selected-portrait]').forEach(host => {
+    const svg=makeCard(colors[1]);
+    drawSelectedNightOracle(svg,colors[1]);
+    add(svg,'circle',{cx:160,cy:25,r:2.2,fill:colors[1].accent});
     host.replaceChildren(svg);
   });
 })();
