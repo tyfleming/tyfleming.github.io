@@ -26,31 +26,37 @@ SUPPLEMENT = json.loads((ROOT / "assets/sleep-decoding-method-supplement.json").
 TOPOLOGY = json.loads((ROOT / "assets/sleep-cycle-atlas-topology.json").read_text())
 OUT = ROOT / "assets"
 
-# Shared with style.css: ink and hairlines, one teal accent, and a diverging
-# blue/rust pair around a neutral gray so zero never reads as "missing".
+# Two palettes shared with style.css. "day" is the minimal light site; "night" is the
+# Night Oracle variant. Both keep a diverging blue/rust pair around a neutral midpoint so
+# zero never reads as "missing", and a stage ramp validated (OKLab ΔE) for CVD and
+# normal-vision separation on its own surface. Select with --theme (default: night).
 WIDTH = 760
-INK = "#111418"
-INK2 = "#3a414b"
-MUTED = "#6b7380"
-FAINT = "#a3a9b2"
-LINE = "#e3e6ea"
-GRID = "#eceef1"
-AXIS = "#c9ced5"
-PANEL = "#f3f4f6"
-PAPER = "#ffffff"
-ACCENT = "#0f6e6a"
-ACCENT_LIGHT = "#8fc0bb"
-ACCENT_PALE = "#cfe4e1"
-GRAY = "#98a1ab"
-GRAY_LIGHT = "#d3d8de"
-NEG = "#3b6aa6"
-POS = "#b9592f"
-NEG_STRONG = "#335f99"
-POS_STRONG = "#a44c27"
-MID = "#eef0f3"
+THEMES = {
+    "day": dict(
+        INK="#111418", INK2="#3a414b", MUTED="#6b7380", FAINT="#a3a9b2", LINE="#e3e6ea",
+        GRID="#eceef1", AXIS="#c9ced5", PANEL="#f3f4f6", PAPER="#ffffff", EDGE="#dde1e6",
+        ACCENT="#0f6e6a", ACCENT_LIGHT="#8fc0bb", ACCENT_PALE="#cfe4e1", GRAY="#98a1ab",
+        GRAY_LIGHT="#d3d8de", NEG="#3b6aa6", POS="#b9592f", NEG_STRONG="#335f99",
+        POS_STRONG="#a44c27", MID="#eef0f3",
+        STAGE_COLORS=["#d4922a", "#cf6068", "#9460b8", "#3f4a9c"],
+    ),
+    "night": dict(
+        INK="#ece6d6", INK2="#c1c9d0", MUTED="#8f9aa6", FAINT="#5e6a77", LINE="#24323f",
+        GRID="#1b2834", AXIS="#3a4856", PANEL="#1a2733", PAPER="#111c26", EDGE="#2a3845",
+        ACCENT="#d8b57c", ACCENT_LIGHT="#8c7550", ACCENT_PALE="#4a4234", GRAY="#7d8894",
+        GRAY_LIGHT="#3a4855", NEG="#6f9fe0", POS="#e58a5c", NEG_STRONG="#5a8bd0",
+        POS_STRONG="#d57a4c", MID="#26323d",
+        STAGE_COLORS=["#c38824", "#b24f63", "#6453a7", "#359bd9"],
+    ),
+}
+THEME = "night"
+for _arg in __import__("sys").argv[1:]:
+    if _arg.startswith("--theme="):
+        THEME = _arg.split("=", 1)[1]
+if THEME not in THEMES:
+    raise SystemExit(f"Unknown theme {THEME!r}; choose from {', '.join(THEMES)}.")
+globals().update(THEMES[THEME])
 STAGES = ["Wake", "N1", "N2", "N3"]
-# Dusk-to-night ramp: validated (OKLab ΔE) for CVD and normal-vision separation.
-STAGE_COLORS = ["#d4922a", "#cf6068", "#9460b8", "#3f4a9c"]
 SANS = "-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif"
 MONO = "'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace"
 SERIF = "Charter,'Bitstream Charter','Iowan Old Style',Georgia,serif"
@@ -70,12 +76,13 @@ def diverge(value: float, limit: float) -> str:
 
 
 def cell_text_color(fill: str) -> str:
-    """Choose a legible label color for a tinted matrix cell."""
+    """Choose white or near-black, whichever reads better on a tinted cell."""
     rgb = [int(fill[i:i + 2], 16) / 255 for i in (1, 3, 5)]
     linear = [v / 12.92 if v <= .04045 else ((v + .055) / 1.055) ** 2.4 for v in rgb]
     luminance = sum(a * b for a, b in zip(linear, (.2126, .7152, .0722)))
     white_contrast = 1.05 / (luminance + .05)
-    return PAPER if white_contrast >= 4.5 else INK
+    dark_contrast = (luminance + .05) / .0575
+    return "#ffffff" if white_contrast >= dark_contrast else "#111418"
 
 
 def toy_fill(value: float, limit: float) -> str:
@@ -791,7 +798,7 @@ def visual_atlas_graph() -> None:
         px, py = points[i]
         return cx + (px - mx) * scale, cy - (py - my) * scale
     for i, j in edges:
-        s.line(*xy(i), *xy(j), "#dde1e6", 0.6)
+        s.line(*xy(i), *xy(j), EDGE, 0.6)
     for i in range(333):
         if networks[i] != default_index:
             s.circle(*xy(i), 1.5, GRAY)

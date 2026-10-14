@@ -5,8 +5,12 @@
   if (!context) return;
 
   const stages = ['Wake', 'N1', 'N2', 'N3'];
-  // Dusk-to-night stage ramp; validated for CVD and normal-vision separation.
-  const colors = ['#d4922a', '#cf6068', '#9460b8', '#3f4a9c'];
+  // Stage and canvas colors come from the page theme (style.css), with light fallbacks.
+  const css = getComputedStyle(document.documentElement);
+  const token = (name, fallback) => css.getPropertyValue(name).trim() || fallback;
+  const colors = [token('--wake', '#d4922a'), token('--n1', '#cf6068'), token('--n2', '#9460b8'), token('--n3', '#3f4a9c')];
+  const canvasBg = token('--canvas-bg', '#ffffff'), canvasLine = token('--canvas-line', '#c9ced5');
+  const canvasInk = token('--canvas-ink', '#111418'), pointAlpha = Number(token('--canvas-point-alpha', '.3'));
   const vertices = [[1, 1, 1], [1, -1, -1], [-1, 1, -1], [-1, -1, 1]];
   const filter = document.getElementById('stage-filter');
   const chooser = document.getElementById('example-select');
@@ -64,7 +68,7 @@
     context.strokeStyle = colors[stage];
     context.fillStyle = colors[stage];
     context.lineWidth = emphasis ? 2.8 : 1;
-    context.globalAlpha = emphasis ? 1 : .3;
+    context.globalAlpha = emphasis ? 1 : pointAlpha;
     context.beginPath();
     if (stage === 0) context.arc(x,y,size,0,Math.PI*2);
     if (stage === 1) {context.moveTo(x,y-size);context.lineTo(x+size,y);context.lineTo(x,y+size);context.lineTo(x-size,y);context.closePath();}
@@ -74,12 +78,12 @@
     if (emphasis) {
       context.globalAlpha = 1;
       context.lineWidth = 5;
-      context.strokeStyle = '#ffffff';
+      context.strokeStyle = canvasBg;
       context.beginPath();
       context.arc(x,y,size+4,0,Math.PI*2);
       context.stroke();
       context.lineWidth = 1.6;
-      context.strokeStyle = '#111418';
+      context.strokeStyle = canvasInk;
       context.stroke();
     }
     context.globalAlpha = 1;
@@ -95,13 +99,13 @@
   function draw() {
     const width = canvas.clientWidth, height = canvas.clientHeight;
     context.clearRect(0,0,width,height);
-    context.fillStyle = '#ffffff';
+    context.fillStyle = canvasBg;
     context.fillRect(0,0,width,height);
     const corner = vertices.map(v => projected(v,width,height));
     const edges = [[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]];
     const depths = edges.map(([a,b]) => corner[a].depth + corner[b].depth);
     const farthest = Math.min(...depths);
-    context.strokeStyle = '#c9ced5';
+    context.strokeStyle = canvasLine;
     context.lineWidth = 1.2;
     edges.forEach(([a,b], i) => {
       context.globalAlpha = depths[i] === farthest ? .45 : 1;
@@ -124,7 +128,7 @@
     context.textBaseline = 'middle';
     corner.forEach(({x,y},i) => {
       context.fillStyle = colors[i];
-      context.strokeStyle = '#ffffff';
+      context.strokeStyle = canvasBg;
       context.lineWidth = 2;
       context.beginPath();
       context.arc(x,y,5.5,0,Math.PI*2);
@@ -134,7 +138,7 @@
       const nearLeft = x < 48;
       context.textAlign = nearRight ? 'right' : (nearLeft ? 'left' : (x >= width/2 ? 'left' : 'right'));
       const labelX = nearRight ? x - 11 : (nearLeft ? x + 11 : x + (x >= width/2 ? 10 : -10));
-      context.fillStyle = '#111418';
+      context.fillStyle = canvasInk;
       context.fillText(stages[i],labelX,Math.max(14,Math.min(height-14,y)));
     });
   }

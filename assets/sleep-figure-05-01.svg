@@ -1,135 +1,135 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="760" height="274" viewBox="0 0 760 274" role="img" aria-labelledby="title desc" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif">
 <title id="title">Tangent decoder and temperature calibration</title>
 <desc id="desc">The reconstructed 64 whitened tangent scores enter shrinkage LDA. Saved uncalibrated and calibrated stage probabilities are compared directly on one axis. The fitted tangent temperature is 2.114, softening this representative prediction.</desc>
-<rect width="760" height="274" fill="#ffffff"/>
-<text x="20.00" y="26.00" fill="#111418" font-size="12.5" font-weight="600" text-anchor="start">64 PCA scores</text>
-<rect x="118.64" y="14.00" width="93.30" height="16.00" fill="#f3f4f6" rx="8"/>
-<text x="125.64" y="25.50" fill="#6b7380" font-size="10" font-weight="500" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">reconstructed</text>
-<rect x="20.00" y="52.00" width="13.50" height="13.50" fill="#dde3ec" rx="2"/>
-<rect x="35.00" y="52.00" width="13.50" height="13.50" fill="#7b9ac1" rx="2"/>
-<rect x="50.00" y="52.00" width="13.50" height="13.50" fill="#bccbde" rx="2"/>
-<rect x="65.00" y="52.00" width="13.50" height="13.50" fill="#e3d0ca" rx="2"/>
-<rect x="80.00" y="52.00" width="13.50" height="13.50" fill="#e7ebf0" rx="2"/>
-<rect x="95.00" y="52.00" width="13.50" height="13.50" fill="#edecee" rx="2"/>
-<rect x="110.00" y="52.00" width="13.50" height="13.50" fill="#86a2c6" rx="2"/>
-<rect x="125.00" y="52.00" width="13.50" height="13.50" fill="#84a1c6" rx="2"/>
-<rect x="20.00" y="67.00" width="13.50" height="13.50" fill="#e9e3e2" rx="2"/>
-<rect x="35.00" y="67.00" width="13.50" height="13.50" fill="#e6d9d5" rx="2"/>
-<rect x="50.00" y="67.00" width="13.50" height="13.50" fill="#d2dbe7" rx="2"/>
-<rect x="65.00" y="67.00" width="13.50" height="13.50" fill="#e3e8ee" rx="2"/>
-<rect x="80.00" y="67.00" width="13.50" height="13.50" fill="#aec0d8" rx="2"/>
-<rect x="95.00" y="67.00" width="13.50" height="13.50" fill="#a4b9d3" rx="2"/>
-<rect x="110.00" y="67.00" width="13.50" height="13.50" fill="#e8ebf0" rx="2"/>
-<rect x="125.00" y="67.00" width="13.50" height="13.50" fill="#aec0d7" rx="2"/>
-<rect x="20.00" y="82.00" width="13.50" height="13.50" fill="#e5d6d1" rx="2"/>
-<rect x="35.00" y="82.00" width="13.50" height="13.50" fill="#e5d7d2" rx="2"/>
-<rect x="50.00" y="82.00" width="13.50" height="13.50" fill="#ebeef2" rx="2"/>
-<rect x="65.00" y="82.00" width="13.50" height="13.50" fill="#e5d7d3" rx="2"/>
-<rect x="80.00" y="82.00" width="13.50" height="13.50" fill="#829fc5" rx="2"/>
-<rect x="95.00" y="82.00" width="13.50" height="13.50" fill="#98b0ce" rx="2"/>
-<rect x="110.00" y="82.00" width="13.50" height="13.50" fill="#e0e6ed" rx="2"/>
-<rect x="125.00" y="82.00" width="13.50" height="13.50" fill="#e7dbd8" rx="2"/>
-<rect x="20.00" y="97.00" width="13.50" height="13.50" fill="#c6d2e2" rx="2"/>
-<rect x="35.00" y="97.00" width="13.50" height="13.50" fill="#dee4ec" rx="2"/>
-<rect x="50.00" y="97.00" width="13.50" height="13.50" fill="#829fc4" rx="2"/>
-<rect x="65.00" y="97.00" width="13.50" height="13.50" fill="#a6bad4" rx="2"/>
-<rect x="80.00" y="97.00" width="13.50" height="13.50" fill="#e0e5ed" rx="2"/>
-<rect x="95.00" y="97.00" width="13.50" height="13.50" fill="#edecee" rx="2"/>
-<rect x="110.00" y="97.00" width="13.50" height="13.50" fill="#d6dee9" rx="2"/>
-<rect x="125.00" y="97.00" width="13.50" height="13.50" fill="#e8dedc" rx="2"/>
-<rect x="20.00" y="112.00" width="13.50" height="13.50" fill="#a0b6d1" rx="2"/>
-<rect x="35.00" y="112.00" width="13.50" height="13.50" fill="#96aecd" rx="2"/>
-<rect x="50.00" y="112.00" width="13.50" height="13.50" fill="#ebeef2" rx="2"/>
-<rect x="65.00" y="112.00" width="13.50" height="13.50" fill="#e4d3ce" rx="2"/>
-<rect x="80.00" y="112.00" width="13.50" height="13.50" fill="#9bb2cf" rx="2"/>
-<rect x="95.00" y="112.00" width="13.50" height="13.50" fill="#eeeff1" rx="2"/>
-<rect x="110.00" y="112.00" width="13.50" height="13.50" fill="#c9d5e3" rx="2"/>
-<rect x="125.00" y="112.00" width="13.50" height="13.50" fill="#5b82b4" rx="2"/>
-<rect x="20.00" y="127.00" width="13.50" height="13.50" fill="#dbb9ab" rx="2"/>
-<rect x="35.00" y="127.00" width="13.50" height="13.50" fill="#ebe7e7" rx="2"/>
-<rect x="50.00" y="127.00" width="13.50" height="13.50" fill="#e1ccc4" rx="2"/>
-<rect x="65.00" y="127.00" width="13.50" height="13.50" fill="#d1dae6" rx="2"/>
-<rect x="80.00" y="127.00" width="13.50" height="13.50" fill="#c8d4e3" rx="2"/>
-<rect x="95.00" y="127.00" width="13.50" height="13.50" fill="#c3d0e0" rx="2"/>
-<rect x="110.00" y="127.00" width="13.50" height="13.50" fill="#e6eaf0" rx="2"/>
-<rect x="125.00" y="127.00" width="13.50" height="13.50" fill="#c78264" rx="2"/>
-<rect x="20.00" y="142.00" width="13.50" height="13.50" fill="#b0c2d8" rx="2"/>
-<rect x="35.00" y="142.00" width="13.50" height="13.50" fill="#cbd6e4" rx="2"/>
-<rect x="50.00" y="142.00" width="13.50" height="13.50" fill="#e9ecf1" rx="2"/>
-<rect x="65.00" y="142.00" width="13.50" height="13.50" fill="#d6ab99" rx="2"/>
-<rect x="80.00" y="142.00" width="13.50" height="13.50" fill="#eef0f3" rx="2"/>
-<rect x="95.00" y="142.00" width="13.50" height="13.50" fill="#dcbbaf" rx="2"/>
-<rect x="110.00" y="142.00" width="13.50" height="13.50" fill="#aec0d8" rx="2"/>
-<rect x="125.00" y="142.00" width="13.50" height="13.50" fill="#a3b8d3" rx="2"/>
-<rect x="20.00" y="157.00" width="13.50" height="13.50" fill="#c1cfe0" rx="2"/>
-<rect x="35.00" y="157.00" width="13.50" height="13.50" fill="#e9e1df" rx="2"/>
-<rect x="50.00" y="157.00" width="13.50" height="13.50" fill="#e9ecf1" rx="2"/>
-<rect x="65.00" y="157.00" width="13.50" height="13.50" fill="#d5dde8" rx="2"/>
-<rect x="80.00" y="157.00" width="13.50" height="13.50" fill="#eae4e4" rx="2"/>
-<rect x="95.00" y="157.00" width="13.50" height="13.50" fill="#d5a996" rx="2"/>
-<rect x="110.00" y="157.00" width="13.50" height="13.50" fill="#e7dbd8" rx="2"/>
-<rect x="125.00" y="157.00" width="13.50" height="13.50" fill="#ce937b" rx="2"/>
-<defs><linearGradient id="scale1" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#3b6aa6"/><stop offset=".5" stop-color="#eef0f3"/><stop offset="1" stop-color="#b9592f"/></linearGradient></defs>
+<rect width="760" height="274" fill="#111c26"/>
+<text x="20.00" y="26.00" fill="#ece6d6" font-size="12.5" font-weight="600" text-anchor="start">64 PCA scores</text>
+<rect x="118.64" y="14.00" width="93.30" height="16.00" fill="#1a2733" rx="8"/>
+<text x="125.64" y="25.50" fill="#8f9aa6" font-size="10" font-weight="500" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">reconstructed</text>
+<rect x="20.00" y="52.00" width="13.50" height="13.50" fill="#2d3c4d" rx="2"/>
+<rect x="35.00" y="52.00" width="13.50" height="13.50" fill="#5578a6" rx="2"/>
+<rect x="50.00" y="52.00" width="13.50" height="13.50" fill="#3a506a" rx="2"/>
+<rect x="65.00" y="52.00" width="13.50" height="13.50" fill="#4e4443" rx="2"/>
+<rect x="80.00" y="52.00" width="13.50" height="13.50" fill="#293644" rx="2"/>
+<rect x="95.00" y="52.00" width="13.50" height="13.50" fill="#2b343e" rx="2"/>
+<rect x="110.00" y="52.00" width="13.50" height="13.50" fill="#50719b" rx="2"/>
+<rect x="125.00" y="52.00" width="13.50" height="13.50" fill="#51729d" rx="2"/>
+<rect x="20.00" y="67.00" width="13.50" height="13.50" fill="#373a40" rx="2"/>
+<rect x="35.00" y="67.00" width="13.50" height="13.50" fill="#433f42" rx="2"/>
+<rect x="50.00" y="67.00" width="13.50" height="13.50" fill="#314357" rx="2"/>
+<rect x="65.00" y="67.00" width="13.50" height="13.50" fill="#2a3847" rx="2"/>
+<rect x="80.00" y="67.00" width="13.50" height="13.50" fill="#405977" rx="2"/>
+<rect x="95.00" y="67.00" width="13.50" height="13.50" fill="#445f80" rx="2"/>
+<rect x="110.00" y="67.00" width="13.50" height="13.50" fill="#293643" rx="2"/>
+<rect x="125.00" y="67.00" width="13.50" height="13.50" fill="#405977" rx="2"/>
+<rect x="20.00" y="82.00" width="13.50" height="13.50" fill="#474142" rx="2"/>
+<rect x="35.00" y="82.00" width="13.50" height="13.50" fill="#464142" rx="2"/>
+<rect x="50.00" y="82.00" width="13.50" height="13.50" fill="#273440" rx="2"/>
+<rect x="65.00" y="82.00" width="13.50" height="13.50" fill="#454042" rx="2"/>
+<rect x="80.00" y="82.00" width="13.50" height="13.50" fill="#52739f" rx="2"/>
+<rect x="95.00" y="82.00" width="13.50" height="13.50" fill="#49668b" rx="2"/>
+<rect x="110.00" y="82.00" width="13.50" height="13.50" fill="#2c3b4a" rx="2"/>
+<rect x="125.00" y="82.00" width="13.50" height="13.50" fill="#403e41" rx="2"/>
+<rect x="20.00" y="97.00" width="13.50" height="13.50" fill="#374b62" rx="2"/>
+<rect x="35.00" y="97.00" width="13.50" height="13.50" fill="#2c3c4b" rx="2"/>
+<rect x="50.00" y="97.00" width="13.50" height="13.50" fill="#5274a0" rx="2"/>
+<rect x="65.00" y="97.00" width="13.50" height="13.50" fill="#435e7f" rx="2"/>
+<rect x="80.00" y="97.00" width="13.50" height="13.50" fill="#2c3b4a" rx="2"/>
+<rect x="95.00" y="97.00" width="13.50" height="13.50" fill="#2b343e" rx="2"/>
+<rect x="110.00" y="97.00" width="13.50" height="13.50" fill="#304153" rx="2"/>
+<rect x="125.00" y="97.00" width="13.50" height="13.50" fill="#3d3c41" rx="2"/>
+<rect x="20.00" y="112.00" width="13.50" height="13.50" fill="#466284" rx="2"/>
+<rect x="35.00" y="112.00" width="13.50" height="13.50" fill="#4a678d" rx="2"/>
+<rect x="50.00" y="112.00" width="13.50" height="13.50" fill="#273440" rx="2"/>
+<rect x="65.00" y="112.00" width="13.50" height="13.50" fill="#4a4343" rx="2"/>
+<rect x="80.00" y="112.00" width="13.50" height="13.50" fill="#486488" rx="2"/>
+<rect x="95.00" y="112.00" width="13.50" height="13.50" fill="#28333d" rx="2"/>
+<rect x="110.00" y="112.00" width="13.50" height="13.50" fill="#35485e" rx="2"/>
+<rect x="125.00" y="112.00" width="13.50" height="13.50" fill="#628cc3" rx="2"/>
+<rect x="20.00" y="127.00" width="13.50" height="13.50" fill="#6c5248" rx="2"/>
+<rect x="35.00" y="127.00" width="13.50" height="13.50" fill="#32373f" rx="2"/>
+<rect x="50.00" y="127.00" width="13.50" height="13.50" fill="#544744" rx="2"/>
+<rect x="65.00" y="127.00" width="13.50" height="13.50" fill="#324458" rx="2"/>
+<rect x="80.00" y="127.00" width="13.50" height="13.50" fill="#364960" rx="2"/>
+<rect x="95.00" y="127.00" width="13.50" height="13.50" fill="#384c64" rx="2"/>
+<rect x="110.00" y="127.00" width="13.50" height="13.50" fill="#293744" rx="2"/>
+<rect x="125.00" y="127.00" width="13.50" height="13.50" fill="#b17254" rx="2"/>
+<rect x="20.00" y="142.00" width="13.50" height="13.50" fill="#3f5875" rx="2"/>
+<rect x="35.00" y="142.00" width="13.50" height="13.50" fill="#34485d" rx="2"/>
+<rect x="50.00" y="142.00" width="13.50" height="13.50" fill="#283542" rx="2"/>
+<rect x="65.00" y="142.00" width="13.50" height="13.50" fill="#7e5a4b" rx="2"/>
+<rect x="80.00" y="142.00" width="13.50" height="13.50" fill="#26323d" rx="2"/>
+<rect x="95.00" y="142.00" width="13.50" height="13.50" fill="#685148" rx="2"/>
+<rect x="110.00" y="142.00" width="13.50" height="13.50" fill="#405977" rx="2"/>
+<rect x="125.00" y="142.00" width="13.50" height="13.50" fill="#446081" rx="2"/>
+<rect x="20.00" y="157.00" width="13.50" height="13.50" fill="#384d66" rx="2"/>
+<rect x="35.00" y="157.00" width="13.50" height="13.50" fill="#393b40" rx="2"/>
+<rect x="50.00" y="157.00" width="13.50" height="13.50" fill="#283542" rx="2"/>
+<rect x="65.00" y="157.00" width="13.50" height="13.50" fill="#304154" rx="2"/>
+<rect x="80.00" y="157.00" width="13.50" height="13.50" fill="#35393f" rx="2"/>
+<rect x="95.00" y="157.00" width="13.50" height="13.50" fill="#805c4c" rx="2"/>
+<rect x="110.00" y="157.00" width="13.50" height="13.50" fill="#403e41" rx="2"/>
+<rect x="125.00" y="157.00" width="13.50" height="13.50" fill="#9b6850" rx="2"/>
+<defs><linearGradient id="scale1" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#6f9fe0"/><stop offset=".5" stop-color="#26323d"/><stop offset="1" stop-color="#e58a5c"/></linearGradient></defs>
 <rect x="20.00" y="186.00" width="118.00" height="6" rx="3" fill="url(#scale1)"/>
-<text x="20.00" y="206.00" fill="#6b7380" font-size="10" font-weight="400" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−2.5</text>
-<text x="79.00" y="206.00" fill="#6b7380" font-size="10" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">0</text>
-<text x="138.00" y="206.00" fill="#6b7380" font-size="10" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+2.5</text>
-<line x1="152.00" y1="112.00" x2="186.00" y2="112.00" stroke="#a3a9b2" stroke-width="1.2" opacity="1" stroke-linecap="round"/>
-<polyline points="181.02,115.35 186.00,112.00 181.02,108.65" fill="none" stroke="#a3a9b2" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
-<rect x="194.00" y="76.00" width="100.00" height="72.00" fill="#f3f4f6" rx="10"/>
-<text x="244.00" y="98.00" fill="#6b7380" font-size="10.5" font-weight="500" text-anchor="middle">shrinkage</text>
-<text x="244.00" y="119.00" fill="#111418" font-size="17" font-weight="600" text-anchor="middle">LDA</text>
-<text x="244.00" y="137.00" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="middle">equal priors</text>
-<line x1="302.00" y1="112.00" x2="336.00" y2="112.00" stroke="#a3a9b2" stroke-width="1.2" opacity="1" stroke-linecap="round"/>
-<polyline points="331.02,115.35 336.00,112.00 331.02,108.65" fill="none" stroke="#a3a9b2" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
-<line x1="352.00" y1="14.00" x2="352.00" y2="258.00" stroke="#e3e6ea" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="374.00" y="26.00" fill="#111418" font-size="12.5" font-weight="600" text-anchor="start">Stage probabilities</text>
-<rect x="494.82" y="14.00" width="44.50" height="16.00" fill="#f3f4f6" rx="8"/>
-<text x="501.82" y="25.50" fill="#6b7380" font-size="10" font-weight="500" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">saved</text>
-<line x1="420.00" y1="82.00" x2="420.00" y2="228.00" stroke="#c9ced5" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="420.00" y="243.00" fill="#6b7380" font-size="10" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">0%</text>
-<line x1="470.00" y1="82.00" x2="470.00" y2="228.00" stroke="#eceef1" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<line x1="520.00" y1="82.00" x2="520.00" y2="228.00" stroke="#eceef1" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="520.00" y="243.00" fill="#6b7380" font-size="10" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">50%</text>
-<line x1="570.00" y1="82.00" x2="570.00" y2="228.00" stroke="#eceef1" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<line x1="620.00" y1="82.00" x2="620.00" y2="228.00" stroke="#c9ced5" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="620.00" y="243.00" fill="#6b7380" font-size="10" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">100%</text>
-<text x="740.00" y="76.00" fill="#6b7380" font-size="10" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">raw → calibrated</text>
-<text x="406.00" y="102.00" fill="#111418" font-size="12" font-weight="600" text-anchor="end">Wake</text>
-<line x1="591.75" y1="98.00" x2="555.61" y2="98.00" stroke="#d4922a" stroke-width="2.4" opacity="0.45" stroke-linecap="round"/>
-<circle cx="591.75" cy="98.00" r="4.40" fill="#ffffff" stroke="#d4922a" stroke-width="1.8"/>
-<circle cx="555.61" cy="98.00" r="5.60" fill="#ffffff"/>
-<circle cx="555.61" cy="98.00" r="4.60" fill="#d4922a"/>
-<text x="680.00" y="102.00" fill="#6b7380" font-size="11" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">85.9%</text>
-<text x="692.00" y="102.00" fill="#a3a9b2" font-size="11" font-weight="400" text-anchor="middle">→</text>
-<text x="740.00" y="102.00" fill="#111418" font-size="11" font-weight="600" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">67.8%</text>
-<text x="406.00" y="140.00" fill="#111418" font-size="12" font-weight="600" text-anchor="end">N1</text>
-<line x1="448.01" y1="136.00" x2="477.52" y2="136.00" stroke="#cf6068" stroke-width="2.4" opacity="0.45" stroke-linecap="round"/>
-<circle cx="448.01" cy="136.00" r="4.40" fill="#ffffff" stroke="#cf6068" stroke-width="1.8"/>
-<circle cx="477.52" cy="136.00" r="5.60" fill="#ffffff"/>
-<circle cx="477.52" cy="136.00" r="4.60" fill="#cf6068"/>
-<text x="680.00" y="140.00" fill="#6b7380" font-size="11" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">14.0%</text>
-<text x="692.00" y="140.00" fill="#a3a9b2" font-size="11" font-weight="400" text-anchor="middle">→</text>
-<text x="740.00" y="140.00" fill="#111418" font-size="11" font-weight="600" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">28.8%</text>
-<text x="406.00" y="178.00" fill="#111418" font-size="12" font-weight="600" text-anchor="end">N2</text>
-<line x1="420.24" y1="174.00" x2="426.01" y2="174.00" stroke="#9460b8" stroke-width="2.4" opacity="0.45" stroke-linecap="round"/>
-<circle cx="420.24" cy="174.00" r="4.40" fill="#ffffff" stroke="#9460b8" stroke-width="1.8"/>
-<circle cx="426.01" cy="174.00" r="5.60" fill="#ffffff"/>
-<circle cx="426.01" cy="174.00" r="4.60" fill="#9460b8"/>
-<text x="680.00" y="178.00" fill="#6b7380" font-size="11" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">0.1%</text>
-<text x="692.00" y="178.00" fill="#a3a9b2" font-size="11" font-weight="400" text-anchor="middle">→</text>
-<text x="740.00" y="178.00" fill="#111418" font-size="11" font-weight="600" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">3.0%</text>
-<text x="406.00" y="216.00" fill="#111418" font-size="12" font-weight="600" text-anchor="end">N3</text>
-<line x1="420.00" y1="212.00" x2="420.87" y2="212.00" stroke="#3f4a9c" stroke-width="2.4" opacity="0.45" stroke-linecap="round"/>
-<circle cx="420.00" cy="212.00" r="4.40" fill="#ffffff" stroke="#3f4a9c" stroke-width="1.8"/>
-<circle cx="420.87" cy="212.00" r="5.60" fill="#ffffff"/>
-<circle cx="420.87" cy="212.00" r="4.60" fill="#3f4a9c"/>
-<text x="680.00" y="216.00" fill="#6b7380" font-size="11" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">&lt;0.1%</text>
-<text x="692.00" y="216.00" fill="#a3a9b2" font-size="11" font-weight="400" text-anchor="middle">→</text>
-<text x="740.00" y="216.00" fill="#111418" font-size="11" font-weight="600" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">0.4%</text>
-<circle cx="424.50" cy="54.00" r="3.80" fill="#ffffff" stroke="#6b7380" stroke-width="1.8"/>
-<text x="435.00" y="58.00" fill="#3a414b" font-size="11.5" font-weight="400" text-anchor="start">raw</text>
-<circle cx="476.94" cy="54.00" r="4.50" fill="#6b7380"/>
-<text x="487.44" y="58.00" fill="#3a414b" font-size="11.5" font-weight="400" text-anchor="start">calibrated · T = 2.114</text>
-<text x="374.00" y="262.00" fill="#6b7380" font-size="11" font-weight="400" text-anchor="start">Temperature T = 2.114 softens this window’s LDA output.</text>
+<text x="20.00" y="206.00" fill="#8f9aa6" font-size="10" font-weight="400" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−2.5</text>
+<text x="79.00" y="206.00" fill="#8f9aa6" font-size="10" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">0</text>
+<text x="138.00" y="206.00" fill="#8f9aa6" font-size="10" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+2.5</text>
+<line x1="152.00" y1="112.00" x2="186.00" y2="112.00" stroke="#5e6a77" stroke-width="1.2" opacity="1" stroke-linecap="round"/>
+<polyline points="181.02,115.35 186.00,112.00 181.02,108.65" fill="none" stroke="#5e6a77" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<rect x="194.00" y="76.00" width="100.00" height="72.00" fill="#1a2733" rx="10"/>
+<text x="244.00" y="98.00" fill="#8f9aa6" font-size="10.5" font-weight="500" text-anchor="middle">shrinkage</text>
+<text x="244.00" y="119.00" fill="#ece6d6" font-size="17" font-weight="600" text-anchor="middle">LDA</text>
+<text x="244.00" y="137.00" fill="#8f9aa6" font-size="10.5" font-weight="400" text-anchor="middle">equal priors</text>
+<line x1="302.00" y1="112.00" x2="336.00" y2="112.00" stroke="#5e6a77" stroke-width="1.2" opacity="1" stroke-linecap="round"/>
+<polyline points="331.02,115.35 336.00,112.00 331.02,108.65" fill="none" stroke="#5e6a77" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<line x1="352.00" y1="14.00" x2="352.00" y2="258.00" stroke="#24323f" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="374.00" y="26.00" fill="#ece6d6" font-size="12.5" font-weight="600" text-anchor="start">Stage probabilities</text>
+<rect x="494.82" y="14.00" width="44.50" height="16.00" fill="#1a2733" rx="8"/>
+<text x="501.82" y="25.50" fill="#8f9aa6" font-size="10" font-weight="500" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">saved</text>
+<line x1="420.00" y1="82.00" x2="420.00" y2="228.00" stroke="#3a4856" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="420.00" y="243.00" fill="#8f9aa6" font-size="10" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">0%</text>
+<line x1="470.00" y1="82.00" x2="470.00" y2="228.00" stroke="#1b2834" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<line x1="520.00" y1="82.00" x2="520.00" y2="228.00" stroke="#1b2834" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="520.00" y="243.00" fill="#8f9aa6" font-size="10" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">50%</text>
+<line x1="570.00" y1="82.00" x2="570.00" y2="228.00" stroke="#1b2834" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<line x1="620.00" y1="82.00" x2="620.00" y2="228.00" stroke="#3a4856" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="620.00" y="243.00" fill="#8f9aa6" font-size="10" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">100%</text>
+<text x="740.00" y="76.00" fill="#8f9aa6" font-size="10" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">raw → calibrated</text>
+<text x="406.00" y="102.00" fill="#ece6d6" font-size="12" font-weight="600" text-anchor="end">Wake</text>
+<line x1="591.75" y1="98.00" x2="555.61" y2="98.00" stroke="#c38824" stroke-width="2.4" opacity="0.45" stroke-linecap="round"/>
+<circle cx="591.75" cy="98.00" r="4.40" fill="#111c26" stroke="#c38824" stroke-width="1.8"/>
+<circle cx="555.61" cy="98.00" r="5.60" fill="#111c26"/>
+<circle cx="555.61" cy="98.00" r="4.60" fill="#c38824"/>
+<text x="680.00" y="102.00" fill="#8f9aa6" font-size="11" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">85.9%</text>
+<text x="692.00" y="102.00" fill="#5e6a77" font-size="11" font-weight="400" text-anchor="middle">→</text>
+<text x="740.00" y="102.00" fill="#ece6d6" font-size="11" font-weight="600" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">67.8%</text>
+<text x="406.00" y="140.00" fill="#ece6d6" font-size="12" font-weight="600" text-anchor="end">N1</text>
+<line x1="448.01" y1="136.00" x2="477.52" y2="136.00" stroke="#b24f63" stroke-width="2.4" opacity="0.45" stroke-linecap="round"/>
+<circle cx="448.01" cy="136.00" r="4.40" fill="#111c26" stroke="#b24f63" stroke-width="1.8"/>
+<circle cx="477.52" cy="136.00" r="5.60" fill="#111c26"/>
+<circle cx="477.52" cy="136.00" r="4.60" fill="#b24f63"/>
+<text x="680.00" y="140.00" fill="#8f9aa6" font-size="11" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">14.0%</text>
+<text x="692.00" y="140.00" fill="#5e6a77" font-size="11" font-weight="400" text-anchor="middle">→</text>
+<text x="740.00" y="140.00" fill="#ece6d6" font-size="11" font-weight="600" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">28.8%</text>
+<text x="406.00" y="178.00" fill="#ece6d6" font-size="12" font-weight="600" text-anchor="end">N2</text>
+<line x1="420.24" y1="174.00" x2="426.01" y2="174.00" stroke="#6453a7" stroke-width="2.4" opacity="0.45" stroke-linecap="round"/>
+<circle cx="420.24" cy="174.00" r="4.40" fill="#111c26" stroke="#6453a7" stroke-width="1.8"/>
+<circle cx="426.01" cy="174.00" r="5.60" fill="#111c26"/>
+<circle cx="426.01" cy="174.00" r="4.60" fill="#6453a7"/>
+<text x="680.00" y="178.00" fill="#8f9aa6" font-size="11" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">0.1%</text>
+<text x="692.00" y="178.00" fill="#5e6a77" font-size="11" font-weight="400" text-anchor="middle">→</text>
+<text x="740.00" y="178.00" fill="#ece6d6" font-size="11" font-weight="600" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">3.0%</text>
+<text x="406.00" y="216.00" fill="#ece6d6" font-size="12" font-weight="600" text-anchor="end">N3</text>
+<line x1="420.00" y1="212.00" x2="420.87" y2="212.00" stroke="#359bd9" stroke-width="2.4" opacity="0.45" stroke-linecap="round"/>
+<circle cx="420.00" cy="212.00" r="4.40" fill="#111c26" stroke="#359bd9" stroke-width="1.8"/>
+<circle cx="420.87" cy="212.00" r="5.60" fill="#111c26"/>
+<circle cx="420.87" cy="212.00" r="4.60" fill="#359bd9"/>
+<text x="680.00" y="216.00" fill="#8f9aa6" font-size="11" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">&lt;0.1%</text>
+<text x="692.00" y="216.00" fill="#5e6a77" font-size="11" font-weight="400" text-anchor="middle">→</text>
+<text x="740.00" y="216.00" fill="#ece6d6" font-size="11" font-weight="600" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">0.4%</text>
+<circle cx="424.50" cy="54.00" r="3.80" fill="#111c26" stroke="#8f9aa6" stroke-width="1.8"/>
+<text x="435.00" y="58.00" fill="#c1c9d0" font-size="11.5" font-weight="400" text-anchor="start">raw</text>
+<circle cx="476.94" cy="54.00" r="4.50" fill="#8f9aa6"/>
+<text x="487.44" y="58.00" fill="#c1c9d0" font-size="11.5" font-weight="400" text-anchor="start">calibrated · T = 2.114</text>
+<text x="374.00" y="262.00" fill="#8f9aa6" font-size="11" font-weight="400" text-anchor="start">Temperature T = 2.114 softens this window’s LDA output.</text>
 </svg>

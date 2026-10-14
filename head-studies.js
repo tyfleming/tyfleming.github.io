@@ -300,6 +300,11 @@
     contour: {
       sky:['#13212d','#0b141c'], glow:'#1c3142', line:'#e7e2d4', ink:'#e7e2d4', moon:'#d8b57c', star:'#dfe7e1', fill:false, fade:true, earOpacity:.7, moreStars:true
     },
+    // Contour dealt as a tarot card: an inner gold frame and a name plate under the bust.
+    oracle: {
+      sky:['#13212d','#0b141c'], glow:'#1c3142', line:'#e7e2d4', ink:'#e7e2d4', moon:'#d8b57c', star:'#dfe7e1', fill:false, fade:true, earOpacity:.7, moreStars:true,
+      frame:'#d8b57c', title:'THE NIGHT ORACLE'
+    },
     dusk: {
       // The sky runs N3 → Wake: the site's sleep-stage ramp, deepened for night.
       sky:['#111830','#29306a','#6b4f8f','#c46a6f','#e2a04f'], face:['#0d1222','#0d1222'], rim:'#f3c88a', backRim:'#a3adeb',
@@ -378,6 +383,17 @@
     } else {
       path(fig, minimalHeadPath, { fill:'none', stroke:t.line, 'stroke-width':1.6, 'stroke-linejoin':'round' });
       stroke(smoothPath(hairEdge), t.line, 1, .35);
+    }
+
+    if (t.frame) {
+      add(svg, 'rect', { x:12.5, y:12.5, width:295, height:395, rx:8, fill:'none', stroke:t.frame, 'stroke-width':.8, opacity:.42 });
+    }
+    if (t.title) {
+      // The fade leaves the foot of the card empty: a classic tarot name plate.
+      add(svg, 'path', { d:'M 58 383.5 H 94 M 226 383.5 H 262', stroke:t.frame, 'stroke-width':.6, opacity:.5 });
+      const label = add(svg, 'text', { x:160, y:387, 'text-anchor':'middle', fill:t.frame, 'font-size':7.4, 'letter-spacing':2.6,
+        'font-family':"Charter,'Iowan Old Style',Georgia,serif", opacity:.92 });
+      label.textContent = t.title;
     }
 
     // Features: brow, closed eye, lips, jaw, and a simple ear.

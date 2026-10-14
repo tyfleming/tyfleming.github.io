@@ -1,143 +1,143 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="760" height="264" viewBox="0 0 760 264" role="img" aria-labelledby="title desc" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif">
 <title id="title">Default-network residual modes</title>
 <desc id="desc">The Default community contains 41 of the Gordon atlas's 333 cortical parcels. Each of its 41 parcel rows has a loading on each of two fold-trained residual principal components, so the basis is 41 by 2. Six numeric rows are shown; all 41 loadings of each component are separately tiled in atlas order into square-cell grids. Three reconstructed standardized held-out traces show its network mean and two residual scores across 30 frames.</desc>
-<rect width="760" height="264" fill="#ffffff"/>
-<text x="20.00" y="26.00" fill="#111418" font-size="12.5" font-weight="600" text-anchor="start">First 6 of 41 parcels</text>
-<text x="132.00" y="56.00" fill="#6b7380" font-size="10.5" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">PC 1</text>
-<text x="186.00" y="56.00" fill="#6b7380" font-size="10.5" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">PC 2</text>
-<line x1="20.00" y1="64.00" x2="188.00" y2="64.00" stroke="#c9ced5" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="20.00" y="84.00" fill="#6b7380" font-size="11.5" font-weight="400" text-anchor="start">parcel 01</text>
-<text x="132.00" y="84.00" fill="#111418" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">-0.13</text>
-<text x="186.00" y="84.00" fill="#111418" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+0.14</text>
-<line x1="20.00" y1="93.00" x2="188.00" y2="93.00" stroke="#e3e6ea" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="20.00" y="110.00" fill="#6b7380" font-size="11.5" font-weight="400" text-anchor="start">parcel 02</text>
-<text x="132.00" y="110.00" fill="#111418" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">-0.16</text>
-<text x="186.00" y="110.00" fill="#111418" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+0.15</text>
-<line x1="20.00" y1="119.00" x2="188.00" y2="119.00" stroke="#e3e6ea" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="20.00" y="136.00" fill="#6b7380" font-size="11.5" font-weight="400" text-anchor="start">parcel 03</text>
-<text x="132.00" y="136.00" fill="#111418" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">-0.14</text>
-<text x="186.00" y="136.00" fill="#111418" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+0.10</text>
-<line x1="20.00" y1="145.00" x2="188.00" y2="145.00" stroke="#e3e6ea" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="20.00" y="162.00" fill="#6b7380" font-size="11.5" font-weight="400" text-anchor="start">parcel 04</text>
-<text x="132.00" y="162.00" fill="#111418" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">-0.10</text>
-<text x="186.00" y="162.00" fill="#111418" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">-0.06</text>
-<line x1="20.00" y1="171.00" x2="188.00" y2="171.00" stroke="#e3e6ea" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="20.00" y="188.00" fill="#6b7380" font-size="11.5" font-weight="400" text-anchor="start">parcel 05</text>
-<text x="132.00" y="188.00" fill="#111418" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+0.00</text>
-<text x="186.00" y="188.00" fill="#111418" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">-0.14</text>
-<line x1="20.00" y1="197.00" x2="188.00" y2="197.00" stroke="#e3e6ea" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="20.00" y="214.00" fill="#6b7380" font-size="11.5" font-weight="400" text-anchor="start">parcel 06</text>
-<text x="132.00" y="214.00" fill="#111418" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">-0.10</text>
-<text x="186.00" y="214.00" fill="#111418" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">-0.16</text>
-<line x1="20.00" y1="223.00" x2="188.00" y2="223.00" stroke="#e3e6ea" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<line x1="214.00" y1="14.00" x2="214.00" y2="250.00" stroke="#e3e6ea" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="234.00" y="26.00" fill="#111418" font-size="12.5" font-weight="600" text-anchor="start">41 loadings per PC</text>
-<text x="236.00" y="56.00" fill="#6b7380" font-size="10.5" font-weight="500" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">PC 1</text>
-<rect x="236.00" y="66.00" width="11.00" height="11.00" fill="#b8c8dc" rx="1.5"/>
-<rect x="248.50" y="66.00" width="11.00" height="11.00" fill="#aabdd6" rx="1.5"/>
-<rect x="261.00" y="66.00" width="11.00" height="11.00" fill="#b1c3d9" rx="1.5"/>
-<rect x="273.50" y="66.00" width="11.00" height="11.00" fill="#c6d2e2" rx="1.5"/>
-<rect x="286.00" y="66.00" width="11.00" height="11.00" fill="#eeeff1" rx="1.5"/>
-<rect x="298.50" y="66.00" width="11.00" height="11.00" fill="#c4d0e1" rx="1.5"/>
-<rect x="236.00" y="78.50" width="11.00" height="11.00" fill="#c2cfe0" rx="1.5"/>
-<rect x="248.50" y="78.50" width="11.00" height="11.00" fill="#b9c8dc" rx="1.5"/>
-<rect x="261.00" y="78.50" width="11.00" height="11.00" fill="#ecebec" rx="1.5"/>
-<rect x="273.50" y="78.50" width="11.00" height="11.00" fill="#d3dce7" rx="1.5"/>
-<rect x="286.00" y="78.50" width="11.00" height="11.00" fill="#c2cfe0" rx="1.5"/>
-<rect x="298.50" y="78.50" width="11.00" height="11.00" fill="#a0b6d2" rx="1.5"/>
-<rect x="236.00" y="91.00" width="11.00" height="11.00" fill="#98b0ce" rx="1.5"/>
-<rect x="248.50" y="91.00" width="11.00" height="11.00" fill="#dde3ec" rx="1.5"/>
-<rect x="261.00" y="91.00" width="11.00" height="11.00" fill="#cfd9e6" rx="1.5"/>
-<rect x="273.50" y="91.00" width="11.00" height="11.00" fill="#9cb3d0" rx="1.5"/>
-<rect x="286.00" y="91.00" width="11.00" height="11.00" fill="#b2c3d9" rx="1.5"/>
-<rect x="298.50" y="91.00" width="11.00" height="11.00" fill="#ddbeb3" rx="1.5"/>
-<rect x="236.00" y="103.50" width="11.00" height="11.00" fill="#d6ab9a" rx="1.5"/>
-<rect x="248.50" y="103.50" width="11.00" height="11.00" fill="#b9592f" rx="1.5"/>
-<rect x="261.00" y="103.50" width="11.00" height="11.00" fill="#e6d9d6" rx="1.5"/>
-<rect x="273.50" y="103.50" width="11.00" height="11.00" fill="#e3d1cb" rx="1.5"/>
-<rect x="286.00" y="103.50" width="11.00" height="11.00" fill="#cb8b70" rx="1.5"/>
-<rect x="298.50" y="103.50" width="11.00" height="11.00" fill="#c16f4c" rx="1.5"/>
-<rect x="236.00" y="116.00" width="11.00" height="11.00" fill="#d7af9f" rx="1.5"/>
-<rect x="248.50" y="116.00" width="11.00" height="11.00" fill="#c47958" rx="1.5"/>
-<rect x="261.00" y="116.00" width="11.00" height="11.00" fill="#d6aa99" rx="1.5"/>
-<rect x="273.50" y="116.00" width="11.00" height="11.00" fill="#e8dedc" rx="1.5"/>
-<rect x="286.00" y="116.00" width="11.00" height="11.00" fill="#eae5e4" rx="1.5"/>
-<rect x="298.50" y="116.00" width="11.00" height="11.00" fill="#e9ecf1" rx="1.5"/>
-<rect x="236.00" y="128.50" width="11.00" height="11.00" fill="#ebe7e8" rx="1.5"/>
-<rect x="248.50" y="128.50" width="11.00" height="11.00" fill="#beccde" rx="1.5"/>
-<rect x="261.00" y="128.50" width="11.00" height="11.00" fill="#b1c2d9" rx="1.5"/>
-<rect x="273.50" y="128.50" width="11.00" height="11.00" fill="#b3c4da" rx="1.5"/>
-<rect x="286.00" y="128.50" width="11.00" height="11.00" fill="#bac9dc" rx="1.5"/>
-<rect x="298.50" y="128.50" width="11.00" height="11.00" fill="#c9d4e3" rx="1.5"/>
-<rect x="236.00" y="141.00" width="11.00" height="11.00" fill="#e6eaf0" rx="1.5"/>
-<rect x="248.50" y="141.00" width="11.00" height="11.00" fill="#edeced" rx="1.5"/>
-<rect x="261.00" y="141.00" width="11.00" height="11.00" fill="#e6d8d4" rx="1.5"/>
-<rect x="273.50" y="141.00" width="11.00" height="11.00" fill="#ebe9ea" rx="1.5"/>
-<rect x="286.00" y="141.00" width="11.00" height="11.00" fill="#ecebec" rx="1.5"/>
-<text x="236.00" y="168.00" fill="#a3a9b2" font-size="10" font-weight="400" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">01 → 41</text>
-<text x="322.00" y="56.00" fill="#6b7380" font-size="10.5" font-weight="500" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">PC 2</text>
-<rect x="322.00" y="66.00" width="11.00" height="11.00" fill="#ddc0b5" rx="1.5"/>
-<rect x="334.50" y="66.00" width="11.00" height="11.00" fill="#dcbbaf" rx="1.5"/>
-<rect x="347.00" y="66.00" width="11.00" height="11.00" fill="#e2cdc5" rx="1.5"/>
-<rect x="359.50" y="66.00" width="11.00" height="11.00" fill="#d6dee9" rx="1.5"/>
-<rect x="372.00" y="66.00" width="11.00" height="11.00" fill="#b1c2d9" rx="1.5"/>
-<rect x="384.50" y="66.00" width="11.00" height="11.00" fill="#abbed6" rx="1.5"/>
-<rect x="322.00" y="78.50" width="11.00" height="11.00" fill="#e3cfc9" rx="1.5"/>
-<rect x="334.50" y="78.50" width="11.00" height="11.00" fill="#ddc0b5" rx="1.5"/>
-<rect x="347.00" y="78.50" width="11.00" height="11.00" fill="#a1b7d2" rx="1.5"/>
-<rect x="359.50" y="78.50" width="11.00" height="11.00" fill="#92abcc" rx="1.5"/>
-<rect x="372.00" y="78.50" width="11.00" height="11.00" fill="#d5dde8" rx="1.5"/>
-<rect x="384.50" y="78.50" width="11.00" height="11.00" fill="#ddbfb3" rx="1.5"/>
-<rect x="322.00" y="91.00" width="11.00" height="11.00" fill="#dcbcb0" rx="1.5"/>
-<rect x="334.50" y="91.00" width="11.00" height="11.00" fill="#eceaec" rx="1.5"/>
-<rect x="347.00" y="91.00" width="11.00" height="11.00" fill="#e8dfdd" rx="1.5"/>
-<rect x="359.50" y="91.00" width="11.00" height="11.00" fill="#7c9ac2" rx="1.5"/>
-<rect x="372.00" y="91.00" width="11.00" height="11.00" fill="#9cb2d0" rx="1.5"/>
-<rect x="384.50" y="91.00" width="11.00" height="11.00" fill="#e5e9ef" rx="1.5"/>
-<rect x="322.00" y="103.50" width="11.00" height="11.00" fill="#bfcddf" rx="1.5"/>
-<rect x="334.50" y="103.50" width="11.00" height="11.00" fill="#c16e4b" rx="1.5"/>
-<rect x="347.00" y="103.50" width="11.00" height="11.00" fill="#cf977f" rx="1.5"/>
-<rect x="359.50" y="103.50" width="11.00" height="11.00" fill="#e4d3ce" rx="1.5"/>
-<rect x="372.00" y="103.50" width="11.00" height="11.00" fill="#ececed" rx="1.5"/>
-<rect x="384.50" y="103.50" width="11.00" height="11.00" fill="#cb8b70" rx="1.5"/>
-<rect x="322.00" y="116.00" width="11.00" height="11.00" fill="#b3c4d9" rx="1.5"/>
-<rect x="334.50" y="116.00" width="11.00" height="11.00" fill="#92abcc" rx="1.5"/>
-<rect x="347.00" y="116.00" width="11.00" height="11.00" fill="#9db3d0" rx="1.5"/>
-<rect x="359.50" y="116.00" width="11.00" height="11.00" fill="#e7dcd8" rx="1.5"/>
-<rect x="372.00" y="116.00" width="11.00" height="11.00" fill="#eae4e3" rx="1.5"/>
-<rect x="384.50" y="116.00" width="11.00" height="11.00" fill="#e8dfdc" rx="1.5"/>
-<rect x="322.00" y="128.50" width="11.00" height="11.00" fill="#ced8e5" rx="1.5"/>
-<rect x="334.50" y="128.50" width="11.00" height="11.00" fill="#e3d0ca" rx="1.5"/>
-<rect x="347.00" y="128.50" width="11.00" height="11.00" fill="#ddbfb3" rx="1.5"/>
-<rect x="359.50" y="128.50" width="11.00" height="11.00" fill="#d7ad9c" rx="1.5"/>
-<rect x="372.00" y="128.50" width="11.00" height="11.00" fill="#dcbdb1" rx="1.5"/>
-<rect x="384.50" y="128.50" width="11.00" height="11.00" fill="#e2cdc5" rx="1.5"/>
-<rect x="322.00" y="141.00" width="11.00" height="11.00" fill="#c8d3e2" rx="1.5"/>
-<rect x="334.50" y="141.00" width="11.00" height="11.00" fill="#a6bad4" rx="1.5"/>
-<rect x="347.00" y="141.00" width="11.00" height="11.00" fill="#91abcb" rx="1.5"/>
-<rect x="359.50" y="141.00" width="11.00" height="11.00" fill="#9bb2cf" rx="1.5"/>
-<rect x="372.00" y="141.00" width="11.00" height="11.00" fill="#e4e9ef" rx="1.5"/>
-<text x="322.00" y="168.00" fill="#a3a9b2" font-size="10" font-weight="400" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">01 → 41</text>
-<defs><linearGradient id="scale1" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#3b6aa6"/><stop offset=".5" stop-color="#eef0f3"/><stop offset="1" stop-color="#b9592f"/></linearGradient></defs>
+<rect width="760" height="264" fill="#111c26"/>
+<text x="20.00" y="26.00" fill="#ece6d6" font-size="12.5" font-weight="600" text-anchor="start">First 6 of 41 parcels</text>
+<text x="132.00" y="56.00" fill="#8f9aa6" font-size="10.5" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">PC 1</text>
+<text x="186.00" y="56.00" fill="#8f9aa6" font-size="10.5" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">PC 2</text>
+<line x1="20.00" y1="64.00" x2="188.00" y2="64.00" stroke="#3a4856" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="20.00" y="84.00" fill="#8f9aa6" font-size="11.5" font-weight="400" text-anchor="start">parcel 01</text>
+<text x="132.00" y="84.00" fill="#ece6d6" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">-0.13</text>
+<text x="186.00" y="84.00" fill="#ece6d6" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+0.14</text>
+<line x1="20.00" y1="93.00" x2="188.00" y2="93.00" stroke="#24323f" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="20.00" y="110.00" fill="#8f9aa6" font-size="11.5" font-weight="400" text-anchor="start">parcel 02</text>
+<text x="132.00" y="110.00" fill="#ece6d6" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">-0.16</text>
+<text x="186.00" y="110.00" fill="#ece6d6" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+0.15</text>
+<line x1="20.00" y1="119.00" x2="188.00" y2="119.00" stroke="#24323f" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="20.00" y="136.00" fill="#8f9aa6" font-size="11.5" font-weight="400" text-anchor="start">parcel 03</text>
+<text x="132.00" y="136.00" fill="#ece6d6" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">-0.14</text>
+<text x="186.00" y="136.00" fill="#ece6d6" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+0.10</text>
+<line x1="20.00" y1="145.00" x2="188.00" y2="145.00" stroke="#24323f" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="20.00" y="162.00" fill="#8f9aa6" font-size="11.5" font-weight="400" text-anchor="start">parcel 04</text>
+<text x="132.00" y="162.00" fill="#ece6d6" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">-0.10</text>
+<text x="186.00" y="162.00" fill="#ece6d6" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">-0.06</text>
+<line x1="20.00" y1="171.00" x2="188.00" y2="171.00" stroke="#24323f" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="20.00" y="188.00" fill="#8f9aa6" font-size="11.5" font-weight="400" text-anchor="start">parcel 05</text>
+<text x="132.00" y="188.00" fill="#ece6d6" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+0.00</text>
+<text x="186.00" y="188.00" fill="#ece6d6" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">-0.14</text>
+<line x1="20.00" y1="197.00" x2="188.00" y2="197.00" stroke="#24323f" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="20.00" y="214.00" fill="#8f9aa6" font-size="11.5" font-weight="400" text-anchor="start">parcel 06</text>
+<text x="132.00" y="214.00" fill="#ece6d6" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">-0.10</text>
+<text x="186.00" y="214.00" fill="#ece6d6" font-size="12" font-weight="500" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">-0.16</text>
+<line x1="20.00" y1="223.00" x2="188.00" y2="223.00" stroke="#24323f" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<line x1="214.00" y1="14.00" x2="214.00" y2="250.00" stroke="#24323f" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="234.00" y="26.00" fill="#ece6d6" font-size="12.5" font-weight="600" text-anchor="start">41 loadings per PC</text>
+<text x="236.00" y="56.00" fill="#8f9aa6" font-size="10.5" font-weight="500" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">PC 1</text>
+<rect x="236.00" y="66.00" width="11.00" height="11.00" fill="#3c536e" rx="1.5"/>
+<rect x="248.50" y="66.00" width="11.00" height="11.00" fill="#425c7b" rx="1.5"/>
+<rect x="261.00" y="66.00" width="11.00" height="11.00" fill="#3f5774" rx="1.5"/>
+<rect x="273.50" y="66.00" width="11.00" height="11.00" fill="#364a62" rx="1.5"/>
+<rect x="286.00" y="66.00" width="11.00" height="11.00" fill="#28333d" rx="1.5"/>
+<rect x="298.50" y="66.00" width="11.00" height="11.00" fill="#374c63" rx="1.5"/>
+<rect x="236.00" y="78.50" width="11.00" height="11.00" fill="#384d65" rx="1.5"/>
+<rect x="248.50" y="78.50" width="11.00" height="11.00" fill="#3c526d" rx="1.5"/>
+<rect x="261.00" y="78.50" width="11.00" height="11.00" fill="#2c353e" rx="1.5"/>
+<rect x="273.50" y="78.50" width="11.00" height="11.00" fill="#314256" rx="1.5"/>
+<rect x="286.00" y="78.50" width="11.00" height="11.00" fill="#384d65" rx="1.5"/>
+<rect x="298.50" y="78.50" width="11.00" height="11.00" fill="#466184" rx="1.5"/>
+<rect x="236.00" y="91.00" width="11.00" height="11.00" fill="#49668b" rx="1.5"/>
+<rect x="248.50" y="91.00" width="11.00" height="11.00" fill="#2d3c4c" rx="1.5"/>
+<rect x="261.00" y="91.00" width="11.00" height="11.00" fill="#334559" rx="1.5"/>
+<rect x="273.50" y="91.00" width="11.00" height="11.00" fill="#476487" rx="1.5"/>
+<rect x="286.00" y="91.00" width="11.00" height="11.00" fill="#3e5774" rx="1.5"/>
+<rect x="298.50" y="91.00" width="11.00" height="11.00" fill="#654f47" rx="1.5"/>
+<rect x="236.00" y="103.50" width="11.00" height="11.00" fill="#7d5a4b" rx="1.5"/>
+<rect x="248.50" y="103.50" width="11.00" height="11.00" fill="#e58a5c" rx="1.5"/>
+<rect x="261.00" y="103.50" width="11.00" height="11.00" fill="#433f42" rx="1.5"/>
+<rect x="273.50" y="103.50" width="11.00" height="11.00" fill="#4d4443" rx="1.5"/>
+<rect x="286.00" y="103.50" width="11.00" height="11.00" fill="#a66d52" rx="1.5"/>
+<rect x="298.50" y="103.50" width="11.00" height="11.00" fill="#c97d57" rx="1.5"/>
+<rect x="236.00" y="116.00" width="11.00" height="11.00" fill="#78584a" rx="1.5"/>
+<rect x="248.50" y="116.00" width="11.00" height="11.00" fill="#bd7755" rx="1.5"/>
+<rect x="261.00" y="116.00" width="11.00" height="11.00" fill="#7e5b4b" rx="1.5"/>
+<rect x="273.50" y="116.00" width="11.00" height="11.00" fill="#3d3d41" rx="1.5"/>
+<rect x="286.00" y="116.00" width="11.00" height="11.00" fill="#34393f" rx="1.5"/>
+<rect x="298.50" y="116.00" width="11.00" height="11.00" fill="#283542" rx="1.5"/>
+<rect x="236.00" y="128.50" width="11.00" height="11.00" fill="#31373f" rx="1.5"/>
+<rect x="248.50" y="128.50" width="11.00" height="11.00" fill="#3a4f69" rx="1.5"/>
+<rect x="261.00" y="128.50" width="11.00" height="11.00" fill="#3f5774" rx="1.5"/>
+<rect x="273.50" y="128.50" width="11.00" height="11.00" fill="#3e5673" rx="1.5"/>
+<rect x="286.00" y="128.50" width="11.00" height="11.00" fill="#3b526d" rx="1.5"/>
+<rect x="298.50" y="128.50" width="11.00" height="11.00" fill="#35495f" rx="1.5"/>
+<rect x="236.00" y="141.00" width="11.00" height="11.00" fill="#293744" rx="1.5"/>
+<rect x="248.50" y="141.00" width="11.00" height="11.00" fill="#2b343e" rx="1.5"/>
+<rect x="261.00" y="141.00" width="11.00" height="11.00" fill="#444042" rx="1.5"/>
+<rect x="273.50" y="141.00" width="11.00" height="11.00" fill="#2f363e" rx="1.5"/>
+<rect x="286.00" y="141.00" width="11.00" height="11.00" fill="#2d353e" rx="1.5"/>
+<text x="236.00" y="168.00" fill="#5e6a77" font-size="10" font-weight="400" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">01 → 41</text>
+<text x="322.00" y="56.00" fill="#8f9aa6" font-size="10.5" font-weight="500" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">PC 2</text>
+<rect x="322.00" y="66.00" width="11.00" height="11.00" fill="#634e47" rx="1.5"/>
+<rect x="334.50" y="66.00" width="11.00" height="11.00" fill="#695148" rx="1.5"/>
+<rect x="347.00" y="66.00" width="11.00" height="11.00" fill="#534744" rx="1.5"/>
+<rect x="359.50" y="66.00" width="11.00" height="11.00" fill="#304053" rx="1.5"/>
+<rect x="372.00" y="66.00" width="11.00" height="11.00" fill="#3f5775" rx="1.5"/>
+<rect x="384.50" y="66.00" width="11.00" height="11.00" fill="#415b7a" rx="1.5"/>
+<rect x="322.00" y="78.50" width="11.00" height="11.00" fill="#4f4544" rx="1.5"/>
+<rect x="334.50" y="78.50" width="11.00" height="11.00" fill="#634e47" rx="1.5"/>
+<rect x="347.00" y="78.50" width="11.00" height="11.00" fill="#456183" rx="1.5"/>
+<rect x="359.50" y="78.50" width="11.00" height="11.00" fill="#4b6a91" rx="1.5"/>
+<rect x="372.00" y="78.50" width="11.00" height="11.00" fill="#304154" rx="1.5"/>
+<rect x="384.50" y="78.50" width="11.00" height="11.00" fill="#644f47" rx="1.5"/>
+<rect x="322.00" y="91.00" width="11.00" height="11.00" fill="#685048" rx="1.5"/>
+<rect x="334.50" y="91.00" width="11.00" height="11.00" fill="#2d353e" rx="1.5"/>
+<rect x="347.00" y="91.00" width="11.00" height="11.00" fill="#3c3c41" rx="1.5"/>
+<rect x="359.50" y="91.00" width="11.00" height="11.00" fill="#5578a5" rx="1.5"/>
+<rect x="372.00" y="91.00" width="11.00" height="11.00" fill="#486488" rx="1.5"/>
+<rect x="384.50" y="91.00" width="11.00" height="11.00" fill="#2a3845" rx="1.5"/>
+<rect x="322.00" y="103.50" width="11.00" height="11.00" fill="#394e68" rx="1.5"/>
+<rect x="334.50" y="103.50" width="11.00" height="11.00" fill="#ca7e58" rx="1.5"/>
+<rect x="347.00" y="103.50" width="11.00" height="11.00" fill="#97664f" rx="1.5"/>
+<rect x="359.50" y="103.50" width="11.00" height="11.00" fill="#4a4343" rx="1.5"/>
+<rect x="372.00" y="103.50" width="11.00" height="11.00" fill="#2c353e" rx="1.5"/>
+<rect x="384.50" y="103.50" width="11.00" height="11.00" fill="#a66d52" rx="1.5"/>
+<rect x="322.00" y="116.00" width="11.00" height="11.00" fill="#3e5673" rx="1.5"/>
+<rect x="334.50" y="116.00" width="11.00" height="11.00" fill="#4b6a90" rx="1.5"/>
+<rect x="347.00" y="116.00" width="11.00" height="11.00" fill="#476387" rx="1.5"/>
+<rect x="359.50" y="116.00" width="11.00" height="11.00" fill="#403e41" rx="1.5"/>
+<rect x="372.00" y="116.00" width="11.00" height="11.00" fill="#363940" rx="1.5"/>
+<rect x="384.50" y="116.00" width="11.00" height="11.00" fill="#3c3c41" rx="1.5"/>
+<rect x="322.00" y="128.50" width="11.00" height="11.00" fill="#33455a" rx="1.5"/>
+<rect x="334.50" y="128.50" width="11.00" height="11.00" fill="#4e4443" rx="1.5"/>
+<rect x="347.00" y="128.50" width="11.00" height="11.00" fill="#654f47" rx="1.5"/>
+<rect x="359.50" y="128.50" width="11.00" height="11.00" fill="#7a594b" rx="1.5"/>
+<rect x="372.00" y="128.50" width="11.00" height="11.00" fill="#665047" rx="1.5"/>
+<rect x="384.50" y="128.50" width="11.00" height="11.00" fill="#534744" rx="1.5"/>
+<rect x="322.00" y="141.00" width="11.00" height="11.00" fill="#364960" rx="1.5"/>
+<rect x="334.50" y="141.00" width="11.00" height="11.00" fill="#435e7f" rx="1.5"/>
+<rect x="347.00" y="141.00" width="11.00" height="11.00" fill="#4c6a91" rx="1.5"/>
+<rect x="359.50" y="141.00" width="11.00" height="11.00" fill="#486589" rx="1.5"/>
+<rect x="372.00" y="141.00" width="11.00" height="11.00" fill="#2a3846" rx="1.5"/>
+<text x="322.00" y="168.00" fill="#5e6a77" font-size="10" font-weight="400" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">01 → 41</text>
+<defs><linearGradient id="scale1" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#6f9fe0"/><stop offset=".5" stop-color="#26323d"/><stop offset="1" stop-color="#e58a5c"/></linearGradient></defs>
 <rect x="236.00" y="186.00" width="160.00" height="6" rx="3" fill="url(#scale1)"/>
-<text x="236.00" y="206.00" fill="#6b7380" font-size="10" font-weight="400" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−0.43</text>
-<text x="316.00" y="206.00" fill="#6b7380" font-size="10" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">0</text>
-<text x="396.00" y="206.00" fill="#6b7380" font-size="10" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+0.43</text>
-<text x="236.00" y="232.00" fill="#6b7380" font-size="11" font-weight="400" text-anchor="start">tiled in atlas parcel order</text>
-<text x="236.00" y="248.00" fill="#6b7380" font-size="11" font-weight="400" text-anchor="start">each tile = one loading</text>
-<line x1="420.00" y1="14.00" x2="420.00" y2="250.00" stroke="#e3e6ea" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="440.00" y="26.00" fill="#111418" font-size="12.5" font-weight="600" text-anchor="start">Held-out output</text>
-<rect x="541.53" y="14.00" width="93.30" height="16.00" fill="#f3f4f6" rx="8"/>
-<text x="548.53" y="25.50" fill="#6b7380" font-size="10" font-weight="500" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">reconstructed</text>
-<text x="480.00" y="88.00" fill="#3a414b" font-size="11.5" font-weight="500" text-anchor="end">mean</text>
-<line x1="492.00" y1="84.00" x2="740.00" y2="84.00" stroke="#eceef1" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<polyline points="492.00,90.51 500.55,88.74 509.10,85.52 517.66,81.99 526.21,76.35 534.76,70.19 543.31,67.84 551.86,66.66 560.41,64.27 568.97,66.52 577.52,76.63 586.07,87.75 594.62,92.40 603.17,93.18 611.72,93.83 620.28,91.60 628.83,85.32 637.38,80.48 645.93,79.74 654.48,78.97 663.03,76.32 671.59,73.28 680.14,73.87 688.69,78.88 697.24,83.57 705.79,88.01 714.34,90.33 722.90,86.50 731.45,81.38 740.00,80.83" fill="none" stroke="#3a414b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
-<text x="480.00" y="152.00" fill="#3a414b" font-size="11.5" font-weight="500" text-anchor="end">PC 1</text>
-<line x1="492.00" y1="148.00" x2="740.00" y2="148.00" stroke="#eceef1" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<polyline points="492.00,156.27 500.55,154.90 509.10,152.37 517.66,149.40 526.21,145.31 534.76,142.60 543.31,144.69 551.86,147.37 560.41,141.77 568.97,131.79 577.52,129.46 586.07,136.29 594.62,145.25 603.17,149.13 611.72,149.07 620.28,150.05 628.83,152.33 637.38,156.90 645.93,164.02 654.48,168.63 663.03,166.35 671.59,158.78 680.14,152.16 688.69,148.70 697.24,144.81 705.79,140.51 714.34,138.13 722.90,137.25 731.45,138.24 740.00,142.26" fill="none" stroke="#3a414b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
-<text x="480.00" y="216.00" fill="#3a414b" font-size="11.5" font-weight="500" text-anchor="end">PC 2</text>
-<line x1="492.00" y1="212.00" x2="740.00" y2="212.00" stroke="#eceef1" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<polyline points="492.00,209.26 500.55,211.62 509.10,210.97 517.66,209.71 526.21,209.18 534.76,211.38 543.31,214.98 551.86,218.74 560.41,221.87 568.97,222.45 577.52,219.38 586.07,212.45 594.62,206.71 603.17,207.11 611.72,209.60 620.28,208.69 628.83,205.67 637.38,205.74 645.93,207.65 654.48,205.43 663.03,202.00 671.59,203.55 680.14,208.78 688.69,213.81 697.24,218.32 705.79,223.86 714.34,228.03 722.90,228.20 731.45,225.04 740.00,217.59" fill="none" stroke="#3a414b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
-<text x="492.00" y="252.00" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="start">frame 1</text>
-<text x="740.00" y="252.00" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="end">frame 30</text>
+<text x="236.00" y="206.00" fill="#8f9aa6" font-size="10" font-weight="400" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−0.43</text>
+<text x="316.00" y="206.00" fill="#8f9aa6" font-size="10" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">0</text>
+<text x="396.00" y="206.00" fill="#8f9aa6" font-size="10" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+0.43</text>
+<text x="236.00" y="232.00" fill="#8f9aa6" font-size="11" font-weight="400" text-anchor="start">tiled in atlas parcel order</text>
+<text x="236.00" y="248.00" fill="#8f9aa6" font-size="11" font-weight="400" text-anchor="start">each tile = one loading</text>
+<line x1="420.00" y1="14.00" x2="420.00" y2="250.00" stroke="#24323f" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="440.00" y="26.00" fill="#ece6d6" font-size="12.5" font-weight="600" text-anchor="start">Held-out output</text>
+<rect x="541.53" y="14.00" width="93.30" height="16.00" fill="#1a2733" rx="8"/>
+<text x="548.53" y="25.50" fill="#8f9aa6" font-size="10" font-weight="500" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">reconstructed</text>
+<text x="480.00" y="88.00" fill="#c1c9d0" font-size="11.5" font-weight="500" text-anchor="end">mean</text>
+<line x1="492.00" y1="84.00" x2="740.00" y2="84.00" stroke="#1b2834" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<polyline points="492.00,90.51 500.55,88.74 509.10,85.52 517.66,81.99 526.21,76.35 534.76,70.19 543.31,67.84 551.86,66.66 560.41,64.27 568.97,66.52 577.52,76.63 586.07,87.75 594.62,92.40 603.17,93.18 611.72,93.83 620.28,91.60 628.83,85.32 637.38,80.48 645.93,79.74 654.48,78.97 663.03,76.32 671.59,73.28 680.14,73.87 688.69,78.88 697.24,83.57 705.79,88.01 714.34,90.33 722.90,86.50 731.45,81.38 740.00,80.83" fill="none" stroke="#c1c9d0" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<text x="480.00" y="152.00" fill="#c1c9d0" font-size="11.5" font-weight="500" text-anchor="end">PC 1</text>
+<line x1="492.00" y1="148.00" x2="740.00" y2="148.00" stroke="#1b2834" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<polyline points="492.00,156.27 500.55,154.90 509.10,152.37 517.66,149.40 526.21,145.31 534.76,142.60 543.31,144.69 551.86,147.37 560.41,141.77 568.97,131.79 577.52,129.46 586.07,136.29 594.62,145.25 603.17,149.13 611.72,149.07 620.28,150.05 628.83,152.33 637.38,156.90 645.93,164.02 654.48,168.63 663.03,166.35 671.59,158.78 680.14,152.16 688.69,148.70 697.24,144.81 705.79,140.51 714.34,138.13 722.90,137.25 731.45,138.24 740.00,142.26" fill="none" stroke="#c1c9d0" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<text x="480.00" y="216.00" fill="#c1c9d0" font-size="11.5" font-weight="500" text-anchor="end">PC 2</text>
+<line x1="492.00" y1="212.00" x2="740.00" y2="212.00" stroke="#1b2834" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<polyline points="492.00,209.26 500.55,211.62 509.10,210.97 517.66,209.71 526.21,209.18 534.76,211.38 543.31,214.98 551.86,218.74 560.41,221.87 568.97,222.45 577.52,219.38 586.07,212.45 594.62,206.71 603.17,207.11 611.72,209.60 620.28,208.69 628.83,205.67 637.38,205.74 645.93,207.65 654.48,205.43 663.03,202.00 671.59,203.55 680.14,208.78 688.69,213.81 697.24,218.32 705.79,223.86 714.34,228.03 722.90,228.20 731.45,225.04 740.00,217.59" fill="none" stroke="#c1c9d0" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<text x="492.00" y="252.00" fill="#8f9aa6" font-size="10.5" font-weight="400" text-anchor="start">frame 1</text>
+<text x="740.00" y="252.00" fill="#8f9aa6" font-size="10.5" font-weight="400" text-anchor="end">frame 30</text>
 </svg>

@@ -1,41 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="760" height="268" viewBox="0 0 760 268" role="img" aria-labelledby="title desc" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif">
 <title id="title">Shrinkage lifts the zero eigenvalues of a short-window covariance</title>
 <desc id="desc">An eigenvalue spectrum reconstructed from this 30-valid-frame, 39-signal window compares sample covariance with its actual Ledoit-Wolf shrinkage covariance. The ordinary sample matrix has ten near-zero eigenvalues; shrinkage makes every eigenvalue positive.</desc>
-<rect width="760" height="268" fill="#ffffff"/>
-<text x="20.00" y="26.00" fill="#111418" font-size="12.5" font-weight="600" text-anchor="start">Covariance eigenvalues · log scale</text>
-<rect x="238.08" y="14.00" width="93.30" height="16.00" fill="#f3f4f6" rx="8"/>
-<text x="245.08" y="25.50" fill="#6b7380" font-size="10" font-weight="500" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">reconstructed</text>
-<line x1="470.00" y1="22.00" x2="484.00" y2="22.00" stroke="#98a1ab" stroke-width="2.2" opacity="1" stroke-linecap="round"/>
-<text x="490.00" y="26.00" fill="#3a414b" font-size="11.5" font-weight="400" text-anchor="start">sample</text>
-<line x1="541.07" y1="22.00" x2="555.07" y2="22.00" stroke="#0f6e6a" stroke-width="2.2" opacity="1" stroke-linecap="round"/>
-<text x="561.07" y="26.00" fill="#3a414b" font-size="11.5" font-weight="400" text-anchor="start">Ledoit–Wolf shrinkage</text>
-<rect x="470.47" y="52.00" width="125.53" height="168.00" fill="#f3f4f6"/>
-<text x="533.24" y="68.00" fill="#6b7380" font-size="10.5" font-weight="500" text-anchor="middle">10 null directions</text>
-<line x1="66.00" y1="220.00" x2="596.00" y2="220.00" stroke="#eceef1" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="58.00" y="224.00" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">10⁻⁸</text>
-<line x1="66.00" y1="186.40" x2="596.00" y2="186.40" stroke="#eceef1" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="58.00" y="190.40" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">10⁻⁶</text>
-<line x1="66.00" y1="152.80" x2="596.00" y2="152.80" stroke="#eceef1" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="58.00" y="156.80" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">10⁻⁴</text>
-<line x1="66.00" y1="119.20" x2="596.00" y2="119.20" stroke="#eceef1" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="58.00" y="123.20" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">10⁻²</text>
-<line x1="66.00" y1="85.60" x2="596.00" y2="85.60" stroke="#eceef1" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="58.00" y="89.60" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">10⁰</text>
-<line x1="66.00" y1="52.00" x2="596.00" y2="52.00" stroke="#eceef1" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="58.00" y="56.00" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">10²</text>
-<line x1="66.00" y1="220.00" x2="596.00" y2="220.00" stroke="#c9ced5" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="66.00" y="237.00" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">1</text>
-<text x="191.53" y="237.00" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">10</text>
-<text x="331.00" y="237.00" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">20</text>
-<text x="470.47" y="237.00" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">30</text>
-<text x="596.00" y="237.00" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">39</text>
-<text x="596.00" y="256.00" fill="#6b7380" font-size="11" font-weight="400" text-anchor="end">eigenvalue rank</text>
-<polyline points="66.00,65.22 79.95,70.44 93.89,78.06 107.84,80.07 121.79,80.39 135.74,81.61 149.68,85.81 163.63,88.21 177.58,94.54 191.53,95.73 205.47,96.93 219.42,99.97 233.37,102.57 247.32,107.02 261.26,109.43 275.21,111.33 289.16,118.14 303.11,118.60 317.05,121.79 331.00,126.81 344.95,129.83 358.89,135.97 372.84,141.41 386.79,146.02 400.74,150.44 414.68,157.27 428.63,167.84 442.58,175.98 456.53,188.36 470.47,220.00 484.42,220.00 498.37,220.00 512.32,220.00 526.26,220.00 540.21,220.00 554.16,220.00 568.11,220.00 582.05,220.00 596.00,220.00" fill="none" stroke="#98a1ab" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
-<polyline points="66.00,66.34 79.95,71.49 93.89,78.84 107.84,80.73 121.79,81.02 135.74,82.14 149.68,85.87 163.63,87.87 177.58,92.50 191.53,93.24 205.47,93.95 219.42,95.50 233.37,96.59 247.32,97.95 261.26,98.47 275.21,98.80 289.16,99.51 303.11,99.54 317.05,99.70 331.00,99.85 344.95,99.90 358.89,99.96 372.84,99.98 386.79,99.99 400.74,100.00 414.68,100.00 428.63,100.00 442.58,100.00 456.53,100.00 470.47,100.00 484.42,100.00 498.37,100.00 512.32,100.00 526.26,100.00 540.21,100.00 554.16,100.00 568.11,100.00 582.05,100.00 596.00,100.00" fill="none" stroke="#0f6e6a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
-<circle cx="596.00" cy="100.00" r="4.00" fill="#0f6e6a" stroke="#ffffff" stroke-width="2"/>
-<circle cx="596.00" cy="220.00" r="4.00" fill="#98a1ab" stroke="#ffffff" stroke-width="2"/>
-<text x="610.00" y="98.00" fill="#111418" font-size="11.5" font-weight="600" text-anchor="start">shrinkage</text>
-<text x="610.00" y="113.00" fill="#6b7380" font-size="11" font-weight="400" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">λ = 0.151</text>
-<text x="610.00" y="210.00" fill="#111418" font-size="11.5" font-weight="600" text-anchor="start">sample</text>
-<text x="610.00" y="225.00" fill="#6b7380" font-size="11" font-weight="400" text-anchor="start">10 near zero</text>
+<rect width="760" height="268" fill="#111c26"/>
+<text x="20.00" y="26.00" fill="#ece6d6" font-size="12.5" font-weight="600" text-anchor="start">Covariance eigenvalues · log scale</text>
+<rect x="238.08" y="14.00" width="93.30" height="16.00" fill="#1a2733" rx="8"/>
+<text x="245.08" y="25.50" fill="#8f9aa6" font-size="10" font-weight="500" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">reconstructed</text>
+<line x1="470.00" y1="22.00" x2="484.00" y2="22.00" stroke="#7d8894" stroke-width="2.2" opacity="1" stroke-linecap="round"/>
+<text x="490.00" y="26.00" fill="#c1c9d0" font-size="11.5" font-weight="400" text-anchor="start">sample</text>
+<line x1="541.07" y1="22.00" x2="555.07" y2="22.00" stroke="#d8b57c" stroke-width="2.2" opacity="1" stroke-linecap="round"/>
+<text x="561.07" y="26.00" fill="#c1c9d0" font-size="11.5" font-weight="400" text-anchor="start">Ledoit–Wolf shrinkage</text>
+<rect x="470.47" y="52.00" width="125.53" height="168.00" fill="#1a2733"/>
+<text x="533.24" y="68.00" fill="#8f9aa6" font-size="10.5" font-weight="500" text-anchor="middle">10 null directions</text>
+<line x1="66.00" y1="220.00" x2="596.00" y2="220.00" stroke="#1b2834" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="58.00" y="224.00" fill="#8f9aa6" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">10⁻⁸</text>
+<line x1="66.00" y1="186.40" x2="596.00" y2="186.40" stroke="#1b2834" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="58.00" y="190.40" fill="#8f9aa6" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">10⁻⁶</text>
+<line x1="66.00" y1="152.80" x2="596.00" y2="152.80" stroke="#1b2834" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="58.00" y="156.80" fill="#8f9aa6" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">10⁻⁴</text>
+<line x1="66.00" y1="119.20" x2="596.00" y2="119.20" stroke="#1b2834" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="58.00" y="123.20" fill="#8f9aa6" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">10⁻²</text>
+<line x1="66.00" y1="85.60" x2="596.00" y2="85.60" stroke="#1b2834" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="58.00" y="89.60" fill="#8f9aa6" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">10⁰</text>
+<line x1="66.00" y1="52.00" x2="596.00" y2="52.00" stroke="#1b2834" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="58.00" y="56.00" fill="#8f9aa6" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">10²</text>
+<line x1="66.00" y1="220.00" x2="596.00" y2="220.00" stroke="#3a4856" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="66.00" y="237.00" fill="#8f9aa6" font-size="10.5" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">1</text>
+<text x="191.53" y="237.00" fill="#8f9aa6" font-size="10.5" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">10</text>
+<text x="331.00" y="237.00" fill="#8f9aa6" font-size="10.5" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">20</text>
+<text x="470.47" y="237.00" fill="#8f9aa6" font-size="10.5" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">30</text>
+<text x="596.00" y="237.00" fill="#8f9aa6" font-size="10.5" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">39</text>
+<text x="596.00" y="256.00" fill="#8f9aa6" font-size="11" font-weight="400" text-anchor="end">eigenvalue rank</text>
+<polyline points="66.00,65.22 79.95,70.44 93.89,78.06 107.84,80.07 121.79,80.39 135.74,81.61 149.68,85.81 163.63,88.21 177.58,94.54 191.53,95.73 205.47,96.93 219.42,99.97 233.37,102.57 247.32,107.02 261.26,109.43 275.21,111.33 289.16,118.14 303.11,118.60 317.05,121.79 331.00,126.81 344.95,129.83 358.89,135.97 372.84,141.41 386.79,146.02 400.74,150.44 414.68,157.27 428.63,167.84 442.58,175.98 456.53,188.36 470.47,220.00 484.42,220.00 498.37,220.00 512.32,220.00 526.26,220.00 540.21,220.00 554.16,220.00 568.11,220.00 582.05,220.00 596.00,220.00" fill="none" stroke="#7d8894" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<polyline points="66.00,66.34 79.95,71.49 93.89,78.84 107.84,80.73 121.79,81.02 135.74,82.14 149.68,85.87 163.63,87.87 177.58,92.50 191.53,93.24 205.47,93.95 219.42,95.50 233.37,96.59 247.32,97.95 261.26,98.47 275.21,98.80 289.16,99.51 303.11,99.54 317.05,99.70 331.00,99.85 344.95,99.90 358.89,99.96 372.84,99.98 386.79,99.99 400.74,100.00 414.68,100.00 428.63,100.00 442.58,100.00 456.53,100.00 470.47,100.00 484.42,100.00 498.37,100.00 512.32,100.00 526.26,100.00 540.21,100.00 554.16,100.00 568.11,100.00 582.05,100.00 596.00,100.00" fill="none" stroke="#d8b57c" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<circle cx="596.00" cy="100.00" r="4.00" fill="#d8b57c" stroke="#111c26" stroke-width="2"/>
+<circle cx="596.00" cy="220.00" r="4.00" fill="#7d8894" stroke="#111c26" stroke-width="2"/>
+<text x="610.00" y="98.00" fill="#ece6d6" font-size="11.5" font-weight="600" text-anchor="start">shrinkage</text>
+<text x="610.00" y="113.00" fill="#8f9aa6" font-size="11" font-weight="400" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">λ = 0.151</text>
+<text x="610.00" y="210.00" fill="#ece6d6" font-size="11.5" font-weight="600" text-anchor="start">sample</text>
+<text x="610.00" y="225.00" fill="#8f9aa6" font-size="11" font-weight="400" text-anchor="start">10 near zero</text>
 </svg>

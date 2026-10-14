@@ -1,71 +1,71 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="760" height="254" viewBox="0 0 760 254" role="img" aria-labelledby="title desc" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif">
 <title id="title">The 23 saved cycle features</title>
 <desc id="desc">A compact numerical map of all 23 saved directed-cycle features for the representative window: five flow summaries at each of three lags, five for their weighted pooled flow, and three temporal change summaries. Share columns carry small bars proportional to each fraction of total flow energy.</desc>
-<rect width="760" height="254" fill="#ffffff"/>
-<text x="198.00" y="26.00" fill="#111418" font-size="11.5" font-weight="600" text-anchor="middle">total norm</text>
-<text x="322.00" y="26.00" fill="#111418" font-size="11.5" font-weight="600" text-anchor="middle">harmonic norm</text>
-<rect x="415.35" y="17.50" width="9.00" height="9.00" fill="#0f6e6a" rx="2"/>
-<text x="450.00" y="26.00" fill="#111418" font-size="11.5" font-weight="600" text-anchor="middle">H share</text>
-<rect x="539.35" y="17.50" width="9.00" height="9.00" fill="#98a1ab" rx="2"/>
-<text x="574.00" y="26.00" fill="#111418" font-size="11.5" font-weight="600" text-anchor="middle">G share</text>
-<rect x="663.35" y="17.50" width="9.00" height="9.00" fill="#d3d8de" rx="2"/>
-<text x="698.00" y="26.00" fill="#111418" font-size="11.5" font-weight="600" text-anchor="middle">C share</text>
-<line x1="20.00" y1="40.00" x2="740.00" y2="40.00" stroke="#c9ced5" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="20.00" y="70.00" fill="#3a414b" font-size="12.5" font-weight="600" text-anchor="start">lag 1</text>
-<text x="196.00" y="70.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">9.19</text>
-<text x="320.00" y="70.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">2.67</text>
-<text x="444.00" y="70.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">8.4%</text>
-<rect x="408.00" y="77.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
-<rect x="408.00" y="77.00" width="6.08" height="3.00" fill="#0f6e6a" rx="1.5"/>
-<text x="568.00" y="70.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">34.2%</text>
-<rect x="532.00" y="77.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
-<rect x="532.00" y="77.00" width="24.61" height="3.00" fill="#98a1ab" rx="1.5"/>
-<text x="692.00" y="70.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">57.4%</text>
-<rect x="656.00" y="77.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
-<rect x="656.00" y="77.00" width="41.32" height="3.00" fill="#d3d8de" rx="1.5"/>
-<line x1="20.00" y1="88.00" x2="740.00" y2="88.00" stroke="#e3e6ea" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="20.00" y="108.00" fill="#3a414b" font-size="12.5" font-weight="600" text-anchor="start">lag 2</text>
-<text x="196.00" y="108.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">15.27</text>
-<text x="320.00" y="108.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">4.46</text>
-<text x="444.00" y="108.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">8.5%</text>
-<rect x="408.00" y="115.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
-<rect x="408.00" y="115.00" width="6.14" height="3.00" fill="#0f6e6a" rx="1.5"/>
-<text x="568.00" y="108.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">35.4%</text>
-<rect x="532.00" y="115.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
-<rect x="532.00" y="115.00" width="25.50" height="3.00" fill="#98a1ab" rx="1.5"/>
-<text x="692.00" y="108.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">56.1%</text>
-<rect x="656.00" y="115.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
-<rect x="656.00" y="115.00" width="40.36" height="3.00" fill="#d3d8de" rx="1.5"/>
-<line x1="20.00" y1="126.00" x2="740.00" y2="126.00" stroke="#e3e6ea" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="20.00" y="146.00" fill="#3a414b" font-size="12.5" font-weight="600" text-anchor="start">lag 3</text>
-<text x="196.00" y="146.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">17.83</text>
-<text x="320.00" y="146.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">5.22</text>
-<text x="444.00" y="146.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">8.6%</text>
-<rect x="408.00" y="153.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
-<rect x="408.00" y="153.00" width="6.18" height="3.00" fill="#0f6e6a" rx="1.5"/>
-<text x="568.00" y="146.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">36.6%</text>
-<rect x="532.00" y="153.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
-<rect x="532.00" y="153.00" width="26.39" height="3.00" fill="#98a1ab" rx="1.5"/>
-<text x="692.00" y="146.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">54.8%</text>
-<rect x="656.00" y="153.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
-<rect x="656.00" y="153.00" width="39.44" height="3.00" fill="#d3d8de" rx="1.5"/>
-<line x1="20.00" y1="164.00" x2="740.00" y2="164.00" stroke="#e3e6ea" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="20.00" y="184.00" fill="#3a414b" font-size="12.5" font-weight="600" text-anchor="start">pooled</text>
-<text x="196.00" y="184.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">11.94</text>
-<text x="320.00" y="184.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">3.49</text>
-<text x="444.00" y="184.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">8.6%</text>
-<rect x="408.00" y="191.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
-<rect x="408.00" y="191.00" width="6.16" height="3.00" fill="#0f6e6a" rx="1.5"/>
-<text x="568.00" y="184.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">35.2%</text>
-<rect x="532.00" y="191.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
-<rect x="532.00" y="191.00" width="25.32" height="3.00" fill="#98a1ab" rx="1.5"/>
-<text x="692.00" y="184.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">56.3%</text>
-<rect x="656.00" y="191.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
-<rect x="656.00" y="191.00" width="40.52" height="3.00" fill="#d3d8de" rx="1.5"/>
-<line x1="20.00" y1="202.00" x2="740.00" y2="202.00" stroke="#e3e6ea" stroke-width="1" opacity="1" stroke-linecap="butt"/>
-<text x="20.00" y="232.00" fill="#3a414b" font-size="12" font-weight="600" text-anchor="start">change in pooled</text>
-<text x="20.00" y="247.00" fill="#3a414b" font-size="12" font-weight="600" text-anchor="start">harmonic state</text>
-<text x="196.00" y="240.00" fill="#111418" font-size="12" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">norm 1.55</text>
-<text x="320.00" y="240.00" fill="#111418" font-size="12" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">cosine 0.90</text>
-<text x="444.00" y="240.00" fill="#111418" font-size="12" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">angle 0.46 rad</text>
+<rect width="760" height="254" fill="#111c26"/>
+<text x="198.00" y="26.00" fill="#ece6d6" font-size="11.5" font-weight="600" text-anchor="middle">total norm</text>
+<text x="322.00" y="26.00" fill="#ece6d6" font-size="11.5" font-weight="600" text-anchor="middle">harmonic norm</text>
+<rect x="415.35" y="17.50" width="9.00" height="9.00" fill="#d8b57c" rx="2"/>
+<text x="450.00" y="26.00" fill="#ece6d6" font-size="11.5" font-weight="600" text-anchor="middle">H share</text>
+<rect x="539.35" y="17.50" width="9.00" height="9.00" fill="#7d8894" rx="2"/>
+<text x="574.00" y="26.00" fill="#ece6d6" font-size="11.5" font-weight="600" text-anchor="middle">G share</text>
+<rect x="663.35" y="17.50" width="9.00" height="9.00" fill="#3a4855" rx="2"/>
+<text x="698.00" y="26.00" fill="#ece6d6" font-size="11.5" font-weight="600" text-anchor="middle">C share</text>
+<line x1="20.00" y1="40.00" x2="740.00" y2="40.00" stroke="#3a4856" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="20.00" y="70.00" fill="#c1c9d0" font-size="12.5" font-weight="600" text-anchor="start">lag 1</text>
+<text x="196.00" y="70.00" fill="#ece6d6" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">9.19</text>
+<text x="320.00" y="70.00" fill="#ece6d6" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">2.67</text>
+<text x="444.00" y="70.00" fill="#ece6d6" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">8.4%</text>
+<rect x="408.00" y="77.00" width="72.00" height="3.00" fill="#1b2834" rx="1.5"/>
+<rect x="408.00" y="77.00" width="6.08" height="3.00" fill="#d8b57c" rx="1.5"/>
+<text x="568.00" y="70.00" fill="#ece6d6" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">34.2%</text>
+<rect x="532.00" y="77.00" width="72.00" height="3.00" fill="#1b2834" rx="1.5"/>
+<rect x="532.00" y="77.00" width="24.61" height="3.00" fill="#7d8894" rx="1.5"/>
+<text x="692.00" y="70.00" fill="#ece6d6" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">57.4%</text>
+<rect x="656.00" y="77.00" width="72.00" height="3.00" fill="#1b2834" rx="1.5"/>
+<rect x="656.00" y="77.00" width="41.32" height="3.00" fill="#3a4855" rx="1.5"/>
+<line x1="20.00" y1="88.00" x2="740.00" y2="88.00" stroke="#24323f" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="20.00" y="108.00" fill="#c1c9d0" font-size="12.5" font-weight="600" text-anchor="start">lag 2</text>
+<text x="196.00" y="108.00" fill="#ece6d6" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">15.27</text>
+<text x="320.00" y="108.00" fill="#ece6d6" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">4.46</text>
+<text x="444.00" y="108.00" fill="#ece6d6" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">8.5%</text>
+<rect x="408.00" y="115.00" width="72.00" height="3.00" fill="#1b2834" rx="1.5"/>
+<rect x="408.00" y="115.00" width="6.14" height="3.00" fill="#d8b57c" rx="1.5"/>
+<text x="568.00" y="108.00" fill="#ece6d6" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">35.4%</text>
+<rect x="532.00" y="115.00" width="72.00" height="3.00" fill="#1b2834" rx="1.5"/>
+<rect x="532.00" y="115.00" width="25.50" height="3.00" fill="#7d8894" rx="1.5"/>
+<text x="692.00" y="108.00" fill="#ece6d6" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">56.1%</text>
+<rect x="656.00" y="115.00" width="72.00" height="3.00" fill="#1b2834" rx="1.5"/>
+<rect x="656.00" y="115.00" width="40.36" height="3.00" fill="#3a4855" rx="1.5"/>
+<line x1="20.00" y1="126.00" x2="740.00" y2="126.00" stroke="#24323f" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="20.00" y="146.00" fill="#c1c9d0" font-size="12.5" font-weight="600" text-anchor="start">lag 3</text>
+<text x="196.00" y="146.00" fill="#ece6d6" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">17.83</text>
+<text x="320.00" y="146.00" fill="#ece6d6" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">5.22</text>
+<text x="444.00" y="146.00" fill="#ece6d6" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">8.6%</text>
+<rect x="408.00" y="153.00" width="72.00" height="3.00" fill="#1b2834" rx="1.5"/>
+<rect x="408.00" y="153.00" width="6.18" height="3.00" fill="#d8b57c" rx="1.5"/>
+<text x="568.00" y="146.00" fill="#ece6d6" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">36.6%</text>
+<rect x="532.00" y="153.00" width="72.00" height="3.00" fill="#1b2834" rx="1.5"/>
+<rect x="532.00" y="153.00" width="26.39" height="3.00" fill="#7d8894" rx="1.5"/>
+<text x="692.00" y="146.00" fill="#ece6d6" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">54.8%</text>
+<rect x="656.00" y="153.00" width="72.00" height="3.00" fill="#1b2834" rx="1.5"/>
+<rect x="656.00" y="153.00" width="39.44" height="3.00" fill="#3a4855" rx="1.5"/>
+<line x1="20.00" y1="164.00" x2="740.00" y2="164.00" stroke="#24323f" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="20.00" y="184.00" fill="#c1c9d0" font-size="12.5" font-weight="600" text-anchor="start">pooled</text>
+<text x="196.00" y="184.00" fill="#ece6d6" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">11.94</text>
+<text x="320.00" y="184.00" fill="#ece6d6" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">3.49</text>
+<text x="444.00" y="184.00" fill="#ece6d6" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">8.6%</text>
+<rect x="408.00" y="191.00" width="72.00" height="3.00" fill="#1b2834" rx="1.5"/>
+<rect x="408.00" y="191.00" width="6.16" height="3.00" fill="#d8b57c" rx="1.5"/>
+<text x="568.00" y="184.00" fill="#ece6d6" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">35.2%</text>
+<rect x="532.00" y="191.00" width="72.00" height="3.00" fill="#1b2834" rx="1.5"/>
+<rect x="532.00" y="191.00" width="25.32" height="3.00" fill="#7d8894" rx="1.5"/>
+<text x="692.00" y="184.00" fill="#ece6d6" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">56.3%</text>
+<rect x="656.00" y="191.00" width="72.00" height="3.00" fill="#1b2834" rx="1.5"/>
+<rect x="656.00" y="191.00" width="40.52" height="3.00" fill="#3a4855" rx="1.5"/>
+<line x1="20.00" y1="202.00" x2="740.00" y2="202.00" stroke="#24323f" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="20.00" y="232.00" fill="#c1c9d0" font-size="12" font-weight="600" text-anchor="start">change in pooled</text>
+<text x="20.00" y="247.00" fill="#c1c9d0" font-size="12" font-weight="600" text-anchor="start">harmonic state</text>
+<text x="196.00" y="240.00" fill="#ece6d6" font-size="12" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">norm 1.55</text>
+<text x="320.00" y="240.00" fill="#ece6d6" font-size="12" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">cosine 0.90</text>
+<text x="444.00" y="240.00" fill="#ece6d6" font-size="12" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">angle 0.46 rad</text>
 </svg>

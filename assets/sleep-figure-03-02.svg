@@ -1,143 +1,143 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="760" height="282" viewBox="0 0 760 282" role="img" aria-labelledby="title desc" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif">
 <title id="title">Shrinkage connectivity from a short window</title>
 <desc id="desc">Six selected features from the full 39-feature operation show sample covariance, reconstructed Ledoit-Wolf shrinkage covariance, and final correlation. Rows are Auditory, Default, and Visual means, Auditory and Default residual PC1, and Default residual PC2. The saved shrinkage fraction for this window is 0.1511; eigenvalue flooring made no change.</desc>
-<rect width="760" height="282" fill="#ffffff"/>
-<text x="172.00" y="32.00" fill="#111418" font-size="12.5" font-weight="600" text-anchor="middle">Sample covariance</text>
-<rect x="100.00" y="50.00" width="22.50" height="22.50" fill="#ce947c" rx="1.5"/>
-<rect x="124.00" y="50.00" width="22.50" height="22.50" fill="#d7ae9e" rx="1.5"/>
-<rect x="148.00" y="50.00" width="22.50" height="22.50" fill="#abbed6" rx="1.5"/>
-<rect x="172.00" y="50.00" width="22.50" height="22.50" fill="#d3a38f" rx="1.5"/>
-<rect x="196.00" y="50.00" width="22.50" height="22.50" fill="#dec3b8" rx="1.5"/>
-<rect x="220.00" y="50.00" width="22.50" height="22.50" fill="#b2c3d9" rx="1.5"/>
-<rect x="100.00" y="74.00" width="22.50" height="22.50" fill="#d7ae9e" rx="1.5"/>
-<rect x="124.00" y="74.00" width="22.50" height="22.50" fill="#c37655" rx="1.5"/>
-<rect x="148.00" y="74.00" width="22.50" height="22.50" fill="#8ca6c9" rx="1.5"/>
-<rect x="172.00" y="74.00" width="22.50" height="22.50" fill="#dec1b6" rx="1.5"/>
-<rect x="196.00" y="74.00" width="22.50" height="22.50" fill="#ebe6e6" rx="1.5"/>
-<rect x="220.00" y="74.00" width="22.50" height="22.50" fill="#dfe5ed" rx="1.5"/>
-<rect x="100.00" y="98.00" width="22.50" height="22.50" fill="#abbed6" rx="1.5"/>
-<rect x="124.00" y="98.00" width="22.50" height="22.50" fill="#8ca6c9" rx="1.5"/>
-<rect x="148.00" y="98.00" width="22.50" height="22.50" fill="#c67f60" rx="1.5"/>
-<rect x="172.00" y="98.00" width="22.50" height="22.50" fill="#cdd7e5" rx="1.5"/>
-<rect x="196.00" y="98.00" width="22.50" height="22.50" fill="#95aecd" rx="1.5"/>
-<rect x="220.00" y="98.00" width="22.50" height="22.50" fill="#e2cdc6" rx="1.5"/>
-<rect x="100.00" y="122.00" width="22.50" height="22.50" fill="#d3a38f" rx="1.5"/>
-<rect x="124.00" y="122.00" width="22.50" height="22.50" fill="#dec1b6" rx="1.5"/>
-<rect x="148.00" y="122.00" width="22.50" height="22.50" fill="#cdd7e5" rx="1.5"/>
-<rect x="172.00" y="122.00" width="22.50" height="22.50" fill="#c57c5d" rx="1.5"/>
-<rect x="196.00" y="122.00" width="22.50" height="22.50" fill="#d6dee9" rx="1.5"/>
-<rect x="220.00" y="122.00" width="22.50" height="22.50" fill="#edeff1" rx="1.5"/>
-<rect x="100.00" y="146.00" width="22.50" height="22.50" fill="#dec3b8" rx="1.5"/>
-<rect x="124.00" y="146.00" width="22.50" height="22.50" fill="#ebe6e6" rx="1.5"/>
-<rect x="148.00" y="146.00" width="22.50" height="22.50" fill="#95aecd" rx="1.5"/>
-<rect x="172.00" y="146.00" width="22.50" height="22.50" fill="#d6dee9" rx="1.5"/>
-<rect x="196.00" y="146.00" width="22.50" height="22.50" fill="#b9592f" rx="1.5"/>
-<rect x="220.00" y="146.00" width="22.50" height="22.50" fill="#83a0c5" rx="1.5"/>
-<rect x="100.00" y="170.00" width="22.50" height="22.50" fill="#b2c3d9" rx="1.5"/>
-<rect x="124.00" y="170.00" width="22.50" height="22.50" fill="#dfe5ed" rx="1.5"/>
-<rect x="148.00" y="170.00" width="22.50" height="22.50" fill="#e2cdc6" rx="1.5"/>
-<rect x="172.00" y="170.00" width="22.50" height="22.50" fill="#edeff1" rx="1.5"/>
-<rect x="196.00" y="170.00" width="22.50" height="22.50" fill="#83a0c5" rx="1.5"/>
-<rect x="220.00" y="170.00" width="22.50" height="22.50" fill="#ce957d" rx="1.5"/>
-<text x="172.00" y="216.00" fill="#6b7380" font-size="11" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">S · 30 valid frames</text>
-<text x="420.00" y="32.00" fill="#111418" font-size="12.5" font-weight="600" text-anchor="middle">Shrinkage covariance</text>
-<rect x="348.00" y="50.00" width="22.50" height="22.50" fill="#cb8c72" rx="1.5"/>
-<rect x="372.00" y="50.00" width="22.50" height="22.50" fill="#dab8ab" rx="1.5"/>
-<rect x="396.00" y="50.00" width="22.50" height="22.50" fill="#b5c6db" rx="1.5"/>
-<rect x="420.00" y="50.00" width="22.50" height="22.50" fill="#d7af9e" rx="1.5"/>
-<rect x="444.00" y="50.00" width="22.50" height="22.50" fill="#e1cac1" rx="1.5"/>
-<rect x="468.00" y="50.00" width="22.50" height="22.50" fill="#bbcadd" rx="1.5"/>
-<rect x="348.00" y="74.00" width="22.50" height="22.50" fill="#dab8ab" rx="1.5"/>
-<rect x="372.00" y="74.00" width="22.50" height="22.50" fill="#c27351" rx="1.5"/>
-<rect x="396.00" y="74.00" width="22.50" height="22.50" fill="#9bb2cf" rx="1.5"/>
-<rect x="420.00" y="74.00" width="22.50" height="22.50" fill="#e0c8bf" rx="1.5"/>
-<rect x="444.00" y="74.00" width="22.50" height="22.50" fill="#ebe8e8" rx="1.5"/>
-<rect x="468.00" y="74.00" width="22.50" height="22.50" fill="#e2e7ee" rx="1.5"/>
-<rect x="348.00" y="98.00" width="22.50" height="22.50" fill="#b5c6db" rx="1.5"/>
-<rect x="372.00" y="98.00" width="22.50" height="22.50" fill="#9bb2cf" rx="1.5"/>
-<rect x="396.00" y="98.00" width="22.50" height="22.50" fill="#c57b5b" rx="1.5"/>
-<rect x="420.00" y="98.00" width="22.50" height="22.50" fill="#d2dbe7" rx="1.5"/>
-<rect x="444.00" y="98.00" width="22.50" height="22.50" fill="#a3b8d3" rx="1.5"/>
-<rect x="468.00" y="98.00" width="22.50" height="22.50" fill="#e4d3cd" rx="1.5"/>
-<rect x="348.00" y="122.00" width="22.50" height="22.50" fill="#d7af9e" rx="1.5"/>
-<rect x="372.00" y="122.00" width="22.50" height="22.50" fill="#e0c8bf" rx="1.5"/>
-<rect x="396.00" y="122.00" width="22.50" height="22.50" fill="#d2dbe7" rx="1.5"/>
-<rect x="420.00" y="122.00" width="22.50" height="22.50" fill="#c47858" rx="1.5"/>
-<rect x="444.00" y="122.00" width="22.50" height="22.50" fill="#dae1ea" rx="1.5"/>
-<rect x="468.00" y="122.00" width="22.50" height="22.50" fill="#eeeff1" rx="1.5"/>
-<rect x="348.00" y="146.00" width="22.50" height="22.50" fill="#e1cac1" rx="1.5"/>
-<rect x="372.00" y="146.00" width="22.50" height="22.50" fill="#ebe8e8" rx="1.5"/>
-<rect x="396.00" y="146.00" width="22.50" height="22.50" fill="#a3b8d3" rx="1.5"/>
-<rect x="420.00" y="146.00" width="22.50" height="22.50" fill="#dae1ea" rx="1.5"/>
-<rect x="444.00" y="146.00" width="22.50" height="22.50" fill="#b95a31" rx="1.5"/>
-<rect x="468.00" y="146.00" width="22.50" height="22.50" fill="#93accc" rx="1.5"/>
-<rect x="348.00" y="170.00" width="22.50" height="22.50" fill="#bbcadd" rx="1.5"/>
-<rect x="372.00" y="170.00" width="22.50" height="22.50" fill="#e2e7ee" rx="1.5"/>
-<rect x="396.00" y="170.00" width="22.50" height="22.50" fill="#e4d3cd" rx="1.5"/>
-<rect x="420.00" y="170.00" width="22.50" height="22.50" fill="#eeeff1" rx="1.5"/>
-<rect x="444.00" y="170.00" width="22.50" height="22.50" fill="#93accc" rx="1.5"/>
-<rect x="468.00" y="170.00" width="22.50" height="22.50" fill="#cb8d73" rx="1.5"/>
-<text x="420.00" y="216.00" fill="#6b7380" font-size="11" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">(1−λ)S + λμI</text>
-<text x="668.00" y="32.00" fill="#111418" font-size="12.5" font-weight="600" text-anchor="middle">Correlation state</text>
-<rect x="596.00" y="50.00" width="22.50" height="22.50" fill="#b9592f" rx="1.5"/>
-<rect x="620.00" y="50.00" width="22.50" height="22.50" fill="#d3a491" rx="1.5"/>
-<rect x="644.00" y="50.00" width="22.50" height="22.50" fill="#9fb5d1" rx="1.5"/>
-<rect x="668.00" y="50.00" width="22.50" height="22.50" fill="#ce967e" rx="1.5"/>
-<rect x="692.00" y="50.00" width="22.50" height="22.50" fill="#ddc1b6" rx="1.5"/>
-<rect x="716.00" y="50.00" width="22.50" height="22.50" fill="#a0b6d1" rx="1.5"/>
-<rect x="596.00" y="74.00" width="22.50" height="22.50" fill="#d3a491" rx="1.5"/>
-<rect x="620.00" y="74.00" width="22.50" height="22.50" fill="#b9592f" rx="1.5"/>
-<rect x="644.00" y="74.00" width="22.50" height="22.50" fill="#86a2c6" rx="1.5"/>
-<rect x="668.00" y="74.00" width="22.50" height="22.50" fill="#ddbfb3" rx="1.5"/>
-<rect x="692.00" y="74.00" width="22.50" height="22.50" fill="#ebe7e7" rx="1.5"/>
-<rect x="716.00" y="74.00" width="22.50" height="22.50" fill="#dde3ec" rx="1.5"/>
-<rect x="596.00" y="98.00" width="22.50" height="22.50" fill="#9fb5d1" rx="1.5"/>
-<rect x="620.00" y="98.00" width="22.50" height="22.50" fill="#86a2c6" rx="1.5"/>
-<rect x="644.00" y="98.00" width="22.50" height="22.50" fill="#b9592f" rx="1.5"/>
-<rect x="668.00" y="98.00" width="22.50" height="22.50" fill="#cad5e3" rx="1.5"/>
-<rect x="692.00" y="98.00" width="22.50" height="22.50" fill="#98b0ce" rx="1.5"/>
-<rect x="716.00" y="98.00" width="22.50" height="22.50" fill="#e0c7be" rx="1.5"/>
-<rect x="596.00" y="122.00" width="22.50" height="22.50" fill="#ce967e" rx="1.5"/>
-<rect x="620.00" y="122.00" width="22.50" height="22.50" fill="#ddbfb3" rx="1.5"/>
-<rect x="644.00" y="122.00" width="22.50" height="22.50" fill="#cad5e3" rx="1.5"/>
-<rect x="668.00" y="122.00" width="22.50" height="22.50" fill="#b9592f" rx="1.5"/>
-<rect x="692.00" y="122.00" width="22.50" height="22.50" fill="#d7dfe9" rx="1.5"/>
-<rect x="716.00" y="122.00" width="22.50" height="22.50" fill="#edeef1" rx="1.5"/>
-<rect x="596.00" y="146.00" width="22.50" height="22.50" fill="#ddc1b6" rx="1.5"/>
-<rect x="620.00" y="146.00" width="22.50" height="22.50" fill="#ebe7e7" rx="1.5"/>
-<rect x="644.00" y="146.00" width="22.50" height="22.50" fill="#98b0ce" rx="1.5"/>
-<rect x="668.00" y="146.00" width="22.50" height="22.50" fill="#d7dfe9" rx="1.5"/>
-<rect x="692.00" y="146.00" width="22.50" height="22.50" fill="#b9592f" rx="1.5"/>
-<rect x="716.00" y="146.00" width="22.50" height="22.50" fill="#7d9bc2" rx="1.5"/>
-<rect x="596.00" y="170.00" width="22.50" height="22.50" fill="#a0b6d1" rx="1.5"/>
-<rect x="620.00" y="170.00" width="22.50" height="22.50" fill="#dde3ec" rx="1.5"/>
-<rect x="644.00" y="170.00" width="22.50" height="22.50" fill="#e0c7be" rx="1.5"/>
-<rect x="668.00" y="170.00" width="22.50" height="22.50" fill="#edeef1" rx="1.5"/>
-<rect x="692.00" y="170.00" width="22.50" height="22.50" fill="#7d9bc2" rx="1.5"/>
-<rect x="716.00" y="170.00" width="22.50" height="22.50" fill="#b9592f" rx="1.5"/>
-<text x="668.00" y="216.00" fill="#6b7380" font-size="11" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">D⁻¹ᐟ² Σ D⁻¹ᐟ²</text>
-<text x="92.00" y="65.50" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">Aud mean</text>
-<text x="92.00" y="89.50" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">Def mean</text>
-<text x="92.00" y="113.50" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">Vis mean</text>
-<text x="92.00" y="137.50" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">Aud PC1</text>
-<text x="92.00" y="161.50" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">Def PC1</text>
-<text x="92.00" y="185.50" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">Def PC2</text>
-<line x1="256.00" y1="122.00" x2="336.00" y2="122.00" stroke="#a3a9b2" stroke-width="1.2" opacity="1" stroke-linecap="round"/>
-<polyline points="331.02,125.35 336.00,122.00 331.02,118.65" fill="none" stroke="#a3a9b2" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
-<text x="296.00" y="112.00" fill="#3a414b" font-size="10.5" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">λ = 0.151</text>
-<line x1="504.00" y1="122.00" x2="584.00" y2="122.00" stroke="#a3a9b2" stroke-width="1.2" opacity="1" stroke-linecap="round"/>
-<polyline points="579.02,125.35 584.00,122.00 579.02,118.65" fill="none" stroke="#a3a9b2" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
-<text x="544.00" y="112.00" fill="#3a414b" font-size="10.5" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">normalize</text>
-<defs><linearGradient id="scale1" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#3b6aa6"/><stop offset=".5" stop-color="#eef0f3"/><stop offset="1" stop-color="#b9592f"/></linearGradient></defs>
+<rect width="760" height="282" fill="#111c26"/>
+<text x="172.00" y="32.00" fill="#ece6d6" font-size="12.5" font-weight="600" text-anchor="middle">Sample covariance</text>
+<rect x="100.00" y="50.00" width="22.50" height="22.50" fill="#9a6850" rx="1.5"/>
+<rect x="124.00" y="50.00" width="22.50" height="22.50" fill="#79584a" rx="1.5"/>
+<rect x="148.00" y="50.00" width="22.50" height="22.50" fill="#415b7a" rx="1.5"/>
+<rect x="172.00" y="50.00" width="22.50" height="22.50" fill="#875f4d" rx="1.5"/>
+<rect x="196.00" y="50.00" width="22.50" height="22.50" fill="#5f4c46" rx="1.5"/>
+<rect x="220.00" y="50.00" width="22.50" height="22.50" fill="#3f5774" rx="1.5"/>
+<rect x="100.00" y="74.00" width="22.50" height="22.50" fill="#79584a" rx="1.5"/>
+<rect x="124.00" y="74.00" width="22.50" height="22.50" fill="#c07956" rx="1.5"/>
+<rect x="148.00" y="74.00" width="22.50" height="22.50" fill="#4e6e96" rx="1.5"/>
+<rect x="172.00" y="74.00" width="22.50" height="22.50" fill="#614d47" rx="1.5"/>
+<rect x="196.00" y="74.00" width="22.50" height="22.50" fill="#33383f" rx="1.5"/>
+<rect x="220.00" y="74.00" width="22.50" height="22.50" fill="#2c3b4a" rx="1.5"/>
+<rect x="100.00" y="98.00" width="22.50" height="22.50" fill="#415b7a" rx="1.5"/>
+<rect x="124.00" y="98.00" width="22.50" height="22.50" fill="#4e6e96" rx="1.5"/>
+<rect x="148.00" y="98.00" width="22.50" height="22.50" fill="#b57454" rx="1.5"/>
+<rect x="172.00" y="98.00" width="22.50" height="22.50" fill="#34465b" rx="1.5"/>
+<rect x="196.00" y="98.00" width="22.50" height="22.50" fill="#4a688e" rx="1.5"/>
+<rect x="220.00" y="98.00" width="22.50" height="22.50" fill="#524644" rx="1.5"/>
+<rect x="100.00" y="122.00" width="22.50" height="22.50" fill="#875f4d" rx="1.5"/>
+<rect x="124.00" y="122.00" width="22.50" height="22.50" fill="#614d47" rx="1.5"/>
+<rect x="148.00" y="122.00" width="22.50" height="22.50" fill="#34465b" rx="1.5"/>
+<rect x="172.00" y="122.00" width="22.50" height="22.50" fill="#b87555" rx="1.5"/>
+<rect x="196.00" y="122.00" width="22.50" height="22.50" fill="#304053" rx="1.5"/>
+<rect x="220.00" y="122.00" width="22.50" height="22.50" fill="#28333d" rx="1.5"/>
+<rect x="100.00" y="146.00" width="22.50" height="22.50" fill="#5f4c46" rx="1.5"/>
+<rect x="124.00" y="146.00" width="22.50" height="22.50" fill="#33383f" rx="1.5"/>
+<rect x="148.00" y="146.00" width="22.50" height="22.50" fill="#4a688e" rx="1.5"/>
+<rect x="172.00" y="146.00" width="22.50" height="22.50" fill="#304053" rx="1.5"/>
+<rect x="196.00" y="146.00" width="22.50" height="22.50" fill="#e58a5c" rx="1.5"/>
+<rect x="220.00" y="146.00" width="22.50" height="22.50" fill="#52739f" rx="1.5"/>
+<rect x="100.00" y="170.00" width="22.50" height="22.50" fill="#3f5774" rx="1.5"/>
+<rect x="124.00" y="170.00" width="22.50" height="22.50" fill="#2c3b4a" rx="1.5"/>
+<rect x="148.00" y="170.00" width="22.50" height="22.50" fill="#524644" rx="1.5"/>
+<rect x="172.00" y="170.00" width="22.50" height="22.50" fill="#28333d" rx="1.5"/>
+<rect x="196.00" y="170.00" width="22.50" height="22.50" fill="#52739f" rx="1.5"/>
+<rect x="220.00" y="170.00" width="22.50" height="22.50" fill="#996750" rx="1.5"/>
+<text x="172.00" y="216.00" fill="#8f9aa6" font-size="11" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">S · 30 valid frames</text>
+<text x="420.00" y="32.00" fill="#ece6d6" font-size="12.5" font-weight="600" text-anchor="middle">Shrinkage covariance</text>
+<rect x="348.00" y="50.00" width="22.50" height="22.50" fill="#a46c51" rx="1.5"/>
+<rect x="372.00" y="50.00" width="22.50" height="22.50" fill="#6d5348" rx="1.5"/>
+<rect x="396.00" y="50.00" width="22.50" height="22.50" fill="#3d5471" rx="1.5"/>
+<rect x="420.00" y="50.00" width="22.50" height="22.50" fill="#79584a" rx="1.5"/>
+<rect x="444.00" y="50.00" width="22.50" height="22.50" fill="#564845" rx="1.5"/>
+<rect x="468.00" y="50.00" width="22.50" height="22.50" fill="#3b516c" rx="1.5"/>
+<rect x="348.00" y="74.00" width="22.50" height="22.50" fill="#6d5348" rx="1.5"/>
+<rect x="372.00" y="74.00" width="22.50" height="22.50" fill="#c47b57" rx="1.5"/>
+<rect x="396.00" y="74.00" width="22.50" height="22.50" fill="#486589" rx="1.5"/>
+<rect x="420.00" y="74.00" width="22.50" height="22.50" fill="#584945" rx="1.5"/>
+<rect x="444.00" y="74.00" width="22.50" height="22.50" fill="#31373f" rx="1.5"/>
+<rect x="468.00" y="74.00" width="22.50" height="22.50" fill="#2b3a48" rx="1.5"/>
+<rect x="348.00" y="98.00" width="22.50" height="22.50" fill="#3d5471" rx="1.5"/>
+<rect x="372.00" y="98.00" width="22.50" height="22.50" fill="#486589" rx="1.5"/>
+<rect x="396.00" y="98.00" width="22.50" height="22.50" fill="#bb7655" rx="1.5"/>
+<rect x="420.00" y="98.00" width="22.50" height="22.50" fill="#324357" rx="1.5"/>
+<rect x="444.00" y="98.00" width="22.50" height="22.50" fill="#456081" rx="1.5"/>
+<rect x="468.00" y="98.00" width="22.50" height="22.50" fill="#4b4343" rx="1.5"/>
+<rect x="348.00" y="122.00" width="22.50" height="22.50" fill="#79584a" rx="1.5"/>
+<rect x="372.00" y="122.00" width="22.50" height="22.50" fill="#584945" rx="1.5"/>
+<rect x="396.00" y="122.00" width="22.50" height="22.50" fill="#324357" rx="1.5"/>
+<rect x="420.00" y="122.00" width="22.50" height="22.50" fill="#bd7856" rx="1.5"/>
+<rect x="444.00" y="122.00" width="22.50" height="22.50" fill="#2e3e4f" rx="1.5"/>
+<rect x="468.00" y="122.00" width="22.50" height="22.50" fill="#28333d" rx="1.5"/>
+<rect x="348.00" y="146.00" width="22.50" height="22.50" fill="#564845" rx="1.5"/>
+<rect x="372.00" y="146.00" width="22.50" height="22.50" fill="#31373f" rx="1.5"/>
+<rect x="396.00" y="146.00" width="22.50" height="22.50" fill="#456081" rx="1.5"/>
+<rect x="420.00" y="146.00" width="22.50" height="22.50" fill="#2e3e4f" rx="1.5"/>
+<rect x="444.00" y="146.00" width="22.50" height="22.50" fill="#e3895c" rx="1.5"/>
+<rect x="468.00" y="146.00" width="22.50" height="22.50" fill="#4b6990" rx="1.5"/>
+<rect x="348.00" y="170.00" width="22.50" height="22.50" fill="#3b516c" rx="1.5"/>
+<rect x="372.00" y="170.00" width="22.50" height="22.50" fill="#2b3a48" rx="1.5"/>
+<rect x="396.00" y="170.00" width="22.50" height="22.50" fill="#4b4343" rx="1.5"/>
+<rect x="420.00" y="170.00" width="22.50" height="22.50" fill="#28333d" rx="1.5"/>
+<rect x="444.00" y="170.00" width="22.50" height="22.50" fill="#4b6990" rx="1.5"/>
+<rect x="468.00" y="170.00" width="22.50" height="22.50" fill="#a36b51" rx="1.5"/>
+<text x="420.00" y="216.00" fill="#8f9aa6" font-size="11" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">(1−λ)S + λμI</text>
+<text x="668.00" y="32.00" fill="#ece6d6" font-size="12.5" font-weight="600" text-anchor="middle">Correlation state</text>
+<rect x="596.00" y="50.00" width="22.50" height="22.50" fill="#e58a5c" rx="1.5"/>
+<rect x="620.00" y="50.00" width="22.50" height="22.50" fill="#865e4d" rx="1.5"/>
+<rect x="644.00" y="50.00" width="22.50" height="22.50" fill="#466285" rx="1.5"/>
+<rect x="668.00" y="50.00" width="22.50" height="22.50" fill="#986750" rx="1.5"/>
+<rect x="692.00" y="50.00" width="22.50" height="22.50" fill="#624e47" rx="1.5"/>
+<rect x="716.00" y="50.00" width="22.50" height="22.50" fill="#466284" rx="1.5"/>
+<rect x="596.00" y="74.00" width="22.50" height="22.50" fill="#865e4d" rx="1.5"/>
+<rect x="620.00" y="74.00" width="22.50" height="22.50" fill="#e58a5c" rx="1.5"/>
+<rect x="644.00" y="74.00" width="22.50" height="22.50" fill="#50719c" rx="1.5"/>
+<rect x="668.00" y="74.00" width="22.50" height="22.50" fill="#644f47" rx="1.5"/>
+<rect x="692.00" y="74.00" width="22.50" height="22.50" fill="#32373f" rx="1.5"/>
+<rect x="716.00" y="74.00" width="22.50" height="22.50" fill="#2d3c4c" rx="1.5"/>
+<rect x="596.00" y="98.00" width="22.50" height="22.50" fill="#466285" rx="1.5"/>
+<rect x="620.00" y="98.00" width="22.50" height="22.50" fill="#50719c" rx="1.5"/>
+<rect x="644.00" y="98.00" width="22.50" height="22.50" fill="#e58a5c" rx="1.5"/>
+<rect x="668.00" y="98.00" width="22.50" height="22.50" fill="#35485e" rx="1.5"/>
+<rect x="692.00" y="98.00" width="22.50" height="22.50" fill="#49668b" rx="1.5"/>
+<rect x="716.00" y="98.00" width="22.50" height="22.50" fill="#5a4a45" rx="1.5"/>
+<rect x="596.00" y="122.00" width="22.50" height="22.50" fill="#986750" rx="1.5"/>
+<rect x="620.00" y="122.00" width="22.50" height="22.50" fill="#644f47" rx="1.5"/>
+<rect x="644.00" y="122.00" width="22.50" height="22.50" fill="#35485e" rx="1.5"/>
+<rect x="668.00" y="122.00" width="22.50" height="22.50" fill="#e58a5c" rx="1.5"/>
+<rect x="692.00" y="122.00" width="22.50" height="22.50" fill="#2f4052" rx="1.5"/>
+<rect x="716.00" y="122.00" width="22.50" height="22.50" fill="#28333d" rx="1.5"/>
+<rect x="596.00" y="146.00" width="22.50" height="22.50" fill="#624e47" rx="1.5"/>
+<rect x="620.00" y="146.00" width="22.50" height="22.50" fill="#32373f" rx="1.5"/>
+<rect x="644.00" y="146.00" width="22.50" height="22.50" fill="#49668b" rx="1.5"/>
+<rect x="668.00" y="146.00" width="22.50" height="22.50" fill="#2f4052" rx="1.5"/>
+<rect x="692.00" y="146.00" width="22.50" height="22.50" fill="#e58a5c" rx="1.5"/>
+<rect x="716.00" y="146.00" width="22.50" height="22.50" fill="#5477a4" rx="1.5"/>
+<rect x="596.00" y="170.00" width="22.50" height="22.50" fill="#466284" rx="1.5"/>
+<rect x="620.00" y="170.00" width="22.50" height="22.50" fill="#2d3c4c" rx="1.5"/>
+<rect x="644.00" y="170.00" width="22.50" height="22.50" fill="#5a4a45" rx="1.5"/>
+<rect x="668.00" y="170.00" width="22.50" height="22.50" fill="#28333d" rx="1.5"/>
+<rect x="692.00" y="170.00" width="22.50" height="22.50" fill="#5477a4" rx="1.5"/>
+<rect x="716.00" y="170.00" width="22.50" height="22.50" fill="#e58a5c" rx="1.5"/>
+<text x="668.00" y="216.00" fill="#8f9aa6" font-size="11" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">D⁻¹ᐟ² Σ D⁻¹ᐟ²</text>
+<text x="92.00" y="65.50" fill="#8f9aa6" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">Aud mean</text>
+<text x="92.00" y="89.50" fill="#8f9aa6" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">Def mean</text>
+<text x="92.00" y="113.50" fill="#8f9aa6" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">Vis mean</text>
+<text x="92.00" y="137.50" fill="#8f9aa6" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">Aud PC1</text>
+<text x="92.00" y="161.50" fill="#8f9aa6" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">Def PC1</text>
+<text x="92.00" y="185.50" fill="#8f9aa6" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">Def PC2</text>
+<line x1="256.00" y1="122.00" x2="336.00" y2="122.00" stroke="#5e6a77" stroke-width="1.2" opacity="1" stroke-linecap="round"/>
+<polyline points="331.02,125.35 336.00,122.00 331.02,118.65" fill="none" stroke="#5e6a77" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<text x="296.00" y="112.00" fill="#c1c9d0" font-size="10.5" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">λ = 0.151</text>
+<line x1="504.00" y1="122.00" x2="584.00" y2="122.00" stroke="#5e6a77" stroke-width="1.2" opacity="1" stroke-linecap="round"/>
+<polyline points="579.02,125.35 584.00,122.00 579.02,118.65" fill="none" stroke="#5e6a77" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<text x="544.00" y="112.00" fill="#c1c9d0" font-size="10.5" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">normalize</text>
+<defs><linearGradient id="scale1" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#6f9fe0"/><stop offset=".5" stop-color="#26323d"/><stop offset="1" stop-color="#e58a5c"/></linearGradient></defs>
 <rect x="172.00" y="248.00" width="248.00" height="6" rx="3" fill="url(#scale1)"/>
-<text x="172.00" y="268.00" fill="#6b7380" font-size="10" font-weight="400" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−1.0</text>
-<text x="296.00" y="268.00" fill="#6b7380" font-size="10" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">0</text>
-<text x="420.00" y="268.00" fill="#6b7380" font-size="10" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+1.0</text>
-<text x="296.00" y="241.00" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="middle">covariance scale · both covariance panels</text>
-<defs><linearGradient id="scale2" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#3b6aa6"/><stop offset=".5" stop-color="#eef0f3"/><stop offset="1" stop-color="#b9592f"/></linearGradient></defs>
+<text x="172.00" y="268.00" fill="#8f9aa6" font-size="10" font-weight="400" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−1.0</text>
+<text x="296.00" y="268.00" fill="#8f9aa6" font-size="10" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">0</text>
+<text x="420.00" y="268.00" fill="#8f9aa6" font-size="10" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+1.0</text>
+<text x="296.00" y="241.00" fill="#8f9aa6" font-size="10.5" font-weight="400" text-anchor="middle">covariance scale · both covariance panels</text>
+<defs><linearGradient id="scale2" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#6f9fe0"/><stop offset=".5" stop-color="#26323d"/><stop offset="1" stop-color="#e58a5c"/></linearGradient></defs>
 <rect x="596.00" y="248.00" width="144.00" height="6" rx="3" fill="url(#scale2)"/>
-<text x="596.00" y="268.00" fill="#6b7380" font-size="10" font-weight="400" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−1</text>
-<text x="668.00" y="268.00" fill="#6b7380" font-size="10" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">0</text>
-<text x="740.00" y="268.00" fill="#6b7380" font-size="10" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+1</text>
-<text x="668.00" y="241.00" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="middle">correlation scale</text>
+<text x="596.00" y="268.00" fill="#8f9aa6" font-size="10" font-weight="400" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−1</text>
+<text x="668.00" y="268.00" fill="#8f9aa6" font-size="10" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">0</text>
+<text x="740.00" y="268.00" fill="#8f9aa6" font-size="10" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+1</text>
+<text x="668.00" y="241.00" fill="#8f9aa6" font-size="10.5" font-weight="400" text-anchor="middle">correlation scale</text>
 </svg>
