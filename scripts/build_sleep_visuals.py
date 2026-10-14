@@ -2,6 +2,9 @@
 
 The representative JSON contains no subject or scan identifiers. Saved model
 outputs and reconstructed intermediate tensors are identified on the page.
+Figure numbers, titles, and dimensions live in the HTML captions; each SVG
+carries only the plot, its panel labels, and a provenance tag (saved,
+reconstructed, derived, schematic, or illustrative).
 """
 
 from __future__ import annotations
@@ -23,15 +26,35 @@ SUPPLEMENT = json.loads((ROOT / "assets/sleep-decoding-method-supplement.json").
 TOPOLOGY = json.loads((ROOT / "assets/sleep-cycle-atlas-topology.json").read_text())
 OUT = ROOT / "assets"
 
-INK = "#172126"
-MUTED = "#5a6669"
-LINE = "#d5dcda"
-ACCENT = "#235969"
+# Shared with style.css: ink and hairlines, one teal accent, and a diverging
+# blue/rust pair around a neutral gray so zero never reads as "missing".
+WIDTH = 760
+INK = "#111418"
+INK2 = "#3a414b"
+MUTED = "#6b7380"
+FAINT = "#a3a9b2"
+LINE = "#e3e6ea"
+GRID = "#eceef1"
+AXIS = "#c9ced5"
+PANEL = "#f3f4f6"
 PAPER = "#ffffff"
-NEG = "#315f82"
-POS = "#ad673d"
+ACCENT = "#0f6e6a"
+ACCENT_LIGHT = "#8fc0bb"
+ACCENT_PALE = "#cfe4e1"
+GRAY = "#98a1ab"
+GRAY_LIGHT = "#d3d8de"
+NEG = "#3b6aa6"
+POS = "#b9592f"
+NEG_STRONG = "#335f99"
+POS_STRONG = "#a44c27"
+MID = "#eef0f3"
 STAGES = ["Wake", "N1", "N2", "N3"]
-STAGE_COLORS = ["#b16b2e", "#9a5773", "#207a83", "#565b97"]
+# Dusk-to-night ramp: validated (OKLab ΔE) for CVD and normal-vision separation.
+STAGE_COLORS = ["#d4922a", "#cf6068", "#9460b8", "#3f4a9c"]
+SANS = "-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif"
+MONO = "'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace"
+SERIF = "Charter,'Bitstream Charter','Iowan Old Style',Georgia,serif"
+NETWORK_ORDER = SUPPLEMENT["network_basis"]["network_order"]
 
 
 def interp(a: str, b: str, t: float) -> str:
@@ -43,7 +66,7 @@ def interp(a: str, b: str, t: float) -> str:
 
 def diverge(value: float, limit: float) -> str:
     ratio = max(-1, min(1, value / limit))
-    return interp(PAPER, POS if ratio >= 0 else NEG, abs(ratio))
+    return interp(MID, POS if ratio >= 0 else NEG, abs(ratio))
 
 
 def cell_text_color(fill: str) -> str:
@@ -52,66 +75,130 @@ def cell_text_color(fill: str) -> str:
     linear = [v / 12.92 if v <= .04045 else ((v + .055) / 1.055) ** 2.4 for v in rgb]
     luminance = sum(a * b for a, b in zip(linear, (.2126, .7152, .0722)))
     white_contrast = 1.05 / (luminance + .05)
-    return PAPER if white_contrast >= 4.5 else "#000000"
+    return PAPER if white_contrast >= 4.5 else INK
 
 
 def toy_fill(value: float, limit: float) -> str:
     """Use stronger data hues so saturated toy-matrix cells support white labels."""
     ratio = max(-1, min(1, value / limit))
-    return interp(PAPER, "#96512d" if ratio >= 0 else NEG, abs(ratio))
+    return interp(MID, POS_STRONG if ratio >= 0 else NEG_STRONG, abs(ratio))
+
+
+def text_width(value: str, size: float, mono: bool = False, weight: int = 400) -> float:
+    """Approximate rendered width; good enough to place tags after labels."""
+    if mono:
+        return len(value) * size * 0.61
+    total = 0.0
+    for ch in value:
+        if ch in "il.,:;|!'()[]ftjrI ·/":
+            total += 0.31
+        elif ch in "mwMW%":
+            total += 0.84
+        elif ch.isupper() or ch.isdigit():
+            total += 0.64
+        else:
+            total += 0.54
+    return total * size * (1.05 if weight >= 600 else 1)
 
 
 class SVG:
-    def __init__(self, title: str, description: str):
+    def __init__(self, title: str, description: str, height: int):
+        self.height = height
+        self.gradients = 0
         self.parts = [
-            '<svg xmlns="http://www.w3.org/2000/svg" width="740" height="300" viewBox="0 0 740 300" '
-            'role="img" aria-labelledby="title desc">',
+            f'<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{height}" '
+            f'viewBox="0 0 {WIDTH} {height}" role="img" aria-labelledby="title desc" '
+            f'font-family="{SANS}">',
             f'<title id="title">{escape(title)}</title>',
             f'<desc id="desc">{escape(description)}</desc>',
-            '<rect width="740" height="300" fill="#ffffff"/>',
+            f'<rect width="{WIDTH}" height="{height}" fill="{PAPER}"/>',
         ]
 
     def raw(self, value: str) -> None:
         self.parts.append(value)
 
-    def line(self, x1, y1, x2, y2, color=LINE, width=1, opacity=1) -> None:
+    def line(self, x1, y1, x2, y2, color=LINE, width=1, opacity=1, cap="butt") -> None:
         self.raw(
             f'<line x1="{x1:.2f}" y1="{y1:.2f}" x2="{x2:.2f}" y2="{y2:.2f}" '
-            f'stroke="{color}" stroke-width="{width}" opacity="{opacity}"/>'
+            f'stroke="{color}" stroke-width="{width}" opacity="{opacity}" stroke-linecap="{cap}"/>'
         )
 
-    def rect(self, x, y, w, h, color, stroke=None, width=1) -> None:
+    def rect(self, x, y, w, h, color, stroke=None, width=1, rx=0, opacity=1) -> None:
         border = f' stroke="{stroke}" stroke-width="{width}"' if stroke else ""
+        corner = f' rx="{rx}"' if rx else ""
+        alpha = f' opacity="{opacity}"' if opacity != 1 else ""
         self.raw(
-            f'<rect x="{x:.2f}" y="{y:.2f}" width="{w:.2f}" height="{h:.2f}" '
-            f'fill="{color}"{border}/>'
+            f'<rect x="{x:.2f}" y="{y:.2f}" width="{max(0, w):.2f}" height="{max(0, h):.2f}" '
+            f'fill="{color}"{border}{corner}{alpha}/>'
         )
 
-    def text(self, x, y, value, size=12, color=MUTED, weight=400, anchor="start") -> None:
+    def text(self, x, y, value, size=12, color=MUTED, weight=400, anchor="start",
+             mono=False, family=None, italic=False) -> None:
+        font = family or (MONO if mono else None)
+        extra = f' font-family="{font}"' if font else ""
+        if italic:
+            extra += ' font-style="italic"'
         self.raw(
             f'<text x="{x:.2f}" y="{y:.2f}" fill="{color}" font-size="{size}" '
-            f'font-weight="{weight}" text-anchor="{anchor}" '
-            'font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">'
-            f"{escape(str(value))}</text>"
+            f'font-weight="{weight}" text-anchor="{anchor}"{extra}>{escape(str(value))}</text>'
         )
+
+    def math(self, x, y, value, size=16, anchor="start", color=INK) -> None:
+        self.text(x, y, value, size, color, 400, anchor, family=SERIF, italic=True)
 
     def circle(self, x, y, r, fill, stroke=None, width=1) -> None:
         border = f' stroke="{stroke}" stroke-width="{width}"' if stroke else ""
         self.raw(f'<circle cx="{x:.2f}" cy="{y:.2f}" r="{r:.2f}" fill="{fill}"{border}/>')
 
-    def polyline(self, points, color, width=1.5) -> None:
+    def polyline(self, points, color, width=1.6, opacity=1) -> None:
         pts = " ".join(f"{x:.2f},{y:.2f}" for x, y in points)
-        self.raw(f'<polyline points="{pts}" fill="none" stroke="{color}" stroke-width="{width}"/>')
+        self.raw(
+            f'<polyline points="{pts}" fill="none" stroke="{color}" stroke-width="{width}" '
+            f'stroke-linejoin="round" stroke-linecap="round" opacity="{opacity}"/>'
+        )
 
-    def header(self, label: str, right: str = "") -> None:
-        self.text(24, 27, label.upper(), 11, ACCENT, 700)
-        if right:
-            self.text(716, 27, right, 11, MUTED, 400, "end")
-        self.line(24, 39, 716, 39)
+    def tag(self, x, y, value) -> float:
+        """Provenance pill (saved, reconstructed, …); y is the text baseline."""
+        w = text_width(value, 10, mono=True) + 14
+        self.rect(x, y - 11.5, w, 16, PANEL, rx=8)
+        self.text(x + 7, y, value, 10, MUTED, 500, mono=True)
+        return w
 
-    def footer(self, value: str) -> None:
-        self.line(24, 260, 716, 260)
-        self.text(24, 283, value, 11, MUTED)
+    def label(self, x, y, value, tag=None, size=12.5) -> None:
+        self.text(x, y, value, size, INK, 600)
+        if tag:
+            self.tag(x + text_width(value, size, weight=600) + 9, y - 0.5, tag)
+
+    def swatch(self, x, y, color, value, shape="square") -> float:
+        """Legend entry; y is the text baseline. Returns the entry width."""
+        if shape == "dot":
+            self.circle(x + 4.5, y - 4, 4.5, color)
+        elif shape == "ring":
+            self.circle(x + 4.5, y - 4, 3.8, PAPER, color, 1.8)
+        elif shape == "line":
+            self.line(x, y - 4, x + 14, y - 4, color, 2.2, cap="round")
+            x += 5
+        else:
+            self.rect(x, y - 8.5, 9, 9, color, rx=2)
+        self.text(x + 15, y, value, 11.5, INK2)
+        return 15 + text_width(value, 11.5) + 18
+
+    def diverging_legend(self, x, y, w, limit, fmt=lambda v: f"{v:g}", label=None) -> None:
+        """Horizontal blue → gray → rust scale bar; y is the bar's top edge."""
+        self.gradients += 1
+        gid = f"scale{self.gradients}"
+        self.raw(
+            f'<defs><linearGradient id="{gid}" x1="0" x2="1" y1="0" y2="0">'
+            f'<stop offset="0" stop-color="{NEG}"/><stop offset=".5" stop-color="{MID}"/>'
+            f'<stop offset="1" stop-color="{POS}"/></linearGradient></defs>'
+        )
+        self.raw(f'<rect x="{x:.2f}" y="{y:.2f}" width="{w:.2f}" height="6" rx="3" fill="url(#{gid})"/>')
+        for frac, value in ((0, -limit), (.5, 0), (1, limit)):
+            anchor = ("start", "middle", "end")[int(frac * 2)]
+            shown = "0" if value == 0 else ("−" if value < 0 else "+") + fmt(abs(value))
+            self.text(x + w * frac, y + 20, shown, 10, MUTED, 400, anchor, mono=True)
+        if label:
+            self.text(x + w / 2, y - 7, label, 10.5, MUTED, 400, "middle")
 
     def save(self, figure_id: str) -> None:
         self.raw("</svg>")
@@ -119,26 +206,22 @@ class SVG:
         (OUT / name).write_text("\n".join(self.parts) + "\n")
 
 
-def heatmap(svg: SVG, values, x, y, w, h, limit=1.0) -> None:
+def heatmap(svg: SVG, values, x, y, size, limit=1.0, gap=1.5) -> None:
     rows, cols = len(values), len(values[0])
-    dx, dy = w / cols, h / rows
-    assert math.isclose(dx, dy, rel_tol=1e-9), "matrix cells must be square"
+    pitch = size / cols
+    assert math.isclose(size / rows, pitch, rel_tol=1e-9), "matrix cells must be square"
     for row, values_row in enumerate(values):
         for col, value in enumerate(values_row):
-            svg.rect(x + col * dx, y + row * dy, dx + 0.1, dy + 0.1, diverge(value, limit))
-    svg.rect(x, y, w, h, "none", LINE)
+            svg.rect(x + col * pitch, y + row * pitch, pitch - gap, pitch - gap,
+                     diverge(value, limit), rx=1.5)
 
 
-def arrow(svg: SVG, x1, y1, x2, y2, color=ACCENT, width=1.5) -> None:
-    svg.line(x1, y1, x2, y2, color, width)
+def arrow(svg: SVG, x1, y1, x2, y2, color=FAINT, width=1.2) -> None:
+    svg.line(x1, y1, x2, y2, color, width, cap="round")
     angle = math.atan2(y2 - y1, x2 - x1)
-    a, b = angle + 2.5, angle - 2.5
-    tip = [(x2, y2), (x2 + 5 * math.cos(a), y2 + 5 * math.sin(a)),
-           (x2 + 5 * math.cos(b), y2 + 5 * math.sin(b))]
-    svg.raw(
-        '<polygon points="' + " ".join(f"{x:.2f},{y:.2f}" for x, y in tip)
-        + f'" fill="{color}"/>'
-    )
+    a, b = angle + 2.55, angle - 2.55
+    svg.polyline([(x2 + 6 * math.cos(a), y2 + 6 * math.sin(a)), (x2, y2),
+                  (x2 + 6 * math.cos(b), y2 + 6 * math.sin(b))], color, width)
 
 
 def percentages(values) -> list[float]:
@@ -152,83 +235,120 @@ def percentages(values) -> list[float]:
     return [value / 10 for value in tenths]
 
 
+def probability_label(value: float) -> str:
+    return "<0.1%" if 0 < value < 0.0005 else f"{value * 100:.1f}%"
+
+
+def dumbbells(svg: SVG, raw, calibrated, temperature, x0, x1, top, pitch, value_x) -> None:
+    """Raw (ring) → calibrated (dot) per stage on one shared 0–100% axis."""
+    def px(value: float) -> float:
+        return x0 + (x1 - x0) * value
+    bottom = top + pitch * 3 + 16
+    for tick in (0, .25, .5, .75, 1):
+        svg.line(px(tick), top - 16, px(tick), bottom, GRID if 0 < tick < 1 else AXIS, 1)
+        if tick in (0, .5, 1):
+            svg.text(px(tick), bottom + 15, f"{tick * 100:.0f}%", 10, MUTED, 400, "middle", mono=True)
+    svg.text(value_x, top - 22, "raw → calibrated", 10, MUTED, 500, "end", mono=True)
+    for i, (name, before, after) in enumerate(zip(STAGES, raw, calibrated)):
+        y = top + i * pitch
+        color = STAGE_COLORS[i]
+        svg.text(x0 - 14, y + 4, name, 12, INK, 600, "end")
+        svg.line(px(before), y, px(after), y, color, 2.4, .45, cap="round")
+        svg.circle(px(before), y, 4.4, PAPER, color, 1.8)
+        svg.circle(px(after), y, 5.6, PAPER)
+        svg.circle(px(after), y, 4.6, color)
+        svg.text(value_x - 60, y + 4, probability_label(before), 11, MUTED, 400, "end", mono=True)
+        svg.text(value_x - 48, y + 4, "→", 11, FAINT, 400, "middle")
+        svg.text(value_x, y + 4, probability_label(after), 11, INK, 600, "end", mono=True)
+    entry = svg.swatch(x0, top - 40, MUTED, "raw", "ring")
+    svg.swatch(x0 + entry, top - 40, MUTED, f"calibrated · T = {temperature:.3f}", "dot")
+
+
 def visual_01() -> None:
-    s = SVG("Overlapping causal fMRI windows", "A schematic 35-volume timeline shows two 30-volume windows at endpoints five volumes apart. Below it, three reconstructed standardized network means and a motion-validity strip show the current representative window. The endpoint sleep label is not an input.")
-    s.header("Figure 01.1 / causal window", "30 frames · 62.4 s · stride 5")
-    s.text(28, 61, "WINDOW SELECTION · SCHEMATIC", 10, ACCENT, 700)
-    x0, x1 = 182, 636
-    dx = (x1 - x0) / 35
-    s.text(163, 91, "prior t−5", 10, INK, 600, "end")
-    s.text(163, 112, "current t", 10, INK, 600, "end")
+    s = SVG("Overlapping causal fMRI windows", "A schematic 35-volume timeline shows two 30-volume windows at endpoints five volumes apart. Below it, three reconstructed standardized network means (Auditory, None, and Visual) and a motion-validity strip show the current representative window. The endpoint sleep label is not an input.", 322)
+    s.label(20, 26, "Window selection", "schematic")
+    x0, dx = 150, 14
+    def fx(frame: int) -> float:
+        return x0 + frame * dx
+    s.text(138, 59, "prior t−5", 12, INK2, 500, "end")
+    s.text(138, 83, "current t", 12, INK2, 500, "end")
     for i in range(35):
-        s.rect(x0 + i * dx, 78, dx - 1.5, 9, "#e5eae8" if i < 30 else PAPER, LINE)
-        s.rect(x0 + i * dx, 99, dx - 1.5, 9, ACCENT if i >= 5 else PAPER, LINE)
-    s.text(x0 + 5 * dx, 128, "25 overlapping frames", 10, MUTED)
-    s.text(656, 109, "endpoint", 10, ACCENT, 600)
-    s.line(28, 137, 716, 137)
+        if i < 30:
+            s.rect(fx(i), 49, dx - 2, 12, GRAY_LIGHT, rx=2)
+        else:
+            s.rect(fx(i) + .5, 49.5, dx - 3, 11, PAPER, LINE, 1, rx=2)
+        if i >= 5:
+            s.rect(fx(i), 73, dx - 2, 12, ACCENT, rx=2)
+        else:
+            s.rect(fx(i) + .5, 73.5, dx - 3, 11, PAPER, LINE, 1, rx=2)
+    # Stride bracket between the two endpoints; overlap bracket below.
+    s.polyline([(fx(30) - 1, 44), (fx(30) - 1, 40), (fx(35) - 2, 40), (fx(35) - 2, 44)], FAINT, 1)
+    s.text((fx(30) + fx(35)) / 2 - 1, 34, "stride 5", 10.5, MUTED, 400, "middle")
+    s.polyline([(fx(5), 92), (fx(5), 96), (fx(30) - 2, 96), (fx(30) - 2, 92)], FAINT, 1)
+    s.text((fx(5) + fx(30)) / 2, 112, "25 overlapping frames", 11, MUTED, 400, "middle")
+    s.line(fx(35) - 1, 68, fx(35) - 1, 90, ACCENT, 1.4)
+    s.text(fx(35) + 10, 83, "endpoint t", 11.5, INK2, 500)
 
     features = DATA["step_1_window"]["cortical_features"]
     valid = DATA["step_1_window"]["motion_valid"]
-    s.text(28, 153, "CURRENT WINDOW · RECONSTRUCTED SIGNALS", 10, ACCENT, 700)
-    xx0, xx1 = 137, 636
-    for center, index, color in ((175, 0, ACCENT), (207, 6, POS), (239, 12, NEG)):
-        s.line(xx0, center, xx1, center, LINE)
-        s.text(125, center + 4, f"mean {index + 1:02d}", 11, MUTED, 600, "end")
-        pts = []
-        for frame, row in enumerate(features):
-            x = xx0 + frame * (xx1 - xx0) / 29
-            y = center - max(-3, min(3, row[index])) * 6.5
-            pts.append((x, y))
-        s.polyline(pts, color, 1.8)
-    s.line(xx1, 158, xx1, 247, ACCENT, 1.2)
-    s.text(651, 181, "predict", 10, ACCENT, 600)
-    s.text(125, 254, "FD valid", 10, MUTED, 400, "end")
+    s.label(20, 152, "Current window signals", "reconstructed")
+    centers = [fx(5 + k) + (dx - 2) / 2 for k in range(30)]
+    for center, index in ((190, 0), (228, 6), (266, 12)):
+        s.line(centers[0], center, centers[-1], center, GRID, 1)
+        s.text(206, center - 2, f"mean {index + 1:02d}", 11.5, INK2, 500, "end")
+        s.text(206, center + 12, NETWORK_ORDER[index], 10.5, MUTED, 400, "end")
+        s.polyline([(centers[frame], center - max(-3, min(3, row[index])) * 5.5)
+                    for frame, row in enumerate(features)], INK2, 1.6)
+    s.text(206, 306, "FD < 0.2 mm", 11, MUTED, 400, "end")
     for frame, passed in enumerate(valid):
-        s.rect(xx0 + frame * (xx1 - xx0) / 30, 248, (xx1 - xx0) / 30 - 1, 6,
-               ACCENT if passed else POS)
-    s.footer("The endpoint label scores the prediction; it is never a model input.")
+        s.rect(fx(5 + frame), 298, dx - 2, 8, ACCENT_LIGHT if passed else POS, rx=1.5)
+    s.text(fx(35) + 10, 306, f"{sum(valid)}/30 valid", 11, MUTED, 400, mono=False)
+    s.line(fx(35) - 1, 170, fx(35) - 1, 286, ACCENT, 1.4)
+    s.text(fx(35) + 10, 194, "predict", 11.5, INK2, 600)
+    s.text(fx(35) + 10, 210, "endpoint label", 10.5, MUTED)
+    s.text(fx(35) + 10, 224, "scores only;", 10.5, MUTED)
+    s.text(fx(35) + 10, 238, "never an input", 10.5, MUTED)
     s.save("01-01")
 
 
 def visual_02() -> None:
-    s = SVG("Default-network residual modes", "The Default community contains 41 of the Gordon atlas's 333 cortical parcels. Each of its 41 parcel rows has a loading on each of two fold-trained residual principal components, so the basis is 41 by 2. Six numeric rows are shown; all 41 loadings of each component are separately tiled in atlas order into square-cell grids. Three reconstructed standardized held-out traces show its network mean and two residual scores across 30 frames.")
-    s.header("Figure 02.4 / Default network", "41 of 333 atlas parcels → 2 residual modes")
+    s = SVG("Default-network residual modes", "The Default community contains 41 of the Gordon atlas's 333 cortical parcels. Each of its 41 parcel rows has a loading on each of two fold-trained residual principal components, so the basis is 41 by 2. Six numeric rows are shown; all 41 loadings of each component are separately tiled in atlas order into square-cell grids. Three reconstructed standardized held-out traces show its network mean and two residual scores across 30 frames.", 264)
     basis = SUPPLEMENT["network_basis"]
     assert basis["chosen_network"] == "Default" and basis["chosen_network_parcels"] == 41
     loadings = basis["top_two_loadings_in_atlas_parcel_order"]
     assert len(loadings) == 41 and all(len(row) == 2 for row in loadings)
-    s.text(28, 61, "FIRST 6 OF 41 PARCELS", 10, ACCENT, 700)
-    s.text(109, 82, "PC 1", 10, INK, 600, "end")
-    s.text(166, 82, "PC 2", 10, INK, 600, "end")
+    s.label(20, 26, "First 6 of 41 parcels")
+    s.text(132, 56, "PC 1", 10.5, MUTED, 500, "end", mono=True)
+    s.text(186, 56, "PC 2", 10.5, MUTED, 500, "end", mono=True)
+    s.line(20, 64, 188, 64, AXIS, 1)
     for i, row in enumerate(loadings[:6]):
-        y = 103 + i * 22
-        s.text(28, y, f"parcel {i+1:02d}", 10, MUTED)
-        s.text(109, y, f"{row[0]:+.2f}", 11, INK, 600, "end")
-        s.text(166, y, f"{row[1]:+.2f}", 11, INK, 600, "end")
-        s.line(28, y + 5, 168, y + 5, LINE, 0.6)
-    s.line(183, 53, 183, 247)
-    s.text(205, 61, "41 LOADINGS PER PC", 10, ACCENT, 700)
+        y = 84 + i * 26
+        s.text(20, y, f"parcel {i+1:02d}", 11.5, MUTED)
+        s.text(132, y, f"{row[0]:+.2f}", 12, INK, 500, "end", mono=True)
+        s.text(186, y, f"{row[1]:+.2f}", 12, INK, 500, "end", mono=True)
+        s.line(20, y + 9, 188, y + 9, LINE, 1)
+    s.line(214, 14, 214, 250, LINE)
+    s.label(234, 26, "41 loadings per PC")
     limit = max(abs(v) for row in loadings for v in row)
-    for k, x0 in ((0, 203), (1, 271)):
-        s.text(x0 + 25, 89, f"PC {k+1}", 10, INK, 600, "middle")
+    for k, x0 in ((0, 236), (1, 322)):
+        s.text(x0, 56, f"PC {k+1}", 10.5, MUTED, 500, mono=True)
         for parcel, row in enumerate(loadings):
             col, grid_row = parcel % 6, parcel // 6
-            s.rect(x0 + col * 8.5, 101 + grid_row * 8.5, 8, 8,
-                   diverge(row[k], limit))
-        s.text(x0 + 25, 178, "01 → 41", 9, MUTED, 400, "middle")
-    s.text(205, 217, "tiled in atlas parcel order", 10, MUTED)
-    s.text(205, 235, "each tile = one loading", 10, MUTED)
-    s.line(338, 53, 338, 247)
-    s.text(359, 61, "HELD-OUT OUTPUT · RECONSTRUCTED", 10, ACCENT, 700)
+            s.rect(x0 + col * 12.5, 66 + grid_row * 12.5, 11, 11, diverge(row[k], limit), rx=1.5)
+        s.text(x0, 168, "01 → 41", 10, FAINT, 400, mono=True)
+    s.diverging_legend(236, 186, 160, limit, lambda v: f"{v:.2f}")
+    s.text(236, 232, "tiled in atlas parcel order", 11, MUTED)
+    s.text(236, 248, "each tile = one loading", 11, MUTED)
+    s.line(420, 14, 420, 250, LINE)
+    s.label(440, 26, "Held-out output", "reconstructed")
     features = DATA["step_1_window"]["cortical_features"]
-    for center, index, name, color in ((97, 3, "mean", ACCENT), (158, 19, "PC 1", NEG), (219, 20, "PC 2", POS)):
-        s.text(405, center + 4, name, 11, INK, 600, "end")
-        s.line(420, center, 689, center, LINE)
-        s.polyline([(420 + 269 * u / 29, center - max(-3, min(3, row[index])) * 10)
-                    for u, row in enumerate(features)], color, 1.8)
-    s.text(420, 248, "frame 1", 10)
-    s.text(689, 248, "frame 30", 10, MUTED, 400, "end")
-    s.footer("Basis rows are Default parcels; columns are two residual modes. Traces show held-out outputs.")
+    for center, index, name in ((84, 3, "mean"), (148, 19, "PC 1"), (212, 20, "PC 2")):
+        s.text(480, center + 4, name, 11.5, INK2, 500, "end")
+        s.line(492, center, 740, center, GRID)
+        s.polyline([(492 + 248 * u / 29, center - max(-3, min(3, row[index])) * 9.5)
+                    for u, row in enumerate(features)], INK2, 1.6)
+    s.text(492, 252, "frame 1", 10.5, MUTED)
+    s.text(740, 252, "frame 30", 10.5, MUTED, 400, "end")
     s.save("02-04")
 
 
@@ -254,23 +374,32 @@ def visual_network_inventory() -> None:
         "All 13 Gordon atlas communities and their actual parcel counts, totaling 333. "
         "Each community contributes one parcel-mean signal and two residual PCA scores "
         "per fMRI volume, for 13 mean signals plus 26 residual signals. "
-        "The atlas community called None is a real category, not missing data.",
+        "The atlas community called None is a real category, not missing data. "
+        "The Default community, used in Figure 02.4, is highlighted.",
+        354,
     )
-    s.header("Figure 02.5 / network inventory", "333 parcels → 39 signals per volume")
-    s.text(27, 60, "ATLAS COMMUNITY", 10, ACCENT, 700)
-    s.text(240, 60, "PARCELS", 10, ACCENT, 700)
-    for x, label, color in ((533, "MEAN", ACCENT), (598, "PC 1", NEG), (663, "PC 2", POS)):
-        s.rect(x, 51, 9, 9, color)
-        s.text(x + 13, 60, label, 10, ACCENT, 700)
+    s.text(20, 26, "atlas community", 10.5, MUTED, 500, mono=True)
+    s.text(196, 26, "parcels", 10.5, MUTED, 500, mono=True)
+    s.text(560, 26, "signals per volume", 10.5, MUTED, 500, mono=True)
+    channel_x = (560, 616, 672)
+    channel_colors = (ACCENT, ACCENT_LIGHT, ACCENT_PALE)
+    for x, label, color in zip(channel_x, ("mean", "PC 1", "PC 2"), channel_colors):
+        s.swatch(x, 48, color, label)
+    s.line(20, 58, 740, 58, AXIS)
+    bar_w = 280
     for i, (name, count) in enumerate(zip(names, counts)):
-        y = 76 + i * 13.4
-        s.text(27, y + 8, display.get(name, name), 10, INK, 600 if name == "Default" else 400)
-        s.rect(240, y, 213, 8, "#edf2f1")
-        s.rect(240, y, 213 * count / max(counts), 8, ACCENT)
-        s.text(475, y + 8, count, 10, INK, 600, "end")
-        for x, color in ((533, ACCENT), (598, NEG), (663, POS)):
-            s.rect(x, y, 9, 9, color)
-    s.footer("Each row contributes 1 network mean + 2 residual PC scores; “None” is an atlas label.")
+        y = 70 + i * 19
+        chosen = name == "Default"
+        s.text(20, y + 9.5, display.get(name, name), 12, INK if chosen else INK2, 600 if chosen else 400)
+        width = bar_w * count / max(counts)
+        s.rect(196, y + 1, width, 11, ACCENT if chosen else GRAY_LIGHT, rx=2)
+        s.text(196 + width + 7, y + 10.5, count, 11, INK if chosen else MUTED, 600 if chosen else 400, mono=True)
+        for x, color in zip(channel_x, channel_colors):
+            s.rect(x, y + 1.5, 10, 10, color, rx=2)
+    s.line(20, 320, 740, 320, AXIS)
+    s.text(20, 342, "13 communities", 12, INK, 600)
+    s.text(196, 342, "333 parcels", 11.5, INK, 600, mono=True)
+    s.text(740, 342, "39 = 13 means + 26 PC scores", 11.5, INK, 600, "end", mono=True)
     s.save("02-05")
 
 
@@ -298,113 +427,144 @@ def toy_pca():
     return x, means, residuals, reference, centered, covariance, components, scores
 
 
-def toy_matrix(s, label, values, x0, y0, cell_size=30, fmt=str,
-               tint=False, show_shape=True):
-    s.text(x0, y0 - 13, label, 11, ACCENT, 700)
-    rows, cols = len(values), len(values[0])
+def toy_matrix(s, values, x0, y0, cell=34, gap=4, fmt=str, tint=False, limit=None):
+    """Numeric matrix; neutral cells for raw values, diverging tints for signed ones."""
+    top = limit or max(abs(v) for r in values for v in r)
+    size = 11.5 if max(len(fmt(v)) for r in values for v in r) <= 3 else 10.5
     for i, row in enumerate(values):
         for j, value in enumerate(row):
-            left, top = x0 + j * cell_size, y0 + i * cell_size
-            fill = toy_fill(value, max(abs(v) for r in values for v in r)) if tint else PAPER
-            s.rect(left, top, cell_size - 3, cell_size - 3, fill, LINE, .8)
-            s.text(left + (cell_size - 3) / 2, top + cell_size / 2 + 4,
-                   fmt(value), 11, cell_text_color(fill) if tint else INK, 600, "middle")
-    if show_shape:
-        s.text(x0 + cols * cell_size / 2 - 2, y0 + rows * cell_size + 17,
-               f"{rows} × {cols}", 10, MUTED, 400, "middle")
+            left, y = x0 + j * (cell + gap), y0 + i * (cell + gap)
+            fill = toy_fill(value, top) if tint else PANEL
+            s.rect(left, y, cell, cell, fill, rx=4)
+            s.text(left + cell / 2, y + cell / 2 + 4, fmt(value), size,
+                   cell_text_color(fill) if tint else INK, 600, "middle", mono=True)
+    return len(values[0]) * (cell + gap) - gap, len(values) * (cell + gap) - gap
+
+
+def signed(value) -> str:
+    return "0" if value == 0 else f"{value:+g}".replace("-", "−")
 
 
 def visual_parcel_projection() -> None:
     x, means, residuals, _, _, _, _, _ = toy_pca()
     s = SVG("Same-volume parcel mean subtraction",
-            "Illustrative four-volume, four-parcel matrix. Each row's four parcel values are averaged. Subtracting that row's own mean from all four values produces residuals that sum to zero. In the first row, 8, 6, 3, 3 have mean 5 and residuals 3, 1, minus 2, minus 2.")
-    s.header("Figure 02.1 / where residuals come from", "illustrative · 4 volumes × 4 parcels")
-    toy_matrix(s, "X · measured parcel values", x, 28, 91, 34, show_shape=False)
-    arrow(s, 182, 159, 229, 159)
-    toy_matrix(s, "m · same-volume mean", [[v] for v in means], 253, 91, 34,
-               fmt=lambda v: f"{v:g}", show_shape=False)
-    arrow(s, 306, 159, 365, 159)
-    toy_matrix(s, "E · parcel residuals", residuals, 391, 91, 34,
-               fmt=lambda v: f"{v:+g}" if v else "0", tint=True, show_shape=False)
-    s.text(28, 246, "First volume", 11, ACCENT, 700)
-    s.text(109, 246, "(8, 6, 3, 3) − (5, 5, 5, 5) = (3, 1, −2, −2)", 12, INK)
-    s.footer("The network mean is recalculated at each volume; every residual row sums to zero.")
+            "Illustrative four-volume, four-parcel matrix. Each row's four parcel values are averaged. Subtracting that row's own mean from all four values produces residuals that sum to zero. In the first row, 8, 6, 3, 3 have mean 5 and residuals 3, 1, minus 2, minus 2.", 282)
+    ox, top = 130, 54
+    w, h = toy_matrix(s, x, ox, top)
+    s.math(ox, 38, "X")
+    s.text(ox + w / 2, top + h + 22, "measured parcel values", 11.5, MUTED, 400, "middle")
+    s.text(ox + w + 24, top + h / 2 + 7, "−", 22, MUTED, 300, "middle")
+    mx = ox + w + 48
+    toy_matrix(s, [[v] for v in means], mx, top, fmt=lambda v: f"{v:g}")
+    s.math(mx, 38, "m")
+    s.text(mx + 17, top + h + 22, "same-volume mean", 11.5, MUTED, 400, "middle")
+    s.text(mx + 58, top + h / 2 + 7, "=", 22, MUTED, 300, "middle")
+    ex = mx + 82
+    toy_matrix(s, residuals, ex, top, fmt=signed, tint=True)
+    s.math(ex, 38, "E")
+    s.text(ex + w / 2, top + h + 22, "parcel residuals", 11.5, MUTED, 400, "middle")
+    sx = ex + w + 30
+    s.text(sx + 12, 38, "Σ", 15, INK, 400, "middle", family=SERIF)
+    for i, row in enumerate(residuals):
+        s.text(sx + 12, top + i * 38 + 21, signed(sum(row)), 11.5, MUTED, 500, "middle", mono=True)
+    s.text(sx + 12, top + h + 22, "row sums", 11.5, MUTED, 400, "middle")
+    for left, width in ((ox, w), (mx, 34), (ex, w)):
+        s.rect(left - 3.5, top - 3.5, width + 7, 41, "none", ACCENT, 1.4, rx=6)
+    s.text(ox, 262, "First volume", 12, INK, 600)
+    s.text(ox + 92, 262, "(8, 6, 3, 3) − (5, 5, 5, 5) = (3, 1, −2, −2)", 12, INK2, 400, mono=True)
     s.save("02-01")
 
 
 def visual_toy_pca_fit() -> None:
     _, _, residuals, reference, centered, covariance, components, _ = toy_pca()
     s = SVG("How training residuals determine PCA components",
-            "Illustrative training calculation for four volumes and four parcels. The training residual mean is [1, minus 1, 0, 0]. Subtracting this reference from each residual row gives centered patterns [2, 2, minus 2, minus 2], [minus 2, minus 2, 2, 2], [1, minus 1, 1, minus 1], and [minus 1, 1, minus 1, 1]. Their covariance is C transpose C divided by four. Its two leading eigenvectors form a four-by-two component matrix, with eigenvalues 8 and 2.")
-    s.header("Figure 02.2 / fit the residual modes", "illustrative training calculation")
-    s.text(28, 64, "TRAINING REFERENCE", 10, ACCENT, 700)
-    s.text(28, 83, "μ = mean of residual rows = (1, −1, 0, 0)", 12, INK)
-    toy_matrix(s, "E − μ · centered training patterns", centered, 28, 112, 29,
-               fmt=lambda v: f"{v:+g}" if v else "0", tint=True)
-    s.text(192, 166, "CᵀC / 4", 11, MUTED, 600, "middle")
-    arrow(s, 176, 173, 215, 173)
-    toy_matrix(s, "K · parcel covariance", covariance, 239, 112, 29,
-               fmt=lambda v: f"{v:g}", tint=True)
-    s.text(424, 166, "top 2", 11, MUTED, 600, "middle")
-    arrow(s, 403, 173, 453, 173)
-    toy_matrix(s, "U · learned components", components, 480, 112, 29,
-               fmt=lambda v: f"{v:+.1f}", tint=True)
-    s.text(598, 133, "PC 1", 11, NEG, 700)
-    s.text(598, 153, "(+,+,−,−)", 11, INK)
-    s.text(598, 181, "PC 2", 11, POS, 700)
-    s.text(598, 201, "(+,−,+,−)", 11, INK)
-    s.text(598, 230, "λ₁ = 8 · λ₂ = 2", 11, MUTED)
-    s.footer("PCA directions are fitted to training residuals after subtracting their parcel-wise reference.")
+            "Illustrative training calculation for four volumes and four parcels. The training residual mean is [1, minus 1, 0, 0]. Subtracting this reference from each residual row gives centered patterns [2, 2, minus 2, minus 2], [minus 2, minus 2, 2, 2], [1, minus 1, 1, minus 1], and [minus 1, 1, minus 1, 1]. Their covariance is C transpose C divided by four. Its two leading eigenvectors form a four-by-two component matrix, with eigenvalues 8 and 2.", 290)
+    s.label(20, 26, "Training reference")
+    s.text(20, 48, "μ = mean of residual rows = (1, −1, 0, 0)", 12, INK2, 400, mono=True)
+    top, cell, gap = 104, 34, 4
+    w, h = toy_matrix(s, centered, 20, top, cell, gap, fmt=signed, tint=True)
+    s.math(20, 92, "E − μ")
+    s.text(72, 92, "4 × 4", 10.5, MUTED, 400, mono=True)
+    s.text(20, top + h + 22, "centered training patterns", 11.5, MUTED)
+    arrow(s, 20 + w + 14, top + h / 2, 20 + w + 64, top + h / 2)
+    s.text(20 + w + 39, top + h / 2 - 10, "CᵀC / 4", 10.5, MUTED, 500, "middle", mono=True)
+    kx = 20 + w + 78
+    toy_matrix(s, covariance, kx, top, cell, gap, fmt=lambda v: f"{v:g}".replace("-", "−"), tint=True)
+    s.math(kx, 92, "K")
+    s.text(kx + 18, 92, "4 × 4", 10.5, MUTED, 400, mono=True)
+    s.text(kx, top + h + 22, "parcel covariance", 11.5, MUTED)
+    arrow(s, kx + w + 14, top + h / 2, kx + w + 64, top + h / 2)
+    s.text(kx + w + 39, top + h / 2 - 10, "top 2", 10.5, MUTED, 500, "middle", mono=True)
+    ux = kx + w + 78
+    uw, _ = toy_matrix(s, components, ux, top, cell, gap,
+                       fmt=lambda v: f"{v:+.1f}".replace("-", "−"), tint=True)
+    s.math(ux, 76, "U")
+    s.text(ux + 16, 76, "4 × 2", 10.5, MUTED, 400, mono=True)
+    s.text(ux + cell / 2, 96, "PC 1", 10, MUTED, 500, "middle", mono=True)
+    s.text(ux + cell + gap + cell / 2, 96, "PC 2", 10, MUTED, 500, "middle", mono=True)
+    s.text(ux, top + h + 22, "learned components", 11.5, MUTED)
+    ax = ux + uw + 26
+    s.text(ax, top + 18, "PC 1", 12, INK, 600)
+    s.text(ax, top + 36, "(+, +, −, −)", 11.5, INK2, 400, mono=True)
+    s.text(ax, top + 70, "PC 2", 12, INK, 600)
+    s.text(ax, top + 88, "(+, −, +, −)", 11.5, INK2, 400, mono=True)
+    s.text(ax, top + 124, "λ₁ = 8 · λ₂ = 2", 11.5, MUTED, 400, mono=True)
     s.save("02-02")
 
 
 def visual_toy_pca_scores() -> None:
     _, _, _, _, centered, _, components, scores = toy_pca()
     s = SVG("One volume becomes one PCA point",
-            "Illustrative PCA projection for volume one only. Its centered parcel residuals are [2, 2, minus 2, minus 2]. The fitted PC1 weights are [0.5, 0.5, minus 0.5, minus 0.5], giving score 4. The fitted PC2 weights are [0.5, minus 0.5, 0.5, minus 0.5], giving score zero. One point at horizontal PC1 coordinate 4 and vertical PC2 coordinate zero represents this one volume; the other three training volumes are intentionally omitted.")
-    s.header("Figure 02.3 / one volume → one point", "illustrative · fitted weights stay fixed")
-    s.text(28, 67, "VOLUME 1 · CENTERED RESIDUAL", 10, ACCENT, 700)
-    s.text(28, 99, "e − μ", 11, INK, 600)
+            "Illustrative PCA projection for volume one only. Its centered parcel residuals are [2, 2, minus 2, minus 2]. The fitted PC1 weights are [0.5, 0.5, minus 0.5, minus 0.5], giving score 4. The fitted PC2 weights are [0.5, minus 0.5, 0.5, minus 0.5], giving score zero. One point at horizontal PC1 coordinate 4 and vertical PC2 coordinate zero represents this one volume; the other three training volumes are intentionally omitted.", 262)
+    s.label(20, 26, "Volume 1 · centered residual")
+    s.math(20, 66, "e − μ", 15)
     for j, value in enumerate(centered[0]):
         fill = toy_fill(value, 2)
-        x = 124 + 38 * j
-        s.rect(x, 79, 34, 34, fill, LINE, .8)
-        s.text(x + 17, 101, f"{value:+g}", 11, cell_text_color(fill), 700, "middle")
-    s.text(28, 133, "FITTED PARCEL WEIGHTS", 10, ACCENT, 700)
-    for k, y in ((0, 143), (1, 196)):
-        s.text(28, y + 19, f"PC {k+1}", 11, NEG if k == 0 else POS, 700)
+        x = 104 + 40 * j
+        s.rect(x, 42, 34, 34, fill, rx=4)
+        s.text(x + 17, 63, signed(value), 11.5, cell_text_color(fill), 600, "middle", mono=True)
+    s.label(20, 116, "Fitted parcel weights")
+    for k, y in ((0, 130), (1, 184)):
+        s.text(20, y + 22, f"PC {k+1}", 12, INK2, 600)
         for j in range(4):
             value = components[j][k]
             fill = toy_fill(value, .5)
-            x = 124 + 38 * j
-            s.rect(x, y, 34, 34, fill, LINE, .8)
-            s.text(x + 17, y + 22, f"{value:+.1f}", 11, cell_text_color(fill), 700, "middle")
-        s.text(340, y + 19, f"dot = {scores[0][k]:g}", 12, INK, 700)
-    s.line(430, 56, 430, 249)
-    s.text(456, 67, "ONE VOLUME · ONE POINT", 10, ACCENT, 700)
-    ox, oy = 548, 170
-    arrow(s, 458, oy, 700, oy, MUTED, 1.2)
-    arrow(s, ox, 222, ox, 87, MUTED, 1.2)
-    s.text(704, oy - 9, "PC 1", 11, NEG, 700, "end")
-    s.text(ox + 10, 91, "PC 2", 11, POS, 700)
-    s.text(ox - 8, oy + 18, "0", 10, MUTED, 400, "end")
-    s.line(671, oy - 6, 671, oy + 6, ACCENT, 1.2)
-    s.circle(671, oy, 7, ACCENT, PAPER, 1)
-    s.text(671, 145, "(+4, 0)", 12, INK, 700, "middle")
-    s.text(671, 204, "volume 1", 11, MUTED, 600, "middle")
-    s.text(456, 232, "PC 2 = 0: no vertical displacement", 10, MUTED)
-    s.footer("Each new volume uses these same fitted weights and receives its own two-score point.")
+            x = 104 + 40 * j
+            s.rect(x, y, 34, 34, fill, rx=4)
+            s.text(x + 17, y + 21, f"{value:+.1f}".replace("-", "−"), 11.5, cell_text_color(fill), 600, "middle", mono=True)
+        s.text(286, y + 22, f"dot = {scores[0][k]:g}", 12, INK, 600, mono=True)
+    s.line(410, 14, 410, 244, LINE)
+    s.label(434, 26, "One volume · one point")
+    ox, oy, unit = 540, 146, 36
+    s.line(452, oy, 734, oy, AXIS, 1)
+    s.line(ox, 228, ox, 58, AXIS, 1)
+    arrow(s, 726, oy, 736, oy, AXIS)
+    arrow(s, ox, 66, ox, 56, AXIS)
+    s.text(736, oy + 20, "PC 1", 11, INK2, 600, "end", mono=True)
+    s.text(ox + 9, 62, "PC 2", 11, INK2, 600, mono=True)
+    s.text(ox - 7, oy + 16, "0", 10.5, MUTED, 400, "end", mono=True)
+    px = ox + unit * scores[0][0]
+    s.line(px, oy - 5, px, oy + 5, AXIS, 1)
+    s.text(px, oy + 20, "4", 10.5, MUTED, 400, "middle", mono=True)
+    s.circle(px, oy, 8.5, PAPER)
+    s.circle(px, oy, 6.5, ACCENT)
+    s.text(px, oy - 16, "(+4, 0)", 12, INK, 600, "middle", mono=True)
+    s.text(px, oy + 38, "volume 1", 11, MUTED, 500, "middle")
+    s.text(434, 248, "PC 2 = 0: no vertical displacement", 11, MUTED)
     s.save("02-03")
 
 
+SUBSET_NAMES = ["Aud mean", "Def mean", "Vis mean", "Aud PC1", "Def PC1", "Def PC2"]
+
+
 def visual_03() -> None:
-    s = SVG("Shrinkage connectivity from a short window", "Six selected features from the full 39-feature operation show sample covariance, reconstructed Ledoit-Wolf shrinkage covariance, and final correlation. The saved shrinkage fraction for this window is 0.1511; eigenvalue flooring made no change.")
-    s.header("Figure 03.2 / connectivity matrices", "24–30 valid rows · 39 features")
+    s = SVG("Shrinkage connectivity from a short window", "Six selected features from the full 39-feature operation show sample covariance, reconstructed Ledoit-Wolf shrinkage covariance, and final correlation. Rows are Auditory, Default, and Visual means, Auditory and Default residual PC1, and Default residual PC2. The saved shrinkage fraction for this window is 0.1511; eigenvalue flooring made no change.", 282)
     features = DATA["step_1_window"]["cortical_features"]
     valid = DATA["step_1_window"]["motion_valid"]
     selected = [row for row, ok in zip(features, valid) if ok]
     assert len(selected) == SUPPLEMENT["window_shrinkage_connectivity"]["valid_feature_rows"]
     indices = SUPPLEMENT["window_shrinkage_connectivity"]["subset_feature_indices"]
+    assert indices == [0, 3, 12, 13, 19, 20]
     means = [sum(row[j] for row in selected) / len(selected) for j in indices]
     sample = [[sum((row[i] - means[a]) * (row[j] - means[b]) for row in selected) / len(selected)
                for b, j in enumerate(indices)] for a, i in enumerate(indices)]
@@ -412,19 +572,23 @@ def visual_03() -> None:
     shrink = w["ledoit_wolf_covariance_subset"]
     corr = w["stabilized_correlation_subset"]
     limit = max(abs(v) for matrix in (sample, shrink) for row in matrix for v in row)
+    size, top = 144, 50
     for x, matrix, label, sublabel, scale in (
-        (38, sample, "sample covariance", "S · 30 valid frames", limit),
-        (282, shrink, "shrinkage covariance", "(1−λ)S + λμI", limit),
-        (526, corr, "correlation state", "D⁻¹/² Σ D⁻¹/²", 1),
+        (100, sample, "Sample covariance", "S · 30 valid frames", limit),
+        (348, shrink, "Shrinkage covariance", "(1−λ)S + λμI", limit),
+        (596, corr, "Correlation state", "D⁻¹ᐟ² Σ D⁻¹ᐟ²", 1),
     ):
-        s.text(x + 86, 67, label, 12, INK, 600, "middle")
-        heatmap(s, matrix, x + 18, 82, 136, 136, scale)
-        s.text(x + 86, 239, sublabel, 11, MUTED, 400, "middle")
-    arrow(s, 208, 151, 270, 151)
-    arrow(s, 452, 151, 514, 151)
-    s.text(239, 133, f"λ={w['ledoit_wolf_shrinkage']:.3f}", 10, ACCENT, 600, "middle")
-    s.text(483, 133, "normalize", 10, ACCENT, 600, "middle")
-    s.footer("6 selected channels from full 39 × 39 matrices; eigenvalue flooring did not alter this window.")
+        s.text(x + size / 2, 32, label, 12.5, INK, 600, "middle")
+        heatmap(s, matrix, x, top, size, scale)
+        s.text(x + size / 2, top + size + 22, sublabel, 11, MUTED, 400, "middle", mono=True)
+    for i, name in enumerate(SUBSET_NAMES):
+        s.text(92, top + i * 24 + 15.5, name, 10.5, MUTED, 400, "end", mono=True)
+    arrow(s, 256, top + size / 2, 336, top + size / 2)
+    s.text(296, top + size / 2 - 10, f"λ = {w['ledoit_wolf_shrinkage']:.3f}", 10.5, INK2, 500, "middle", mono=True)
+    arrow(s, 504, top + size / 2, 584, top + size / 2)
+    s.text(544, top + size / 2 - 10, "normalize", 10.5, INK2, 500, "middle", mono=True)
+    s.diverging_legend(172, 248, 248, limit, lambda v: f"{v:.1f}", "covariance scale · both covariance panels")
+    s.diverging_legend(596, 248, 144, 1, lambda v: f"{v:g}", "correlation scale")
     s.save("03-02")
 
 
@@ -457,9 +621,11 @@ def symmetric_eigenvalues(matrix: list[list[float]]) -> list[float]:
     return sorted((a[i][i] for i in range(n)), reverse=True)
 
 
+SUPERSCRIPT = str.maketrans("-0123456789", "⁻⁰¹²³⁴⁵⁶⁷⁸⁹")
+
+
 def visual_shrinkage_spectrum() -> None:
-    s = SVG("Shrinkage lifts the zero eigenvalues of a short-window covariance", "An eigenvalue spectrum reconstructed from this 30-valid-frame, 39-signal window compares sample covariance with its actual Ledoit-Wolf shrinkage covariance. The ordinary sample matrix has ten near-zero eigenvalues; shrinkage makes every eigenvalue positive.")
-    s.header("Figure 03.1 / why shrinkage", "30 valid frames · 39 channels")
+    s = SVG("Shrinkage lifts the zero eigenvalues of a short-window covariance", "An eigenvalue spectrum reconstructed from this 30-valid-frame, 39-signal window compares sample covariance with its actual Ledoit-Wolf shrinkage covariance. The ordinary sample matrix has ten near-zero eigenvalues; shrinkage makes every eigenvalue positive.", 268)
     rows = [row for row, valid in zip(DATA["step_1_window"]["cortical_features"],
                                     DATA["step_1_window"]["motion_valid"]) if valid]
     n, d = len(rows), len(rows[0])
@@ -472,148 +638,142 @@ def visual_shrinkage_spectrum() -> None:
     mu = sum(covariance[i][i] for i in range(d)) / d
     shrunk = [(1 - lam) * value + lam * mu for value in sample]
     assert min(shrunk) > 0
-    s.text(28, 62, "COVARIANCE EIGENVALUE · LOG SCALE", 10, ACCENT, 700)
-    x0, x1, y0, y1 = 113, 685, 81, 218
+    s.label(20, 26, "Covariance eigenvalues · log scale", "reconstructed")
+    entry = s.swatch(470, 26, GRAY, "sample", "line")
+    s.swatch(470 + entry, 26, ACCENT, "Ledoit–Wolf shrinkage", "line")
+    x0, x1, y0, y1 = 66, 596, 52, 220
     ceiling = 10 ** math.ceil(math.log10(max(sample[0], shrunk[0])))
     floor = 1e-8
     def yy(value: float) -> float:
         return y1 - (math.log10(max(floor, value)) - math.log10(floor)) / (math.log10(ceiling) - math.log10(floor)) * (y1 - y0)
-    s.rect(x0 + 29 * (x1 - x0) / 38, y0, x1 - (x0 + 29 * (x1 - x0) / 38), y1 - y0, "#f3f5f4")
-    for tick in (1e-8, 1e-6, 1e-4, 0.01, 1, 10):
-        if tick <= ceiling:
-            y = yy(tick)
-            s.line(x0, y, x1, y, LINE, 0.8)
-            s.text(100, y + 4, f"{tick:g}", 10, MUTED, 400, "end")
-    s.line(x0, y0, x0, y1, INK)
-    s.line(x0, y1, x1, y1, INK)
+    def xx(rank: int) -> float:
+        return x0 + (rank - 1) * (x1 - x0) / 38
+    s.rect(xx(30), y0, x1 - xx(30), y1 - y0, PANEL)
+    s.text((xx(30) + x1) / 2, y0 + 16, "10 null directions", 10.5, MUTED, 500, "middle")
+    for exponent in range(-8, int(round(math.log10(ceiling))) + 1, 2):
+        y = yy(10 ** exponent)
+        s.line(x0, y, x1, y, GRID, 1)
+        s.text(x0 - 8, y + 4, "10" + str(exponent).translate(SUPERSCRIPT), 10.5, MUTED, 400, "end", mono=True)
+    s.line(x0, y1, x1, y1, AXIS, 1)
     for rank in (1, 10, 20, 30, 39):
-        x = x0 + (rank - 1) * (x1 - x0) / 38
-        s.text(x, 234, str(rank), 10, MUTED, 400, "middle")
-    s.text(685, 249, "eigenvalue rank", 10, MUTED, 400, "end")
-    s.text(604, 99, "10 null directions", 10, MUTED, 600, "middle")
-    for values, color in ((sample, NEG), (shrunk, POS)):
-        s.polyline([(x0 + i * (x1 - x0) / 38, yy(value)) for i, value in enumerate(values)], color, 2.2)
-    s.rect(366, 53, 11, 4, NEG)
-    s.text(382, 61, "sample: 10 near zero", 10, INK)
-    s.rect(533, 53, 11, 4, POS)
-    s.text(549, 61, f"shrinkage: λ = {lam:.3f}", 10, INK)
-    s.footer("A 30-row sample has at most 29 independent directions; shrinkage lifts the null directions.")
+        s.text(xx(rank), y1 + 17, str(rank), 10.5, MUTED, 400, "middle", mono=True)
+    s.text(x1, y1 + 36, "eigenvalue rank", 11, MUTED, 400, "end")
+    for values, color in ((sample, GRAY), (shrunk, ACCENT)):
+        s.polyline([(xx(i + 1), yy(value)) for i, value in enumerate(values)], color, 2)
+    s.circle(xx(39), yy(shrunk[-1]), 4, ACCENT, PAPER, 2)
+    s.circle(xx(39), yy(sample[-1]), 4, GRAY, PAPER, 2)
+    s.text(x1 + 14, yy(shrunk[-1]) - 2, "shrinkage", 11.5, INK, 600)
+    s.text(x1 + 14, yy(shrunk[-1]) + 13, f"λ = {lam:.3f}", 11, MUTED, 400, mono=True)
+    s.text(x1 + 14, yy(sample[-1]) - 10, "sample", 11.5, INK, 600)
+    s.text(x1 + 14, yy(sample[-1]) + 5, "10 near zero", 11, MUTED)
     s.save("03-01")
 
 
 def visual_04() -> None:
-    s = SVG("Lag-specific tangent references", "At each of the current, 25-volume, and 50-volume lags, a reconstructed correlation is compared with its reconstructed fold-trained reference to produce a tangent matrix. Six-by-six excerpts are shown from the full 39-by-39 matrices. All three tangents become 2340 coordinates, clipped and reduced to 64 whitened PCA scores.")
-    s.header("Figure 04.1 / tangent representation", "3 × 780 → 2,340 → 64")
+    s = SVG("Lag-specific tangent references", "At each of the current, 25-volume, and 50-volume lags, a reconstructed correlation is compared with its reconstructed fold-trained reference to produce a tangent matrix. Six-by-six excerpts are shown from the full 39-by-39 matrices. All three tangents become 2340 coordinates, clipped and reduced to 64 whitened PCA scores.", 344)
     records = SUPPLEMENT["lag_geometry"]["lag_records"]
     indices = SUPPLEMENT["lag_geometry"]["subset_feature_indices"]
     matrices = DATA["step_3_causal_lags"]["correlations"]
-    xs = (94, 263, 432)
+    s.label(20, 26, "Six-channel excerpts", "reconstructed")
+    xs, ys, size = (196, 290, 384), (62, 146, 230), 66
     for col, (x, rec, matrix) in enumerate(zip(xs, records, matrices)):
-        s.text(x + 47, 61, ("now", "−25 volumes", "−50 volumes")[col], 11, INK, 600, "middle")
+        s.text(x + size / 2, 52, ("now", "−25 volumes", "−50 volumes")[col], 11.5, INK2, 600, "middle")
         snippets = ([[matrix[i][j] for j in indices] for i in indices],
                     rec["reference_subset"], rec["tangent_subset"])
-        for y, subset, limit in zip((78, 134, 190), snippets, (1, 1, 1)):
-            heatmap(s, subset, x + 11, y, 47, 47, limit)
-        s.text(x + 69, 105, "state", 10, MUTED)
-        s.text(x + 69, 161, "training", 10, MUTED)
-        s.text(x + 69, 217, "log map", 10, MUTED)
-    for y, label in ((106, "C state"), (162, "G reference"), (218, "T tangent")):
-        s.text(24, y, label, 10, ACCENT, 600)
-    s.line(580, 53, 580, 248)
-    s.text(648, 61, "PCA OUTPUT", 10, ACCENT, 700, "middle")
+        for y, subset in zip((ys[0] + 4, ys[1] + 4, ys[2] + 4), snippets):
+            heatmap(s, subset, x, y, size, 1, gap=1.2)
+    for y, symbol, label, note in ((ys[0], "C", "state", "this window"),
+                                   (ys[1], "G", "reference", "training"),
+                                   (ys[2], "T", "tangent", "log map")):
+        s.math(20, y + 36, symbol, 17)
+        s.text(40, y + 34, label, 12, INK, 600)
+        s.text(40, y + 50, note, 11, MUTED)
+    s.diverging_legend(196, 316, 254, 1, lambda v: f"{v:g}")
+    s.line(482, 14, 482, 330, LINE)
+    s.label(504, 26, "PCA output", "reconstructed")
+    s.text(504, 56, "3 × 780 → 2,340", 11, INK2, 500, mono=True)
+    s.text(504, 74, "clip → PCA → 64", 11, INK2, 500, mono=True)
     scores = DATA["step_5_pca"]["whitened_score"]
     for i, value in enumerate(scores):
         col, row = i % 8, i // 8
-        s.rect(592 + col * 14, 84 + row * 14, 12, 12, diverge(value, 2.5))
-    s.rect(592, 84, 8 * 14, 8 * 14, "none", LINE)
-    s.text(648, 226, "64 whitened scores", 10, MUTED, 400, "middle")
-    s.footer("Each C, G, T image shows the same 6 channels from a full 39 × 39 matrix; T uses all 39.")
+        s.rect(540 + col * 16, 96 + row * 16, 14.5, 14.5, diverge(value, 2.5), rx=2)
+    s.text(540 + 64, 246, "64 whitened scores", 11, MUTED, 400, "middle")
+    s.diverging_legend(540, 316, 127, 2.5, lambda v: f"{v:g}")
     s.save("04-01")
 
 
 def visual_05() -> None:
-    s = SVG("Tangent decoder and temperature calibration", "The reconstructed 64 whitened tangent scores enter shrinkage LDA. Saved uncalibrated and calibrated stage probabilities are compared directly. The fitted tangent temperature is 2.114, softening this representative prediction.")
-    s.header("Figure 05.1 / tangent decoder", "64 features → four probabilities")
+    s = SVG("Tangent decoder and temperature calibration", "The reconstructed 64 whitened tangent scores enter shrinkage LDA. Saved uncalibrated and calibrated stage probabilities are compared directly on one axis. The fitted tangent temperature is 2.114, softening this representative prediction.", 274)
     p = SUPPLEMENT["probability_calibration"]
     scores = DATA["step_5_pca"]["whitened_score"]
-    s.text(93, 62, "64 PCA SCORES", 10, ACCENT, 700, "middle")
+    s.label(20, 26, "64 PCA scores", "reconstructed")
     for i, value in enumerate(scores):
         col, row = i % 8, i // 8
-        s.rect(37 + col * 14, 89 + row * 14, 12, 12, diverge(value, 2.5))
-    s.rect(37, 89, 8 * 14, 8 * 14, "none", LINE)
-    s.text(93, 222, "reconstructed", 10, MUTED, 400, "middle")
-    arrow(s, 162, 143, 197, 143)
-    s.text(244, 121, "SHRINKAGE", 10, ACCENT, 700, "middle")
-    s.text(244, 143, "LDA", 17, INK, 600, "middle")
-    s.text(244, 165, "equal priors", 10, MUTED, 400, "middle")
-    arrow(s, 288, 143, 323, 143)
-    s.line(458, 54, 458, 246)
-    s.text(351, 62, "RAW · SAVED", 10, ACCENT, 700)
-    s.text(478, 62, f"CALIBRATED · T = {p['tangent_temperature']:.3f}", 10, ACCENT, 700)
-    for i, name in enumerate(STAGES):
-        y = 83 + i * 40
-        raw = p["tangent_raw_probability"][i]
-        calibrated = p["tangent_calibrated_probability"][i]
-        s.text(339, y + 13, name, 11, INK, 600)
-        s.rect(375, y + 2, 57, 13, "#eff3f2")
-        s.rect(375, y + 2, max(1, 57 * raw), 13, STAGE_COLORS[i])
-        raw_label = "<0.1%" if 0 < raw < 0.0005 else f"{raw * 100:.1f}%"
-        s.text(438, y + 30, raw_label, 10, MUTED, 400, "end")
-        s.text(485, y + 13, name, 11, INK, 600)
-        s.rect(521, y + 2, 129, 13, "#eff3f2")
-        s.rect(521, y + 2, max(1, 129 * calibrated), 13, STAGE_COLORS[i])
-        s.text(697, y + 14, f"{calibrated * 100:.1f}%", 11, INK, 600, "end")
-    s.footer("Temperature softens this window's LDA output; both probability columns are saved model outputs.")
+        s.rect(20 + col * 15, 52 + row * 15, 13.5, 13.5, diverge(value, 2.5), rx=2)
+    s.diverging_legend(20, 186, 118, 2.5, lambda v: f"{v:g}")
+    arrow(s, 152, 112, 186, 112)
+    s.rect(194, 76, 100, 72, PANEL, rx=10)
+    s.text(244, 98, "shrinkage", 10.5, MUTED, 500, "middle")
+    s.text(244, 119, "LDA", 17, INK, 600, "middle")
+    s.text(244, 137, "equal priors", 10.5, MUTED, 400, "middle")
+    arrow(s, 302, 112, 336, 112)
+    s.line(352, 14, 352, 258, LINE)
+    s.label(374, 26, "Stage probabilities", "saved")
+    dumbbells(s, p["tangent_raw_probability"], p["tangent_calibrated_probability"],
+              p["tangent_temperature"], 420, 620, 98, 38, 740)
+    s.text(374, 262, f"Temperature T = {p['tangent_temperature']:.3f} softens this window’s LDA output.", 11, MUTED)
     s.save("05-01")
 
 
+HODGE = (("H harmonic", ACCENT), ("G gradient", GRAY), ("C curl", GRAY_LIGHT))
+
+
 def visual_06() -> None:
-    s = SVG("Lagged edge flow and Hodge energy", "At left, schematic forward and reverse cross-lag parcel interactions define one antisymmetric edge flow. At right, saved harmonic, gradient, and curl energy fractions from the representative window are shown for three lags and their pooled flow, followed by the three saved temporal change features.")
-    s.header("Figure 06.2 / directed-cycle branch", "333 parcel signals · 23 energy-family features")
-    s.text(28, 62, "ONE EDGE · SCHEMATIC CROSS-LAG PAIRS", 10, ACCENT, 700)
-    for y, left, right, color, label in (
-        (101, "i at u", "j at u + τ", POS, "forward"),
-        (151, "j at u", "i at u + τ", NEG, "reverse"),
+    s = SVG("Lagged edge flow and Hodge energy", "At left, schematic forward and reverse cross-lag parcel interactions define one antisymmetric edge flow. At right, saved harmonic, gradient, and curl energy fractions from the representative window are shown for three lags and their pooled flow, followed by the three saved temporal change features.", 262)
+    s.label(20, 26, "One edge · cross-lag pairs", "schematic")
+    for y, left, right, label, color in (
+        (78, "i at u", "j at u + τ", "forward", INK2),
+        (128, "j at u", "i at u + τ", "reverse", FAINT),
     ):
-        s.circle(47, y - 4, 5, PAPER, color, 2)
-        s.text(60, y, left, 11, INK, 600)
-        arrow(s, 116, y - 4, 213, y - 4, color, 2)
-        s.circle(224, y - 4, 5, PAPER, color, 2)
-        s.text(237, y, right, 11, INK, 600)
-        s.text(169, y - 15, label, 10, MUTED, 400, "middle")
-    s.line(28, 173, 324, 173)
-    s.text(28, 198, "edge flow = forward − reverse", 12, INK, 600)
-    s.text(28, 221, "τ = 1, 2, 3 volumes; valid pairs only", 10, MUTED)
-    s.text(28, 244, "Then project flow onto H, G, and C spaces.", 10, MUTED)
-    s.line(341, 52, 341, 250)
+        s.circle(26, y - 4, 4.5, PAPER, color, 1.6)
+        s.text(38, y, left, 12, INK, 500)
+        arrow(s, 92, y - 4, 196, y - 4, color, 1.4)
+        s.circle(208, y - 4, 4.5, PAPER, color, 1.6)
+        s.text(220, y, right, 12, INK, 500)
+        s.text(144, y - 14, label, 10.5, MUTED, 400, "middle")
+    s.line(20, 152, 320, 152, LINE)
+    s.text(20, 180, "edge flow = forward − reverse", 13, INK, 600)
+    s.text(20, 204, "τ = 1, 2, 3 volumes; valid pairs only", 11.5, MUTED)
+    s.text(20, 224, "Then project flow onto H, G, and C spaces.", 11.5, MUTED)
+    s.line(344, 14, 344, 248, LINE)
 
     values = DATA["step_7_cycle_ridge"]["feature_values"]
-    s.text(362, 62, "HODGE ENERGY SHARES · SAVED", 10, ACCENT, 700)
-    components = (("H harmonic", NEG), ("G gradient", ACCENT), ("C curl", POS))
-    for i, (name, color) in enumerate(components):
-        x = 362 + i * 117
-        s.rect(x, 76, 9, 9, color)
-        s.text(x + 15, 84, name, 10, INK, 500)
+    s.label(366, 26, "Hodge energy shares", "saved")
+    cursor = 414
+    for name, color in HODGE:
+        cursor += s.swatch(cursor, 54, color, name)
+    left, right = 414, 740
     for row, name in enumerate(("lag 1", "lag 2", "lag 3", "pooled")):
-        y = 107 + row * 31
-        s.text(406, y + 11, name, 11, INK, 600, "end")
+        y = 72 + row * 32
+        s.text(left - 12, y + 14, name, 12, INK2, 500, "end")
         fractions = values[row * 5 + 2:row * 5 + 5]
         total = sum(fractions)
-        cursor = 422
-        for fraction, (_, color) in zip(fractions, components):
-            width = 258 * fraction / total
-            s.rect(cursor, y, width, 15, color)
-            cursor += width
-        s.text(702, y + 11, "100%", 10, MUTED)
-    s.line(362, 231, 716, 231)
-    s.text(362, 249, f"Δ norm {values[20]:.2f}   ·   cosine {values[21]:.2f}   ·   angle {values[22]:.2f} rad", 10, INK)
-    s.footer("Five flow summaries at each lag + five pooled + three temporal summaries = 23.")
+        cursor = left
+        span = right - left - 2 * 2
+        for fraction, (_, color) in zip(fractions, HODGE):
+            width = span * fraction / total
+            s.rect(cursor, y, width, 20, color, rx=3)
+            share = f"{fraction * 100:.1f}%"
+            if width > text_width(share, 10.5, mono=True) + 16:
+                s.text(cursor + width / 2, y + 14, share, 10.5, cell_text_color(color), 500, "middle", mono=True)
+            cursor += width + 2
+    s.line(366, 214, 740, 214, LINE)
+    s.text(366, 240, f"Δ norm {values[20]:.2f}   ·   cosine {values[21]:.2f}   ·   angle {values[22]:.2f} rad", 11.5, INK2, 500, mono=True)
     s.save("06-02")
 
 
 def visual_atlas_graph() -> None:
-    s = SVG("Actual cortical atlas graph used for signed edge flows", "All 333 Gordon cortical parcels and all 1152 actual undirected six-nearest-neighbor graph edges are shown in a two-dimensional projection of public MNI atlas coordinates. Default-network nodes are highlighted. Neighbor selection was performed in original three-dimensional coordinate space; directionality enters only when lagged signal flow is assigned to edges.")
-    s.header("Figure 06.1 / atlas graph", "actual topology · equal-axis 2D display")
+    s = SVG("Actual cortical atlas graph used for signed edge flows", "All 333 Gordon cortical parcels and all 1152 actual undirected six-nearest-neighbor graph edges are shown in a two-dimensional projection of public MNI atlas coordinates. Default-network nodes are highlighted. Neighbor selection was performed in original three-dimensional coordinate space; directionality enters only when lagged signal flow is assigned to edges.", 276)
     assert TOPOLOGY["topology"]["nodes"] == 333
     assert TOPOLOGY["topology"]["edges"] == 1152
     assert TOPOLOGY["topology"]["triangles"] == 986
@@ -622,106 +782,113 @@ def visual_atlas_graph() -> None:
     edges = TOPOLOGY["edges"]
     assert len(points) == len(networks) == 333 and len(edges) == 1152
     default_index = TOPOLOGY["network_names"].index("Default")
+    xs, ys = [p[0] for p in points], [p[1] for p in points]
+    box = (24, 18, 440, 258)
+    scale = min((box[2] - box[0]) / (max(xs) - min(xs)), (box[3] - box[1]) / (max(ys) - min(ys)))
+    cx, cy = (box[0] + box[2]) / 2, (box[1] + box[3]) / 2
+    mx, my = (max(xs) + min(xs)) / 2, (max(ys) + min(ys)) / 2
     def xy(i: int) -> tuple[float, float]:
         px, py = points[i]
-        return 250 + px * 125, 150 - py * 125
+        return cx + (px - mx) * scale, cy - (py - my) * scale
     for i, j in edges:
-        s.line(*xy(i), *xy(j), LINE, 0.48, 0.78)
+        s.line(*xy(i), *xy(j), "#dde1e6", 0.6)
     for i in range(333):
-        x, y = xy(i)
-        s.circle(x, y, 2.0 if networks[i] == default_index else 1.15,
-                 POS if networks[i] == default_index else ACCENT)
-    s.line(469, 53, 469, 248)
-    s.text(491, 64, "FIXED GRAPH CONSTRUCTION", 10, ACCENT, 700)
-    for y, quantity, label in ((95, "333", "cortical parcels"),
-                               (134, "6", "nearest neighbors in 3D"),
-                               (173, "1,152", "undirected edges"),
-                               (212, "986", "filled triangles")):
-        s.text(491, y, quantity, 20, INK, 600)
-        s.text(568, y, label, 11, MUTED)
-    s.rect(491, 231, 9, 9, POS)
-    s.text(507, 239, "Default network highlighted", 10, INK)
-    s.footer("Graph edges are undirected; the later cross-lag calculation assigns signed flow to them.")
+        if networks[i] != default_index:
+            s.circle(*xy(i), 1.5, GRAY)
+    for i in range(333):
+        if networks[i] == default_index:
+            s.circle(*xy(i), 3.2, PAPER)
+            s.circle(*xy(i), 2.4, ACCENT)
+    s.line(472, 14, 472, 262, LINE)
+    s.label(494, 26, "Fixed graph construction", "actual")
+    for y, quantity, label in ((76, "333", "cortical parcels"),
+                               (118, "6", "nearest neighbors in 3D"),
+                               (160, "1,152", "undirected edges"),
+                               (202, "986", "filled triangles")):
+        s.text(494, y, quantity, 22, INK, 500)
+        s.text(574, y - 1, label, 12, MUTED)
+    s.circle(498.5, 242, 4, ACCENT)
+    s.text(510, 246, "Default network highlighted", 11.5, INK2)
     s.save("06-01")
 
 
 def visual_cycle_feature_map() -> None:
-    s = SVG("The 23 saved cycle features", "A compact numerical map of all 23 saved directed-cycle features for the representative window: five flow summaries at each of three lags, five for their weighted pooled flow, and three temporal change summaries.")
-    s.header("Figure 06.3 / cycle feature vector", "15 lag + 5 pooled + 3 temporal = 23")
+    s = SVG("The 23 saved cycle features", "A compact numerical map of all 23 saved directed-cycle features for the representative window: five flow summaries at each of three lags, five for their weighted pooled flow, and three temporal change summaries. Share columns carry small bars proportional to each fraction of total flow energy.", 254)
     values = DATA["step_7_cycle_ridge"]["feature_values"]
-    columns = (("total norm", ACCENT), ("harmonic norm", NEG),
-               ("H share", NEG), ("G share", ACCENT), ("C share", POS))
-    for j, (label, color) in enumerate(columns):
-        x = 145 + j * 111
-        s.rect(x, 57, 10, 3, color)
-        s.text(x, 76, label, 10, INK, 600)
+    columns = (("total norm", None), ("harmonic norm", None),
+               ("H share", HODGE[0][1]), ("G share", HODGE[1][1]), ("C share", HODGE[2][1]))
+    centers = [196 + j * 124 for j in range(5)]
+    for (label, color), x in zip(columns, centers):
+        offset = 0
+        if color:
+            offset = 8
+            s.rect(x - text_width(label, 11.5, weight=600) / 2 - 8, 26 - 8.5, 9, 9, color, rx=2)
+        s.text(x + offset / 2 + 2, 26, label, 11.5, INK, 600, "middle")
+    s.line(20, 40, 740, 40, AXIS)
     for i, label in enumerate(("lag 1", "lag 2", "lag 3", "pooled")):
-        y = 90 + i * 35
-        s.text(28, y + 18, label, 11, INK, 600)
+        y = 70 + i * 38
+        s.text(20, y, label, 12.5, INK2, 600)
         for j in range(5):
-            x = 145 + j * 111
-            s.rect(x, y, 96, 29, PAPER, LINE)
             value = values[i * 5 + j]
             displayed = f"{value * 100:.1f}%" if j >= 2 else f"{value:.2f}"
-            s.text(x + 48, y + 19, displayed, 13, INK, 600, "middle")
-    s.line(28, 235, 716, 235)
-    s.text(28, 252, f"change in pooled harmonic state: norm {values[20]:.2f}   ·   cosine {values[21]:.2f}   ·   angle {values[22]:.2f} rad", 10, INK)
-    s.footer("Numbers are saved outputs for one held-out window; shares are fractions of total flow energy.")
+            s.text(centers[j], y, displayed, 13, INK, 500, "middle", mono=True)
+            if j >= 2:
+                s.rect(centers[j] - 36, y + 7, 72, 3, GRID, rx=1.5)
+                s.rect(centers[j] - 36, y + 7, max(2, 72 * value), 3, columns[j][1], rx=1.5)
+        s.line(20, y + 18, 740, y + 18, LINE)
+    s.text(20, 232, "change in pooled", 12, INK2, 600)
+    s.text(20, 247, "harmonic state", 12, INK2, 600)
+    for x, text in zip(centers, (f"norm {values[20]:.2f}", f"cosine {values[21]:.2f}",
+                                 f"angle {values[22]:.2f} rad")):
+        s.text(x, 240, text, 12, INK, 500, "middle", mono=True)
     s.save("06-03")
 
 
 def visual_cycle_calibration() -> None:
-    s = SVG("Cycle branch before and after calibration", "The same representative held-out window has saved raw and calibrated Wake, N1, N2, and N3 cycle-branch probabilities. The fitted cycle temperature is 0.888, which modestly sharpens these probabilities.")
+    s = SVG("Cycle branch before and after calibration", "The same representative held-out window has saved raw and calibrated Wake, N1, N2, and N3 cycle-branch probabilities on one axis. The fitted cycle temperature is 0.888, which modestly sharpens these probabilities.", 238)
     p = SUPPLEMENT["probability_calibration"]
-    raw, calibrated = p["cycle_raw_probability"], p["cycle_calibrated_probability"]
-    temperature = p["cycle_temperature"]
-    s.header("Figure 06.4 / cycle calibration", "23 features → four probabilities")
-    s.text(28, 64, "CLASS-BALANCED LOGISTIC OUTPUT", 10, ACCENT, 700)
-    s.text(198, 93, "RAW · SAVED", 10, ACCENT, 700, "middle")
-    s.text(535, 93, f"CALIBRATED · T = {temperature:.3f}", 10, ACCENT, 700, "middle")
-    for i, (stage, before, after) in enumerate(zip(STAGES, raw, calibrated)):
-        y = 109 + i * 34
-        s.text(72, y + 12, stage, 11, INK, 600, "end")
-        s.rect(88, y, 164, 14, "#eff3f2")
-        s.rect(88, y, max(1, 164 * before), 14, STAGE_COLORS[i])
-        s.text(267, y + 12, f"{before * 100:.1f}%", 11, INK, 600, "end")
-        s.text(401, y + 12, stage, 11, INK, 600, "end")
-        s.rect(419, y, 164, 14, "#eff3f2")
-        s.rect(419, y, max(1, 164 * after), 14, STAGE_COLORS[i])
-        s.text(618, y + 12, f"{after * 100:.1f}%", 11, INK, 600, "end")
-    arrow(s, 287, 172, 366, 172, ACCENT, 2)
-    s.text(326, 151, "temperature", 10, MUTED, 400, "middle")
-    s.footer("This branch uses parcel-level directed flow; calibration precedes the final blend.")
+    s.label(20, 26, "Class-balanced logistic output", "saved")
+    dumbbells(s, p["cycle_raw_probability"], p["cycle_calibrated_probability"],
+              p["cycle_temperature"], 80, 560, 90, 34, 740)
+    s.text(740, 50, f"T = {p['cycle_temperature']:.3f} modestly sharpens these probabilities", 11, MUTED, 400, "end")
     s.save("06-04")
 
 
 def visual_07() -> None:
-    s = SVG("Weighted blend then final calibration", "Saved tangent, cycle, and final four-stage probability vectors, with a derived pre-temperature weighted mixture for the same window. The cycle weight is 0.30.")
+    s = SVG("Weighted blend then final calibration", "Saved tangent, cycle, and final four-stage probability vectors, drawn as stacked strips that sum to 100 percent, with a derived pre-temperature weighted mixture for the same window. The cycle weight is 0.30. Exact percentages are listed at right.", 240)
     alpha = DATA["step_8_blend_simplex"]["cycle_weight"]
     tangent = DATA["step_6_tangent_lda"]["probability"]
     cycle = DATA["step_7_cycle_ridge"]["probability"]
     mix = [(1 - alpha) * a + alpha * b for a, b in zip(tangent, cycle)]
     final = DATA["step_8_blend_simplex"]["final_probability"]
-    s.header("Figure 07.1 / probability blend", f"cycle weight α = {alpha:.2f}")
-    for i, name in enumerate(STAGES):
-        s.text(219 + i * 124, 60, name, 11, INK, 600, "middle")
+    temperature = SUPPLEMENT["probability_calibration"]["final_blend_temperature"]
+    cursor = 136
+    for name, color in zip(STAGES, STAGE_COLORS):
+        cursor += s.swatch(cursor, 26, color, name, "dot") - 4
+    value_x = (594, 642, 690, 738)
+    for x, name in zip(value_x, STAGES):
+        s.text(x, 26, name, 10.5, MUTED, 500, "end", mono=True)
     rows = [
-        ("tangent", tangent, "saved"),
-        ("cycle", cycle, "saved"),
-        ("mix q", mix, "derived"),
-        ("final p", final, "saved"),
+        ("tangent", tangent, "saved", 48),
+        ("cycle", cycle, "saved", 86),
+        ("mix q", mix, "derived", 146),
+        ("final p", final, "saved", 206),
     ]
-    for row, (name, probabilities, source) in enumerate(rows):
-        y = 75 + row * 45
-        s.text(118, y + 12, name, 12, INK, 600, "end")
-        s.text(118, y + 27, source, 9, MUTED, 400, "end")
-        displayed = percentages(probabilities)
+    left, right = 136, 548
+    for name, probabilities, source, y in rows:
+        s.text(20, y + 14, name, 12.5, INK, 600)
+        s.tag(20 + text_width(name, 12.5, weight=600) + 8, y + 14, source)
+        span = right - left - 3 * 2
+        cursor = left
         for col, value in enumerate(probabilities):
-            x = 168 + col * 124
-            s.rect(x, y, 97, 12, "#eff3f2")
-            s.rect(x, y, max(1, 97 * value), 12, STAGE_COLORS[col])
-            s.text(x + 97, y + 29, f"{displayed[col]:.1f}%", 10, INK, 400, "end")
-    s.footer(f"The mix is derived at α = 0.30; the saved final row uses T = {SUPPLEMENT['probability_calibration']['final_blend_temperature']:.3f}.")
+            width = span * value
+            s.rect(cursor, y, width, 20, STAGE_COLORS[col], rx=3 if width > 6 else 0)
+            cursor += width + 2
+        displayed = percentages(probabilities)
+        for x, value in zip(value_x, displayed):
+            s.text(x, y + 14, f"{value:.1f}%", 11, INK, 500, "end", mono=True)
+    s.text(left, 128, f"q = (1 − α)·tangent + α·cycle,  α = {alpha:.2f}", 11, MUTED, 400, mono=True)
+    s.text(left, 188, f"p = temperature-calibrated q,  T = {temperature:.3f}", 11, MUTED, 400, mono=True)
     s.save("07-01")
 
 

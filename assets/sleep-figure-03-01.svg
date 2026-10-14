@@ -1,39 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="740" height="300" viewBox="0 0 740 300" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="268" viewBox="0 0 760 268" role="img" aria-labelledby="title desc" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif">
 <title id="title">Shrinkage lifts the zero eigenvalues of a short-window covariance</title>
 <desc id="desc">An eigenvalue spectrum reconstructed from this 30-valid-frame, 39-signal window compares sample covariance with its actual Ledoit-Wolf shrinkage covariance. The ordinary sample matrix has ten near-zero eigenvalues; shrinkage makes every eigenvalue positive.</desc>
-<rect width="740" height="300" fill="#ffffff"/>
-<text x="24.00" y="27.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">FIGURE 03.1 / WHY SHRINKAGE</text>
-<text x="716.00" y="27.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">30 valid frames · 39 channels</text>
-<line x1="24.00" y1="39.00" x2="716.00" y2="39.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
-<text x="28.00" y="62.00" fill="#235969" font-size="10" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">COVARIANCE EIGENVALUE · LOG SCALE</text>
-<rect x="549.53" y="81.00" width="135.47" height="137.00" fill="#f3f5f4"/>
-<line x1="113.00" y1="218.00" x2="685.00" y2="218.00" stroke="#d5dcda" stroke-width="0.8" opacity="1"/>
-<text x="100.00" y="222.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">1e-08</text>
-<line x1="113.00" y1="190.60" x2="685.00" y2="190.60" stroke="#d5dcda" stroke-width="0.8" opacity="1"/>
-<text x="100.00" y="194.60" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">1e-06</text>
-<line x1="113.00" y1="163.20" x2="685.00" y2="163.20" stroke="#d5dcda" stroke-width="0.8" opacity="1"/>
-<text x="100.00" y="167.20" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">0.0001</text>
-<line x1="113.00" y1="135.80" x2="685.00" y2="135.80" stroke="#d5dcda" stroke-width="0.8" opacity="1"/>
-<text x="100.00" y="139.80" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">0.01</text>
-<line x1="113.00" y1="108.40" x2="685.00" y2="108.40" stroke="#d5dcda" stroke-width="0.8" opacity="1"/>
-<text x="100.00" y="112.40" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">1</text>
-<line x1="113.00" y1="94.70" x2="685.00" y2="94.70" stroke="#d5dcda" stroke-width="0.8" opacity="1"/>
-<text x="100.00" y="98.70" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">10</text>
-<line x1="113.00" y1="81.00" x2="113.00" y2="218.00" stroke="#172126" stroke-width="1" opacity="1"/>
-<line x1="113.00" y1="218.00" x2="685.00" y2="218.00" stroke="#172126" stroke-width="1" opacity="1"/>
-<text x="113.00" y="234.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">1</text>
-<text x="248.47" y="234.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">10</text>
-<text x="399.00" y="234.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">20</text>
-<text x="549.53" y="234.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">30</text>
-<text x="685.00" y="234.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">39</text>
-<text x="685.00" y="249.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">eigenvalue rank</text>
-<text x="604.00" y="99.00" fill="#5a6669" font-size="10" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">10 null directions</text>
-<polyline points="113.00,91.78 128.05,96.04 143.11,102.25 158.16,103.89 173.21,104.15 188.26,105.14 203.32,108.57 218.37,110.53 233.42,115.69 248.47,116.66 263.53,117.64 278.58,120.12 293.63,122.24 308.68,125.87 323.74,127.83 338.79,129.38 353.84,134.94 368.89,135.31 383.95,137.91 399.00,142.01 414.05,144.47 429.11,149.48 444.16,153.91 459.21,157.67 474.26,161.28 489.32,166.85 504.37,175.46 519.42,182.10 534.47,192.20 549.53,218.00 564.58,218.00 579.63,218.00 594.68,218.00 609.74,218.00 624.79,218.00 639.84,218.00 654.89,218.00 669.95,218.00 685.00,218.00" fill="none" stroke="#315f82" stroke-width="2.2"/>
-<polyline points="113.00,92.70 128.05,96.89 143.11,102.89 158.16,104.43 173.21,104.67 188.26,105.58 203.32,108.62 218.37,110.25 233.42,114.03 248.47,114.63 263.53,115.21 278.58,116.48 293.63,117.36 308.68,118.48 323.74,118.90 338.79,119.16 353.84,119.74 368.89,119.76 383.95,119.90 399.00,120.02 414.05,120.06 429.11,120.11 444.16,120.13 459.21,120.14 474.26,120.14 489.32,120.14 504.37,120.15 519.42,120.15 534.47,120.15 549.53,120.15 564.58,120.15 579.63,120.15 594.68,120.15 609.74,120.15 624.79,120.15 639.84,120.15 654.89,120.15 669.95,120.15 685.00,120.15" fill="none" stroke="#ad673d" stroke-width="2.2"/>
-<rect x="366.00" y="53.00" width="11.00" height="4.00" fill="#315f82"/>
-<text x="382.00" y="61.00" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">sample: 10 near zero</text>
-<rect x="533.00" y="53.00" width="11.00" height="4.00" fill="#ad673d"/>
-<text x="549.00" y="61.00" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">shrinkage: λ = 0.151</text>
-<line x1="24.00" y1="260.00" x2="716.00" y2="260.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
-<text x="24.00" y="283.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">A 30-row sample has at most 29 independent directions; shrinkage lifts the null directions.</text>
+<rect width="760" height="268" fill="#ffffff"/>
+<text x="20.00" y="26.00" fill="#111418" font-size="12.5" font-weight="600" text-anchor="start">Covariance eigenvalues · log scale</text>
+<rect x="238.08" y="14.00" width="93.30" height="16.00" fill="#f3f4f6" rx="8"/>
+<text x="245.08" y="25.50" fill="#6b7380" font-size="10" font-weight="500" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">reconstructed</text>
+<line x1="470.00" y1="22.00" x2="484.00" y2="22.00" stroke="#98a1ab" stroke-width="2.2" opacity="1" stroke-linecap="round"/>
+<text x="490.00" y="26.00" fill="#3a414b" font-size="11.5" font-weight="400" text-anchor="start">sample</text>
+<line x1="541.07" y1="22.00" x2="555.07" y2="22.00" stroke="#0f6e6a" stroke-width="2.2" opacity="1" stroke-linecap="round"/>
+<text x="561.07" y="26.00" fill="#3a414b" font-size="11.5" font-weight="400" text-anchor="start">Ledoit–Wolf shrinkage</text>
+<rect x="470.47" y="52.00" width="125.53" height="168.00" fill="#f3f4f6"/>
+<text x="533.24" y="68.00" fill="#6b7380" font-size="10.5" font-weight="500" text-anchor="middle">10 null directions</text>
+<line x1="66.00" y1="220.00" x2="596.00" y2="220.00" stroke="#eceef1" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="58.00" y="224.00" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">10⁻⁸</text>
+<line x1="66.00" y1="186.40" x2="596.00" y2="186.40" stroke="#eceef1" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="58.00" y="190.40" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">10⁻⁶</text>
+<line x1="66.00" y1="152.80" x2="596.00" y2="152.80" stroke="#eceef1" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="58.00" y="156.80" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">10⁻⁴</text>
+<line x1="66.00" y1="119.20" x2="596.00" y2="119.20" stroke="#eceef1" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="58.00" y="123.20" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">10⁻²</text>
+<line x1="66.00" y1="85.60" x2="596.00" y2="85.60" stroke="#eceef1" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="58.00" y="89.60" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">10⁰</text>
+<line x1="66.00" y1="52.00" x2="596.00" y2="52.00" stroke="#eceef1" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="58.00" y="56.00" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="end" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">10²</text>
+<line x1="66.00" y1="220.00" x2="596.00" y2="220.00" stroke="#c9ced5" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="66.00" y="237.00" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">1</text>
+<text x="191.53" y="237.00" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">10</text>
+<text x="331.00" y="237.00" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">20</text>
+<text x="470.47" y="237.00" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">30</text>
+<text x="596.00" y="237.00" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">39</text>
+<text x="596.00" y="256.00" fill="#6b7380" font-size="11" font-weight="400" text-anchor="end">eigenvalue rank</text>
+<polyline points="66.00,65.22 79.95,70.44 93.89,78.06 107.84,80.07 121.79,80.39 135.74,81.61 149.68,85.81 163.63,88.21 177.58,94.54 191.53,95.73 205.47,96.93 219.42,99.97 233.37,102.57 247.32,107.02 261.26,109.43 275.21,111.33 289.16,118.14 303.11,118.60 317.05,121.79 331.00,126.81 344.95,129.83 358.89,135.97 372.84,141.41 386.79,146.02 400.74,150.44 414.68,157.27 428.63,167.84 442.58,175.98 456.53,188.36 470.47,220.00 484.42,220.00 498.37,220.00 512.32,220.00 526.26,220.00 540.21,220.00 554.16,220.00 568.11,220.00 582.05,220.00 596.00,220.00" fill="none" stroke="#98a1ab" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<polyline points="66.00,66.34 79.95,71.49 93.89,78.84 107.84,80.73 121.79,81.02 135.74,82.14 149.68,85.87 163.63,87.87 177.58,92.50 191.53,93.24 205.47,93.95 219.42,95.50 233.37,96.59 247.32,97.95 261.26,98.47 275.21,98.80 289.16,99.51 303.11,99.54 317.05,99.70 331.00,99.85 344.95,99.90 358.89,99.96 372.84,99.98 386.79,99.99 400.74,100.00 414.68,100.00 428.63,100.00 442.58,100.00 456.53,100.00 470.47,100.00 484.42,100.00 498.37,100.00 512.32,100.00 526.26,100.00 540.21,100.00 554.16,100.00 568.11,100.00 582.05,100.00 596.00,100.00" fill="none" stroke="#0f6e6a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<circle cx="596.00" cy="100.00" r="4.00" fill="#0f6e6a" stroke="#ffffff" stroke-width="2"/>
+<circle cx="596.00" cy="220.00" r="4.00" fill="#98a1ab" stroke="#ffffff" stroke-width="2"/>
+<text x="610.00" y="98.00" fill="#111418" font-size="11.5" font-weight="600" text-anchor="start">shrinkage</text>
+<text x="610.00" y="113.00" fill="#6b7380" font-size="11" font-weight="400" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">λ = 0.151</text>
+<text x="610.00" y="210.00" fill="#111418" font-size="11.5" font-weight="600" text-anchor="start">sample</text>
+<text x="610.00" y="225.00" fill="#6b7380" font-size="11" font-weight="400" text-anchor="start">10 near zero</text>
 </svg>

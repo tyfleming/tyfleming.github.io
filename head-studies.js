@@ -24,41 +24,47 @@
     { bg:'#f6eee3', border:'#b9947c', fill:'#e6cfba', shade:'#8f614e', ink:'#6d4c41', accent:'#bd7c58', mist:'#dfc6ad', dots:'#aa8873' }
   ];
 
+  // Face profile measured from the supplied photo by scripts/trace_profile.py.
+  // The front contour is extracted from pixels; the hairline (ending at the temple)
+  // and jaw are interpreted landmarks. Only the rear skull and bust are drawn by hand.
+  const tracedFront = [
+    [132.04,56.8],[125.52,62.92],[101.28,104.4],[87.72,120.04],
+    [81.38,137.04],[75.86,141.8],[73.98,147.24],[69.82,152],
+    [69.34,157.44],[75.38,167.64],[74.68,171.04],[59.59,184.64],
+    [45.02,201.64],[44.1,209.12],[45.54,212.52],[57.09,217.28],
+    [59.98,220.68],[58.84,237],[61.51,242.44],[59.54,249.24],
+    [65.76,258.08],[61.64,262.84],[59.54,276.44],[60.94,279.84],
+    [69.74,288]
+  ];
+  const tracedHairline = [
+    [102.2,109.84],[112.7,104.4],[124.6,101.68],[135.8,105.76],
+    [147.7,115.96],[154,129.56],[163.1,143.16],[173.6,157.44]
+  ];
+  const tracedJaw = [
+    [82.6,290.72],[103.6,292.76],[122.5,288],[140.7,276.44],
+    [156.1,262.84],[170.1,245.16]
+  ];
+  const smoothPath = points => {
+    let d = `M ${points[0][0]} ${points[0][1]}`;
+    for (let i = 0; i < points.length - 1; i++) {
+      const before = points[Math.max(0, i - 1)];
+      const start = points[i];
+      const end = points[i + 1];
+      const after = points[Math.min(points.length - 1, i + 2)];
+      const c1 = [start[0] + (end[0] - before[0]) / 6, start[1] + (end[1] - before[1]) / 6];
+      const c2 = [end[0] - (after[0] - start[0]) / 6, end[1] - (after[1] - start[1]) / 6];
+      d += ` C ${c1[0].toFixed(2)} ${c1[1].toFixed(2)} ${c2[0].toFixed(2)} ${c2[1].toFixed(2)} ${end[0]} ${end[1]}`;
+    }
+    return d;
+  };
+  const bustPath = smoothPath([...tracedFront, ...tracedJaw]) +
+    ' C 155 268 149 304 141 329 C 112 353 70 374 27 390 L 27 407 L 294 407 L 290 389 C 267 377 247 359 241 333 C 238 317 239 301 245 284 C 268 264 282 232 287 196 C 293 148 274 101 235 72 C 214 58 198 53 180 51 C 161 48 145 51 132.04 56.8 Z';
+  const hairCapPath = 'M 102.2 109.84 C 112 78 125 57 132.04 56.8 C 145 51 161 48 180 51 C 198 53 214 58 235 72 C 274 101 293 148 287 196 C 282 232 268 264 245 284 C 218 260 213 223 208 202 C 201 181 187 166 173.6 157.44 ' +
+    smoothPath([...tracedHairline].reverse()).replace(/^M [^C]+/, '') + ' Z';
+
   function drawNightOracle(svg, c, mode = 'base') {
-    // Front contour extracted from the supplied photo by scripts/trace_profile.py.
-    // The hairline and jaw landmarks were interpreted against that reference.
-    const tracedFront = [
-      [132.04,56.8],[125.52,62.92],[101.28,104.4],[87.72,120.04],
-      [81.38,137.04],[75.86,141.8],[73.98,147.24],[69.82,152],
-      [69.34,157.44],[75.38,167.64],[74.68,171.04],[59.59,184.64],
-      [45.02,201.64],[44.1,209.12],[45.54,212.52],[57.09,217.28],
-      [59.98,220.68],[58.84,237],[61.51,242.44],[59.54,249.24],
-      [65.76,258.08],[61.64,262.84],[59.54,276.44],[60.94,279.84],
-      [69.74,288]
-    ];
-    // Two interpreted landmarks from the same source photograph. The hairline
-    // ends at the temple; the crown above it is the outer edge of the hair.
-    const hairline = [
-      [102.2,109.84],[112.7,104.4],[124.6,101.68],[135.8,105.76],
-      [147.7,115.96],[154,129.56],[163.1,143.16],[173.6,157.44]
-    ];
-    const jaw = [
-      [82.6,290.72],[103.6,292.76],[122.5,288],[140.7,276.44],
-      [156.1,262.84],[170.1,245.16]
-    ];
-    const smoothPath = points => {
-      let d = `M ${points[0][0]} ${points[0][1]}`;
-      for (let i = 0; i < points.length - 1; i++) {
-        const before = points[Math.max(0, i - 1)];
-        const start = points[i];
-        const end = points[i + 1];
-        const after = points[Math.min(points.length - 1, i + 2)];
-        const c1 = [start[0] + (end[0] - before[0]) / 6, start[1] + (end[1] - before[1]) / 6];
-        const c2 = [end[0] - (after[0] - start[0]) / 6, end[1] - (after[1] - start[1]) / 6];
-        d += ` C ${c1[0].toFixed(2)} ${c1[1].toFixed(2)} ${c2[0].toFixed(2)} ${c2[1].toFixed(2)} ${end[0]} ${end[1]}`;
-      }
-      return d;
-    };
+    const hairline = tracedHairline;
+    const jaw = tracedJaw;
     const maskPath = smoothPath([...tracedFront.slice(2), ...jaw]) +
       ' C 181 222 182 184 173.6 157.44 ' +
       smoothPath([...hairline].reverse()).replace(/^M [^C]+/, '') + ' Z';
@@ -190,42 +196,8 @@
   }
 
   function drawSelectedNightOracle(svg, c) {
-    // Measured from the supplied photo by scripts/trace_profile.py.
-    // The front contour is extracted from pixels; only the rear skull and bust are drawn by hand.
-    const tracedFront = [
-      [132.04,56.8],[125.52,62.92],[101.28,104.4],[87.72,120.04],
-      [81.38,137.04],[75.86,141.8],[73.98,147.24],[69.82,152],
-      [69.34,157.44],[75.38,167.64],[74.68,171.04],[59.59,184.64],
-      [45.02,201.64],[44.1,209.12],[45.54,212.52],[57.09,217.28],
-      [59.98,220.68],[58.84,237],[61.51,242.44],[59.54,249.24],
-      [65.76,258.08],[61.64,262.84],[59.54,276.44],[60.94,279.84],
-      [69.74,288]
-    ];
-    // Two interpreted landmarks from the same source photograph. The hairline
-    // ends at the temple; the crown above it is the outer edge of the hair.
-    const hairline = [
-      [102.2,109.84],[112.7,104.4],[124.6,101.68],[135.8,105.76],
-      [147.7,115.96],[154,129.56],[163.1,143.16],[173.6,157.44]
-    ];
-    const jaw = [
-      [82.6,290.72],[103.6,292.76],[122.5,288],[140.7,276.44],
-      [156.1,262.84],[170.1,245.16]
-    ];
-    const smoothPath = points => {
-      let d = `M ${points[0][0]} ${points[0][1]}`;
-      for (let i = 0; i < points.length - 1; i++) {
-        const before = points[Math.max(0, i - 1)];
-        const start = points[i];
-        const end = points[i + 1];
-        const after = points[Math.min(points.length - 1, i + 2)];
-        const c1 = [start[0] + (end[0] - before[0]) / 6, start[1] + (end[1] - before[1]) / 6];
-        const c2 = [end[0] - (after[0] - start[0]) / 6, end[1] - (after[1] - start[1]) / 6];
-        d += ` C ${c1[0].toFixed(2)} ${c1[1].toFixed(2)} ${c2[0].toFixed(2)} ${c2[1].toFixed(2)} ${end[0]} ${end[1]}`;
-      }
-      return d;
-    };
-    const bustPath = smoothPath([...tracedFront, ...jaw]) +
-      ' C 155 268 149 304 141 329 C 112 353 70 374 27 390 L 27 407 L 294 407 L 290 389 C 267 377 247 359 241 333 C 238 317 239 301 245 284 C 268 264 282 232 287 196 C 293 148 274 101 235 72 C 214 58 198 53 180 51 C 161 48 145 51 132.04 56.8 Z';
+    const hairline = tracedHairline;
+    const jaw = tracedJaw;
     const ink = '#304744';
     const stone = '#c8d4c7';
     const shadow = '#6f8d83';
@@ -245,8 +217,7 @@
     const clip=add(add(svg,'defs'),'clipPath',{id:'night-profile-clip'});
     path(clip,bustPath);
     const planes=add(bust,'g',{'clip-path':'url(#night-profile-clip)'});
-    const hairCap = 'M 102.2 109.84 C 112 78 125 57 132.04 56.8 C 145 51 161 48 180 51 C 198 53 214 58 235 72 C 274 101 293 148 287 196 C 282 232 268 264 245 284 C 218 260 213 223 208 202 C 201 181 187 166 173.6 157.44 ' +
-      smoothPath([...hairline].reverse()).replace(/^M [^C]+/, '') + ' Z';
+    const hairCap = hairCapPath;
     path(planes,hairCap,{fill:shadow,opacity:'.57'});
     // Short, swept ridges give the crown a carved-hair reading without a helmet seam.
     path(planes,'M 111 101 C 127 77 145 66 165 65 C 182 64 195 70 207 79 C 188 72 173 74 160 82 C 141 91 131 105 122 120 Z',{fill:light,opacity:'.15'});
@@ -280,6 +251,154 @@
     add(svg, 'path', { d:'M 24 37 H 296 M 24 384 H 296', fill:'none', stroke:c.border, 'stroke-width':'.7', opacity:'.72' });
     return svg;
   };
+
+  // Minimal cards: the same traced profile as one flat form, one crescent, a few stars.
+  // No frame rules, shading planes, or texture; volume comes from a single gradient.
+  let minimalCount = 0;
+  // Minimal cards keep the traced likeness from the brow ridge to the chin. The traced
+  // forehead sloped ~35° and made the cranium read as a tilted dome, so everything above
+  // the brow, plus the ear and neck, is constructed to adult proportions instead:
+  // 1 cm ≈ 10.4 px from the glabella (69.5, 152); equal face thirds put the hairline near
+  // y 90; head height ≈ 23.5 cm, depth ≈ 19.5 cm; the ear sits between brow and nose base.
+  const smoothLoop = points => {
+    const n = points.length;
+    let d = `M ${points[0][0]} ${points[0][1]}`;
+    for (let i = 0; i < n; i++) {
+      const before = points[(i - 1 + n) % n], start = points[i];
+      const end = points[(i + 1) % n], after = points[(i + 2) % n];
+      const c1 = [start[0] + (end[0] - before[0]) / 6, start[1] + (end[1] - before[1]) / 6];
+      const c2 = [end[0] - (after[0] - start[0]) / 6, end[1] - (after[1] - start[1]) / 6];
+      d += ` C ${c1[0].toFixed(2)} ${c1[1].toFixed(2)} ${c2[0].toFixed(2)} ${c2[1].toFixed(2)} ${end[0]} ${end[1]}`;
+    }
+    return d + ' Z';
+  };
+  const continuePath = points => smoothPath(points).replace(/^M [^C]+/, '');
+  const hairFront = [[138,34],[112,43],[96,57],[89,70],[87,83]];
+  const forehead = [[86.5,92],[81.5,102],[76,116],[72.5,130],[70.5,142]];
+  const faceTraced = tracedFront.slice(7);             // brow ridge → chin, from the photo
+  const underChin = [[82.6,290.72],[103.6,292.76]];    // traced jaw landmarks under the chin
+  const crown = [[234,232],[250,219],[265,203],[276,180],[281,152],[279,122],[268,90],[250,62],[224,42],[195,32],[165,30],[138,34]];
+  const minimalHeadPath = smoothPath([...hairFront, ...forehead, ...faceTraced, ...underChin]) +
+    ' C 112 294 116 298 118 306 C 121 322 124 340 128 354 C 131 366 108 376 80 384 C 52 391 22 395 0 398 L 0 420 L 320 420 L 320 384' +
+    ' C 306 377 288 364 270 352 C 252 338 241 318 237 290 C 233 262 232 246 234 232' + continuePath(crown) + ' Z';
+  // Short hair: frontal hairline, temple, a sideburn in front of the ear, an arc over it,
+  // then a taper to the nape.
+  const hairEdge = [[86.5,92],[104,99],[124,110],[146,126],[157,148],[160,176],[165,183],[169,166],[177,150],[192,143],[206,150],[212,170],[215,198],[224,218],[234,232]];
+  const minimalHairPath = smoothPath(hairEdge) + continuePath(crown) + continuePath(hairFront) + ' L 86.5 92 Z';
+  const earOutline = smoothLoop([[172,160],[184,148],[199,151],[207,166],[206,187],[199,205],[189,216],[179,216],[175,206],[173,190],[171,174]]);
+  const earInner = smoothPath([[179,163],[192,156],[200,168],[198,186],[191,197]]);
+  const earBowl = smoothPath([[184,180],[189,188],[185,196]]);
+  // Interior jaw: from the throat up to the traced mandibular angle, below the ear.
+  const jawLine = smoothPath([[110,293.6], ...tracedJaw.slice(2)]);
+  const skinRim = smoothPath([...forehead, ...faceTraced, ...underChin]);
+  const hairRim = smoothPath([...crown, ...hairFront.slice(1)]);
+  const minimalThemes = {
+    nocturne: {
+      sky:['#13212d','#0b141c'], glow:'#26405a', face:['#f1ede2','#c9d1cb','#7e938d'], faceAxis:{ x1:60, y1:150, x2:250, y2:420 },
+      hair:['#a3b4ae','#6f8580'], ink:'#25343b', moon:'#d8b57c', star:'#dfe7e1', fill:true, fade:false, earOpacity:.5
+    },
+    contour: {
+      sky:['#13212d','#0b141c'], glow:'#1c3142', line:'#e7e2d4', ink:'#e7e2d4', moon:'#d8b57c', star:'#dfe7e1', fill:false, fade:true, earOpacity:.7, moreStars:true
+    },
+    dusk: {
+      // The sky runs N3 → Wake: the site's sleep-stage ramp, deepened for night.
+      sky:['#111830','#29306a','#6b4f8f','#c46a6f','#e2a04f'], face:['#0d1222','#0d1222'], rim:'#f3c88a', backRim:'#a3adeb',
+      ink:'#f3c88a', moon:'#f6e8cb', star:'#f1ece0', fill:true, fade:false, starsAbove:210, earOpacity:.38
+    }
+  };
+
+  function drawMinimalOracle(svg, name) {
+    const t = minimalThemes[name];
+    const id = `oracle-${name}-${++minimalCount}`;
+    const defs = add(svg, 'defs');
+    const gradient = (gid, stops, attrs) => {
+      const g = add(defs, 'linearGradient', { id:gid, gradientUnits:'userSpaceOnUse', ...attrs });
+      stops.forEach((color, i) => add(g, 'stop', { offset:stops.length === 1 ? 0 : i / (stops.length - 1), 'stop-color':color }));
+      return `url(#${gid})`;
+    };
+
+    add(svg, 'rect', { width:320, height:420, fill:gradient(`${id}-sky`, t.sky, { x1:0, y1:0, x2:0, y2:420 }) });
+    if (t.glow) {
+      const glow = add(defs, 'radialGradient', { id:`${id}-glow`, cx:178, cy:196, r:190, gradientUnits:'userSpaceOnUse' });
+      add(glow, 'stop', { offset:0, 'stop-color':t.glow, 'stop-opacity':.95 });
+      add(glow, 'stop', { offset:1, 'stop-color':t.glow, 'stop-opacity':0 });
+      add(svg, 'rect', { width:320, height:420, fill:`url(#${id}-glow)` });
+    }
+
+    // Stars: a sparse, fixed constellation that stays clear of the head.
+    for (const [x, y, r, o] of [[252,52,1.2,.9],[286,92,.8,.7],[214,34,.7,.55],[300,150,.7,.5],[34,276,.8,.55],[30,330,1,.7],[286,318,.9,.6],[124,30,.7,.5],[30,186,.8,.6]])
+      if (y < (t.starsAbove || 420)) add(svg, 'circle', { cx:x, cy:y, r, fill:t.star, opacity:o });
+    const sparkle = (x, y, r, color) => path(svg,
+      `M ${x} ${y-r} Q ${x} ${y} ${x+r} ${y} Q ${x} ${y} ${x} ${y+r} Q ${x} ${y} ${x-r} ${y} Q ${x} ${y} ${x} ${y-r} Z`, { fill:color });
+    sparkle(88, 40, 5, t.moon);
+    sparkle(270, 70, 3, t.star);
+    // A fuller sky for the line card: open sky only, clear of the head, moon, and shoulders.
+    if (t.moreStars) {
+      for (const [x, y, r, o] of [[20,24,.7,.5],[64,20,.9,.7],[160,14,.8,.6],[188,26,.6,.45],[236,18,1,.75],[296,30,.7,.55],
+        [18,128,.7,.5],[24,226,1,.7],[16,250,.6,.45],[304,120,.9,.65],[292,200,.7,.5],[306,240,1.1,.7],[296,278,.6,.45],
+        [52,330,.8,.6],[96,350,.6,.45],[20,368,.9,.6],[50,374,.6,.4]])
+        add(svg, 'circle', { cx:x, cy:y, r, fill:t.star, opacity:o });
+      sparkle(300, 212, 2.6, t.star);
+      sparkle(24, 300, 2.4, t.moon);
+    }
+
+    // Crescent: a true cut-out (mask), so the sky gradient shows through.
+    const moonMask = add(defs, 'mask', { id:`${id}-moon` });
+    add(moonMask, 'rect', { width:320, height:420, fill:'#fff' });
+    add(moonMask, 'circle', { cx:61, cy:76, r:19, fill:'#000' });
+    add(svg, 'circle', { cx:50, cy:85, r:20, fill:t.moon, mask:`url(#${id}-moon)` });
+
+    // The bust dissolves into the sky instead of ending on drape lines.
+    let host = svg;
+    if (t.fade) {
+      const fade = add(defs, 'mask', { id:`${id}-fade`, maskUnits:'userSpaceOnUse', x:0, y:0, width:320, height:420 });
+      // Eased falloff: holds through the neck, then dissolves across the shoulders.
+      add(fade, 'rect', { width:320, height:420, fill:gradient(`${id}-fadeg`, ['#fff', '#fff', '#b3b3b3', '#4d4d4d', '#141414', '#000'], { x1:0, y1:260, x2:0, y2:410 }) });
+      host = add(svg, 'g', { mask:`url(#${id}-fade)` });
+    }
+    // The head sits a little lower than the traced coordinates to give the crown headroom.
+    const fig = add(host, 'g', { transform:'translate(0 14)' });
+    const stroke = (d, color, width, opacity) => path(fig, d,
+      { fill:'none', stroke:color, 'stroke-width':width, 'stroke-linecap':'round', 'stroke-linejoin':'round', opacity });
+    const clipId = `${id}-clip`;
+    path(add(defs, 'clipPath', { id:clipId }), minimalHeadPath);
+    if (t.fill) {
+      path(fig, minimalHeadPath, { fill:gradient(`${id}-face`, t.face, t.faceAxis || { x1:50, y1:160, x2:290, y2:250 }) });
+      if (t.hair) path(add(fig, 'g', { 'clip-path':`url(#${clipId})` }), minimalHairPath,
+        { fill:gradient(`${id}-hair`, t.hair, { x1:110, y1:40, x2:280, y2:250 }) });
+      if (t.rim) {
+        // Warm light on the skin only, tapering off under the chin where the throat begins.
+        const taper = add(defs, 'linearGradient', { id:`${id}-rim`, gradientUnits:'userSpaceOnUse', x1:82, y1:0, x2:106, y2:0 });
+        add(taper, 'stop', { offset:0, 'stop-color':t.rim });
+        add(taper, 'stop', { offset:1, 'stop-color':t.rim, 'stop-opacity':0 });
+        stroke(skinRim, `url(#${id}-rim)`, 1.4, .92);
+      }
+      // Faint cool rim on the hair so the head separates from the night sky; fades at the nape.
+      if (t.backRim) stroke(hairRim, gradient(`${id}-back`, ['#0d1222', t.backRim, t.backRim], { x1:0, y1:236, x2:0, y2:60 }), 1.2, .6);
+    } else {
+      path(fig, minimalHeadPath, { fill:'none', stroke:t.line, 'stroke-width':1.6, 'stroke-linejoin':'round' });
+      stroke(smoothPath(hairEdge), t.line, 1, .35);
+    }
+
+    // Features: brow, closed eye, lips, jaw, and a simple ear.
+    stroke('M 77 157 C 90 152.5 104 155 114 160.5', t.ink, 1.5, .5);
+    stroke('M 81 176 Q 96 182.5 110 175.5', t.ink, 2.1, .95);
+    stroke('M 61 238 C 64.5 240 69 240 72.5 238.5', t.ink, 1.1, .8);
+    stroke(jawLine, t.ink, 1.1, t.fill ? .3 : .45);
+    stroke(earOutline, t.ink, 1.2, t.earOpacity);
+    stroke(earInner, t.ink, 1, t.earOpacity * .75);
+    stroke(earBowl, t.ink, 1, t.earOpacity * .6);
+  }
+
+  const makeMinimalCard = name => {
+    const svg = el('svg', { viewBox:'0 0 320 420', 'aria-hidden':'true', focusable:'false' });
+    drawMinimalOracle(svg, name);
+    return svg;
+  };
+
+  document.querySelectorAll('[data-minimal-study]').forEach(host => {
+    host.replaceChildren(makeMinimalCard(host.dataset.minimalStudy));
+  });
 
   document.querySelectorAll('[data-head-study]').forEach(host => {
     const variant = Number(host.dataset.headStudy);
@@ -356,7 +475,14 @@
     host.replaceChildren(svg);
   });
 
+  // data-selected-portrait="dusk" (or nocturne, contour) picks a minimal card;
+  // an empty value keeps the original framed Night Oracle.
   document.querySelectorAll('[data-selected-portrait]').forEach(host => {
+    const theme = host.dataset.selectedPortrait;
+    if (minimalThemes[theme]) {
+      host.replaceChildren(makeMinimalCard(theme));
+      return;
+    }
     const svg=makeCard(colors[1]);
     drawSelectedNightOracle(svg,colors[1]);
     add(svg,'circle',{cx:160,cy:25,r:2.2,fill:colors[1].accent});

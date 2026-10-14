@@ -1,109 +1,109 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="740" height="300" viewBox="0 0 740 300" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="290" viewBox="0 0 760 290" role="img" aria-labelledby="title desc" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif">
 <title id="title">How training residuals determine PCA components</title>
 <desc id="desc">Illustrative training calculation for four volumes and four parcels. The training residual mean is [1, minus 1, 0, 0]. Subtracting this reference from each residual row gives centered patterns [2, 2, minus 2, minus 2], [minus 2, minus 2, 2, 2], [1, minus 1, 1, minus 1], and [minus 1, 1, minus 1, 1]. Their covariance is C transpose C divided by four. Its two leading eigenvectors form a four-by-two component matrix, with eigenvalues 8 and 2.</desc>
-<rect width="740" height="300" fill="#ffffff"/>
-<text x="24.00" y="27.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">FIGURE 02.2 / FIT THE RESIDUAL MODES</text>
-<text x="716.00" y="27.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">illustrative training calculation</text>
-<line x1="24.00" y1="39.00" x2="716.00" y2="39.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
-<text x="28.00" y="64.00" fill="#235969" font-size="10" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">TRAINING REFERENCE</text>
-<text x="28.00" y="83.00" fill="#172126" font-size="12" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">μ = mean of residual rows = (1, −1, 0, 0)</text>
-<text x="28.00" y="99.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">E − μ · centered training patterns</text>
-<rect x="28.00" y="112.00" width="26.00" height="26.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="41.00" y="130.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+2</text>
-<rect x="57.00" y="112.00" width="26.00" height="26.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="70.00" y="130.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+2</text>
-<rect x="86.00" y="112.00" width="26.00" height="26.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="99.00" y="130.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-2</text>
-<rect x="115.00" y="112.00" width="26.00" height="26.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="128.00" y="130.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-2</text>
-<rect x="28.00" y="141.00" width="26.00" height="26.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="41.00" y="159.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-2</text>
-<rect x="57.00" y="141.00" width="26.00" height="26.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="70.00" y="159.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-2</text>
-<rect x="86.00" y="141.00" width="26.00" height="26.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="99.00" y="159.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+2</text>
-<rect x="115.00" y="141.00" width="26.00" height="26.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="128.00" y="159.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+2</text>
-<rect x="28.00" y="170.00" width="26.00" height="26.00" fill="#caa896" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="41.00" y="188.50" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+1</text>
-<rect x="57.00" y="170.00" width="26.00" height="26.00" fill="#98afc0" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="70.00" y="188.50" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-1</text>
-<rect x="86.00" y="170.00" width="26.00" height="26.00" fill="#caa896" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="99.00" y="188.50" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+1</text>
-<rect x="115.00" y="170.00" width="26.00" height="26.00" fill="#98afc0" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="128.00" y="188.50" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-1</text>
-<rect x="28.00" y="199.00" width="26.00" height="26.00" fill="#98afc0" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="41.00" y="217.50" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-1</text>
-<rect x="57.00" y="199.00" width="26.00" height="26.00" fill="#caa896" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="70.00" y="217.50" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+1</text>
-<rect x="86.00" y="199.00" width="26.00" height="26.00" fill="#98afc0" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="99.00" y="217.50" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-1</text>
-<rect x="115.00" y="199.00" width="26.00" height="26.00" fill="#caa896" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="128.00" y="217.50" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+1</text>
-<text x="84.00" y="245.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">4 × 4</text>
-<text x="192.00" y="166.00" fill="#5a6669" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">CᵀC / 4</text>
-<line x1="176.00" y1="173.00" x2="215.00" y2="173.00" stroke="#235969" stroke-width="1.5" opacity="1"/>
-<polygon points="215.00,173.00 210.99,175.99 210.99,170.01" fill="#235969"/>
-<text x="239.00" y="99.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">K · parcel covariance</text>
-<rect x="239.00" y="112.00" width="26.00" height="26.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="252.00" y="130.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">2.5</text>
-<rect x="268.00" y="112.00" width="26.00" height="26.00" fill="#c09781" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="281.00" y="130.50" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">1.5</text>
-<rect x="297.00" y="112.00" width="26.00" height="26.00" fill="#839fb4" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="310.00" y="130.50" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-1.5</text>
-<rect x="326.00" y="112.00" width="26.00" height="26.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="339.00" y="130.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-2.5</text>
-<rect x="239.00" y="141.00" width="26.00" height="26.00" fill="#c09781" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="252.00" y="159.50" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">1.5</text>
-<rect x="268.00" y="141.00" width="26.00" height="26.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="281.00" y="159.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">2.5</text>
-<rect x="297.00" y="141.00" width="26.00" height="26.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="310.00" y="159.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-2.5</text>
-<rect x="326.00" y="141.00" width="26.00" height="26.00" fill="#839fb4" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="339.00" y="159.50" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-1.5</text>
-<rect x="239.00" y="170.00" width="26.00" height="26.00" fill="#839fb4" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="252.00" y="188.50" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-1.5</text>
-<rect x="268.00" y="170.00" width="26.00" height="26.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="281.00" y="188.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-2.5</text>
-<rect x="297.00" y="170.00" width="26.00" height="26.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="310.00" y="188.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">2.5</text>
-<rect x="326.00" y="170.00" width="26.00" height="26.00" fill="#c09781" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="339.00" y="188.50" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">1.5</text>
-<rect x="239.00" y="199.00" width="26.00" height="26.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="252.00" y="217.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-2.5</text>
-<rect x="268.00" y="199.00" width="26.00" height="26.00" fill="#839fb4" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="281.00" y="217.50" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-1.5</text>
-<rect x="297.00" y="199.00" width="26.00" height="26.00" fill="#c09781" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="310.00" y="217.50" fill="#000000" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">1.5</text>
-<rect x="326.00" y="199.00" width="26.00" height="26.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="339.00" y="217.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">2.5</text>
-<text x="295.00" y="245.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">4 × 4</text>
-<text x="424.00" y="166.00" fill="#5a6669" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">top 2</text>
-<line x1="403.00" y1="173.00" x2="453.00" y2="173.00" stroke="#235969" stroke-width="1.5" opacity="1"/>
-<polygon points="453.00,173.00 448.99,175.99 448.99,170.01" fill="#235969"/>
-<text x="480.00" y="99.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">U · learned components</text>
-<rect x="480.00" y="112.00" width="26.00" height="26.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="493.00" y="130.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+0.5</text>
-<rect x="509.00" y="112.00" width="26.00" height="26.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="522.00" y="130.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+0.5</text>
-<rect x="480.00" y="141.00" width="26.00" height="26.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="493.00" y="159.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+0.5</text>
-<rect x="509.00" y="141.00" width="26.00" height="26.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="522.00" y="159.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-0.5</text>
-<rect x="480.00" y="170.00" width="26.00" height="26.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="493.00" y="188.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-0.5</text>
-<rect x="509.00" y="170.00" width="26.00" height="26.00" fill="#96512d" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="522.00" y="188.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">+0.5</text>
-<rect x="480.00" y="199.00" width="26.00" height="26.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="493.00" y="217.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-0.5</text>
-<rect x="509.00" y="199.00" width="26.00" height="26.00" fill="#315f82" stroke="#d5dcda" stroke-width="0.8"/>
-<text x="522.00" y="217.50" fill="#ffffff" font-size="11" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">-0.5</text>
-<text x="507.00" y="245.00" fill="#5a6669" font-size="10" font-weight="400" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">4 × 2</text>
-<text x="598.00" y="133.00" fill="#315f82" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">PC 1</text>
-<text x="598.00" y="153.00" fill="#172126" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">(+,+,−,−)</text>
-<text x="598.00" y="181.00" fill="#ad673d" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">PC 2</text>
-<text x="598.00" y="201.00" fill="#172126" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">(+,−,+,−)</text>
-<text x="598.00" y="230.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">λ₁ = 8 · λ₂ = 2</text>
-<line x1="24.00" y1="260.00" x2="716.00" y2="260.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
-<text x="24.00" y="283.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">PCA directions are fitted to training residuals after subtracting their parcel-wise reference.</text>
+<rect width="760" height="290" fill="#ffffff"/>
+<text x="20.00" y="26.00" fill="#111418" font-size="12.5" font-weight="600" text-anchor="start">Training reference</text>
+<text x="20.00" y="48.00" fill="#3a414b" font-size="12" font-weight="400" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">μ = mean of residual rows = (1, −1, 0, 0)</text>
+<rect x="20.00" y="104.00" width="34.00" height="34.00" fill="#a44c27" rx="4"/>
+<text x="37.00" y="125.00" fill="#ffffff" font-size="11.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+2</text>
+<rect x="58.00" y="104.00" width="34.00" height="34.00" fill="#a44c27" rx="4"/>
+<text x="75.00" y="125.00" fill="#ffffff" font-size="11.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+2</text>
+<rect x="96.00" y="104.00" width="34.00" height="34.00" fill="#335f99" rx="4"/>
+<text x="113.00" y="125.00" fill="#ffffff" font-size="11.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−2</text>
+<rect x="134.00" y="104.00" width="34.00" height="34.00" fill="#335f99" rx="4"/>
+<text x="151.00" y="125.00" fill="#ffffff" font-size="11.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−2</text>
+<rect x="20.00" y="142.00" width="34.00" height="34.00" fill="#335f99" rx="4"/>
+<text x="37.00" y="163.00" fill="#ffffff" font-size="11.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−2</text>
+<rect x="58.00" y="142.00" width="34.00" height="34.00" fill="#335f99" rx="4"/>
+<text x="75.00" y="163.00" fill="#ffffff" font-size="11.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−2</text>
+<rect x="96.00" y="142.00" width="34.00" height="34.00" fill="#a44c27" rx="4"/>
+<text x="113.00" y="163.00" fill="#ffffff" font-size="11.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+2</text>
+<rect x="134.00" y="142.00" width="34.00" height="34.00" fill="#a44c27" rx="4"/>
+<text x="151.00" y="163.00" fill="#ffffff" font-size="11.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+2</text>
+<rect x="20.00" y="180.00" width="34.00" height="34.00" fill="#c99e8d" rx="4"/>
+<text x="37.00" y="201.00" fill="#111418" font-size="11.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+1</text>
+<rect x="58.00" y="180.00" width="34.00" height="34.00" fill="#90a8c6" rx="4"/>
+<text x="75.00" y="201.00" fill="#111418" font-size="11.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−1</text>
+<rect x="96.00" y="180.00" width="34.00" height="34.00" fill="#c99e8d" rx="4"/>
+<text x="113.00" y="201.00" fill="#111418" font-size="11.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+1</text>
+<rect x="134.00" y="180.00" width="34.00" height="34.00" fill="#90a8c6" rx="4"/>
+<text x="151.00" y="201.00" fill="#111418" font-size="11.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−1</text>
+<rect x="20.00" y="218.00" width="34.00" height="34.00" fill="#90a8c6" rx="4"/>
+<text x="37.00" y="239.00" fill="#111418" font-size="11.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−1</text>
+<rect x="58.00" y="218.00" width="34.00" height="34.00" fill="#c99e8d" rx="4"/>
+<text x="75.00" y="239.00" fill="#111418" font-size="11.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+1</text>
+<rect x="96.00" y="218.00" width="34.00" height="34.00" fill="#90a8c6" rx="4"/>
+<text x="113.00" y="239.00" fill="#111418" font-size="11.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−1</text>
+<rect x="134.00" y="218.00" width="34.00" height="34.00" fill="#c99e8d" rx="4"/>
+<text x="151.00" y="239.00" fill="#111418" font-size="11.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+1</text>
+<text x="20.00" y="92.00" fill="#111418" font-size="16" font-weight="400" text-anchor="start" font-family="Charter,'Bitstream Charter','Iowan Old Style',Georgia,serif" font-style="italic">E − μ</text>
+<text x="72.00" y="92.00" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">4 × 4</text>
+<text x="20.00" y="274.00" fill="#6b7380" font-size="11.5" font-weight="400" text-anchor="start">centered training patterns</text>
+<line x1="182.00" y1="178.00" x2="232.00" y2="178.00" stroke="#a3a9b2" stroke-width="1.2" opacity="1" stroke-linecap="round"/>
+<polyline points="227.02,181.35 232.00,178.00 227.02,174.65" fill="none" stroke="#a3a9b2" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<text x="207.00" y="168.00" fill="#6b7380" font-size="10.5" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">CᵀC / 4</text>
+<rect x="246.00" y="104.00" width="34.00" height="34.00" fill="#a44c27" rx="4"/>
+<text x="263.00" y="125.00" fill="#ffffff" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">2.5</text>
+<rect x="284.00" y="104.00" width="34.00" height="34.00" fill="#c28e79" rx="4"/>
+<text x="301.00" y="125.00" fill="#111418" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">1.5</text>
+<rect x="322.00" y="104.00" width="34.00" height="34.00" fill="#7e99bd" rx="4"/>
+<text x="339.00" y="125.00" fill="#111418" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−1.5</text>
+<rect x="360.00" y="104.00" width="34.00" height="34.00" fill="#335f99" rx="4"/>
+<text x="377.00" y="125.00" fill="#ffffff" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−2.5</text>
+<rect x="246.00" y="142.00" width="34.00" height="34.00" fill="#c28e79" rx="4"/>
+<text x="263.00" y="163.00" fill="#111418" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">1.5</text>
+<rect x="284.00" y="142.00" width="34.00" height="34.00" fill="#a44c27" rx="4"/>
+<text x="301.00" y="163.00" fill="#ffffff" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">2.5</text>
+<rect x="322.00" y="142.00" width="34.00" height="34.00" fill="#335f99" rx="4"/>
+<text x="339.00" y="163.00" fill="#ffffff" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−2.5</text>
+<rect x="360.00" y="142.00" width="34.00" height="34.00" fill="#7e99bd" rx="4"/>
+<text x="377.00" y="163.00" fill="#111418" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−1.5</text>
+<rect x="246.00" y="180.00" width="34.00" height="34.00" fill="#7e99bd" rx="4"/>
+<text x="263.00" y="201.00" fill="#111418" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−1.5</text>
+<rect x="284.00" y="180.00" width="34.00" height="34.00" fill="#335f99" rx="4"/>
+<text x="301.00" y="201.00" fill="#ffffff" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−2.5</text>
+<rect x="322.00" y="180.00" width="34.00" height="34.00" fill="#a44c27" rx="4"/>
+<text x="339.00" y="201.00" fill="#ffffff" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">2.5</text>
+<rect x="360.00" y="180.00" width="34.00" height="34.00" fill="#c28e79" rx="4"/>
+<text x="377.00" y="201.00" fill="#111418" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">1.5</text>
+<rect x="246.00" y="218.00" width="34.00" height="34.00" fill="#335f99" rx="4"/>
+<text x="263.00" y="239.00" fill="#ffffff" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−2.5</text>
+<rect x="284.00" y="218.00" width="34.00" height="34.00" fill="#7e99bd" rx="4"/>
+<text x="301.00" y="239.00" fill="#111418" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−1.5</text>
+<rect x="322.00" y="218.00" width="34.00" height="34.00" fill="#c28e79" rx="4"/>
+<text x="339.00" y="239.00" fill="#111418" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">1.5</text>
+<rect x="360.00" y="218.00" width="34.00" height="34.00" fill="#a44c27" rx="4"/>
+<text x="377.00" y="239.00" fill="#ffffff" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">2.5</text>
+<text x="246.00" y="92.00" fill="#111418" font-size="16" font-weight="400" text-anchor="start" font-family="Charter,'Bitstream Charter','Iowan Old Style',Georgia,serif" font-style="italic">K</text>
+<text x="264.00" y="92.00" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">4 × 4</text>
+<text x="246.00" y="274.00" fill="#6b7380" font-size="11.5" font-weight="400" text-anchor="start">parcel covariance</text>
+<line x1="408.00" y1="178.00" x2="458.00" y2="178.00" stroke="#a3a9b2" stroke-width="1.2" opacity="1" stroke-linecap="round"/>
+<polyline points="453.02,181.35 458.00,178.00 453.02,174.65" fill="none" stroke="#a3a9b2" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" opacity="1"/>
+<text x="433.00" y="168.00" fill="#6b7380" font-size="10.5" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">top 2</text>
+<rect x="472.00" y="104.00" width="34.00" height="34.00" fill="#a44c27" rx="4"/>
+<text x="489.00" y="125.00" fill="#ffffff" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+0.5</text>
+<rect x="510.00" y="104.00" width="34.00" height="34.00" fill="#a44c27" rx="4"/>
+<text x="527.00" y="125.00" fill="#ffffff" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+0.5</text>
+<rect x="472.00" y="142.00" width="34.00" height="34.00" fill="#a44c27" rx="4"/>
+<text x="489.00" y="163.00" fill="#ffffff" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+0.5</text>
+<rect x="510.00" y="142.00" width="34.00" height="34.00" fill="#335f99" rx="4"/>
+<text x="527.00" y="163.00" fill="#ffffff" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−0.5</text>
+<rect x="472.00" y="180.00" width="34.00" height="34.00" fill="#335f99" rx="4"/>
+<text x="489.00" y="201.00" fill="#ffffff" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−0.5</text>
+<rect x="510.00" y="180.00" width="34.00" height="34.00" fill="#a44c27" rx="4"/>
+<text x="527.00" y="201.00" fill="#ffffff" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">+0.5</text>
+<rect x="472.00" y="218.00" width="34.00" height="34.00" fill="#335f99" rx="4"/>
+<text x="489.00" y="239.00" fill="#ffffff" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−0.5</text>
+<rect x="510.00" y="218.00" width="34.00" height="34.00" fill="#335f99" rx="4"/>
+<text x="527.00" y="239.00" fill="#ffffff" font-size="10.5" font-weight="600" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">−0.5</text>
+<text x="472.00" y="76.00" fill="#111418" font-size="16" font-weight="400" text-anchor="start" font-family="Charter,'Bitstream Charter','Iowan Old Style',Georgia,serif" font-style="italic">U</text>
+<text x="488.00" y="76.00" fill="#6b7380" font-size="10.5" font-weight="400" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">4 × 2</text>
+<text x="489.00" y="96.00" fill="#6b7380" font-size="10" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">PC 1</text>
+<text x="527.00" y="96.00" fill="#6b7380" font-size="10" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">PC 2</text>
+<text x="472.00" y="274.00" fill="#6b7380" font-size="11.5" font-weight="400" text-anchor="start">learned components</text>
+<text x="570.00" y="122.00" fill="#111418" font-size="12" font-weight="600" text-anchor="start">PC 1</text>
+<text x="570.00" y="140.00" fill="#3a414b" font-size="11.5" font-weight="400" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">(+, +, −, −)</text>
+<text x="570.00" y="174.00" fill="#111418" font-size="12" font-weight="600" text-anchor="start">PC 2</text>
+<text x="570.00" y="192.00" fill="#3a414b" font-size="11.5" font-weight="400" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">(+, −, +, −)</text>
+<text x="570.00" y="228.00" fill="#6b7380" font-size="11.5" font-weight="400" text-anchor="start" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">λ₁ = 8 · λ₂ = 2</text>
 </svg>

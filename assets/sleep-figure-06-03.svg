@@ -1,66 +1,71 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="740" height="300" viewBox="0 0 740 300" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="254" viewBox="0 0 760 254" role="img" aria-labelledby="title desc" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif">
 <title id="title">The 23 saved cycle features</title>
-<desc id="desc">A compact numerical map of all 23 saved directed-cycle features for the representative window: five flow summaries at each of three lags, five for their weighted pooled flow, and three temporal change summaries.</desc>
-<rect width="740" height="300" fill="#ffffff"/>
-<text x="24.00" y="27.00" fill="#235969" font-size="11" font-weight="700" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">FIGURE 06.3 / CYCLE FEATURE VECTOR</text>
-<text x="716.00" y="27.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">15 lag + 5 pooled + 3 temporal = 23</text>
-<line x1="24.00" y1="39.00" x2="716.00" y2="39.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
-<rect x="145.00" y="57.00" width="10.00" height="3.00" fill="#235969"/>
-<text x="145.00" y="76.00" fill="#172126" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">total norm</text>
-<rect x="256.00" y="57.00" width="10.00" height="3.00" fill="#315f82"/>
-<text x="256.00" y="76.00" fill="#172126" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">harmonic norm</text>
-<rect x="367.00" y="57.00" width="10.00" height="3.00" fill="#315f82"/>
-<text x="367.00" y="76.00" fill="#172126" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">H share</text>
-<rect x="478.00" y="57.00" width="10.00" height="3.00" fill="#235969"/>
-<text x="478.00" y="76.00" fill="#172126" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">G share</text>
-<rect x="589.00" y="57.00" width="10.00" height="3.00" fill="#ad673d"/>
-<text x="589.00" y="76.00" fill="#172126" font-size="10" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">C share</text>
-<text x="28.00" y="108.00" fill="#172126" font-size="11" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">lag 1</text>
-<rect x="145.00" y="90.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
-<text x="193.00" y="109.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">9.19</text>
-<rect x="256.00" y="90.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
-<text x="304.00" y="109.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">2.67</text>
-<rect x="367.00" y="90.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
-<text x="415.00" y="109.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">8.4%</text>
-<rect x="478.00" y="90.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
-<text x="526.00" y="109.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">34.2%</text>
-<rect x="589.00" y="90.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
-<text x="637.00" y="109.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">57.4%</text>
-<text x="28.00" y="143.00" fill="#172126" font-size="11" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">lag 2</text>
-<rect x="145.00" y="125.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
-<text x="193.00" y="144.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">15.27</text>
-<rect x="256.00" y="125.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
-<text x="304.00" y="144.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">4.46</text>
-<rect x="367.00" y="125.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
-<text x="415.00" y="144.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">8.5%</text>
-<rect x="478.00" y="125.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
-<text x="526.00" y="144.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">35.4%</text>
-<rect x="589.00" y="125.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
-<text x="637.00" y="144.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">56.1%</text>
-<text x="28.00" y="178.00" fill="#172126" font-size="11" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">lag 3</text>
-<rect x="145.00" y="160.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
-<text x="193.00" y="179.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">17.83</text>
-<rect x="256.00" y="160.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
-<text x="304.00" y="179.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">5.22</text>
-<rect x="367.00" y="160.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
-<text x="415.00" y="179.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">8.6%</text>
-<rect x="478.00" y="160.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
-<text x="526.00" y="179.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">36.6%</text>
-<rect x="589.00" y="160.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
-<text x="637.00" y="179.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">54.8%</text>
-<text x="28.00" y="213.00" fill="#172126" font-size="11" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">pooled</text>
-<rect x="145.00" y="195.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
-<text x="193.00" y="214.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">11.94</text>
-<rect x="256.00" y="195.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
-<text x="304.00" y="214.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">3.49</text>
-<rect x="367.00" y="195.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
-<text x="415.00" y="214.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">8.6%</text>
-<rect x="478.00" y="195.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
-<text x="526.00" y="214.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">35.2%</text>
-<rect x="589.00" y="195.00" width="96.00" height="29.00" fill="#ffffff" stroke="#d5dcda" stroke-width="1"/>
-<text x="637.00" y="214.00" fill="#172126" font-size="13" font-weight="600" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">56.3%</text>
-<line x1="28.00" y1="235.00" x2="716.00" y2="235.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
-<text x="28.00" y="252.00" fill="#172126" font-size="10" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">change in pooled harmonic state: norm 1.55   ·   cosine 0.90   ·   angle 0.46 rad</text>
-<line x1="24.00" y1="260.00" x2="716.00" y2="260.00" stroke="#d5dcda" stroke-width="1" opacity="1"/>
-<text x="24.00" y="283.00" fill="#5a6669" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">Numbers are saved outputs for one held-out window; shares are fractions of total flow energy.</text>
+<desc id="desc">A compact numerical map of all 23 saved directed-cycle features for the representative window: five flow summaries at each of three lags, five for their weighted pooled flow, and three temporal change summaries. Share columns carry small bars proportional to each fraction of total flow energy.</desc>
+<rect width="760" height="254" fill="#ffffff"/>
+<text x="198.00" y="26.00" fill="#111418" font-size="11.5" font-weight="600" text-anchor="middle">total norm</text>
+<text x="322.00" y="26.00" fill="#111418" font-size="11.5" font-weight="600" text-anchor="middle">harmonic norm</text>
+<rect x="415.35" y="17.50" width="9.00" height="9.00" fill="#0f6e6a" rx="2"/>
+<text x="450.00" y="26.00" fill="#111418" font-size="11.5" font-weight="600" text-anchor="middle">H share</text>
+<rect x="539.35" y="17.50" width="9.00" height="9.00" fill="#98a1ab" rx="2"/>
+<text x="574.00" y="26.00" fill="#111418" font-size="11.5" font-weight="600" text-anchor="middle">G share</text>
+<rect x="663.35" y="17.50" width="9.00" height="9.00" fill="#d3d8de" rx="2"/>
+<text x="698.00" y="26.00" fill="#111418" font-size="11.5" font-weight="600" text-anchor="middle">C share</text>
+<line x1="20.00" y1="40.00" x2="740.00" y2="40.00" stroke="#c9ced5" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="20.00" y="70.00" fill="#3a414b" font-size="12.5" font-weight="600" text-anchor="start">lag 1</text>
+<text x="196.00" y="70.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">9.19</text>
+<text x="320.00" y="70.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">2.67</text>
+<text x="444.00" y="70.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">8.4%</text>
+<rect x="408.00" y="77.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
+<rect x="408.00" y="77.00" width="6.08" height="3.00" fill="#0f6e6a" rx="1.5"/>
+<text x="568.00" y="70.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">34.2%</text>
+<rect x="532.00" y="77.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
+<rect x="532.00" y="77.00" width="24.61" height="3.00" fill="#98a1ab" rx="1.5"/>
+<text x="692.00" y="70.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">57.4%</text>
+<rect x="656.00" y="77.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
+<rect x="656.00" y="77.00" width="41.32" height="3.00" fill="#d3d8de" rx="1.5"/>
+<line x1="20.00" y1="88.00" x2="740.00" y2="88.00" stroke="#e3e6ea" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="20.00" y="108.00" fill="#3a414b" font-size="12.5" font-weight="600" text-anchor="start">lag 2</text>
+<text x="196.00" y="108.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">15.27</text>
+<text x="320.00" y="108.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">4.46</text>
+<text x="444.00" y="108.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">8.5%</text>
+<rect x="408.00" y="115.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
+<rect x="408.00" y="115.00" width="6.14" height="3.00" fill="#0f6e6a" rx="1.5"/>
+<text x="568.00" y="108.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">35.4%</text>
+<rect x="532.00" y="115.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
+<rect x="532.00" y="115.00" width="25.50" height="3.00" fill="#98a1ab" rx="1.5"/>
+<text x="692.00" y="108.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">56.1%</text>
+<rect x="656.00" y="115.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
+<rect x="656.00" y="115.00" width="40.36" height="3.00" fill="#d3d8de" rx="1.5"/>
+<line x1="20.00" y1="126.00" x2="740.00" y2="126.00" stroke="#e3e6ea" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="20.00" y="146.00" fill="#3a414b" font-size="12.5" font-weight="600" text-anchor="start">lag 3</text>
+<text x="196.00" y="146.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">17.83</text>
+<text x="320.00" y="146.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">5.22</text>
+<text x="444.00" y="146.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">8.6%</text>
+<rect x="408.00" y="153.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
+<rect x="408.00" y="153.00" width="6.18" height="3.00" fill="#0f6e6a" rx="1.5"/>
+<text x="568.00" y="146.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">36.6%</text>
+<rect x="532.00" y="153.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
+<rect x="532.00" y="153.00" width="26.39" height="3.00" fill="#98a1ab" rx="1.5"/>
+<text x="692.00" y="146.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">54.8%</text>
+<rect x="656.00" y="153.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
+<rect x="656.00" y="153.00" width="39.44" height="3.00" fill="#d3d8de" rx="1.5"/>
+<line x1="20.00" y1="164.00" x2="740.00" y2="164.00" stroke="#e3e6ea" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="20.00" y="184.00" fill="#3a414b" font-size="12.5" font-weight="600" text-anchor="start">pooled</text>
+<text x="196.00" y="184.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">11.94</text>
+<text x="320.00" y="184.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">3.49</text>
+<text x="444.00" y="184.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">8.6%</text>
+<rect x="408.00" y="191.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
+<rect x="408.00" y="191.00" width="6.16" height="3.00" fill="#0f6e6a" rx="1.5"/>
+<text x="568.00" y="184.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">35.2%</text>
+<rect x="532.00" y="191.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
+<rect x="532.00" y="191.00" width="25.32" height="3.00" fill="#98a1ab" rx="1.5"/>
+<text x="692.00" y="184.00" fill="#111418" font-size="13" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">56.3%</text>
+<rect x="656.00" y="191.00" width="72.00" height="3.00" fill="#eceef1" rx="1.5"/>
+<rect x="656.00" y="191.00" width="40.52" height="3.00" fill="#d3d8de" rx="1.5"/>
+<line x1="20.00" y1="202.00" x2="740.00" y2="202.00" stroke="#e3e6ea" stroke-width="1" opacity="1" stroke-linecap="butt"/>
+<text x="20.00" y="232.00" fill="#3a414b" font-size="12" font-weight="600" text-anchor="start">change in pooled</text>
+<text x="20.00" y="247.00" fill="#3a414b" font-size="12" font-weight="600" text-anchor="start">harmonic state</text>
+<text x="196.00" y="240.00" fill="#111418" font-size="12" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">norm 1.55</text>
+<text x="320.00" y="240.00" fill="#111418" font-size="12" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">cosine 0.90</text>
+<text x="444.00" y="240.00" fill="#111418" font-size="12" font-weight="500" text-anchor="middle" font-family="'SF Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">angle 0.46 rad</text>
 </svg>

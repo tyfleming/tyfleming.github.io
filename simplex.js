@@ -5,7 +5,8 @@
   if (!context) return;
 
   const stages = ['Wake', 'N1', 'N2', 'N3'];
-  const colors = ['#b16b2e', '#9a5773', '#207a83', '#565b97'];
+  // Dusk-to-night stage ramp; validated for CVD and normal-vision separation.
+  const colors = ['#d4922a', '#cf6068', '#9460b8', '#3f4a9c'];
   const vertices = [[1, 1, 1], [1, -1, -1], [-1, 1, -1], [-1, -1, 1]];
   const filter = document.getElementById('stage-filter');
   const chooser = document.getElementById('example-select');
@@ -20,6 +21,7 @@
   const observedSummary = document.getElementById('observed-summary');
   const observedStage = document.getElementById('observed-stage');
   const cells = ['prob-wake','prob-n1','prob-n2','prob-n3'].map(id => document.getElementById(id));
+  const strip = document.getElementById('prob-strip');
   let yaw = -0.45, pitch = 0.18, selected = null, drag = null, plotted = [];
   let cloud = [], examples = [], customSelected = null;
   let view = 'predicted', hasObserved = false, currentDescription = '';
@@ -62,7 +64,7 @@
     context.strokeStyle = colors[stage];
     context.fillStyle = colors[stage];
     context.lineWidth = emphasis ? 2.8 : 1;
-    context.globalAlpha = emphasis ? 1 : .24;
+    context.globalAlpha = emphasis ? 1 : .3;
     context.beginPath();
     if (stage === 0) context.arc(x,y,size,0,Math.PI*2);
     if (stage === 1) {context.moveTo(x,y-size);context.lineTo(x+size,y);context.lineTo(x,y+size);context.lineTo(x-size,y);context.closePath();}
@@ -71,9 +73,13 @@
     if (stage === 3) context.stroke(); else context.fill();
     if (emphasis) {
       context.globalAlpha = 1;
-      context.strokeStyle = '#172126';
+      context.lineWidth = 5;
+      context.strokeStyle = '#ffffff';
       context.beginPath();
       context.arc(x,y,size+4,0,Math.PI*2);
+      context.stroke();
+      context.lineWidth = 1.6;
+      context.strokeStyle = '#111418';
       context.stroke();
     }
     context.globalAlpha = 1;
@@ -93,14 +99,18 @@
     context.fillRect(0,0,width,height);
     const corner = vertices.map(v => projected(v,width,height));
     const edges = [[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]];
-    context.strokeStyle = '#cbd6d3';
-    context.lineWidth = 1.4;
-    edges.forEach(([a,b]) => {
+    const depths = edges.map(([a,b]) => corner[a].depth + corner[b].depth);
+    const farthest = Math.min(...depths);
+    context.strokeStyle = '#c9ced5';
+    context.lineWidth = 1.2;
+    edges.forEach(([a,b], i) => {
+      context.globalAlpha = depths[i] === farthest ? .45 : 1;
       context.beginPath();
       context.moveTo(corner[a].x,corner[a].y);
       context.lineTo(corner[b].x,corner[b].y);
       context.stroke();
     });
+    context.globalAlpha = 1;
     const stageFilter = filter.value;
     plotted = cloud.filter(item => stageFilter === 'all' || visibleStage(item) === Number(stageFilter))
       .map(item => ({item, ...projected(item.xyz,width,height)}))
@@ -110,18 +120,21 @@
       const chosen = projected(selected.xyz,width,height);
       drawMark(chosen.x,chosen.y,visibleStage(selected),6,true);
     }
-    context.font = '600 13px -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif';
+    context.font = '600 13px -apple-system, BlinkMacSystemFont, Inter, Segoe UI, sans-serif';
     context.textBaseline = 'middle';
     corner.forEach(({x,y},i) => {
       context.fillStyle = colors[i];
+      context.strokeStyle = '#ffffff';
+      context.lineWidth = 2;
       context.beginPath();
-      context.arc(x,y,5,0,Math.PI*2);
+      context.arc(x,y,5.5,0,Math.PI*2);
       context.fill();
+      context.stroke();
       const nearRight = x > width - 48;
       const nearLeft = x < 48;
       context.textAlign = nearRight ? 'right' : (nearLeft ? 'left' : (x >= width/2 ? 'left' : 'right'));
       const labelX = nearRight ? x - 11 : (nearLeft ? x + 11 : x + (x >= width/2 ? 10 : -10));
-      context.fillStyle = '#172126';
+      context.fillStyle = '#111418';
       context.fillText(stages[i],labelX,Math.max(14,Math.min(height-14,y)));
     });
   }
@@ -134,6 +147,7 @@
     const missing = 1000-tenths.reduce((a,b) => a+b,0);
     for (let i=0;i<missing;i++) tenths[order[i]]++;
     tenths.forEach((v,i) => {cells[i].textContent = (v/10).toFixed(1) + '%';});
+    if (strip) Array.from(strip.children).forEach((segment, i) => {segment.style.flex = item.p[i] + ' 1 0px';});
     predictedStage.textContent = stages[item.stage];
     predictedStage.parentElement.style.setProperty('--predicted-color', colors[item.stage]);
     predictedConfidence.textContent = (tenths[item.stage]/10).toFixed(1) + '% probability';
