@@ -2,7 +2,7 @@
 
 A small static research website for Ty Fleming, Imaging Science PhD student at Washington University in St. Louis.
 
-This branch (`variant/night-oracle`) is the Night Oracle theme: the minimal layout under a night sky, with ivory serif headings, moon-gold accents, tarot-style framed cards, and star-marked section dividers. Its stage palette is re-stepped for the dark surface and passes the same color-vision checks (Wake `#c38824`, N1 `#b24f63`, N2 `#6453a7`, N3 `#359bd9`). The light minimal theme lives on `variant/minimal-modern`.
+This branch (`variant/sleep-night`) uses the light minimal theme across the site and switches the Sleep decoding page to the Night Oracle theme with `<html data-theme="night">`: ivory serif headings, moon-gold accents, tarot-style framing, and star-marked section dividers. Links into the sleep research are drawn as small night cards on the light pages, and page navigations cross-fade (`@view-transition`). The night stage palette is re-stepped for the dark surface and passes the same color-vision checks (Wake `#c38824`, N1 `#b24f63`, N2 `#6453a7`, N3 `#359bd9`). The all-light theme lives on `variant/minimal-modern` and the all-night theme on `variant/night-oracle`.
 
 ## Pages
 
