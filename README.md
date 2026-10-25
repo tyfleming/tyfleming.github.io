@@ -2,7 +2,7 @@
 
 A small static research website for Ty Fleming, Imaging Science PhD student at Washington University in St. Louis.
 
-The design is a plain academic page: one serif typeface, one 720px column, modest type sizes, and plain text links. The Sleep decoding page uses the same layout in dark colors (`<html data-theme="night">`). To make another page dark, give it `<html data-theme="night">`.
+The design is a plain academic page: one serif typeface, one 720px column, modest type sizes, and plain text links. Visitors can switch between light and dark themes with the moon/sun button in the header (`theme.js`). The site follows the system setting until a visitor chooses, then remembers the choice in local storage; without JavaScript it simply follows the system setting.
 
 ## Pages
 
@@ -13,7 +13,7 @@ The design is a plain academic page: one serif typeface, one 720px column, modes
 - `publications.html` — prior publications and ongoing work
 - `about.html` — background and contact
 
-The site uses plain HTML and CSS. `head-studies.js` draws the portrait studies on the unlinked `head-studies.html` page only.
+The site uses plain HTML and CSS, plus `theme.js` for the theme toggle. `head-studies.js` draws the portrait studies on the unlinked `head-studies.html` page only.
 
 The Sleep decoding page is a high-level overview of ongoing, unpublished work (why it matters, the approach, current focus, and status). It loads no data files; detailed methods and results will accompany a future paper.
 
