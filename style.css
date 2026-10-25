@@ -107,33 +107,3 @@ main{flex:1}
   .pub-entry{grid-template-columns:1fr;gap:0}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-
-/* Cross-document fade so moving into (or out of) the night page feels continuous. */
-@view-transition{navigation:auto}
-@media(prefers-reduced-motion:reduce){@view-transition{navigation:none}}
-
-/* Day ↔ night page transitions (sky.js). One continuous motion: the night page descends
-   over the day page behind a soft edge (dusk), and the day page rises back (dawn). */
-html:active-view-transition-type(to-night)::view-transition-old(root),
-html:active-view-transition-type(to-day)::view-transition-old(root),
-html:active-view-transition-type(to-night)::view-transition-new(root),
-html:active-view-transition-type(to-day)::view-transition-new(root){mix-blend-mode:normal}
-html:active-view-transition-type(to-night)::view-transition-old(root){animation:sky-dim 1s cubic-bezier(.65,0,.35,1) both}
-html:active-view-transition-type(to-day)::view-transition-old(root){animation:sky-brighten 1s cubic-bezier(.65,0,.35,1) both}
-html:active-view-transition-type(to-night)::view-transition-new(root){-webkit-mask-image:linear-gradient(180deg,#000 0,#000 44%,transparent 52%);mask-image:linear-gradient(180deg,#000 0,#000 44%,transparent 52%);-webkit-mask-size:100% 300%;mask-size:100% 300%;animation:sky-descend 1s cubic-bezier(.65,0,.35,1) both}
-html:active-view-transition-type(to-day)::view-transition-new(root){-webkit-mask-image:linear-gradient(0deg,#000 0,#000 44%,transparent 52%);mask-image:linear-gradient(0deg,#000 0,#000 44%,transparent 52%);-webkit-mask-size:100% 300%;mask-size:100% 300%;animation:sky-rise 1s cubic-bezier(.65,0,.35,1) both}
-@keyframes sky-descend{from{-webkit-mask-position:0 68%;mask-position:0 68%}to{-webkit-mask-position:0 26%;mask-position:0 26%}}
-@keyframes sky-rise{from{-webkit-mask-position:0 32%;mask-position:0 32%}to{-webkit-mask-position:0 74%;mask-position:0 74%}}
-@keyframes sky-dim{to{filter:brightness(.8)}}
-@keyframes sky-brighten{to{filter:brightness(1.25)}}
-/* Fallback curtain for browsers without cross-document view transitions: same soft edge. */
-.sky-veil{position:fixed;left:0;right:0;top:0;height:200vh;z-index:100;pointer-events:none;will-change:transform}
-.sky-veil--dusk{background:linear-gradient(180deg,#121a22 0,#121a22 50%,rgba(18,26,34,0) 62%);animation:sky-veil-down .9s cubic-bezier(.65,0,.35,1) forwards}
-.sky-veil--dawn{background:linear-gradient(0deg,#fff 0,#fff 50%,rgba(255,255,255,0) 62%);animation:sky-veil-up .9s cubic-bezier(.65,0,.35,1) forwards}
-@keyframes sky-veil-down{from{transform:translateY(-100%)}to{transform:translateY(0)}}
-@keyframes sky-veil-up{from{transform:translateY(50%)}to{transform:translateY(-50%)}}
-html.sky-arrive-night::after,html.sky-arrive-day::after{content:"";position:fixed;inset:0;z-index:100;pointer-events:none;animation:sky-lift .5s ease .05s forwards}
-html.sky-arrive-night::after{background:#121a22}
-html.sky-arrive-day::after{background:#fff}
-@keyframes sky-lift{to{opacity:0;visibility:hidden}}
-@media(prefers-reduced-motion:reduce){.sky-veil,html.sky-arrive-night::after,html.sky-arrive-day::after{display:none}}
