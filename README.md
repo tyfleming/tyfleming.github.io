@@ -17,7 +17,7 @@ The site uses plain HTML and CSS. `head-studies.js` draws the portrait studies o
 
 The Sleep decoding page is a high-level overview of ongoing, unpublished work (why it matters, the approach, current focus, and status). It loads no data files; detailed methods and results will accompany a future paper.
 
-The header shows a small connectivity-matrix mark beside the name (inline SVG in each page, colored by the page accent). The home and research overview show `assets/connectivity-matrix.svg`, a decorative motif in the style of a brain connectivity (correlation) matrix with block structure. It is not real data.
+The header shows a small brain mark (top view of the two hemispheres) beside the name, as inline SVG in each page colored by the page accent. The home and research overview show `assets/connectivity-matrix.svg`, a decorative motif in the style of a brain connectivity (correlation) matrix with block structure. It is not real data.
 
 ## Local preview
 
