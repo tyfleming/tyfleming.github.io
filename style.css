@@ -32,9 +32,9 @@ strong{color:var(--ink);font-weight:600}
 /* Header and footer */
 .header-inner,main,.site-footer{width:100%;max-width:var(--max);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
 .header-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 24px;padding-top:28px;padding-bottom:6px}
-/* A small brain mark (top view) beside the name; it takes the page's accent color. */
+/* A small line-drawn brain beside the name, in the same ink as the name. */
 .brand{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--ink);text-decoration:none}
-.brand-icon{width:18px;height:18px;flex:none;color:var(--accent)}
+.brand-icon{width:18px;height:18px;flex:none}
 .site-nav{display:flex;flex-wrap:wrap;gap:4px 20px;font-size:.9375rem}
 .site-nav a{color:var(--muted);text-decoration:none}
 .site-nav a:hover{color:var(--ink)}
